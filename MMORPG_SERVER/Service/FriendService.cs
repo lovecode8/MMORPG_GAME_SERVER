@@ -35,8 +35,7 @@ namespace MMORPG_SERVER.Service
                     {
                         CharacterId = character.UnitId,
                         UserName = character.Name,
-                        IsOnline =
-                        UserManager.Instance.GetUserByName(character.Name) == null ? false : true
+                        IsOnline = FriendManager.Instance.IsTargetOnline(character.Name)
                     };
                     channel?.SendAsync(new SearchFriendResponse() { FriendInfo = friendInfo });
                 }
@@ -53,7 +52,54 @@ namespace MMORPG_SERVER.Service
                 string senderName = channel._user._dbUser.UserName;
                 Log.Information($"[FriendService] 收到好友添加请求：{senderName}要加{targetName}");
 
+                if(!FriendManager.Instance.OnReceiveAddFriendRequest(senderName, targetName))
+                {
+                    //重复的好友申请不处理
+                    return;
+                }
 
+                User user = UserManager.Instance.GetUserByName(targetName);
+
+                if(user != null)
+                {
+                    var character = FriendManager.Instance.GetCharacterByName(senderName);
+                    FriendInfo friendInfo = new FriendInfo()
+                    {
+                        CharacterId = character.UnitId,
+                        UserName = senderName,
+                        IsOnline = true
+                    };
+                    user._netChannel.SendAsync(new AddFriendResponse() { FriendInfo = friendInfo });
+                }
+            });
+        }
+
+        //处理同意好友请求消息
+        public void OnHandle(object sender, AgreeAddFriendRequest agreeAddFriendRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                NetChannel? channel = sender as NetChannel;
+                string senderName = channel._user._dbUser.UserName;
+                string targetName = agreeAddFriendRequest.TargetName;
+                Log.Information($"[FriendService] 收到同意好友请求：{senderName}同意了{targetName}");
+
+                FriendManager.Instance.RemoveApplication(senderName, targetName);
+                FriendManager.Instance.AddFriend(senderName, targetName);
+                FriendManager.Instance.AddFriend(targetName, senderName);
+
+                User user = UserManager.Instance.GetUserByName(targetName);
+                if(user != null)
+                {
+                    var character = FriendManager.Instance.GetCharacterByName(senderName);
+                    FriendInfo friendInfo = new FriendInfo()
+                    {
+                        CharacterId = character.UnitId,
+                        UserName = senderName,
+                        IsOnline = true
+                    };
+                    user._netChannel.SendAsync(new AgreeFriendResponse() { FriendInfo = friendInfo });
+                }
             });
         }
     }
