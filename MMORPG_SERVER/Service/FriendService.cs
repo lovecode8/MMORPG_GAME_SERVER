@@ -43,11 +43,17 @@ namespace MMORPG_SERVER.Service
             });
         }
 
+        //处理添加好友请求
         public void OnHandle(object sender, AddFriendRequest addFriendRequest)
         {
             UpdateManager.Instance.AddTask(() =>
             {
                 NetChannel? channel = sender as NetChannel;
+                string targetName = addFriendRequest.TargetName;
+                string senderName = channel._user._dbUser.UserName;
+                Log.Information($"[FriendService] 收到好友添加请求：{senderName}要加{targetName}");
+
+
             });
         }
     }
