@@ -1,0 +1,48 @@
+﻿using MMORPG_SERVER.Database.Data;
+
+namespace MMORPG_SERVER.Extension
+{
+    public static class MysqlExtension
+    {
+        public static NetCharacter ToNetCharacter(this DbCharacter dbCharacter)
+        {
+            NetTransform netTransform = new NetTransform();
+            netTransform.Position = new NetVector3() 
+            { X = dbCharacter.posX, Y = dbCharacter.posY, Z = dbCharacter.posZ };
+            netTransform.Rotation = new NetVector3()
+            { X = dbCharacter.rotX, Y = dbCharacter.posY, Z = dbCharacter.posZ };
+
+            return new NetCharacter()
+            {
+                UserId = dbCharacter.UserId,
+                UnitId = dbCharacter.UnitId,
+                Name = dbCharacter.Name,
+                Hp = dbCharacter.Hp,
+                Mp = dbCharacter.Mp,
+                Transform = netTransform,
+                Level = dbCharacter.Level,
+                Gold = dbCharacter.Gold
+            };
+        }
+
+        public static DbCharacter ToDbCharacter(this NetCharacter netCharacter)
+        {
+            return new DbCharacter()
+            {
+                UserId = netCharacter.UserId,
+                UnitId = netCharacter.UnitId,
+                Name = netCharacter.Name,
+                Hp = netCharacter.Hp,
+                Mp = netCharacter.Mp,
+                Level = netCharacter.Level,
+                posX = netCharacter.Transform.Position.X,
+                posY = netCharacter.Transform.Position.Y,
+                posZ = netCharacter.Transform.Position.Z,
+                rotX = netCharacter.Transform.Rotation.X,
+                rotY = netCharacter.Transform.Rotation.Y,
+                rotZ = netCharacter.Transform.Rotation.Z,
+                Gold = netCharacter.Gold
+            };
+        }
+    }
+}

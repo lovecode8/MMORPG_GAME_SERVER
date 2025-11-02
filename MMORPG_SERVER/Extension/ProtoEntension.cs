@@ -1,0 +1,19 @@
+﻿
+
+using System.Numerics;
+
+namespace Extension
+{
+    public static class ProtoEntension
+    {
+        public static Vector3 ToVector3(this NetVector3 netVector3)
+        {
+            return new Vector3(netVector3.X, netVector3.Y, netVector3.Z);
+        }
+
+        public static NetVector3 ToNetVector3(this Vector3 vector3)
+        {
+            return new NetVector3() { X = vector3.X, Y = vector3.Y, Z = vector3.Z };
+        }
+    }
+}
