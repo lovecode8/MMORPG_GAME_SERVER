@@ -3,6 +3,7 @@ using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.PlayerSystem;
+using MMORPG_SERVER.System.UserSystem;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,11 @@ namespace MMORPG_SERVER.Service
             {
                 Log.Information($"[ChatService] 收到用户聊天消息：{chatRequest.Context}");
                 NetChannel? channel = sender as NetChannel;
+
                 //世界、私聊、公会
                 switch (chatRequest.ChatType)
                 {
+                    //世界聊天
                     case ChatType.World:
                         PlayerManager.Instance.Broadcast(new ChatResponse()
                         {
@@ -31,13 +34,30 @@ namespace MMORPG_SERVER.Service
                             SenderName = channel?._user._dbUser.UserName
                         }, channel._user._player);
                         break;
+
+                    //私聊
+                    case ChatType.Private:
+                        User? user = UserManager.Instance.GetUserByName(chatRequest.TargetName);
+                        //目标用户在线就发给他
+                        if(user != null)
+                        {
+                            user._netChannel.SendAsync(new ChatResponse()
+                            {
+                                ChatType = ChatType.Private,
+                                Context = chatRequest.Context,
+                                SenderName = channel._user._dbUser.UserName,
+                                SendTime = chatRequest.SendTime
+                            });
+                        }
+                        break;
                 }
+
                 ChatManager.Instance.OnReceiveChatMessage(new ChatMessage()
                 {
                     chatType = chatRequest.ChatType,
                     context = chatRequest.Context,
-                    senderId = channel._user._userId,
-                    senderName = channel?._user._dbUser.UserName,
+                    senderName = channel._user._dbUser.UserName,
+                    targetName = chatRequest.TargetName ?? null
                 });
             });
         }

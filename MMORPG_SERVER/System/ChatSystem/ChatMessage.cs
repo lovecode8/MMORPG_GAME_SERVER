@@ -12,11 +12,9 @@ namespace MMORPG_SERVER.System.ChatSystem
 
         public string context;
 
-        public int senderId;
-
         public string senderName;
 
         //玩家、公会?
-        public int? targetId;
+        public string? targetName;
     }
 }

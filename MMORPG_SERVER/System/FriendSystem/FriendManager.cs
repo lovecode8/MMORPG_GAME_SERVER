@@ -49,6 +49,12 @@ namespace MMORPG_SERVER.System.FriendSystem
         //添加好友请求
         public bool OnReceiveAddFriendRequest(string senderName, string targetName)
         {
+            //已经是好友则转发好友请求
+            if(_userFriendList.ContainsKey(senderName) && _userFriendList[senderName].Contains(targetName))
+            {
+                return false;
+            }
+
             if (_userFriendApplicationDict.TryGetValue(targetName, out var list))
             {
                 if (list.Contains(senderName))

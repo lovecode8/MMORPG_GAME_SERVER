@@ -22,18 +22,18 @@ public static partial class ChatReflection {
   static ChatReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "CgpDaGF0LnByb3RvIl8KC0NoYXRSZXF1ZXN0EhsKCGNoYXRUeXBlGAEgASgO",
-          "MgkuQ2hhdFR5cGUSDwoHY29udGV4dBgCIAEoCRIQCgh0YXJnZXRJZBgDIAEo",
-          "BRIQCghzZW5kVGltZRgEIAEoAyJ0CgxDaGF0UmVzcG9uc2USGwoIY2hhdFR5",
-          "cGUYASABKA4yCS5DaGF0VHlwZRIPCgdjb250ZXh0GAIgASgJEhAKCHRhcmdl",
-          "dElkGAMgASgFEhIKCnNlbmRlck5hbWUYBCABKAkSEAoIc2VuZFRpbWUYBSAB",
-          "KAMqOQoIQ2hhdFR5cGUSCwoHUHJpdmF0ZRAAEgkKBVdvcmxkEAESCQoFR3Vp",
-          "bGQQAhIKCgZTeXN0ZW0QA2IGcHJvdG8z"));
+          "CgpDaGF0LnByb3RvImEKC0NoYXRSZXF1ZXN0EhsKCGNoYXRUeXBlGAEgASgO",
+          "MgkuQ2hhdFR5cGUSDwoHY29udGV4dBgCIAEoCRISCgp0YXJnZXROYW1lGAMg",
+          "ASgJEhAKCHNlbmRUaW1lGAQgASgDInYKDENoYXRSZXNwb25zZRIbCghjaGF0",
+          "VHlwZRgBIAEoDjIJLkNoYXRUeXBlEg8KB2NvbnRleHQYAiABKAkSEgoKdGFy",
+          "Z2V0TmFtZRgDIAEoCRISCgpzZW5kZXJOYW1lGAQgASgJEhAKCHNlbmRUaW1l",
+          "GAUgASgDKjkKCENoYXRUeXBlEgsKB1ByaXZhdGUQABIJCgVXb3JsZBABEgkK",
+          "BUd1aWxkEAISCgoGU3lzdGVtEANiBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ChatType), }, null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::ChatRequest), global::ChatRequest.Parser, new[]{ "ChatType", "Context", "TargetId", "SendTime" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::ChatResponse), global::ChatResponse.Parser, new[]{ "ChatType", "Context", "TargetId", "SenderName", "SendTime" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::ChatRequest), global::ChatRequest.Parser, new[]{ "ChatType", "Context", "TargetName", "SendTime" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::ChatResponse), global::ChatResponse.Parser, new[]{ "ChatType", "Context", "TargetName", "SenderName", "SendTime" }, null, null, null, null)
         }));
   }
   #endregion
@@ -90,7 +90,7 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
   public ChatRequest(ChatRequest other) : this() {
     chatType_ = other.chatType_;
     context_ = other.context_;
-    targetId_ = other.targetId_;
+    targetName_ = other.targetName_;
     sendTime_ = other.sendTime_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
@@ -125,18 +125,18 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
     }
   }
 
-  /// <summary>Field number for the "targetId" field.</summary>
-  public const int TargetIdFieldNumber = 3;
-  private int targetId_;
+  /// <summary>Field number for the "targetName" field.</summary>
+  public const int TargetNameFieldNumber = 3;
+  private string targetName_ = "";
   /// <summary>
   ///好友id、公会id
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int TargetId {
-    get { return targetId_; }
+  public string TargetName {
+    get { return targetName_; }
     set {
-      targetId_ = value;
+      targetName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
     }
   }
 
@@ -169,7 +169,7 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
     }
     if (ChatType != other.ChatType) return false;
     if (Context != other.Context) return false;
-    if (TargetId != other.TargetId) return false;
+    if (TargetName != other.TargetName) return false;
     if (SendTime != other.SendTime) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -180,7 +180,7 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
     int hash = 1;
     if (ChatType != global::ChatType.Private) hash ^= ChatType.GetHashCode();
     if (Context.Length != 0) hash ^= Context.GetHashCode();
-    if (TargetId != 0) hash ^= TargetId.GetHashCode();
+    if (TargetName.Length != 0) hash ^= TargetName.GetHashCode();
     if (SendTime != 0L) hash ^= SendTime.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -208,9 +208,9 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
       output.WriteRawTag(18);
       output.WriteString(Context);
     }
-    if (TargetId != 0) {
-      output.WriteRawTag(24);
-      output.WriteInt32(TargetId);
+    if (TargetName.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(TargetName);
     }
     if (SendTime != 0L) {
       output.WriteRawTag(32);
@@ -234,9 +234,9 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
       output.WriteRawTag(18);
       output.WriteString(Context);
     }
-    if (TargetId != 0) {
-      output.WriteRawTag(24);
-      output.WriteInt32(TargetId);
+    if (TargetName.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(TargetName);
     }
     if (SendTime != 0L) {
       output.WriteRawTag(32);
@@ -258,8 +258,8 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
     if (Context.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Context);
     }
-    if (TargetId != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeInt32Size(TargetId);
+    if (TargetName.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(TargetName);
     }
     if (SendTime != 0L) {
       size += 1 + pb::CodedOutputStream.ComputeInt64Size(SendTime);
@@ -282,8 +282,8 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
     if (other.Context.Length != 0) {
       Context = other.Context;
     }
-    if (other.TargetId != 0) {
-      TargetId = other.TargetId;
+    if (other.TargetName.Length != 0) {
+      TargetName = other.TargetName;
     }
     if (other.SendTime != 0L) {
       SendTime = other.SendTime;
@@ -315,8 +315,8 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
           Context = input.ReadString();
           break;
         }
-        case 24: {
-          TargetId = input.ReadInt32();
+        case 26: {
+          TargetName = input.ReadString();
           break;
         }
         case 32: {
@@ -350,8 +350,8 @@ public sealed partial class ChatRequest : pb::IMessage<ChatRequest>
           Context = input.ReadString();
           break;
         }
-        case 24: {
-          TargetId = input.ReadInt32();
+        case 26: {
+          TargetName = input.ReadString();
           break;
         }
         case 32: {
@@ -402,7 +402,7 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
   public ChatResponse(ChatResponse other) : this() {
     chatType_ = other.chatType_;
     context_ = other.context_;
-    targetId_ = other.targetId_;
+    targetName_ = other.targetName_;
     senderName_ = other.senderName_;
     sendTime_ = other.sendTime_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -438,15 +438,15 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
     }
   }
 
-  /// <summary>Field number for the "targetId" field.</summary>
-  public const int TargetIdFieldNumber = 3;
-  private int targetId_;
+  /// <summary>Field number for the "targetName" field.</summary>
+  public const int TargetNameFieldNumber = 3;
+  private string targetName_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int TargetId {
-    get { return targetId_; }
+  public string TargetName {
+    get { return targetName_; }
     set {
-      targetId_ = value;
+      targetName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
     }
   }
 
@@ -491,7 +491,7 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
     }
     if (ChatType != other.ChatType) return false;
     if (Context != other.Context) return false;
-    if (TargetId != other.TargetId) return false;
+    if (TargetName != other.TargetName) return false;
     if (SenderName != other.SenderName) return false;
     if (SendTime != other.SendTime) return false;
     return Equals(_unknownFields, other._unknownFields);
@@ -503,7 +503,7 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
     int hash = 1;
     if (ChatType != global::ChatType.Private) hash ^= ChatType.GetHashCode();
     if (Context.Length != 0) hash ^= Context.GetHashCode();
-    if (TargetId != 0) hash ^= TargetId.GetHashCode();
+    if (TargetName.Length != 0) hash ^= TargetName.GetHashCode();
     if (SenderName.Length != 0) hash ^= SenderName.GetHashCode();
     if (SendTime != 0L) hash ^= SendTime.GetHashCode();
     if (_unknownFields != null) {
@@ -532,9 +532,9 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
       output.WriteRawTag(18);
       output.WriteString(Context);
     }
-    if (TargetId != 0) {
-      output.WriteRawTag(24);
-      output.WriteInt32(TargetId);
+    if (TargetName.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(TargetName);
     }
     if (SenderName.Length != 0) {
       output.WriteRawTag(34);
@@ -562,9 +562,9 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
       output.WriteRawTag(18);
       output.WriteString(Context);
     }
-    if (TargetId != 0) {
-      output.WriteRawTag(24);
-      output.WriteInt32(TargetId);
+    if (TargetName.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(TargetName);
     }
     if (SenderName.Length != 0) {
       output.WriteRawTag(34);
@@ -590,8 +590,8 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
     if (Context.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Context);
     }
-    if (TargetId != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeInt32Size(TargetId);
+    if (TargetName.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(TargetName);
     }
     if (SenderName.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(SenderName);
@@ -617,8 +617,8 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
     if (other.Context.Length != 0) {
       Context = other.Context;
     }
-    if (other.TargetId != 0) {
-      TargetId = other.TargetId;
+    if (other.TargetName.Length != 0) {
+      TargetName = other.TargetName;
     }
     if (other.SenderName.Length != 0) {
       SenderName = other.SenderName;
@@ -653,8 +653,8 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
           Context = input.ReadString();
           break;
         }
-        case 24: {
-          TargetId = input.ReadInt32();
+        case 26: {
+          TargetName = input.ReadString();
           break;
         }
         case 34: {
@@ -692,8 +692,8 @@ public sealed partial class ChatResponse : pb::IMessage<ChatResponse>
           Context = input.ReadString();
           break;
         }
-        case 24: {
-          TargetId = input.ReadInt32();
+        case 26: {
+          TargetName = input.ReadString();
           break;
         }
         case 34: {
