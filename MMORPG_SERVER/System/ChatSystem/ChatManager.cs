@@ -1,9 +1,11 @@
-﻿using MMORPG_SERVER.Database;
+﻿using Extension;
+using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Tool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,13 +18,27 @@ namespace MMORPG_SERVER.System.ChatSystem
         private List<ChatMessage> _worldChatMessageList = new();
 
         //玩家私聊聊天记录 玩家名对应聊天记录
-        private Dictionary<string, List<ChatMessage>> _userChatMessageDict = new();
+        private Dictionary<string, Dictionary<string, List<ChatMessage>>> _userChatMessageDict = new();
 
         private ChatManager() { }
 
         public void Start()
         {
             LoadFriendMessage();
+        }
+
+        //外部获取接口
+        public Dictionary<string, ChatMessageList> GetFriendChatMessageDict(string userName)
+        {
+            if(_userChatMessageDict.TryGetValue(userName, out var dict))
+            {
+                Dictionary<string, ChatMessageList> res = new();
+                foreach(var kv in dict)
+                {
+                    res.Add(kv.Key, kv.Value.ToChatMessageList());
+                }
+            }
+            return null;
         }
 
         //导入数据
@@ -39,8 +55,8 @@ namespace MMORPG_SERVER.System.ChatSystem
                     context = message.context,
                     sendTime = message.sendTime
                 };
-                InsertPrivateMessage(message.targetName, chatMessage);
-                InsertPrivateMessage(message.senderName, chatMessage);
+                InsertPrivateMessage(chatMessage.senderName, chatMessage.targetName, chatMessage);
+                InsertPrivateMessage(chatMessage.targetName, chatMessage.senderName, chatMessage);
             }
         }
 
@@ -55,22 +71,31 @@ namespace MMORPG_SERVER.System.ChatSystem
 
                 //私聊 发送者和接收者都要存储
                 case ChatType.Private:
-                    InsertPrivateMessage(chatMessage.senderName, chatMessage);
-                    InsertPrivateMessage(chatMessage.targetName, chatMessage);
+                    InsertPrivateMessage(chatMessage.senderName, chatMessage.targetName, chatMessage);
+                    InsertPrivateMessage(chatMessage.targetName, chatMessage.senderName, chatMessage);
                     break;
             }
         }
 
-        private void InsertPrivateMessage(string targetName, ChatMessage chatMessage)
+        private void InsertPrivateMessage(string senderName, string targetName, ChatMessage chatMessage)
         {
-            if (_userChatMessageDict.TryGetValue(targetName, out var list))
+            if (_userChatMessageDict.TryGetValue(senderName, out var dict))
             {
-                list.Add(chatMessage);
+                if (_userChatMessageDict[senderName].TryGetValue(targetName, out var list))
+                {
+                    list.Add(chatMessage);
+                }
+                else
+                {
+                    _userChatMessageDict.Add(targetName, new());
+                    _userChatMessageDict[senderName][targetName].Add(chatMessage);
+                }
             }
             else
             {
-                _userChatMessageDict.Add(targetName, new());
-                _userChatMessageDict[targetName].Add(chatMessage);
+                _userChatMessageDict.Add(senderName, new());
+                _userChatMessageDict[senderName].Add(targetName, new());
+                _userChatMessageDict[senderName][targetName].Add(chatMessage);
             }
         }
     }

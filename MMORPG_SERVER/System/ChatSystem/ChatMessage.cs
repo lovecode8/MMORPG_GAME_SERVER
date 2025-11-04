@@ -18,6 +18,6 @@ namespace MMORPG_SERVER.System.ChatSystem
         public string? targetName;
 
         //发送时间
-        public long? sendTime;
+        public long sendTime;
     }
 }

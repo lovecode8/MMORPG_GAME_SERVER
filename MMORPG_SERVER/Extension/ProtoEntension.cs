@@ -1,5 +1,6 @@
 ﻿
 
+using MMORPG_SERVER.System.ChatSystem;
 using System.Numerics;
 
 namespace Extension
@@ -14,6 +15,23 @@ namespace Extension
         public static NetVector3 ToNetVector3(this Vector3 vector3)
         {
             return new NetVector3() { X = vector3.X, Y = vector3.Y, Z = vector3.Z };
+        }
+
+        public static ChatMessageList ToChatMessageList(this List<ChatMessage> list)
+        {
+            ChatMessageList messageList = new();
+            foreach (ChatMessage chatMessage in list)
+            {
+                messageList.List.Add(new ChatResponse
+                {
+                    ChatType = chatMessage.chatType,
+                    SenderName = chatMessage.senderName,
+                    Context = chatMessage.context,
+                    SendTime = chatMessage.sendTime,
+                    TargetName = chatMessage.targetName
+                });
+            }
+            return messageList;
         }
     }
 }

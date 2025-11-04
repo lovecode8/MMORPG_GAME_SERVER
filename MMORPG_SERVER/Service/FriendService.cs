@@ -3,6 +3,7 @@ using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
+using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.UserSystem;
 using Serilog;
@@ -17,6 +18,27 @@ namespace MMORPG_SERVER.Service
     //处理好友相关服务
     public class FriendService : ServiceBase<FriendService>
     {
+        //处理加载好友相关信息的请求
+        public void OnHandle(object sender, LoadFriendInfoRequest loadFriendInfoRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                NetChannel channel = sender as NetChannel;
+                string senderName = loadFriendInfoRequest.UserName;
+                Log.Information($"[FriendService] 收到加载好友信息请求：{senderName}");
+
+                LoadFriendInfoResponse response = new();
+                response.FriendApplicationList.AddRange(FriendManager.Instance.GetFriendApplication(senderName));
+                response.FriendList.AddRange(FriendManager.Instance.GetFriendList(senderName));
+
+                Dictionary<string, ChatMessageList> userMessageList = 
+                    ChatManager.Instance.GetFriendChatMessageDict(senderName);
+                foreach(var kv in userMessageList)
+                {
+                    response.FriendMessageDict.Add(kv.Key, kv.Value);
+                }
+            });
+        }
         //处理搜索好友请求
         public void OnHandle(object sender, SearchFriendRequest searchFriendRequest)
         {
@@ -26,19 +48,13 @@ namespace MMORPG_SERVER.Service
                 string userName = searchFriendRequest.UserName;
                 Log.Information($"[FriendService] 收到搜索好友请求: {userName}");
 
-                var character = FriendManager.Instance.GetCharacterByName(userName);
-                if(character == null)
+                var friendInfo = FriendManager.Instance.GetFriendInfoByName(userName);
+                if(friendInfo == null)
                 {
                     channel?.SendAsync(new SearchFriendResponse());
                 }
                 else
                 {
-                    FriendInfo friendInfo = new()
-                    {
-                        CharacterId = character.UnitId,
-                        UserName = character.Name,
-                        IsOnline = FriendManager.Instance.IsTargetOnline(character.Name)
-                    };
                     channel?.SendAsync(new SearchFriendResponse() { FriendInfo = friendInfo });
                 }
             });
@@ -67,13 +83,7 @@ namespace MMORPG_SERVER.Service
 
                 if(user != null)
                 {
-                    var character = FriendManager.Instance.GetCharacterByName(_senderName);
-                    FriendInfo friendInfo = new FriendInfo()
-                    {
-                        CharacterId = character.UnitId,
-                        UserName = _senderName,
-                        IsOnline = true
-                    };
+                    var friendInfo = FriendManager.Instance.GetFriendInfoByName(_senderName);
                     user._netChannel.SendAsync(new AddFriendResponse() { FriendInfo = friendInfo });
                 }
             });
@@ -103,13 +113,7 @@ namespace MMORPG_SERVER.Service
                 User user = UserManager.Instance.GetUserByName(targetName);
                 if(user != null)
                 {
-                    var character = FriendManager.Instance.GetCharacterByName(senderName);
-                    FriendInfo friendInfo = new FriendInfo()
-                    {
-                        CharacterId = character.UnitId,
-                        UserName = senderName,
-                        IsOnline = true
-                    };
+                    var friendInfo = FriendManager.Instance.GetFriendInfoByName(senderName);
                     user._netChannel.SendAsync(new AgreeFriendResponse() { FriendInfo = friendInfo });
                 }
             });

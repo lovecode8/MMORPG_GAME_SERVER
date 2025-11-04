@@ -20,13 +20,42 @@ namespace MMORPG_SERVER.System.FriendSystem
         private Dictionary<string, List<string>> _userFriendApplicationDict = new();
         
         //玩家的好友列表
-        private Dictionary<string, List<string>> _userFriendList = new();
+        private Dictionary<string, List<string>> _userFriendDict = new();
 
         private FriendManager() { }
 
         public void Start()
         {
             LoadDataFromDatabase();
+        }
+
+        //外部获取数据方法
+        public List<FriendInfo> GetFriendApplication(string userName)
+        {
+            if(_userFriendApplicationDict.TryGetValue(userName, out var list))
+            {
+                List<FriendInfo> res = new();
+                foreach(string name in list)
+                {
+                    res.Add(GetFriendInfoByName(name));
+                }
+                return res;
+            }
+            return null;
+        }
+
+        public List<FriendInfo> GetFriendList(string userName)
+        {
+            if(_userFriendDict.TryGetValue(userName, out var list))
+            {
+                List<FriendInfo> res = new();
+                foreach(string name in list)
+                {
+                    res.Add(GetFriendInfoByName(name));
+                }
+                return res;
+            }
+            return null;
         }
 
         //导入数据
@@ -51,11 +80,17 @@ namespace MMORPG_SERVER.System.FriendSystem
             }
         }
 
-        public DbCharacter GetCharacterByName(string userName)
+        public FriendInfo GetFriendInfoByName(string userName)
         {
             if (_dbCharacterDictionary.TryGetValue(userName, out var character))
             {
-                return character;
+                FriendInfo friendInfo = new()
+                {
+                    CharacterId = character.UnitId,
+                    UserName = character.Name,
+                    IsOnline = FriendManager.Instance.IsTargetOnline(character.Name)
+                };
+                return friendInfo;
             }
             return null;
         }
@@ -70,7 +105,7 @@ namespace MMORPG_SERVER.System.FriendSystem
         public bool AddFriendApplication(string senderName, string targetName)
         {
             //已经是好友则不转发好友请求
-            if(_userFriendList.ContainsKey(senderName) && _userFriendList[senderName].Contains(targetName))
+            if(_userFriendDict.ContainsKey(senderName) && _userFriendDict[senderName].Contains(targetName))
             {
                 return false;
             }
@@ -100,14 +135,14 @@ namespace MMORPG_SERVER.System.FriendSystem
         //添加好友
         public void AddFriend(string senderName, string targetName)
         {
-            if(_userFriendList.TryGetValue(senderName, out var list) && !list.Contains(targetName))
+            if(_userFriendDict.TryGetValue(senderName, out var list) && !list.Contains(targetName))
             {
                 list.Add(targetName);
             }
             else
             {
-                _userFriendList.Add(senderName, new());
-                _userFriendList[senderName].Add(targetName);
+                _userFriendDict.Add(senderName, new());
+                _userFriendDict[senderName].Add(targetName);
             }
         }
     }
