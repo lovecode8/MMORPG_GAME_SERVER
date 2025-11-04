@@ -1,4 +1,6 @@
 ﻿using MMORPG_SERVER.Common.Network;
+using MMORPG_SERVER.Database;
+using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.ChatSystem;
@@ -37,6 +39,16 @@ namespace MMORPG_SERVER.Service
 
                     //私聊
                     case ChatType.Private:
+                        //存入数据库
+                        MysqlManager.Instance._freeSql.Insert<DbFriendMessage>
+                        (new DbFriendMessage()
+                        {
+                            senderName = channel?._user._dbUser.UserName,
+                            targetName = chatRequest.TargetName,
+                            context = chatRequest.Context,
+                            sendTime = chatRequest.SendTime
+                        }).ExecuteAffrows();
+
                         User? user = UserManager.Instance.GetUserByName(chatRequest.TargetName);
                         //目标用户在线就发给他
                         if(user != null)
@@ -57,7 +69,8 @@ namespace MMORPG_SERVER.Service
                     chatType = chatRequest.ChatType,
                     context = chatRequest.Context,
                     senderName = channel._user._dbUser.UserName,
-                    targetName = chatRequest.TargetName ?? null
+                    targetName = chatRequest.TargetName ?? null,
+                    sendTime = chatRequest.SendTime
                 });
             });
         }

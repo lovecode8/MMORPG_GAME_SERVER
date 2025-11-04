@@ -1,4 +1,6 @@
-﻿using MMORPG_SERVER.Tool;
+﻿using MMORPG_SERVER.Database;
+using MMORPG_SERVER.Database.Data;
+using MMORPG_SERVER.Tool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,30 @@ namespace MMORPG_SERVER.System.ChatSystem
         private Dictionary<string, List<ChatMessage>> _userChatMessageDict = new();
 
         private ChatManager() { }
+
+        public void Start()
+        {
+            LoadFriendMessage();
+        }
+
+        //导入数据
+        private void LoadFriendMessage()
+        {
+            List<DbFriendMessage> list = MysqlManager.Instance._freeSql.Select<DbFriendMessage>().ToList();
+            foreach(DbFriendMessage message in list)
+            {
+                ChatMessage chatMessage = new ChatMessage()
+                {
+                    chatType = ChatType.Private,
+                    senderName = message.senderName,
+                    targetName = message.targetName,
+                    context = message.context,
+                    sendTime = message.sendTime
+                };
+                InsertPrivateMessage(message.targetName, chatMessage);
+                InsertPrivateMessage(message.senderName, chatMessage);
+            }
+        }
 
         public void OnReceiveChatMessage(ChatMessage chatMessage)
         {

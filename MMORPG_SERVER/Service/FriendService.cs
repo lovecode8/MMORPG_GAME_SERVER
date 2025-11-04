@@ -1,4 +1,6 @@
 ﻿using MMORPG_SERVER.Common.Network;
+using MMORPG_SERVER.Database;
+using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.FriendSystem;
@@ -48,25 +50,28 @@ namespace MMORPG_SERVER.Service
             UpdateManager.Instance.AddTask(() =>
             {
                 NetChannel? channel = sender as NetChannel;
-                string targetName = addFriendRequest.TargetName;
-                string senderName = channel._user._dbUser.UserName;
-                Log.Information($"[FriendService] 收到好友添加请求：{senderName}要加{targetName}");
+                string _targetName = addFriendRequest.TargetName;
+                string _senderName = channel._user._dbUser.UserName;
+                Log.Information($"[FriendService] 收到好友添加请求：{_senderName}要加{_targetName}");
 
-                if(!FriendManager.Instance.OnReceiveAddFriendRequest(senderName, targetName))
+                if (!FriendManager.Instance.AddFriendApplication(_senderName, _targetName))
                 {
                     //重复的好友申请不处理
                     return;
                 }
 
-                User user = UserManager.Instance.GetUserByName(targetName);
+                //存入数据库
+                DbFriendApplication application = new() { senderName = _senderName, targetName = _targetName };
+                MysqlManager.Instance._freeSql.Insert<DbFriendApplication>(application).ExecuteAffrows();
+                User? user = UserManager.Instance.GetUserByName(_targetName);
 
                 if(user != null)
                 {
-                    var character = FriendManager.Instance.GetCharacterByName(senderName);
+                    var character = FriendManager.Instance.GetCharacterByName(_senderName);
                     FriendInfo friendInfo = new FriendInfo()
                     {
                         CharacterId = character.UnitId,
-                        UserName = senderName,
+                        UserName = _senderName,
                         IsOnline = true
                     };
                     user._netChannel.SendAsync(new AddFriendResponse() { FriendInfo = friendInfo });
@@ -87,6 +92,13 @@ namespace MMORPG_SERVER.Service
                 FriendManager.Instance.RemoveApplication(senderName, targetName);
                 FriendManager.Instance.AddFriend(senderName, targetName);
                 FriendManager.Instance.AddFriend(targetName, senderName);
+
+                //数据库操作--删除申请、增加好友
+                MysqlManager.Instance._freeSql.Delete<DbFriendApplication>().
+                                Where(f => f.targetName == senderName).
+                                ExecuteAffrows();
+                MysqlManager.Instance._freeSql.Insert<DbFriend>
+                (new DbFriend() { name1 = targetName, name2 = senderName }).ExecuteAffrows();
 
                 User user = UserManager.Instance.GetUserByName(targetName);
                 if(user != null)

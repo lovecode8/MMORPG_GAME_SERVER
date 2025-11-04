@@ -111,7 +111,7 @@ namespace MMORPG_SERVER
             channel._lastActiveTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
 
             //各模块处理消息
-            Log.Information(args.packet.Message.GetType().ToString());
+            //Log.Information(args.packet.Message.GetType().ToString());
             UserService.Instance.HandleMessage(channel, args.packet.Message);
             CharacterService.Instance.HandleMessage(channel, args.packet.Message);
             PlayerService.Instance.HandleMessage(channel, args.packet.Message);

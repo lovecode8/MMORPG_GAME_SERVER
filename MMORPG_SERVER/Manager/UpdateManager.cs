@@ -1,4 +1,5 @@
 ﻿using MMORPG_SERVER.Database;
+using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.UserSystem;
@@ -34,6 +35,9 @@ namespace MMORPG_SERVER.Manager
 
             FriendManager.Instance.Start();
             Log.Information("[FriendManager] 初始化完成");
+
+            ChatManager.Instance.Start();
+            Log.Information("[ChatManager] 初始化完成");
 
             Scheduler.Instance.AddScheduler(_updateTime, Update);
         }

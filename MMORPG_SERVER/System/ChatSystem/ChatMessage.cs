@@ -16,5 +16,8 @@ namespace MMORPG_SERVER.System.ChatSystem
 
         //玩家、公会?
         public string? targetName;
+
+        //发送时间
+        public long? sendTime;
     }
 }
