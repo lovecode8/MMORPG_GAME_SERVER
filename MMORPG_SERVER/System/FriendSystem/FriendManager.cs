@@ -32,7 +32,7 @@ namespace MMORPG_SERVER.System.FriendSystem
         //外部获取数据方法
         public List<FriendInfo> GetFriendApplication(string userName)
         {
-            if(_userFriendApplicationDict.TryGetValue(userName, out var list))
+            if(_userFriendApplicationDict.TryGetValue(userName, out var list) && list.Count > 0)
             {
                 List<FriendInfo> res = new();
                 foreach(string name in list)
@@ -46,7 +46,7 @@ namespace MMORPG_SERVER.System.FriendSystem
 
         public List<FriendInfo> GetFriendList(string userName)
         {
-            if(_userFriendDict.TryGetValue(userName, out var list))
+            if(_userFriendDict.TryGetValue(userName, out var list) && list.Count > 0)
             {
                 List<FriendInfo> res = new();
                 foreach(string name in list)

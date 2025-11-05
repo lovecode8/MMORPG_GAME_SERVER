@@ -27,16 +27,17 @@ namespace MMORPG_SERVER.System.ChatSystem
             LoadFriendMessage();
         }
 
-        //外部获取接口
+        //外部获取接口--获取指定玩家和所有人的聊天记录
         public Dictionary<string, ChatMessageList> GetFriendChatMessageDict(string userName)
         {
-            if(_userChatMessageDict.TryGetValue(userName, out var dict))
+            if (_userChatMessageDict.TryGetValue(userName, out var dict) && dict.Count > 0)
             {
                 Dictionary<string, ChatMessageList> res = new();
-                foreach(var kv in dict)
+                foreach (var kv in dict)
                 {
                     res.Add(kv.Key, kv.Value.ToChatMessageList());
                 }
+                return res;
             }
             return null;
         }
@@ -87,8 +88,8 @@ namespace MMORPG_SERVER.System.ChatSystem
                 }
                 else
                 {
-                    _userChatMessageDict.Add(targetName, new());
-                    _userChatMessageDict[senderName][targetName].Add(chatMessage);
+                    dict.Add(targetName, new());
+                    dict[targetName].Add(chatMessage);
                 }
             }
             else

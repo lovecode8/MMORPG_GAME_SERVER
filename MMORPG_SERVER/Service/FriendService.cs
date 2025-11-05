@@ -28,15 +28,30 @@ namespace MMORPG_SERVER.Service
                 Log.Information($"[FriendService] 收到加载好友信息请求：{senderName}");
 
                 LoadFriendInfoResponse response = new();
-                response.FriendApplicationList.AddRange(FriendManager.Instance.GetFriendApplication(senderName));
-                response.FriendList.AddRange(FriendManager.Instance.GetFriendList(senderName));
 
-                Dictionary<string, ChatMessageList> userMessageList = 
-                    ChatManager.Instance.GetFriendChatMessageDict(senderName);
-                foreach(var kv in userMessageList)
+                List<FriendInfo> applicationList = FriendManager.Instance.GetFriendApplication(senderName);
+                if(applicationList != null)
                 {
-                    response.FriendMessageDict.Add(kv.Key, kv.Value);
+                    response.FriendApplicationList.AddRange(applicationList);
                 }
+
+                List<FriendInfo> friendList = FriendManager.Instance.GetFriendList(senderName);
+                if(friendList != null)
+                {
+                    response.FriendList.AddRange(friendList);
+                }
+
+                Dictionary<string, ChatMessageList> messageDict = 
+                    ChatManager.Instance.GetFriendChatMessageDict(senderName);
+                if(messageDict != null)
+                {
+                    foreach (var kv in messageDict)
+                    {
+                        response.FriendMessageDict.Add(kv.Key, kv.Value);
+                    }
+                }
+                
+                channel.SendAsync(response);
             });
         }
         //处理搜索好友请求
@@ -107,6 +122,7 @@ namespace MMORPG_SERVER.Service
                 MysqlManager.Instance._freeSql.Delete<DbFriendApplication>().
                                 Where(f => f.targetName == senderName).
                                 ExecuteAffrows();
+
                 MysqlManager.Instance._freeSql.Insert<DbFriend>
                 (new DbFriend() { name1 = targetName, name2 = senderName }).ExecuteAffrows();
 
