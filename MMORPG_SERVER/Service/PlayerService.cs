@@ -23,12 +23,17 @@ namespace MMORPG_SERVER.Service
         {
             UpdateManager.Instance.AddTask(() =>
             {
+                if(sender._user == null)
+                {
+                    return;
+                }
+
                 Log.Information($"[PlayerService] 玩家离开游戏：{sender._user?._player?._playerId}");
                 if(sender._user?._player != null)
                 {
                     PlayerManager.Instance.RemovePlayer(sender._user._player);
+                    MapManager.Instance.EntityLeave(sender._user._player);
                 }
-                MapManager.Instance.EntityLeave(sender._user._player);
                 sender._user = null;
             });
         }
