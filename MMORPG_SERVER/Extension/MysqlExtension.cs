@@ -1,4 +1,6 @@
 ﻿using MMORPG_SERVER.Database.Data;
+using MMORPG_SERVER.System.GuildSystem;
+using System.Runtime.CompilerServices;
 
 namespace MMORPG_SERVER.Extension
 {
@@ -42,6 +44,34 @@ namespace MMORPG_SERVER.Extension
                 rotY = netCharacter.Transform.Rotation.Y,
                 rotZ = netCharacter.Transform.Rotation.Z,
                 Gold = netCharacter.Gold
+            };
+        }
+
+        //GuildInfo转DbGuild
+        public static DbGuild ToDbGuild(this GuildInfo guildInfo)
+        {
+            return new DbGuild()
+            {
+                guildName = guildInfo.GuildName,
+                ownerName = guildInfo.OwnerName,
+                count = guildInfo.Count,
+                slogan = guildInfo.GuildSlogan,
+                iconIndex = guildInfo.IconIndex,
+                needEnterCheck = guildInfo.NeedEnterCheck ? 1 : 0
+            };
+        }
+
+        //DbGuild转Guild
+        public static Guild ToGuild(this DbGuild dbGuild)
+        {
+            return new Guild()
+            {
+                guildName = dbGuild.guildName,
+                ownerName = dbGuild.ownerName,
+                count = dbGuild.count,
+                slogan = dbGuild.slogan,
+                iconIndex = dbGuild.iconIndex,
+                needEnterCheck = dbGuild.needEnterCheck == 1 ? true : false
             };
         }
     }

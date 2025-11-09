@@ -48,5 +48,19 @@ namespace Extension
                 needEnterCheck = guildInfo.NeedEnterCheck
             };
         }
+
+        //Guild转GuildInfo
+        public static GuildInfo ToGuildInfo(this Guild guild)
+        {
+            return new GuildInfo()
+            {
+                GuildName = guild.guildName,
+                GuildSlogan = guild.slogan,
+                OwnerName = guild.ownerName,
+                Count = guild.count,
+                IconIndex = guild.iconIndex,
+                NeedEnterCheck = guild.needEnterCheck
+            };
+        }
     }
 }

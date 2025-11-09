@@ -21,5 +21,11 @@ namespace MMORPG_SERVER.System.GuildSystem
 
         //入会审核
         public bool needEnterCheck;
+
+        //申请列表
+        public List<string>? applicationList;
+
+        //成员列表（不含会长）
+        public List<string>? memberList;
     }
 }

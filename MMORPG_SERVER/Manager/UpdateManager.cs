@@ -2,6 +2,7 @@
 using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.FriendSystem;
+using MMORPG_SERVER.System.GuildSystem;
 using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
@@ -38,6 +39,9 @@ namespace MMORPG_SERVER.Manager
 
             ChatManager.Instance.Start();
             Log.Information("[ChatManager] 初始化完成");
+
+            GuildManager.Instance.Start();
+            Log.Information("[GuildManager] 初始化完成");
 
             Scheduler.Instance.AddScheduler(_updateTime, Update);
         }
