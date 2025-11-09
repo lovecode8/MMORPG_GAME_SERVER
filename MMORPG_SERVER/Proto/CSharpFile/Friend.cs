@@ -1826,7 +1826,6 @@ public sealed partial class LoadFriendInfoResponse : pb::IMessage<LoadFriendInfo
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public pbc::RepeatedField<global::FriendInfo> FriendApplicationList {
     get { return friendApplicationList_; }
-        set { }
   }
 
   /// <summary>Field number for the "friendList" field.</summary>
@@ -1940,7 +1939,7 @@ public sealed partial class LoadFriendInfoResponse : pb::IMessage<LoadFriendInfo
     }
     friendApplicationList_.Add(other.friendApplicationList_);
     friendList_.Add(other.friendList_);
-    friendMessageDict_.MergeFrom(other.friendMessageDict_);
+    //friendMessageDict_.MergeFrom(other.friendMessageDict_);
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 

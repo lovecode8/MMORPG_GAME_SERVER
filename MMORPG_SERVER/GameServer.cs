@@ -117,6 +117,7 @@ namespace MMORPG_SERVER
             PlayerService.Instance.HandleMessage(channel, args.packet.Message);
             ChatService.Instance.HandleMessage(channel, args.packet.Message);
             FriendService.Instance.HandleMessage(channel, args.packet.Message);
+            GuildService.Instance.HandleMessage(channel, args.packet.Message);
         }
     }
 }

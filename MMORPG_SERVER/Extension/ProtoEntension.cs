@@ -1,6 +1,7 @@
 ﻿
 
 using MMORPG_SERVER.System.ChatSystem;
+using MMORPG_SERVER.System.GuildSystem;
 using System.Numerics;
 
 namespace Extension
@@ -32,6 +33,20 @@ namespace Extension
                 });
             }
             return messageList;
+        }
+
+        //GuildInfo转Guild
+        public static Guild ToGuild(this GuildInfo guildInfo)
+        {
+            return new Guild()
+            {
+                guildName = guildInfo.GuildName,
+                slogan = guildInfo.GuildSlogan,
+                ownerName = guildInfo.OwnerName,
+                count = guildInfo.Count,
+                iconIndex = guildInfo.IconIndex,
+                needEnterCheck = guildInfo.NeedEnterCheck
+            };
         }
     }
 }
