@@ -1,6 +1,7 @@
 ﻿
 
 using MMORPG_SERVER.System.ChatSystem;
+using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.GuildSystem;
 using System.Numerics;
 
@@ -54,15 +55,25 @@ namespace Extension
         //Guild转GuildInfo
         public static GuildInfo ToGuildInfo(this Guild guild)
         {
-            return new GuildInfo()
+            var guildInfo = new GuildInfo()
             {
                 GuildName = guild.guildName,
                 GuildSlogan = guild.slogan,
                 OwnerName = guild.ownerName,
                 Count = guild.count,
                 IconIndex = guild.iconIndex,
-                NeedEnterCheck = guild.needEnterCheck
+                NeedEnterCheck = guild.needEnterCheck,
             };
+            foreach(string userName in guild.applicationList)
+            {
+                guildInfo.ApplicationList.Add(FriendManager.Instance.GetFriendInfoByName(userName));
+            }
+
+            foreach (string userName in guild.memberList)
+            {
+                guildInfo.MemberList.Add(FriendManager.Instance.GetFriendInfoByName(userName));
+            }
+            return guildInfo;
         }
     }
 }

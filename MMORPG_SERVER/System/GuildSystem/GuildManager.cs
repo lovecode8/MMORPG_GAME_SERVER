@@ -1,4 +1,5 @@
-﻿using MMORPG_SERVER.Database;
+﻿using Extension;
+using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.Tool;
@@ -30,18 +31,40 @@ namespace MMORPG_SERVER.System.GuildSystem
             List<DbGuild> dbGuildList = MysqlManager.Instance._freeSql.Select<DbGuild>().ToList();
             foreach (DbGuild dbGuild in dbGuildList)
             {
-                _guildDictionary.Add(dbGuild.guildName, dbGuild.ToGuild());
+                string guildName = dbGuild.guildName;
+                _guildDictionary.Add(guildName, dbGuild.ToGuild());
+
+                var applicationList = MysqlManager.Instance._freeSql.Select<DbGuildApplication>()
+                    .Where(a => a.guildName == guildName).ToList(a => a.senderName);
+                _guildDictionary[guildName].applicationList.AddRange(applicationList);
+
+                var memberList = MysqlManager.Instance._freeSql.Select<DbGuildMember>()
+                    .Where(m => m.guildName == guildName).ToList(m => m.userName);
+                _guildDictionary[guildName].memberList.AddRange(memberList);
             }
+        }
+
+        //根据用户名字查找他的公会信息
+        public GuildInfo? GetGuildByUserName(string senderName)
+        {
+            var dbGuildMember = MysqlManager.Instance._freeSql.Select<DbGuildMember>()
+                .Where(m => m.userName == senderName).First();
+            if (dbGuildMember == null) return null;
+            var guild = GetGuildByName(dbGuildMember.guildName);
+            return guild.ToGuildInfo();
         }
 
         //获取公会
         public Guild? GetGuildByName(string name)
         {
-            if (_guildDictionary.TryGetValue(name, out var guild))
+            lock (_guildDictionary)
             {
-                return guild;
+                if (_guildDictionary.TryGetValue(name, out var guild))
+                {
+                    return guild;
+                }
+                return null;
             }
-            return null;
         }
 
         //增加公会
@@ -62,6 +85,7 @@ namespace MMORPG_SERVER.System.GuildSystem
                 var guild = GetGuildByName(guildName);
                 if (guild == null || !guild.memberList.Contains(senderName)) return null;
 
+                guild.count--;
                 guild.memberList.Remove(guildName);
                 return guild;
             }

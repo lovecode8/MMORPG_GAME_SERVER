@@ -71,7 +71,9 @@ namespace MMORPG_SERVER.Extension
                 count = dbGuild.count,
                 slogan = dbGuild.slogan,
                 iconIndex = dbGuild.iconIndex,
-                needEnterCheck = dbGuild.needEnterCheck == 1 ? true : false
+                needEnterCheck = dbGuild.needEnterCheck == 1 ? true : false,
+                applicationList = new(),
+                memberList = new()
             };
         }
 
