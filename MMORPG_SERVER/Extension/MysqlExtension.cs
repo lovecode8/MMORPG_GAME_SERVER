@@ -74,5 +74,19 @@ namespace MMORPG_SERVER.Extension
                 needEnterCheck = dbGuild.needEnterCheck == 1 ? true : false
             };
         }
+
+        //Guild转DbGuild
+        public static DbGuild ToDbGuild(this Guild guild)
+        {
+            return new DbGuild()
+            {
+                guildName = guild.guildName,
+                ownerName = guild.ownerName,
+                count = guild.count,
+                slogan = guild.slogan,
+                iconIndex = guild.iconIndex,
+                needEnterCheck = guild.needEnterCheck? 1 : 0
+            };
+        }
     }
 }

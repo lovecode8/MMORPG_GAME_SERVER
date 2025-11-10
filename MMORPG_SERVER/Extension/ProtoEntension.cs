@@ -45,7 +45,9 @@ namespace Extension
                 ownerName = guildInfo.OwnerName,
                 count = guildInfo.Count,
                 iconIndex = guildInfo.IconIndex,
-                needEnterCheck = guildInfo.NeedEnterCheck
+                needEnterCheck = guildInfo.NeedEnterCheck,
+                applicationList = new(),
+                memberList = new()
             };
         }
 

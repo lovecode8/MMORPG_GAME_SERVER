@@ -1,4 +1,5 @@
 ﻿using Extension;
+using Google.Protobuf.Reflection;
 using MMORPG_SERVER.Common.Network;
 using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
@@ -6,12 +7,9 @@ using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.GuildSystem;
+using MMORPG_SERVER.System.UserSystem;
+using Org.BouncyCastle.Tls;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MMORPG_SERVER.Service
 {
@@ -23,19 +21,25 @@ namespace MMORPG_SERVER.Service
         {
             UpdateManager.Instance.AddTask(() =>
             {
-                GuildInfo guildInfo = createGuildRequest.GuildInfo;
-                Log.Information($"[GuildService] 收到创建公会请求：{guildInfo.GuildName}");
                 NetChannel? channel = sender as NetChannel;
+                var guildInfo = createGuildRequest.GuildInfo;
+                string senderName = channel._user._dbUser.UserName;
+                Log.Information($"[GuildService] 收到创建公会请求：{guildInfo.GuildName}");
 
-                if(GuildManager.Instance.GetGuildByName(guildInfo.GuildName) != null)
+                if (GuildManager.Instance.GetGuildByName(guildInfo.GuildName) != null)
                 {
                     Log.Information($"[GuildService] 创建公会失败：重名");
                     channel?.SendAsync(new CreateGuildResponse() { IsSuccessfulCreateGuild = false });
                     return;
                 }
 
-                GuildManager.Instance.AddGuild(guildInfo.ToGuild());
-                MysqlManager.Instance._freeSql.Insert<DbGuild>(guildInfo.ToDbGuild());
+                GuildManager.Instance.AddGuild(senderName, guildInfo.ToGuild());
+                MysqlManager.Instance._freeSql.Insert<DbGuild>(guildInfo.ToDbGuild()).ExecuteAffrows();
+                MysqlManager.Instance._freeSql.Insert<DbGuildMember>(new DbGuildMember()
+                {
+                    userName = senderName,
+                    guildName = guildInfo.GuildName
+                }).ExecuteAffrows();
                 channel?.SendAsync(new CreateGuildResponse() { IsSuccessfulCreateGuild = true });
                 Log.Information($"[GuildService] 创建公会成功：{guildInfo.GuildName}");
             });
@@ -67,22 +71,60 @@ namespace MMORPG_SERVER.Service
             UpdateManager.Instance.AddTask(() =>
             {
                 NetChannel? channel = sender as NetChannel;
-                string? sendName = channel?._user._dbUser.UserName;
-                Log.Information($"[GuildService] 收到加入公会请求：{sendName}");
+                var senderName = channel?._user._dbUser.UserName;
+                Log.Information($"[GuildService] 收到加入公会请求：{senderName}");
 
-                Guild? guild = GuildManager.Instance.GetGuildByName(joinGuildRequest.GuildName);
+                var guild = GuildManager.Instance.GetGuildByName(joinGuildRequest.GuildName);
                 if (guild == null) return;
 
                 //TODO：数据库操作
                 if (!guild.needEnterCheck)
                 {
-                    //guild.memberList?.Add(sendName);
+                    guild.memberList?.Add(senderName);
+                    MysqlManager.Instance._freeSql.Insert<DbGuildMember>(new DbGuildMember()
+                    {
+                        userName = senderName,
+                        guildName = guild.guildName
+                    }).ExecuteAffrows();
                     Log.Information($"[GuildService] 加入成员列表");
                 }
                 else
                 {
-                    //guild.applicationList.Add(sendName);
+                    guild.applicationList.Add(senderName);
+                    MysqlManager.Instance._freeSql.Insert<DbGuildApplication>(new DbGuildApplication
+                    {
+                        senderName = senderName,
+                        guildName = guild.guildName
+                    }).ExecuteAffrows();
                     Log.Information($"[GuildService] 加入申请列表");
+                }
+            });
+        }
+
+        //处理退出公会请求
+        public void OnHandle(object sender, ExitGuildRequest exitGuildRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                NetChannel? channel = sender as NetChannel;
+                var senderName = channel?._user._dbUser.UserName;
+                var guildName = exitGuildRequest.GuildName;
+                Log.Information($"[GuildService] 收到退出公会请求：{senderName}退出{guildName}");
+
+                var guild = GuildManager.Instance.ExitGuild(senderName, guildName);
+                MysqlManager.Instance._freeSql.Update<DbGuild>(guild.ToDbGuild()).ExecuteAffrows();
+                MysqlManager.Instance._freeSql.Delete<DbGuildMember>().Where(m => m.userName == senderName).ExecuteAffrows();
+                if(guild != null)
+                {
+                    //向在线的公会成员发送退出信息
+                    foreach(var userName in guild.memberList)
+                    {
+                        var user = UserManager.Instance.GetUserByName(userName);
+                        if(user != null)
+                        {
+                            user._netChannel.SendAsync(new ExitGuildResponse() { SenderName = senderName });
+                        }
+                    }
                 }
             });
         }

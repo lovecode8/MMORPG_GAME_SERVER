@@ -1,6 +1,4 @@
-﻿
-
-using FreeSql.DataAnnotations;
+﻿using FreeSql.DataAnnotations;
 
 namespace MMORPG_SERVER.Database.Data
 {

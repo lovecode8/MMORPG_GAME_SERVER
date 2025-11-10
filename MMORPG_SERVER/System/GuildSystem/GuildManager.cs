@@ -31,14 +31,13 @@ namespace MMORPG_SERVER.System.GuildSystem
             foreach (DbGuild dbGuild in dbGuildList)
             {
                 _guildDictionary.Add(dbGuild.guildName, dbGuild.ToGuild());
-                Log.Information(dbGuild.guildName);
             }
         }
 
         //获取公会
         public Guild? GetGuildByName(string name)
         {
-            if(_guildDictionary.TryGetValue(name, out var guild))
+            if (_guildDictionary.TryGetValue(name, out var guild))
             {
                 return guild;
             }
@@ -46,11 +45,26 @@ namespace MMORPG_SERVER.System.GuildSystem
         }
 
         //增加公会
-        public void AddGuild(Guild guild)
+        public void AddGuild(string senderName, Guild guild)
         {
-            guild.applicationList = new();
-            guild.memberList = new();
-            _guildDictionary.Add(guild.guildName, guild);
+            guild.memberList?.Add(senderName);
+            lock (_guildDictionary)
+            {
+                _guildDictionary.Add(guild.guildName, guild);
+            }
+        }
+
+        //会员退出公会
+        public Guild? ExitGuild(string senderName, string guildName)
+        {
+            lock (_guildDictionary)
+            {
+                var guild = GetGuildByName(guildName);
+                if (guild == null || !guild.memberList.Contains(senderName)) return null;
+
+                guild.memberList.Remove(guildName);
+                return guild;
+            }
         }
     }
 }
