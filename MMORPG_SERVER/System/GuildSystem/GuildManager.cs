@@ -3,6 +3,7 @@ using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.Tool;
+using Org.BouncyCastle.Tls;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -75,6 +76,40 @@ namespace MMORPG_SERVER.System.GuildSystem
             {
                 _guildDictionary.Add(guild.guildName, guild);
             }
+        }
+
+        //玩家加入公会
+        public Guild UserEnterGuild(string guildName, string senderName)
+        {
+            var guild = GuildManager.Instance.GetGuildByName(guildName);
+            if (guild == null) return null;
+
+            if (!guild.needEnterCheck)
+            {
+                guild.memberList?.Add(senderName);
+                guild.count++;
+                MysqlManager.Instance._freeSql.Update<DbGuild>()
+                    .Where(g => g.guildName == guildName)
+                    .Set(g => g.count, guild.count)
+                    .ExecuteAffrows();
+                MysqlManager.Instance._freeSql.Insert<DbGuildMember>(new DbGuildMember()
+                {
+                    userName = senderName,
+                    guildName = guild.guildName
+                }).ExecuteAffrows();
+                Log.Information($"[GuildService] 加入成员列表");
+            }
+            else
+            {
+                guild.applicationList.Add(senderName);
+                MysqlManager.Instance._freeSql.Insert<DbGuildApplication>(new DbGuildApplication
+                {
+                    senderName = senderName,
+                    guildName = guild.guildName
+                }).ExecuteAffrows();
+                Log.Information($"[GuildService] 加入申请列表");
+            }
+            return guild;
         }
 
         //会员退出公会

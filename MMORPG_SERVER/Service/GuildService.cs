@@ -6,6 +6,7 @@ using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
+using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.GuildSystem;
 using MMORPG_SERVER.System.UserSystem;
 using Org.BouncyCastle.Tls;
@@ -90,32 +91,40 @@ namespace MMORPG_SERVER.Service
                 var senderName = channel?._user._dbUser.UserName;
                 Log.Information($"[GuildService] 收到加入公会请求：{senderName}");
 
-                var guild = GuildManager.Instance.GetGuildByName(joinGuildRequest.GuildName);
-                if (guild == null) return;
-
-                //TODO：数据库操作
-                if (!guild.needEnterCheck)
+                var guild = GuildManager.Instance.UserEnterGuild(joinGuildRequest.GuildName, senderName);
+                if(guild != null)
                 {
-                    guild.memberList?.Add(senderName);
-                    guild.count++;
-                    MysqlManager.Instance._freeSql.Update<DbGuild>(guild.ToDbGuild());
-                    MysqlManager.Instance._freeSql.Insert<DbGuildMember>(new DbGuildMember()
+                    if (!guild.needEnterCheck)
                     {
-                        userName = senderName,
-                        guildName = guild.guildName
-                    }).ExecuteAffrows();
-                    Log.Information($"[GuildService] 加入成员列表");
-                }
-                else
-                {
-                    guild.applicationList.Add(senderName);
-                    MysqlManager.Instance._freeSql.Insert<DbGuildApplication>(new DbGuildApplication
+                        //无需审核：发给所有在线同会玩家客户端
+                        foreach (string userName in guild.memberList)
+                        {
+                            var user = UserManager.Instance.GetUserByName(userName);
+                            if (user != null)
+                            {
+                                user._netChannel.SendAsync(new JoinGuildResponse()
+                                {
+                                    IsEnter = true,
+                                    FriendInfo = FriendManager.Instance.GetFriendInfoByName(senderName)
+                                });
+                            }
+                        }
+                    }
+                    else
                     {
-                        senderName = senderName,
-                        guildName = guild.guildName
-                    }).ExecuteAffrows();
-                    Log.Information($"[GuildService] 加入申请列表");
+                        //需要审核：发给会长客户端（若在线）
+                        var user = UserManager.Instance.GetUserByName(guild.ownerName);
+                        if(user != null)
+                        {
+                            user._netChannel.SendAsync(new JoinGuildResponse()
+                            {
+                                IsEnter = false,
+                                FriendInfo = FriendManager.Instance.GetFriendInfoByName(senderName)
+                            });
+                        }
+                    }
                 }
+                
             });
         }
 

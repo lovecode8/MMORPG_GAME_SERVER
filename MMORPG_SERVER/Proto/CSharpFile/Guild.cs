@@ -29,15 +29,15 @@ public static partial class GuildReflection {
           "bnNlEh8KF2lzU3VjY2Vzc2Z1bENyZWF0ZUd1aWxkGAEgASgIIicKElNlYXJj",
           "aEd1aWxkUmVxdWVzdBIRCglndWlsZE5hbWUYASABKAkiNAoTU2VhcmNoR3Vp",
           "bGRSZXNwb25zZRIdCglndWlsZEluZm8YASABKAsyCi5HdWlsZEluZm8iJQoQ",
-          "Sm9pbkd1aWxkUmVxdWVzdBIRCglndWlsZE5hbWUYASABKAkiMgoRSm9pbkd1",
-          "aWxkUmVzcG9uc2USHQoJZ3VpbGRJbmZvGAEgASgLMgouR3VpbGRJbmZvIiUK",
-          "EEV4aXRHdWlsZFJlcXVlc3QSEQoJZ3VpbGROYW1lGAEgASgJIicKEUV4aXRH",
-          "dWlsZFJlc3BvbnNlEhIKCnNlbmRlck5hbWUYASABKAkixwEKCUd1aWxkSW5m",
-          "bxIRCglndWlsZE5hbWUYASABKAkSEwoLZ3VpbGRTbG9nYW4YAiABKAkSEQoJ",
-          "b3duZXJOYW1lGAMgASgJEg0KBWNvdW50GAQgASgFEhEKCWljb25JbmRleBgF",
-          "IAEoBRIWCg5uZWVkRW50ZXJDaGVjaxgGIAEoCBIkCg9hcHBsaWNhdGlvbkxp",
-          "c3QYByADKAsyCy5GcmllbmRJbmZvEh8KCm1lbWJlckxpc3QYCCADKAsyCy5G",
-          "cmllbmRJbmZvYgZwcm90bzM="));
+          "Sm9pbkd1aWxkUmVxdWVzdBIRCglndWlsZE5hbWUYASABKAkiRQoRSm9pbkd1",
+          "aWxkUmVzcG9uc2USDwoHaXNFbnRlchgBIAEoCBIfCgpmcmllbmRJbmZvGAIg",
+          "ASgLMgsuRnJpZW5kSW5mbyIlChBFeGl0R3VpbGRSZXF1ZXN0EhEKCWd1aWxk",
+          "TmFtZRgBIAEoCSInChFFeGl0R3VpbGRSZXNwb25zZRISCgpzZW5kZXJOYW1l",
+          "GAEgASgJIscBCglHdWlsZEluZm8SEQoJZ3VpbGROYW1lGAEgASgJEhMKC2d1",
+          "aWxkU2xvZ2FuGAIgASgJEhEKCW93bmVyTmFtZRgDIAEoCRINCgVjb3VudBgE",
+          "IAEoBRIRCglpY29uSW5kZXgYBSABKAUSFgoObmVlZEVudGVyQ2hlY2sYBiAB",
+          "KAgSJAoPYXBwbGljYXRpb25MaXN0GAcgAygLMgsuRnJpZW5kSW5mbxIfCgpt",
+          "ZW1iZXJMaXN0GAggAygLMgsuRnJpZW5kSW5mb2IGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::FriendReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -48,7 +48,7 @@ public static partial class GuildReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::SearchGuildRequest), global::SearchGuildRequest.Parser, new[]{ "GuildName" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::SearchGuildResponse), global::SearchGuildResponse.Parser, new[]{ "GuildInfo" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::JoinGuildRequest), global::JoinGuildRequest.Parser, new[]{ "GuildName" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::JoinGuildResponse), global::JoinGuildResponse.Parser, new[]{ "GuildInfo" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::JoinGuildResponse), global::JoinGuildResponse.Parser, new[]{ "IsEnter", "FriendInfo" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ExitGuildRequest), global::ExitGuildRequest.Parser, new[]{ "GuildName" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ExitGuildResponse), global::ExitGuildResponse.Parser, new[]{ "SenderName" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GuildInfo), global::GuildInfo.Parser, new[]{ "GuildName", "GuildSlogan", "OwnerName", "Count", "IconIndex", "NeedEnterCheck", "ApplicationList", "MemberList" }, null, null, null, null)
@@ -1469,7 +1469,8 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public JoinGuildResponse(JoinGuildResponse other) : this() {
-    guildInfo_ = other.guildInfo_ != null ? other.guildInfo_.Clone() : null;
+    isEnter_ = other.isEnter_;
+    friendInfo_ = other.friendInfo_ != null ? other.friendInfo_.Clone() : null;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1479,15 +1480,30 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
     return new JoinGuildResponse(this);
   }
 
-  /// <summary>Field number for the "guildInfo" field.</summary>
-  public const int GuildInfoFieldNumber = 1;
-  private global::GuildInfo guildInfo_;
+  /// <summary>Field number for the "isEnter" field.</summary>
+  public const int IsEnterFieldNumber = 1;
+  private bool isEnter_;
+  /// <summary>
+  /// 两种情况：申请和加入
+  /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::GuildInfo GuildInfo {
-    get { return guildInfo_; }
+  public bool IsEnter {
+    get { return isEnter_; }
     set {
-      guildInfo_ = value;
+      isEnter_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "friendInfo" field.</summary>
+  public const int FriendInfoFieldNumber = 2;
+  private global::FriendInfo friendInfo_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public global::FriendInfo FriendInfo {
+    get { return friendInfo_; }
+    set {
+      friendInfo_ = value;
     }
   }
 
@@ -1506,7 +1522,8 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
     if (ReferenceEquals(other, this)) {
       return true;
     }
-    if (!object.Equals(GuildInfo, other.GuildInfo)) return false;
+    if (IsEnter != other.IsEnter) return false;
+    if (!object.Equals(FriendInfo, other.FriendInfo)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1514,7 +1531,8 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override int GetHashCode() {
     int hash = 1;
-    if (guildInfo_ != null) hash ^= GuildInfo.GetHashCode();
+    if (IsEnter != false) hash ^= IsEnter.GetHashCode();
+    if (friendInfo_ != null) hash ^= FriendInfo.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1533,9 +1551,13 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     output.WriteRawMessage(this);
   #else
-    if (guildInfo_ != null) {
-      output.WriteRawTag(10);
-      output.WriteMessage(GuildInfo);
+    if (IsEnter != false) {
+      output.WriteRawTag(8);
+      output.WriteBool(IsEnter);
+    }
+    if (friendInfo_ != null) {
+      output.WriteRawTag(18);
+      output.WriteMessage(FriendInfo);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -1547,9 +1569,13 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (guildInfo_ != null) {
-      output.WriteRawTag(10);
-      output.WriteMessage(GuildInfo);
+    if (IsEnter != false) {
+      output.WriteRawTag(8);
+      output.WriteBool(IsEnter);
+    }
+    if (friendInfo_ != null) {
+      output.WriteRawTag(18);
+      output.WriteMessage(FriendInfo);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
@@ -1561,8 +1587,11 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public int CalculateSize() {
     int size = 0;
-    if (guildInfo_ != null) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(GuildInfo);
+    if (IsEnter != false) {
+      size += 1 + 1;
+    }
+    if (friendInfo_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(FriendInfo);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1576,11 +1605,14 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
     if (other == null) {
       return;
     }
-    if (other.guildInfo_ != null) {
-      if (guildInfo_ == null) {
-        GuildInfo = new global::GuildInfo();
+    if (other.IsEnter != false) {
+      IsEnter = other.IsEnter;
+    }
+    if (other.friendInfo_ != null) {
+      if (friendInfo_ == null) {
+        FriendInfo = new global::FriendInfo();
       }
-      GuildInfo.MergeFrom(other.GuildInfo);
+      FriendInfo.MergeFrom(other.FriendInfo);
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -1601,11 +1633,15 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
-        case 10: {
-          if (guildInfo_ == null) {
-            GuildInfo = new global::GuildInfo();
+        case 8: {
+          IsEnter = input.ReadBool();
+          break;
+        }
+        case 18: {
+          if (friendInfo_ == null) {
+            FriendInfo = new global::FriendInfo();
           }
-          input.ReadMessage(GuildInfo);
+          input.ReadMessage(FriendInfo);
           break;
         }
       }
@@ -1627,11 +1663,15 @@ public sealed partial class JoinGuildResponse : pb::IMessage<JoinGuildResponse>
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
-        case 10: {
-          if (guildInfo_ == null) {
-            GuildInfo = new global::GuildInfo();
+        case 8: {
+          IsEnter = input.ReadBool();
+          break;
+        }
+        case 18: {
+          if (friendInfo_ == null) {
+            FriendInfo = new global::FriendInfo();
           }
-          input.ReadMessage(GuildInfo);
+          input.ReadMessage(FriendInfo);
           break;
         }
       }
