@@ -128,6 +128,52 @@ namespace MMORPG_SERVER.Service
             });
         }
 
+        //处理会长同意玩家加入公会请求
+        public void OnHandle(object sender, AgreeEnterGuildRequest agreeEnterGuildRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                NetChannel channel = sender as NetChannel;
+                string targetName = agreeEnterGuildRequest.TargetName;
+                string guildName = agreeEnterGuildRequest.GuildName;
+                var guild = GuildManager.Instance.AgreeEnterGuild(targetName, guildName);
+                if (guild == null) return;
+
+                MysqlManager.Instance._freeSql.Insert<DbGuildMember>(new DbGuildMember()
+                {
+                    userName = targetName,
+                    guildName = guildName
+                }).ExecuteAffrows();
+                MysqlManager.Instance._freeSql.Delete<DbGuildApplication>()
+                    .Where(a => a.senderName == targetName).ExecuteAffrows();
+                MysqlManager.Instance._freeSql.Update<DbGuild>()
+                    .Where(g => g.guildName == guildName)
+                    .Set(g => g.count, guild.count).ExecuteAffrows();
+
+                //通知所有同会成员
+                foreach(string userName in guild.memberList)
+                {
+                    var user = UserManager.Instance.GetUserByName(userName);
+                    if (user == null) return;
+                    user._netChannel.SendAsync(new JoinGuildResponse()
+                    {
+                        IsEnter = true,
+                        FriendInfo = FriendManager.Instance.GetFriendInfoByName(targetName)
+                    });
+                }
+
+                //通知申请人
+                var targetUser = UserManager.Instance.GetUserByName(targetName);
+                if(targetUser != null)
+                {
+                    targetUser._netChannel.SendAsync(new AgreeEnterGuildResponse()
+                    {
+                        GuildInfo = guild.ToGuildInfo()
+                    });
+                }
+            });
+        }
+
         //处理退出公会请求
         public void OnHandle(object sender, ExitGuildRequest exitGuildRequest)
         {

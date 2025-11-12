@@ -101,6 +101,8 @@ namespace MMORPG_SERVER.System.GuildSystem
             }
             else
             {
+                //如果已经有该玩家的申请就不处理
+                if (guild.applicationList.Find(a => a == senderName) != null) return null;
                 guild.applicationList.Add(senderName);
                 MysqlManager.Instance._freeSql.Insert<DbGuildApplication>(new DbGuildApplication
                 {
@@ -109,6 +111,18 @@ namespace MMORPG_SERVER.System.GuildSystem
                 }).ExecuteAffrows();
                 Log.Information($"[GuildService] 加入申请列表");
             }
+            return guild;
+        }
+
+        public Guild AgreeEnterGuild(string targetName, string guildName)
+        {
+            var guild = GetGuildByName(guildName);
+            if (guild == null) return null;
+            if (!guild.applicationList.Contains(targetName)) return null;
+
+            guild.count++;
+            guild.applicationList.Remove(targetName);
+            guild.memberList.Add(targetName);
             return guild;
         }
 
