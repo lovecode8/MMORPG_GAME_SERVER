@@ -20,6 +20,9 @@ namespace MMORPG_SERVER.System.ChatSystem
         //玩家私聊聊天记录 玩家名对应聊天记录
         private Dictionary<string, Dictionary<string, List<ChatMessage>>> _userChatMessageDict = new();
 
+        //公会聊天记录
+        private Dictionary<string, List<ChatMessage>> _guildMessageDict = new();
+
         private ChatManager() { }
 
         public void Start()
@@ -67,7 +70,10 @@ namespace MMORPG_SERVER.System.ChatSystem
             {
                 //世界聊天
                 case ChatType.World:
-                    _worldChatMessageList.Add(chatMessage);
+                    lock (_worldChatMessageList)
+                    {
+                        _worldChatMessageList.Add(chatMessage);
+                    }
                     break;
 
                 //私聊 发送者和接收者都要存储
@@ -75,28 +81,47 @@ namespace MMORPG_SERVER.System.ChatSystem
                     InsertPrivateMessage(chatMessage.senderName, chatMessage.targetName, chatMessage);
                     InsertPrivateMessage(chatMessage.targetName, chatMessage.senderName, chatMessage);
                     break;
+
+                //公会聊天
+                case ChatType.Guild:
+                    lock (_guildMessageDict)
+                    {
+                        if (_guildMessageDict.TryGetValue(chatMessage.targetName, out var list))
+                        {
+                            list.Add(chatMessage);
+                        }
+                        else
+                        {
+                            _guildMessageDict.Add(chatMessage.targetName, new());
+                            _guildMessageDict[chatMessage.targetName].Add(chatMessage);
+                        }
+                    }
+                    break;
             }
         }
 
         private void InsertPrivateMessage(string senderName, string targetName, ChatMessage chatMessage)
         {
-            if (_userChatMessageDict.TryGetValue(senderName, out var dict))
+            lock (_userChatMessageDict)
             {
-                if (_userChatMessageDict[senderName].TryGetValue(targetName, out var list))
+                if (_userChatMessageDict.TryGetValue(senderName, out var dict))
                 {
-                    list.Add(chatMessage);
+                    if (_userChatMessageDict[senderName].TryGetValue(targetName, out var list))
+                    {
+                        list.Add(chatMessage);
+                    }
+                    else
+                    {
+                        dict.Add(targetName, new());
+                        dict[targetName].Add(chatMessage);
+                    }
                 }
                 else
                 {
-                    dict.Add(targetName, new());
-                    dict[targetName].Add(chatMessage);
+                    _userChatMessageDict.Add(senderName, new());
+                    _userChatMessageDict[senderName].Add(targetName, new());
+                    _userChatMessageDict[senderName][targetName].Add(chatMessage);
                 }
-            }
-            else
-            {
-                _userChatMessageDict.Add(senderName, new());
-                _userChatMessageDict[senderName].Add(targetName, new());
-                _userChatMessageDict[senderName][targetName].Add(chatMessage);
             }
         }
     }

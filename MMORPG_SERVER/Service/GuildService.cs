@@ -150,7 +150,7 @@ namespace MMORPG_SERVER.Service
                     .Where(g => g.guildName == guildName)
                     .Set(g => g.count, guild.count).ExecuteAffrows();
 
-                //通知所有同会成员
+                //通知所有同会在线成员
                 foreach(string userName in guild.memberList)
                 {
                     var user = UserManager.Instance.GetUserByName(userName);
@@ -162,15 +162,12 @@ namespace MMORPG_SERVER.Service
                     });
                 }
 
-                //通知申请人
+                //通知申请人（若在线）
                 var targetUser = UserManager.Instance.GetUserByName(targetName);
-                if(targetUser != null)
+                targetUser?._netChannel.SendAsync(new AgreeEnterGuildResponse()
                 {
-                    targetUser._netChannel.SendAsync(new AgreeEnterGuildResponse()
-                    {
-                        GuildInfo = guild.ToGuildInfo()
-                    });
-                }
+                    GuildInfo = guild.ToGuildInfo()
+                });
             });
         }
 

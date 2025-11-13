@@ -86,8 +86,11 @@ namespace MMORPG_SERVER.System.GuildSystem
 
             if (!guild.needEnterCheck)
             {
+                if (guild.memberList.Contains(senderName)) return null;
+
                 guild.memberList?.Add(senderName);
                 guild.count++;
+
                 MysqlManager.Instance._freeSql.Update<DbGuild>()
                     .Where(g => g.guildName == guildName)
                     .Set(g => g.count, guild.count)
@@ -103,6 +106,7 @@ namespace MMORPG_SERVER.System.GuildSystem
             {
                 //如果已经有该玩家的申请就不处理
                 if (guild.applicationList.Find(a => a == senderName) != null) return null;
+
                 guild.applicationList.Add(senderName);
                 MysqlManager.Instance._freeSql.Insert<DbGuildApplication>(new DbGuildApplication
                 {
