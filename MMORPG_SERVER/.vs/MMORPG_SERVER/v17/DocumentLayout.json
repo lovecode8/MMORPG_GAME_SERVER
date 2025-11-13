@@ -3,18 +3,6 @@
   "WorkspaceRootPath": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\service\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:service\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\database\\data\\dbguildmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:database\\data\\dbguildmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\database\\data\\dbfriendmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:database\\data\\dbfriendmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\chatsystem\\chatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\chatsystem\\chatmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -25,6 +13,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\guildsystem\\guildmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\guildsystem\\guildmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\chatsystem\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\chatsystem\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\service\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:service\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\database\\data\\dbguildmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:database\\data\\dbguildmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\database\\data\\dbfriendmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:database\\data\\dbfriendmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\extension\\protoentension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -113,10 +117,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\chatsystem\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\chatsystem\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\proto\\csharpfile\\friend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -217,32 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DbGuildMessage.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbGuildMessage.cs",
-              "RelativeDocumentMoniker": "Database\\Data\\DbGuildMessage.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbGuildMessage.cs",
-              "RelativeToolTip": "Database\\Data\\DbGuildMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T07:39:33.427Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "DbUser.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbUser.cs",
-              "RelativeDocumentMoniker": "Database\\Data\\DbUser.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbUser.cs",
-              "RelativeToolTip": "Database\\Data\\DbUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T13:08:23.084Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "FriendService.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Service\\FriendService.cs",
               "RelativeDocumentMoniker": "Service\\FriendService.cs",
@@ -254,7 +229,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Guild.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\GuildSystem\\Guild.cs",
               "RelativeDocumentMoniker": "System\\GuildSystem\\Guild.cs",
@@ -266,7 +241,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MysqlExtension.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Extension\\MysqlExtension.cs",
               "RelativeDocumentMoniker": "Extension\\MysqlExtension.cs",
@@ -278,20 +253,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "GuildService.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Service\\GuildService.cs",
               "RelativeDocumentMoniker": "Service\\GuildService.cs",
               "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Service\\GuildService.cs",
               "RelativeToolTip": "Service\\GuildService.cs",
-              "ViewState": "AgIAALYAAAAAAAAAAAA7wMUAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAYwEYAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-09T08:11:09.628Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "DataManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Manager\\DataManager.cs",
               "RelativeDocumentMoniker": "Manager\\DataManager.cs",
@@ -303,20 +278,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "GuildManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\GuildSystem\\GuildManager.cs",
               "RelativeDocumentMoniker": "System\\GuildSystem\\GuildManager.cs",
               "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\GuildSystem\\GuildManager.cs",
               "RelativeToolTip": "System\\GuildSystem\\GuildManager.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAIAzwIUAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAIAzwDUAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-09T07:44:16.601Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "DbFriendMessage.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbFriendMessage.cs",
               "RelativeDocumentMoniker": "Database\\Data\\DbFriendMessage.cs",
@@ -329,7 +304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "ChatService.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Service\\ChatService.cs",
               "RelativeDocumentMoniker": "Service\\ChatService.cs",
@@ -342,7 +317,58 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatMessage.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatMessage.cs",
+              "RelativeDocumentMoniker": "System\\ChatSystem\\ChatMessage.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatMessage.cs",
+              "RelativeToolTip": "System\\ChatSystem\\ChatMessage.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAuwBQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T06:45:29.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChatManager.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatManager.cs",
+              "RelativeDocumentMoniker": "System\\ChatSystem\\ChatManager.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatManager.cs",
+              "RelativeToolTip": "System\\ChatSystem\\ChatManager.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAG8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T06:44:50.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 16,
+              "Title": "DbUser.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbUser.cs",
+              "RelativeDocumentMoniker": "Database\\Data\\DbUser.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbUser.cs",
+              "RelativeToolTip": "Database\\Data\\DbUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-11T13:08:23.084Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DbGuildMessage.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbGuildMessage.cs",
+              "RelativeDocumentMoniker": "Database\\Data\\DbGuildMessage.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbGuildMessage.cs",
+              "RelativeToolTip": "Database\\Data\\DbGuildMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T07:39:33.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "DbGuild.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbGuild.cs",
               "RelativeDocumentMoniker": "Database\\Data\\DbGuild.cs",
@@ -354,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ProtoEntension.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Extension\\ProtoEntension.cs",
               "RelativeDocumentMoniker": "Extension\\ProtoEntension.cs",
@@ -367,20 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ChatManager.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatManager.cs",
-              "RelativeDocumentMoniker": "System\\ChatSystem\\ChatManager.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatManager.cs",
-              "RelativeToolTip": "System\\ChatSystem\\ChatManager.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAA4wFMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T06:44:50.145Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Connection.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Common\\Network\\Connection.cs",
               "RelativeDocumentMoniker": "Common\\Network\\Connection.cs",
@@ -392,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "TimeWheel.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Time\\TimeWheel.cs",
               "RelativeDocumentMoniker": "Time\\TimeWheel.cs",
@@ -404,7 +417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Scheduler.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Time\\Scheduler.cs",
               "RelativeDocumentMoniker": "Time\\Scheduler.cs",
@@ -416,7 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "UpdateManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Manager\\UpdateManager.cs",
               "RelativeDocumentMoniker": "Manager\\UpdateManager.cs",
@@ -428,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "DbFriend.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbFriend.cs",
               "RelativeDocumentMoniker": "Database\\Data\\DbFriend.cs",
@@ -440,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "GameServer.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\GameServer.cs",
               "RelativeDocumentMoniker": "GameServer.cs",
@@ -452,7 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "NetChannel.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Network\\NetChannel.cs",
               "RelativeDocumentMoniker": "Network\\NetChannel.cs",
@@ -464,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "DbGuildApplication.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbGuildApplication.cs",
               "RelativeDocumentMoniker": "Database\\Data\\DbGuildApplication.cs",
@@ -476,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "DbGuildMember.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Database\\Data\\DbGuildMember.cs",
               "RelativeDocumentMoniker": "Database\\Data\\DbGuildMember.cs",
@@ -488,7 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "UserManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\UserSystem\\UserManager.cs",
               "RelativeDocumentMoniker": "System\\UserSystem\\UserManager.cs",
@@ -500,7 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "PlayerService.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Service\\PlayerService.cs",
               "RelativeDocumentMoniker": "Service\\PlayerService.cs",
@@ -512,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\UserSystem\\User.cs",
               "RelativeDocumentMoniker": "System\\UserSystem\\User.cs",
@@ -524,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "PlayerManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\PlayerSystem\\PlayerManager.cs",
               "RelativeDocumentMoniker": "System\\PlayerSystem\\PlayerManager.cs",
@@ -536,7 +549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "FriendManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\FriendSystem\\FriendManager.cs",
               "RelativeDocumentMoniker": "System\\FriendSystem\\FriendManager.cs",
@@ -549,18 +562,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 28,
-              "Title": "ChatMessage.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatMessage.cs",
-              "RelativeDocumentMoniker": "System\\ChatSystem\\ChatMessage.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatMessage.cs",
-              "RelativeToolTip": "System\\ChatSystem\\ChatMessage.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAuwBQAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T06:45:29.715Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Service\\UserService.cs",
               "RelativeDocumentMoniker": "Service\\UserService.cs",

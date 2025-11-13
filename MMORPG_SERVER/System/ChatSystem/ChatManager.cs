@@ -23,11 +23,14 @@ namespace MMORPG_SERVER.System.ChatSystem
         //公会聊天记录
         private Dictionary<string, List<ChatMessage>> _guildMessageDict = new();
 
+        private int _maxMessageCount = 10;
+
         private ChatManager() { }
 
         public void Start()
         {
             LoadFriendMessage();
+            LoadGuildMessage();
         }
 
         //外部获取接口--获取指定玩家和所有人的聊天记录
@@ -45,7 +48,28 @@ namespace MMORPG_SERVER.System.ChatSystem
             return null;
         }
 
-        //导入数据
+        //外部获取接口--获取指定公会的聊天记录
+        public List<ChatResponse>? GetGuildChatMessage(string guildName)
+        {
+            if(_guildMessageDict.TryGetValue(guildName, out var list))
+            {
+                List<ChatResponse> res = new();
+                foreach(var message in list)
+                {
+                    res.Add(new ChatResponse()
+                    {
+                        ChatType = ChatType.Guild,
+                        SenderName = message.senderName,
+                        Context = message.context,
+                        SendTime = message.sendTime
+                    });
+                }
+                return res;
+            }
+            return null;
+        }
+
+        //导入好友聊天数据
         private void LoadFriendMessage()
         {
             List<DbFriendMessage> list = MysqlManager.Instance._freeSql.Select<DbFriendMessage>().ToList();
@@ -64,6 +88,39 @@ namespace MMORPG_SERVER.System.ChatSystem
             }
         }
 
+        //导入公会聊天记录
+        private void LoadGuildMessage()
+        {
+            List<DbGuildMessage> list = MysqlManager.Instance._freeSql.Select<DbGuildMessage>().ToList();
+            foreach(var dbMessage in list)
+            {
+                string guildName = dbMessage.guildName;
+                ChatMessage chatMessage = new ChatMessage()
+                {
+                    chatType = ChatType.Guild,
+                    senderName = dbMessage.senderName,
+                    context = dbMessage.context,
+                    sendTime = dbMessage.sendTime
+                };
+                if (_guildMessageDict.TryGetValue(guildName, out var guildMessageList))
+                {
+                    if(guildMessageList.Count >= _maxMessageCount)
+                    {
+                        //删除第一条
+                        var firstMessage = guildMessageList.First();
+                        guildMessageList.Remove(firstMessage);
+                    }
+                    guildMessageList.Add(chatMessage);
+                }
+                else
+                {
+                    _guildMessageDict[guildName] = new();
+                    _guildMessageDict[guildName].Add(chatMessage);
+                }
+            }
+        }
+
+        //收到聊天消息
         public void OnReceiveChatMessage(ChatMessage chatMessage)
         {
             switch (chatMessage.chatType)

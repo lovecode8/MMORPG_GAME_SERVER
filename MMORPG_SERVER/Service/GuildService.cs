@@ -1,4 +1,5 @@
 ﻿using Extension;
+using Google.Protobuf;
 using Google.Protobuf.Reflection;
 using MMORPG_SERVER.Common.Network;
 using MMORPG_SERVER.Database;
@@ -6,6 +7,7 @@ using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
+using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.GuildSystem;
 using MMORPG_SERVER.System.UserSystem;
@@ -27,6 +29,10 @@ namespace MMORPG_SERVER.Service
                 Log.Information($"[GuildService] 收到加载我的公会请求：{senderName}");
 
                 var myGuildInfo = GuildManager.Instance.GetGuildByUserName(senderName);
+                //导入聊天消息
+                myGuildInfo?.MessageList.AddRange
+                    (ChatManager.Instance.GetGuildChatMessage(myGuildInfo.GuildName));
+                    
                 channel.SendAsync(new SearchMyGuildResponse() { GuildInfo = myGuildInfo ?? null });
                 Log.Information($"[GuildService] 查询结果：{myGuildInfo?.GuildName ?? "没有公会"}");
             });

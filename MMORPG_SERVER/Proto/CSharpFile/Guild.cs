@@ -22,27 +22,28 @@ public static partial class GuildReflection {
   static GuildReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "CgtHdWlsZC5wcm90bxoMRnJpZW5kLnByb3RvIhYKFFNlYXJjaE15R3VpbGRS",
-          "ZXF1ZXN0IjYKFVNlYXJjaE15R3VpbGRSZXNwb25zZRIdCglndWlsZEluZm8Y",
-          "ASABKAsyCi5HdWlsZEluZm8iMwoSQ3JlYXRlR3VpbGRSZXF1ZXN0Eh0KCWd1",
-          "aWxkSW5mbxgBIAEoCzIKLkd1aWxkSW5mbyI2ChNDcmVhdGVHdWlsZFJlc3Bv",
-          "bnNlEh8KF2lzU3VjY2Vzc2Z1bENyZWF0ZUd1aWxkGAEgASgIIicKElNlYXJj",
-          "aEd1aWxkUmVxdWVzdBIRCglndWlsZE5hbWUYASABKAkiNAoTU2VhcmNoR3Vp",
-          "bGRSZXNwb25zZRIdCglndWlsZEluZm8YASABKAsyCi5HdWlsZEluZm8iJQoQ",
-          "Sm9pbkd1aWxkUmVxdWVzdBIRCglndWlsZE5hbWUYASABKAkiRQoRSm9pbkd1",
-          "aWxkUmVzcG9uc2USDwoHaXNFbnRlchgBIAEoCBIfCgpmcmllbmRJbmZvGAIg",
-          "ASgLMgsuRnJpZW5kSW5mbyI/ChZBZ3JlZUVudGVyR3VpbGRSZXF1ZXN0EhIK",
-          "CnRhcmdldE5hbWUYASABKAkSEQoJZ3VpbGROYW1lGAIgASgJIjgKF0FncmVl",
-          "RW50ZXJHdWlsZFJlc3BvbnNlEh0KCWd1aWxkSW5mbxgBIAEoCzIKLkd1aWxk",
-          "SW5mbyIlChBFeGl0R3VpbGRSZXF1ZXN0EhEKCWd1aWxkTmFtZRgBIAEoCSIn",
-          "ChFFeGl0R3VpbGRSZXNwb25zZRISCgpzZW5kZXJOYW1lGAEgASgJIscBCglH",
-          "dWlsZEluZm8SEQoJZ3VpbGROYW1lGAEgASgJEhMKC2d1aWxkU2xvZ2FuGAIg",
-          "ASgJEhEKCW93bmVyTmFtZRgDIAEoCRINCgVjb3VudBgEIAEoBRIRCglpY29u",
-          "SW5kZXgYBSABKAUSFgoObmVlZEVudGVyQ2hlY2sYBiABKAgSJAoPYXBwbGlj",
-          "YXRpb25MaXN0GAcgAygLMgsuRnJpZW5kSW5mbxIfCgptZW1iZXJMaXN0GAgg",
-          "AygLMgsuRnJpZW5kSW5mb2IGcHJvdG8z"));
+          "CgtHdWlsZC5wcm90bxoMRnJpZW5kLnByb3RvGgpDaGF0LnByb3RvIhYKFFNl",
+          "YXJjaE15R3VpbGRSZXF1ZXN0IjYKFVNlYXJjaE15R3VpbGRSZXNwb25zZRId",
+          "CglndWlsZEluZm8YASABKAsyCi5HdWlsZEluZm8iMwoSQ3JlYXRlR3VpbGRS",
+          "ZXF1ZXN0Eh0KCWd1aWxkSW5mbxgBIAEoCzIKLkd1aWxkSW5mbyI2ChNDcmVh",
+          "dGVHdWlsZFJlc3BvbnNlEh8KF2lzU3VjY2Vzc2Z1bENyZWF0ZUd1aWxkGAEg",
+          "ASgIIicKElNlYXJjaEd1aWxkUmVxdWVzdBIRCglndWlsZE5hbWUYASABKAki",
+          "NAoTU2VhcmNoR3VpbGRSZXNwb25zZRIdCglndWlsZEluZm8YASABKAsyCi5H",
+          "dWlsZEluZm8iJQoQSm9pbkd1aWxkUmVxdWVzdBIRCglndWlsZE5hbWUYASAB",
+          "KAkiRQoRSm9pbkd1aWxkUmVzcG9uc2USDwoHaXNFbnRlchgBIAEoCBIfCgpm",
+          "cmllbmRJbmZvGAIgASgLMgsuRnJpZW5kSW5mbyI/ChZBZ3JlZUVudGVyR3Vp",
+          "bGRSZXF1ZXN0EhIKCnRhcmdldE5hbWUYASABKAkSEQoJZ3VpbGROYW1lGAIg",
+          "ASgJIjgKF0FncmVlRW50ZXJHdWlsZFJlc3BvbnNlEh0KCWd1aWxkSW5mbxgB",
+          "IAEoCzIKLkd1aWxkSW5mbyIlChBFeGl0R3VpbGRSZXF1ZXN0EhEKCWd1aWxk",
+          "TmFtZRgBIAEoCSInChFFeGl0R3VpbGRSZXNwb25zZRISCgpzZW5kZXJOYW1l",
+          "GAEgASgJIusBCglHdWlsZEluZm8SEQoJZ3VpbGROYW1lGAEgASgJEhMKC2d1",
+          "aWxkU2xvZ2FuGAIgASgJEhEKCW93bmVyTmFtZRgDIAEoCRINCgVjb3VudBgE",
+          "IAEoBRIRCglpY29uSW5kZXgYBSABKAUSFgoObmVlZEVudGVyQ2hlY2sYBiAB",
+          "KAgSJAoPYXBwbGljYXRpb25MaXN0GAcgAygLMgsuRnJpZW5kSW5mbxIfCgpt",
+          "ZW1iZXJMaXN0GAggAygLMgsuRnJpZW5kSW5mbxIiCgttZXNzYWdlTGlzdBgJ",
+          "IAMoCzINLkNoYXRSZXNwb25zZWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-        new pbr::FileDescriptor[] { global::FriendReflection.Descriptor, },
+        new pbr::FileDescriptor[] { global::FriendReflection.Descriptor, global::ChatReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::SearchMyGuildRequest), global::SearchMyGuildRequest.Parser, null, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::SearchMyGuildResponse), global::SearchMyGuildResponse.Parser, new[]{ "GuildInfo" }, null, null, null, null),
@@ -56,7 +57,7 @@ public static partial class GuildReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::AgreeEnterGuildResponse), global::AgreeEnterGuildResponse.Parser, new[]{ "GuildInfo" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ExitGuildRequest), global::ExitGuildRequest.Parser, new[]{ "GuildName" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ExitGuildResponse), global::ExitGuildResponse.Parser, new[]{ "SenderName" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::GuildInfo), global::GuildInfo.Parser, new[]{ "GuildName", "GuildSlogan", "OwnerName", "Count", "IconIndex", "NeedEnterCheck", "ApplicationList", "MemberList" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::GuildInfo), global::GuildInfo.Parser, new[]{ "GuildName", "GuildSlogan", "OwnerName", "Count", "IconIndex", "NeedEnterCheck", "ApplicationList", "MemberList", "MessageList" }, null, null, null, null)
         }));
   }
   #endregion
@@ -2579,6 +2580,7 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
     needEnterCheck_ = other.needEnterCheck_;
     applicationList_ = other.applicationList_.Clone();
     memberList_ = other.memberList_.Clone();
+    messageList_ = other.messageList_.Clone();
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -2682,6 +2684,17 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
     get { return memberList_; }
   }
 
+  /// <summary>Field number for the "messageList" field.</summary>
+  public const int MessageListFieldNumber = 9;
+  private static readonly pb::FieldCodec<global::ChatResponse> _repeated_messageList_codec
+      = pb::FieldCodec.ForMessage(74, global::ChatResponse.Parser);
+  private readonly pbc::RepeatedField<global::ChatResponse> messageList_ = new pbc::RepeatedField<global::ChatResponse>();
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public pbc::RepeatedField<global::ChatResponse> MessageList {
+    get { return messageList_; }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -2705,6 +2718,7 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
     if (NeedEnterCheck != other.NeedEnterCheck) return false;
     if(!applicationList_.Equals(other.applicationList_)) return false;
     if(!memberList_.Equals(other.memberList_)) return false;
+    if(!messageList_.Equals(other.messageList_)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -2720,6 +2734,7 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
     if (NeedEnterCheck != false) hash ^= NeedEnterCheck.GetHashCode();
     hash ^= applicationList_.GetHashCode();
     hash ^= memberList_.GetHashCode();
+    hash ^= messageList_.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -2764,6 +2779,7 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
     }
     applicationList_.WriteTo(output, _repeated_applicationList_codec);
     memberList_.WriteTo(output, _repeated_memberList_codec);
+    messageList_.WriteTo(output, _repeated_messageList_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -2800,6 +2816,7 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
     }
     applicationList_.WriteTo(ref output, _repeated_applicationList_codec);
     memberList_.WriteTo(ref output, _repeated_memberList_codec);
+    messageList_.WriteTo(ref output, _repeated_messageList_codec);
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -2830,6 +2847,7 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
     }
     size += applicationList_.CalculateSize(_repeated_applicationList_codec);
     size += memberList_.CalculateSize(_repeated_memberList_codec);
+    size += messageList_.CalculateSize(_repeated_messageList_codec);
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -2862,6 +2880,7 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
     }
     applicationList_.Add(other.applicationList_);
     memberList_.Add(other.memberList_);
+    messageList_.Add(other.messageList_);
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -2913,6 +2932,10 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
           memberList_.AddEntriesFrom(input, _repeated_memberList_codec);
           break;
         }
+        case 74: {
+          messageList_.AddEntriesFrom(input, _repeated_messageList_codec);
+          break;
+        }
       }
     }
   #endif
@@ -2962,6 +2985,10 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
         }
         case 66: {
           memberList_.AddEntriesFrom(ref input, _repeated_memberList_codec);
+          break;
+        }
+        case 74: {
+          messageList_.AddEntriesFrom(ref input, _repeated_messageList_codec);
           break;
         }
       }
