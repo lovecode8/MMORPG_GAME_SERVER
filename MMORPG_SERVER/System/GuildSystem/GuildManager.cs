@@ -139,7 +139,7 @@ namespace MMORPG_SERVER.System.GuildSystem
                 if (guild == null || !guild.memberList.Contains(senderName)) return null;
 
                 guild.count--;
-                guild.memberList.Remove(guildName);
+                guild.memberList.Remove(senderName);
                 return guild;
             }
         }

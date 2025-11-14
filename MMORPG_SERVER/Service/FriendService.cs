@@ -114,9 +114,9 @@ namespace MMORPG_SERVER.Service
                 string targetName = agreeAddFriendRequest.TargetName;
                 Log.Information($"[FriendService] 收到同意好友请求：{senderName}同意了{targetName}");
 
-                FriendManager.Instance.RemoveApplication(senderName, targetName);
-                FriendManager.Instance.AddFriend(senderName, targetName);
-                FriendManager.Instance.AddFriend(targetName, senderName);
+                if (!FriendManager.Instance.RemoveApplication(senderName, targetName) ||
+                !FriendManager.Instance.AddFriend(senderName, targetName) ||
+                !FriendManager.Instance.AddFriend(targetName, senderName)) return;
 
                 //数据库操作--删除申请、增加好友
                 MysqlManager.Instance._freeSql.Delete<DbFriendApplication>().

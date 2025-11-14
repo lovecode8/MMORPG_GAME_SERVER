@@ -127,16 +127,20 @@ namespace MMORPG_SERVER.System.FriendSystem
         }
 
         //移除好友请求
-        public void RemoveApplication(string senderName, string targetName)
+        public bool RemoveApplication(string senderName, string targetName)
         {
-            _userFriendApplicationDict[senderName].Remove(targetName);
+            if (!_userFriendApplicationDict.TryGetValue(senderName, out var list)
+                || !list.Contains(targetName)) return false;
+            list.Remove(targetName);
+            return true;
         }
 
         //添加好友
-        public void AddFriend(string senderName, string targetName)
+        public bool AddFriend(string senderName, string targetName)
         {
-            if(_userFriendDict.TryGetValue(senderName, out var list) && !list.Contains(targetName))
+            if(_userFriendDict.TryGetValue(senderName, out var list))
             {
+                if (list.Contains(targetName)) return false;
                 list.Add(targetName);
             }
             else
@@ -144,6 +148,7 @@ namespace MMORPG_SERVER.System.FriendSystem
                 _userFriendDict.Add(senderName, new());
                 _userFriendDict[senderName].Add(targetName);
             }
+            return true;
         }
     }
 }

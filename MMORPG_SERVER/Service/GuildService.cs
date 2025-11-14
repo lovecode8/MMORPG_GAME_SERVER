@@ -13,6 +13,7 @@ using MMORPG_SERVER.System.GuildSystem;
 using MMORPG_SERVER.System.UserSystem;
 using Org.BouncyCastle.Tls;
 using Serilog;
+using System;
 
 namespace MMORPG_SERVER.Service
 {
@@ -103,18 +104,11 @@ namespace MMORPG_SERVER.Service
                     if (!guild.needEnterCheck)
                     {
                         //无需审核：发给所有在线同会玩家客户端
-                        foreach (string userName in guild.memberList)
+                        SendMessageToGuildMember(guild.memberList, new JoinGuildResponse()
                         {
-                            var user = UserManager.Instance.GetUserByName(userName);
-                            if (user != null)
-                            {
-                                user._netChannel.SendAsync(new JoinGuildResponse()
-                                {
-                                    IsEnter = true,
-                                    FriendInfo = FriendManager.Instance.GetFriendInfoByName(senderName)
-                                });
-                            }
-                        }
+                            IsEnter = true,
+                            FriendInfo = FriendManager.Instance.GetFriendInfoByName(senderName)
+                        });
                     }
                     else
                     {
@@ -156,17 +150,11 @@ namespace MMORPG_SERVER.Service
                     .Where(g => g.guildName == guildName)
                     .Set(g => g.count, guild.count).ExecuteAffrows();
 
-                //通知所有同会在线成员
-                foreach(string userName in guild.memberList)
+                SendMessageToGuildMember(guild.memberList, new JoinGuildResponse()
                 {
-                    var user = UserManager.Instance.GetUserByName(userName);
-                    if (user == null) return;
-                    user._netChannel.SendAsync(new JoinGuildResponse()
-                    {
-                        IsEnter = true,
-                        FriendInfo = FriendManager.Instance.GetFriendInfoByName(targetName)
-                    });
-                }
+                    IsEnter = true,
+                    FriendInfo = FriendManager.Instance.GetFriendInfoByName(targetName)
+                });
 
                 //通知申请人（若在线）
                 var targetUser = UserManager.Instance.GetUserByName(targetName);
@@ -196,17 +184,52 @@ namespace MMORPG_SERVER.Service
                     MysqlManager.Instance._freeSql.Delete<DbGuildMember>()
                         .Where(m => m.userName == senderName).ExecuteAffrows();
 
-                    //向在线的公会成员发送退出信息
-                    foreach (var userName in guild.memberList)
+                    SendMessageToGuildMember(guild.memberList, new ExitGuildResponse()
                     {
-                        var user = UserManager.Instance.GetUserByName(userName);
-                        if(user != null)
-                        {
-                            user._netChannel.SendAsync(new ExitGuildResponse() { SenderName = senderName });
-                        }
-                    }
+                        SenderName = senderName
+                    });
                 }
             });
+        }
+
+        //处理会长移除会员请求
+        public void OnHandle(object sender, RemoveGuildMemberRequest removeGuildMemberRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                NetChannel channel = sender as NetChannel;
+                string senderName = channel._user._dbUser.UserName;
+                string guildName = removeGuildMemberRequest.GuildName;
+                string targetName = removeGuildMemberRequest.TargetName;
+                if (guildName == null || targetName == null) return;
+
+                var guild = GuildManager.Instance.ExitGuild(targetName, guildName);
+                if(guild != null)
+                {
+                    MysqlManager.Instance._freeSql.Update<DbGuild>()
+                        .Where(g => g.guildName == guildName)
+                        .Set(g => g.count, guild.count)
+                        .ExecuteAffrows();
+                    MysqlManager.Instance._freeSql.Delete<DbGuildMember>()
+                        .Where(m => m.userName == targetName)
+                        .ExecuteAffrows();
+
+                    SendMessageToGuildMember(guild.memberList, new RemoveGuildMemberResponse()
+                    {
+                        TargetName = targetName
+                    });
+                }
+            });
+        }
+
+        private void SendMessageToGuildMember(List<string> memberList, IMessage message)
+        {
+            //向在线的公会成员发送退出信息
+            foreach (var userName in memberList)
+            {
+                var user = UserManager.Instance.GetUserByName(userName);
+                user?._netChannel.SendAsync(message);
+            }
         }
     }
 }

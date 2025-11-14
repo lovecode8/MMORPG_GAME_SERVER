@@ -36,12 +36,15 @@ public static partial class GuildReflection {
           "ASgJIjgKF0FncmVlRW50ZXJHdWlsZFJlc3BvbnNlEh0KCWd1aWxkSW5mbxgB",
           "IAEoCzIKLkd1aWxkSW5mbyIlChBFeGl0R3VpbGRSZXF1ZXN0EhEKCWd1aWxk",
           "TmFtZRgBIAEoCSInChFFeGl0R3VpbGRSZXNwb25zZRISCgpzZW5kZXJOYW1l",
-          "GAEgASgJIusBCglHdWlsZEluZm8SEQoJZ3VpbGROYW1lGAEgASgJEhMKC2d1",
-          "aWxkU2xvZ2FuGAIgASgJEhEKCW93bmVyTmFtZRgDIAEoCRINCgVjb3VudBgE",
-          "IAEoBRIRCglpY29uSW5kZXgYBSABKAUSFgoObmVlZEVudGVyQ2hlY2sYBiAB",
-          "KAgSJAoPYXBwbGljYXRpb25MaXN0GAcgAygLMgsuRnJpZW5kSW5mbxIfCgpt",
-          "ZW1iZXJMaXN0GAggAygLMgsuRnJpZW5kSW5mbxIiCgttZXNzYWdlTGlzdBgJ",
-          "IAMoCzINLkNoYXRSZXNwb25zZWIGcHJvdG8z"));
+          "GAEgASgJIkEKGFJlbW92ZUd1aWxkTWVtYmVyUmVxdWVzdBIRCglndWlsZE5h",
+          "bWUYASABKAkSEgoKdGFyZ2V0TmFtZRgCIAEoCSIvChlSZW1vdmVHdWlsZE1l",
+          "bWJlclJlc3BvbnNlEhIKCnRhcmdldE5hbWUYASABKAki6wEKCUd1aWxkSW5m",
+          "bxIRCglndWlsZE5hbWUYASABKAkSEwoLZ3VpbGRTbG9nYW4YAiABKAkSEQoJ",
+          "b3duZXJOYW1lGAMgASgJEg0KBWNvdW50GAQgASgFEhEKCWljb25JbmRleBgF",
+          "IAEoBRIWCg5uZWVkRW50ZXJDaGVjaxgGIAEoCBIkCg9hcHBsaWNhdGlvbkxp",
+          "c3QYByADKAsyCy5GcmllbmRJbmZvEh8KCm1lbWJlckxpc3QYCCADKAsyCy5G",
+          "cmllbmRJbmZvEiIKC21lc3NhZ2VMaXN0GAkgAygLMg0uQ2hhdFJlc3BvbnNl",
+          "YgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::FriendReflection.Descriptor, global::ChatReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -57,6 +60,8 @@ public static partial class GuildReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::AgreeEnterGuildResponse), global::AgreeEnterGuildResponse.Parser, new[]{ "GuildInfo" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ExitGuildRequest), global::ExitGuildRequest.Parser, new[]{ "GuildName" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::ExitGuildResponse), global::ExitGuildResponse.Parser, new[]{ "SenderName" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::RemoveGuildMemberRequest), global::RemoveGuildMemberRequest.Parser, new[]{ "GuildName", "TargetName" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::RemoveGuildMemberResponse), global::RemoveGuildMemberResponse.Parser, new[]{ "TargetName" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GuildInfo), global::GuildInfo.Parser, new[]{ "GuildName", "GuildSlogan", "OwnerName", "Count", "IconIndex", "NeedEnterCheck", "ApplicationList", "MemberList", "MessageList" }, null, null, null, null)
         }));
   }
@@ -2537,6 +2542,445 @@ public sealed partial class ExitGuildResponse : pb::IMessage<ExitGuildResponse>
 
 }
 
+/// <summary>
+///会长移除会员请求
+/// </summary>
+[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+public sealed partial class RemoveGuildMemberRequest : pb::IMessage<RemoveGuildMemberRequest>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<RemoveGuildMemberRequest> _parser = new pb::MessageParser<RemoveGuildMemberRequest>(() => new RemoveGuildMemberRequest());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<RemoveGuildMemberRequest> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::GuildReflection.Descriptor.MessageTypes[12]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RemoveGuildMemberRequest() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RemoveGuildMemberRequest(RemoveGuildMemberRequest other) : this() {
+    guildName_ = other.guildName_;
+    targetName_ = other.targetName_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RemoveGuildMemberRequest Clone() {
+    return new RemoveGuildMemberRequest(this);
+  }
+
+  /// <summary>Field number for the "guildName" field.</summary>
+  public const int GuildNameFieldNumber = 1;
+  private string guildName_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public string GuildName {
+    get { return guildName_; }
+    set {
+      guildName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "targetName" field.</summary>
+  public const int TargetNameFieldNumber = 2;
+  private string targetName_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public string TargetName {
+    get { return targetName_; }
+    set {
+      targetName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as RemoveGuildMemberRequest);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(RemoveGuildMemberRequest other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (GuildName != other.GuildName) return false;
+    if (TargetName != other.TargetName) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (GuildName.Length != 0) hash ^= GuildName.GetHashCode();
+    if (TargetName.Length != 0) hash ^= TargetName.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (GuildName.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(GuildName);
+    }
+    if (TargetName.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(TargetName);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (GuildName.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(GuildName);
+    }
+    if (TargetName.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(TargetName);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (GuildName.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(GuildName);
+    }
+    if (TargetName.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(TargetName);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(RemoveGuildMemberRequest other) {
+    if (other == null) {
+      return;
+    }
+    if (other.GuildName.Length != 0) {
+      GuildName = other.GuildName;
+    }
+    if (other.TargetName.Length != 0) {
+      TargetName = other.TargetName;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 10: {
+          GuildName = input.ReadString();
+          break;
+        }
+        case 18: {
+          TargetName = input.ReadString();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 10: {
+          GuildName = input.ReadString();
+          break;
+        }
+        case 18: {
+          TargetName = input.ReadString();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+/// <summary>
+///移除会员回复--发给所有在线同会成员
+/// </summary>
+[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+public sealed partial class RemoveGuildMemberResponse : pb::IMessage<RemoveGuildMemberResponse>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<RemoveGuildMemberResponse> _parser = new pb::MessageParser<RemoveGuildMemberResponse>(() => new RemoveGuildMemberResponse());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<RemoveGuildMemberResponse> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::GuildReflection.Descriptor.MessageTypes[13]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RemoveGuildMemberResponse() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RemoveGuildMemberResponse(RemoveGuildMemberResponse other) : this() {
+    targetName_ = other.targetName_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public RemoveGuildMemberResponse Clone() {
+    return new RemoveGuildMemberResponse(this);
+  }
+
+  /// <summary>Field number for the "targetName" field.</summary>
+  public const int TargetNameFieldNumber = 1;
+  private string targetName_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public string TargetName {
+    get { return targetName_; }
+    set {
+      targetName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as RemoveGuildMemberResponse);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(RemoveGuildMemberResponse other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (TargetName != other.TargetName) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (TargetName.Length != 0) hash ^= TargetName.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (TargetName.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(TargetName);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (TargetName.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(TargetName);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (TargetName.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(TargetName);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(RemoveGuildMemberResponse other) {
+    if (other == null) {
+      return;
+    }
+    if (other.TargetName.Length != 0) {
+      TargetName = other.TargetName;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 10: {
+          TargetName = input.ReadString();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 10: {
+          TargetName = input.ReadString();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
 [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
 public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
 #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -2552,7 +2996,7 @@ public sealed partial class GuildInfo : pb::IMessage<GuildInfo>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::GuildReflection.Descriptor.MessageTypes[12]; }
+    get { return global::GuildReflection.Descriptor.MessageTypes[14]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
