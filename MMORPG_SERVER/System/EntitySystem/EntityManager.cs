@@ -27,6 +27,7 @@ namespace MMORPG_SERVER.System.EntitySystem
                 }
             }
             _addQueue.Clear();
+
             foreach(Entity entity in _removeQueue.Values)
             {
                 if (_entityDictionaty.ContainsKey(entity._entityId))
