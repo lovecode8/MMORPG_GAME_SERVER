@@ -9,6 +9,7 @@ namespace Extension
 {
     public static class ProtoEntension
     {
+        //NetVector3转Vector3
         public static Vector3 ToVector3(this NetVector3 netVector3)
         {
             return new Vector3(netVector3.X, netVector3.Y, netVector3.Z);
@@ -75,5 +76,6 @@ namespace Extension
             }
             return guildInfo;
         }
+
     }
 }

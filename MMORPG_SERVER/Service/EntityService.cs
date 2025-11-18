@@ -1,5 +1,6 @@
 ﻿using MMORPG_SERVER.Common.Network;
 using MMORPG_SERVER.Manager;
+using MMORPG_SERVER.System.EntitySystem;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace MMORPG_SERVER.Service
         {
             UpdateManager.Instance.AddTask(() =>
             {
-                Log.Information($"收到实体同步位置消息：{entitySyncRequest.Transform.Position.X}");
+                EntityManager.Instance.OnReceiveEntitySyncRequest(entitySyncRequest);
             });
         }
 

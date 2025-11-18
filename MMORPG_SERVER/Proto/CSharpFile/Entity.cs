@@ -22,28 +22,29 @@ public static partial class EntityReflection {
   static EntityReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "CgxFbnRpdHkucHJvdG8aEk5ldFRyYW5zZm9ybS5wcm90byJbCg5FbnRpdHlE",
-          "YXRhTGlzdBInCg5lbnRpdHlEYXRhVHlwZRgBIAEoDjIPLkVudGl0eURhdGFU",
-          "eXBlEiAKC2VudGl0eURhdGFzGAIgAygLMgsuRW50aXR5RGF0YSKnAQoKRW50",
-          "aXR5RGF0YRIQCghlbnRpdHlJZBgBIAEoBRIOCgZ1bml0SWQYAiABKAUSDAoE",
-          "bmFtZRgDIAEoCRIgCgl0cmFuc2Zvcm0YBCABKAsyDS5OZXRUcmFuc2Zvcm0S",
-          "EgoKZW50aXR5VHlwZRgFIAEoBRIKCgJocBgGIAEoBRIKCgJtcBgHIAEoBRIN",
-          "CgVsZXZlbBgIIAEoBRIMCgRnb2xkGAkgASgFIjYKE0VudGl0eUxlYXZlUmVz",
-          "cG9uc2USHwoKZW50aXR5RGF0YRgBIAEoCzILLkVudGl0eURhdGEiWAoRRW50",
-          "aXR5U3luY1JlcXVlc3QSEAoIZW50aXR5SWQYASABKAUSDwoHc3RhdGVJZBgC",
-          "IAEoBRIgCgl0cmFuc2Zvcm0YAyABKAsyDS5OZXRUcmFuc2Zvcm0iWQoSRW50",
-          "aXR5U3luY1Jlc3BvbnNlEhAKCGVudGl0eUlkGAEgASgFEg8KB3N0YXRlSWQY",
-          "AiABKAUSIAoJdHJhbnNmb3JtGAMgASgLMg0uTmV0VHJhbnNmb3JtKjcKDkVu",
-          "dGl0eURhdGFUeXBlEhIKDk5ld0VudGl0eUVudGVyEAASEQoNU3luY0FsbEVu",
-          "dGl0eRABYgZwcm90bzM="));
+          "CgxFbnRpdHkucHJvdG8aEk5ldFRyYW5zZm9ybS5wcm90bxoQTmV0VmVjdG9y",
+          "My5wcm90byJbCg5FbnRpdHlEYXRhTGlzdBInCg5lbnRpdHlEYXRhVHlwZRgB",
+          "IAEoDjIPLkVudGl0eURhdGFUeXBlEiAKC2VudGl0eURhdGFzGAIgAygLMgsu",
+          "RW50aXR5RGF0YSKnAQoKRW50aXR5RGF0YRIQCghlbnRpdHlJZBgBIAEoBRIO",
+          "CgZ1bml0SWQYAiABKAUSDAoEbmFtZRgDIAEoCRIgCgl0cmFuc2Zvcm0YBCAB",
+          "KAsyDS5OZXRUcmFuc2Zvcm0SEgoKZW50aXR5VHlwZRgFIAEoBRIKCgJocBgG",
+          "IAEoBRIKCgJtcBgHIAEoBRINCgVsZXZlbBgIIAEoBRIMCgRnb2xkGAkgASgF",
+          "IjYKE0VudGl0eUxlYXZlUmVzcG9uc2USHwoKZW50aXR5RGF0YRgBIAEoCzIL",
+          "LkVudGl0eURhdGEiaAoRRW50aXR5U3luY1JlcXVlc3QSEAoIZW50aXR5SWQY",
+          "ASABKAUSDwoHc3RhdGVJZBgCIAEoBRIdCghwb3NpdGlvbhgDIAEoCzILLk5l",
+          "dFZlY3RvcjMSEQoJcm90YXRpb25ZGAQgASgCImkKEkVudGl0eVN5bmNSZXNw",
+          "b25zZRIQCghlbnRpdHlJZBgBIAEoBRIPCgdzdGF0ZUlkGAIgASgFEh0KCHBv",
+          "c2l0aW9uGAMgASgLMgsuTmV0VmVjdG9yMxIRCglyb3RhdGlvblkYBCABKAIq",
+          "NwoORW50aXR5RGF0YVR5cGUSEgoOTmV3RW50aXR5RW50ZXIQABIRCg1TeW5j",
+          "QWxsRW50aXR5EAFiBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-        new pbr::FileDescriptor[] { global::NetTransformReflection.Descriptor, },
+        new pbr::FileDescriptor[] { global::NetTransformReflection.Descriptor, global::NetVector3Reflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::EntityDataType), }, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::EntityDataList), global::EntityDataList.Parser, new[]{ "EntityDataType", "EntityDatas" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::EntityData), global::EntityData.Parser, new[]{ "EntityId", "UnitId", "Name", "Transform", "EntityType", "Hp", "Mp", "Level", "Gold" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::EntityLeaveResponse), global::EntityLeaveResponse.Parser, new[]{ "EntityData" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::EntitySyncRequest), global::EntitySyncRequest.Parser, new[]{ "EntityId", "StateId", "Transform" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::EntitySyncResponse), global::EntitySyncResponse.Parser, new[]{ "EntityId", "StateId", "Transform" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::EntitySyncRequest), global::EntitySyncRequest.Parser, new[]{ "EntityId", "StateId", "Position", "RotationY" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::EntitySyncResponse), global::EntitySyncResponse.Parser, new[]{ "EntityId", "StateId", "Position", "RotationY" }, null, null, null, null)
         }));
   }
   #endregion
@@ -1035,7 +1036,8 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
   public EntitySyncRequest(EntitySyncRequest other) : this() {
     entityId_ = other.entityId_;
     stateId_ = other.stateId_;
-    transform_ = other.transform_ != null ? other.transform_.Clone() : null;
+    position_ = other.position_ != null ? other.position_.Clone() : null;
+    rotationY_ = other.rotationY_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1069,15 +1071,27 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
     }
   }
 
-  /// <summary>Field number for the "transform" field.</summary>
-  public const int TransformFieldNumber = 3;
-  private global::NetTransform transform_;
+  /// <summary>Field number for the "position" field.</summary>
+  public const int PositionFieldNumber = 3;
+  private global::NetVector3 position_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::NetTransform Transform {
-    get { return transform_; }
+  public global::NetVector3 Position {
+    get { return position_; }
     set {
-      transform_ = value;
+      position_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "rotationY" field.</summary>
+  public const int RotationYFieldNumber = 4;
+  private float rotationY_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public float RotationY {
+    get { return rotationY_; }
+    set {
+      rotationY_ = value;
     }
   }
 
@@ -1098,7 +1112,8 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
     }
     if (EntityId != other.EntityId) return false;
     if (StateId != other.StateId) return false;
-    if (!object.Equals(Transform, other.Transform)) return false;
+    if (!object.Equals(Position, other.Position)) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(RotationY, other.RotationY)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1108,7 +1123,8 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
     int hash = 1;
     if (EntityId != 0) hash ^= EntityId.GetHashCode();
     if (StateId != 0) hash ^= StateId.GetHashCode();
-    if (transform_ != null) hash ^= Transform.GetHashCode();
+    if (position_ != null) hash ^= Position.GetHashCode();
+    if (RotationY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(RotationY);
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1135,9 +1151,13 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
       output.WriteRawTag(16);
       output.WriteInt32(StateId);
     }
-    if (transform_ != null) {
+    if (position_ != null) {
       output.WriteRawTag(26);
-      output.WriteMessage(Transform);
+      output.WriteMessage(Position);
+    }
+    if (RotationY != 0F) {
+      output.WriteRawTag(37);
+      output.WriteFloat(RotationY);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -1157,9 +1177,13 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
       output.WriteRawTag(16);
       output.WriteInt32(StateId);
     }
-    if (transform_ != null) {
+    if (position_ != null) {
       output.WriteRawTag(26);
-      output.WriteMessage(Transform);
+      output.WriteMessage(Position);
+    }
+    if (RotationY != 0F) {
+      output.WriteRawTag(37);
+      output.WriteFloat(RotationY);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
@@ -1177,8 +1201,11 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
     if (StateId != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(StateId);
     }
-    if (transform_ != null) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(Transform);
+    if (position_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
+    }
+    if (RotationY != 0F) {
+      size += 1 + 4;
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1198,11 +1225,14 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
     if (other.StateId != 0) {
       StateId = other.StateId;
     }
-    if (other.transform_ != null) {
-      if (transform_ == null) {
-        Transform = new global::NetTransform();
+    if (other.position_ != null) {
+      if (position_ == null) {
+        Position = new global::NetVector3();
       }
-      Transform.MergeFrom(other.Transform);
+      Position.MergeFrom(other.Position);
+    }
+    if (other.RotationY != 0F) {
+      RotationY = other.RotationY;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -1232,10 +1262,14 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
           break;
         }
         case 26: {
-          if (transform_ == null) {
-            Transform = new global::NetTransform();
+          if (position_ == null) {
+            Position = new global::NetVector3();
           }
-          input.ReadMessage(Transform);
+          input.ReadMessage(Position);
+          break;
+        }
+        case 37: {
+          RotationY = input.ReadFloat();
           break;
         }
       }
@@ -1266,10 +1300,14 @@ public sealed partial class EntitySyncRequest : pb::IMessage<EntitySyncRequest>
           break;
         }
         case 26: {
-          if (transform_ == null) {
-            Transform = new global::NetTransform();
+          if (position_ == null) {
+            Position = new global::NetVector3();
           }
-          input.ReadMessage(Transform);
+          input.ReadMessage(Position);
+          break;
+        }
+        case 37: {
+          RotationY = input.ReadFloat();
           break;
         }
       }
@@ -1316,7 +1354,8 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
   public EntitySyncResponse(EntitySyncResponse other) : this() {
     entityId_ = other.entityId_;
     stateId_ = other.stateId_;
-    transform_ = other.transform_ != null ? other.transform_.Clone() : null;
+    position_ = other.position_ != null ? other.position_.Clone() : null;
+    rotationY_ = other.rotationY_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1350,15 +1389,27 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
     }
   }
 
-  /// <summary>Field number for the "transform" field.</summary>
-  public const int TransformFieldNumber = 3;
-  private global::NetTransform transform_;
+  /// <summary>Field number for the "position" field.</summary>
+  public const int PositionFieldNumber = 3;
+  private global::NetVector3 position_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public global::NetTransform Transform {
-    get { return transform_; }
+  public global::NetVector3 Position {
+    get { return position_; }
     set {
-      transform_ = value;
+      position_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "rotationY" field.</summary>
+  public const int RotationYFieldNumber = 4;
+  private float rotationY_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public float RotationY {
+    get { return rotationY_; }
+    set {
+      rotationY_ = value;
     }
   }
 
@@ -1379,7 +1430,8 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
     }
     if (EntityId != other.EntityId) return false;
     if (StateId != other.StateId) return false;
-    if (!object.Equals(Transform, other.Transform)) return false;
+    if (!object.Equals(Position, other.Position)) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(RotationY, other.RotationY)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1389,7 +1441,8 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
     int hash = 1;
     if (EntityId != 0) hash ^= EntityId.GetHashCode();
     if (StateId != 0) hash ^= StateId.GetHashCode();
-    if (transform_ != null) hash ^= Transform.GetHashCode();
+    if (position_ != null) hash ^= Position.GetHashCode();
+    if (RotationY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(RotationY);
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1416,9 +1469,13 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
       output.WriteRawTag(16);
       output.WriteInt32(StateId);
     }
-    if (transform_ != null) {
+    if (position_ != null) {
       output.WriteRawTag(26);
-      output.WriteMessage(Transform);
+      output.WriteMessage(Position);
+    }
+    if (RotationY != 0F) {
+      output.WriteRawTag(37);
+      output.WriteFloat(RotationY);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -1438,9 +1495,13 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
       output.WriteRawTag(16);
       output.WriteInt32(StateId);
     }
-    if (transform_ != null) {
+    if (position_ != null) {
       output.WriteRawTag(26);
-      output.WriteMessage(Transform);
+      output.WriteMessage(Position);
+    }
+    if (RotationY != 0F) {
+      output.WriteRawTag(37);
+      output.WriteFloat(RotationY);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
@@ -1458,8 +1519,11 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
     if (StateId != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(StateId);
     }
-    if (transform_ != null) {
-      size += 1 + pb::CodedOutputStream.ComputeMessageSize(Transform);
+    if (position_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(Position);
+    }
+    if (RotationY != 0F) {
+      size += 1 + 4;
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1479,11 +1543,14 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
     if (other.StateId != 0) {
       StateId = other.StateId;
     }
-    if (other.transform_ != null) {
-      if (transform_ == null) {
-        Transform = new global::NetTransform();
+    if (other.position_ != null) {
+      if (position_ == null) {
+        Position = new global::NetVector3();
       }
-      Transform.MergeFrom(other.Transform);
+      Position.MergeFrom(other.Position);
+    }
+    if (other.RotationY != 0F) {
+      RotationY = other.RotationY;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -1513,10 +1580,14 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
           break;
         }
         case 26: {
-          if (transform_ == null) {
-            Transform = new global::NetTransform();
+          if (position_ == null) {
+            Position = new global::NetVector3();
           }
-          input.ReadMessage(Transform);
+          input.ReadMessage(Position);
+          break;
+        }
+        case 37: {
+          RotationY = input.ReadFloat();
           break;
         }
       }
@@ -1547,10 +1618,14 @@ public sealed partial class EntitySyncResponse : pb::IMessage<EntitySyncResponse
           break;
         }
         case 26: {
-          if (transform_ == null) {
-            Transform = new global::NetTransform();
+          if (position_ == null) {
+            Position = new global::NetVector3();
           }
-          input.ReadMessage(Transform);
+          input.ReadMessage(Position);
+          break;
+        }
+        case 37: {
+          RotationY = input.ReadFloat();
           break;
         }
       }

@@ -27,7 +27,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
             EntityType entityType, 
             UnitDefine unitDefine, 
             Vector3 pos, 
-            Vector3 dir,
+            float dir,
             User user,
             int gold) : base(entityId, entityType, unitDefine, pos, dir)
         {

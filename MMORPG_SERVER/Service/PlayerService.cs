@@ -66,14 +66,14 @@ namespace MMORPG_SERVER.Service
                     return;
                 }
                 Vector3 pos = new Vector3(dbCharacter.posX, dbCharacter.posY, dbCharacter.posZ);
-                Vector3 rot = new Vector3(dbCharacter.rotX, dbCharacter.rotY, dbCharacter.rotZ);
+                float rotationY =  dbCharacter.rotY;
                 int playerId = EntityManager.Instance.NewEntityId();
                 
                 //发送加入游戏回复
                 channel.SendAsync(new JoinMapResponse() 
                 { JoinMapResult = JoinMapResult.Success, EntityId = playerId, NetCharacter = dbCharacter.ToNetCharacter() });
                 
-                var player = PlayerManager.Instance.NewPlayer(playerId, channel._user, dbCharacter, pos, rot);
+                var player = PlayerManager.Instance.NewPlayer(playerId, channel._user, dbCharacter, pos, rotationY);
                 channel._user.SetPlayer(player);
                 Log.Information($"[PlayerService] 加入成功：{channel._user._userId}成功加入游戏");
             });

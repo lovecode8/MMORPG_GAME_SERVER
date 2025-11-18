@@ -25,15 +25,17 @@ namespace MMORPG_SERVER.System.EntitySystem
         public UnitDefine _unitDefine;
         public bool _isValid;
         public Vector3 _position;
-        public Vector3 _direction;
+        public float _rotationY;
+        public int _stateId;
 
-        public Entity(int entityId, EntityType entityType, UnitDefine unitDefine, Vector3 pos, Vector3 dir)
+        public Entity(int entityId, EntityType entityType, UnitDefine unitDefine, Vector3 pos, float dir)
         {
             _entityId = entityId;
             _entityType = entityType;
             _unitDefine = unitDefine;
             _position = pos;
-            _direction = dir;
+            _rotationY = dir;
+            _stateId = 0;
         }
 
         public bool IsValid()

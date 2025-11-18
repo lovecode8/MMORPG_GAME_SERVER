@@ -1,5 +1,8 @@
-﻿using MMORPG_SERVER.Tool;
+﻿using Extension;
+using MMORPG_SERVER.Tool;
 using Serilog;
+using MMORPG_SERVER.Time;
+using MMORPG_SERVER.System.PlayerSystem;
 
 
 namespace MMORPG_SERVER.System.EntitySystem
@@ -7,6 +10,7 @@ namespace MMORPG_SERVER.System.EntitySystem
     //实体管理器
     public class EntityManager : Singleton<EntityManager>
     {
+        //线程安全
         private Dictionary<int, Entity> _entityDictionaty = new();
 
         private Dictionary<int, Entity> _addQueue = new();
@@ -15,28 +19,47 @@ namespace MMORPG_SERVER.System.EntitySystem
 
         private int _entityAddId = 0;
 
+        //private float _syncInterval = 0.1f;
+
+        //private float _syncTimer;
+
         private EntityManager() { }
 
         public void Update()
         {
-            foreach(Entity entity in _addQueue.Values)
+            //_syncTimer += Time.Timer.deltaTime;
+            //if(_syncTimer >= _syncInterval)
+            //{
+            //    SyncEntityToClient();
+            //    _syncTimer = 0;
+            //}
+
+            UpdateEntityDict();
+        }
+
+        private void UpdateEntityDict()
+        {
+            foreach (Entity entity in _addQueue.Values)
             {
-                if (!_entityDictionaty.ContainsKey(entity._entityId))
-                {
-                    _entityDictionaty[entity._entityId] = entity;
-                }
+                AddEntity(entity);
             }
             _addQueue.Clear();
 
-            foreach(Entity entity in _removeQueue.Values)
+            foreach (Entity entity in _removeQueue.Values)
             {
-                if (_entityDictionaty.ContainsKey(entity._entityId))
-                {
-                    _entityDictionaty.Remove(entity._entityId);
-                }
+                RemoveEntity(entity);
             }
             _removeQueue.Clear();
         }
+
+        ////向客户端发送所有实体数据
+        //private void SyncEntityToClient()
+        //{
+        //    if(_entityDictionaty.Count > 0)
+        //    {
+        //        PlayerManager.Instance.SyncAllEntityData(_entityDictionaty);
+        //    }
+        //}
 
         public int NewEntityId()
         {
@@ -46,16 +69,14 @@ namespace MMORPG_SERVER.System.EntitySystem
 
         public Entity? GetEntity(int entityId)
         {
-            _entityDictionaty.TryGetValue(entityId, out var entity);
-            if(entity != null)
+            lock (_entityDictionaty)
             {
-                entity = null;
+                if(_entityDictionaty.TryGetValue(entityId, out var entity))
+                {
+                    return entity;
+                }
+                return null;
             }
-            else
-            {
-                _addQueue.TryGetValue(entityId, out entity);
-            }
-            return entity;
         }
 
         public void AddEntity(Entity entity)
@@ -64,7 +85,7 @@ namespace MMORPG_SERVER.System.EntitySystem
             {
                 if(!_entityDictionaty.ContainsKey(entity._entityId))
                 {
-                    _entityDictionaty[entity._entityId] = entity;
+                    _entityDictionaty.Add(entity._entityId, entity);
                 }
             }
         }
@@ -77,6 +98,18 @@ namespace MMORPG_SERVER.System.EntitySystem
                 {
                     _entityDictionaty.Remove(entity._entityId);
                 }
+            }
+        }
+
+        public void OnReceiveEntitySyncRequest(EntitySyncRequest entitySyncRequest)
+        {
+            var entity = GetEntity(entitySyncRequest.EntityId);
+            if(entity != null)
+            {
+                entity._position = entitySyncRequest.Position.ToVector3();
+                entity._rotationY = entitySyncRequest.RotationY;
+                entity._stateId = entitySyncRequest.StateId;
+                PlayerManager.Instance.SyncSingleEntityData(entity);
             }
         }
 

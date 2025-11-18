@@ -18,6 +18,7 @@ namespace MMORPG_SERVER.System.MapSystem
     {
         private MapManager() { }
 
+        //新实体进入游戏
         public void EntityEnter(Entity entity)
         {
             Log.Information($"[MapManager] 实体进入场景：{entity._entityType} {entity._entityId}");
@@ -44,6 +45,7 @@ namespace MMORPG_SERVER.System.MapSystem
             }
         }
 
+        //实体离开游戏
         public void EntityLeave(Entity entity)
         {
             Log.Information($"[MapManager]实体{entity._entityId}离开游戏");
@@ -53,6 +55,7 @@ namespace MMORPG_SERVER.System.MapSystem
             PlayerManager.Instance.Broadcast(entityLeaveResponse, entity);
         }
 
+        //构造网络实体数据
         private EntityData ConstructEntityData(Entity entity)
         {
             //hp、mp等属性未实现
@@ -63,7 +66,12 @@ namespace MMORPG_SERVER.System.MapSystem
             entityData.EntityType = (int)entity._entityType;
             entityData.Transform = new NetTransform();
             entityData.Transform.Position = new NetVector3(entity._position.ToNetVector3());
-            entityData.Transform.Rotation = new NetVector3(entity._direction.ToNetVector3());
+            entityData.Transform.Rotation = new NetVector3()
+            {
+                X = 0,
+                Y = entity._rotationY,
+                Z = 0
+            };
             //if(entity is Player player)
             //{
             //    entityData.Gold = player._dbCharacter.Gold;
