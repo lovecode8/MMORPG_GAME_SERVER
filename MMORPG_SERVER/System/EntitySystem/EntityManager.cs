@@ -19,20 +19,20 @@ namespace MMORPG_SERVER.System.EntitySystem
 
         private int _entityAddId = 0;
 
-        //private float _syncInterval = 0.1f;
+        private float _syncInterval = 0.15f;
 
-        //private float _syncTimer;
+        private float _syncTimer;
 
         private EntityManager() { }
 
         public void Update()
         {
-            //_syncTimer += Time.Timer.deltaTime;
-            //if(_syncTimer >= _syncInterval)
-            //{
-            //    SyncEntityToClient();
-            //    _syncTimer = 0;
-            //}
+            _syncTimer += Time.Timer.deltaTime;
+            if (_syncTimer >= _syncInterval)
+            {
+                SyncEntityToClient();
+                _syncTimer = 0;
+            }
 
             UpdateEntityDict();
         }
@@ -52,14 +52,14 @@ namespace MMORPG_SERVER.System.EntitySystem
             _removeQueue.Clear();
         }
 
-        ////向客户端发送所有实体数据
-        //private void SyncEntityToClient()
-        //{
-        //    if(_entityDictionaty.Count > 0)
-        //    {
-        //        PlayerManager.Instance.SyncAllEntityData(_entityDictionaty);
-        //    }
-        //}
+        //向客户端发送所有实体数据
+        private void SyncEntityToClient()
+        {
+            if (_entityDictionaty.Count > 0)
+            {
+                PlayerManager.Instance.SyncAllEntityData(_entityDictionaty);
+            }
+        }
 
         public int NewEntityId()
         {
@@ -109,7 +109,11 @@ namespace MMORPG_SERVER.System.EntitySystem
                 entity._position = entitySyncRequest.Position.ToVector3();
                 entity._rotationY = entitySyncRequest.RotationY;
                 entity._stateId = entitySyncRequest.StateId;
-                PlayerManager.Instance.SyncSingleEntityData(entity);
+
+                if(entity is Player)
+                {
+                    PlayerManager.Instance.OnPlayerMove(entity as Player);
+                }
             }
         }
 

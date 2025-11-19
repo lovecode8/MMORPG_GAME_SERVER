@@ -106,6 +106,8 @@ namespace MMORPG_SERVER.Common.Network
             if (!_socket.Connected)
             {
                 WarnningOccur?.Invoke(this, new WarnningOccurEventArgs("尝试向已经关闭的对象发送数据"));
+                Close();
+                return;
             }
 
             try
@@ -163,6 +165,7 @@ namespace MMORPG_SERVER.Common.Network
                 {
                     WarnningOccur?.Invoke(this, new WarnningOccurEventArgs("尝试关闭一个已经关闭的连接"));
                 }
+                return;
             }
 
             try

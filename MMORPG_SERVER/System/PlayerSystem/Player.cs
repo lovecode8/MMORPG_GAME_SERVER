@@ -16,6 +16,9 @@ namespace MMORPG_SERVER.System.PlayerSystem
     {
         public int _playerId => _entityId;
 
+        //玩家所在的网格
+        public Vector2 _currentCell;
+
         public User _user;
 
         public int _gold;
@@ -33,6 +36,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
         {
             _user = user;
             _gold = gold;
+            _currentCell = PlayerManager.Instance.GetCellByPosition(pos);
         }
     }
 }
