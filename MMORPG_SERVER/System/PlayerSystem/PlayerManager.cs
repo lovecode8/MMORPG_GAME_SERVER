@@ -39,7 +39,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
                 pos,
                 dir,
                 user,
-                dbCharacter.Gold
+                dbCharacter
                 );
 
             EntityManager.Instance.AddEntity(player);

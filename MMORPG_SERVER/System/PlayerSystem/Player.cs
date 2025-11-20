@@ -21,8 +21,6 @@ namespace MMORPG_SERVER.System.PlayerSystem
 
         public User _user;
 
-        public int _gold;
-
         public DbCharacter _dbCharacter;
 
         public Player(
@@ -32,10 +30,10 @@ namespace MMORPG_SERVER.System.PlayerSystem
             Vector3 pos, 
             float dir,
             User user,
-            int gold) : base(entityId, entityType, unitDefine, pos, dir)
+            DbCharacter character) : base(entityId, entityType, unitDefine, pos, dir)
         {
             _user = user;
-            _gold = gold;
+            _dbCharacter = character;
             _currentCell = PlayerManager.Instance.GetCellByPosition(pos);
         }
     }
