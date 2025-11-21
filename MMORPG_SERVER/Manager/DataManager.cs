@@ -1,5 +1,7 @@
-﻿using MMORPG_SERVER.Tool;
+﻿using MMORPG_SERVER.Data.CS;
+using MMORPG_SERVER.Tool;
 using Newtonsoft.Json;
+using Serilog;
 using System.Diagnostics;
 
 namespace MMORPG_SERVER.Manager
@@ -7,16 +9,16 @@ namespace MMORPG_SERVER.Manager
     //服务器固定数据管理器
     public class DataManager : Singleton<DataManager>
     {
-        public Dictionary<int, CharacterDefine> characterDictionary;
+        public Dictionary<int, UnitDefine> unitDictionary;
 
         private DataManager()
         {
-            characterDictionary = new Dictionary<int, CharacterDefine>();
+            unitDictionary = new Dictionary<int, UnitDefine>();
         }
 
         public void Start()
         {
-            characterDictionary = Load<Dictionary<int, CharacterDefine>>("/CharacterDefine.json");
+            unitDictionary = Load<Dictionary<int, UnitDefine>>("/UnitDefine.json");
         }
 
         public void Update()
@@ -39,9 +41,9 @@ namespace MMORPG_SERVER.Manager
             return content;
         }
 
-        public CharacterDefine GetCharacterDefine(int characterId)
+        public UnitDefine GetUnitDefine(int unitId)
         {
-            return characterDictionary[characterId];
+            return unitDictionary[unitId];
         }
     }
 }

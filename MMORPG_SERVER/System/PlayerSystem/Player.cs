@@ -2,6 +2,7 @@
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.UserSystem;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,16 @@ namespace MMORPG_SERVER.System.PlayerSystem
             _user = user;
             _dbCharacter = character;
             _currentCell = PlayerManager.Instance.GetCellByPosition(pos);
+        }
+
+        public void GetHurt(int demage)
+        {
+            _dbCharacter.Hp -= demage;
+            if(_dbCharacter.Hp <= 0)
+            {
+                //处理死亡逻辑
+                Log.Information($"[Player] {_playerId}死亡");
+            }
         }
     }
 }

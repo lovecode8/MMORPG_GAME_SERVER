@@ -35,7 +35,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
             var player = new Player
                 (playerId,
                 EntityType.Player,
-                DataManager.Instance.GetCharacterDefine(dbCharacter.UnitId),
+                DataManager.Instance.GetUnitDefine(dbCharacter.UnitId),
                 pos,
                 dir,
                 user,

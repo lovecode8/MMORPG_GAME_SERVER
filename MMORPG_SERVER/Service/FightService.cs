@@ -19,23 +19,44 @@ namespace MMORPG_SERVER.Service
                 int targetId = playerAttackRequest.TargetId;
                 Log.Information($"[FightService] 收到攻击请求：{playerId}攻击{targetId}");
 
-                if (playerAttackRequest.TargetId == -1)
+                //未命中
+                if (playerAttackRequest.TargetId == -1 || 
+                !EntityManager.Instance.IsAttackTargetVaild(playerId, targetId))
                 {
                     //仅同步动画
                     PlayerManager.Instance.Broadcast(new PlayerAttackResponse()
                     {
-                        IsSuccessfulAttack = true,
+                        IsSuccessfulAttack = false,
                         PlayerId = playerId,
                         CamboCount = playerAttackRequest.CamboCount,
                         IsHit = false
                     }, channel._user._player);
+                    return;
                 }
 
-                //var entity = EntityManager.Instance.GetEntity(targetId);
-                //if(entity._entityType == EntityType.Player)
-                //{
+                //命中
+                var attacker = EntityManager.Instance.GetEntity(playerId);
+                var target = EntityManager.Instance.GetEntity(targetId);
 
-                //}
+                int demage = attacker._unitDefine.AttackDemage[playerAttackRequest.CamboCount];
+                //发给所有客户端
+                PlayerManager.Instance.Broadcast(new PlayerAttackResponse()
+                {
+                    IsSuccessfulAttack = true,
+                    PlayerId = playerId,
+                    TargetId = targetId,
+                    CamboCount = playerAttackRequest.CamboCount,
+                    IsHit = true,
+                    Damage = demage
+                }, channel._user._player, true);
+
+                switch (target._entityType)
+                {
+                    case EntityType.Player:
+                        (target as Player).GetHurt(demage);
+                        break;
+                    //TODO：后续增加敌人处理
+                }
             });
         }
     }

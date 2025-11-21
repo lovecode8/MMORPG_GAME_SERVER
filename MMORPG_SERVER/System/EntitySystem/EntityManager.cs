@@ -1,8 +1,11 @@
 ﻿using Extension;
+using MMORPG_SERVER.Extension;
+using MMORPG_SERVER.System.PlayerSystem;
+using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
 using Serilog;
-using MMORPG_SERVER.Time;
-using MMORPG_SERVER.System.PlayerSystem;
+using System;
+using System.Numerics;
 
 
 namespace MMORPG_SERVER.System.EntitySystem
@@ -120,6 +123,22 @@ namespace MMORPG_SERVER.System.EntitySystem
         public Dictionary<int, Entity> GetEntityDict()
         {
             return _entityDictionaty;
+        }
+
+        public bool IsAttackTargetVaild(int attackerId, int targetId)
+        {
+            var attacker = GetEntity(attackerId);
+            var target = GetEntity(targetId);
+            if (attacker == null || target == null) return false;
+
+            if (Vector3.Distance(attacker._position, target._position) > 5f) return false;
+
+            var directionAttackerToTarget = target._position - attacker._position;
+            if(!Vector3Extensions.IsInAngleRange(directionAttackerToTarget, attacker._rotationY, 60))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

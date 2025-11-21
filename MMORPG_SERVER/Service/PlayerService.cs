@@ -31,6 +31,20 @@ namespace MMORPG_SERVER.Service
                 Log.Information($"[PlayerService] 玩家离开游戏：{sender._user?._player?._playerId}");
                 if(sender._user?._player != null)
                 {
+                    //同步信息
+                    int userId = sender._user._userId;
+                    var player = sender._user._player;
+                    MysqlManager.Instance._freeSql.Update<DbCharacter>().
+                        Where(c => c.UserId == userId).
+                        Set(c => c.Hp, player._dbCharacter.Hp).
+                        Set(c => c.Mp, player._dbCharacter.Mp).
+                        Set(c => c.posX, player._position.X).
+                        Set(c => c.posY, player._position.Y).
+                        Set(c => c.posZ, player._position.Z).
+                        Set(c => c.rotY, player._rotationY).
+                        Set(c => c.Level, player._dbCharacter.Level).
+                        Set(c => c.Gold, player._dbCharacter.Gold).ExecuteAffrows();
+
                     PlayerManager.Instance.RemovePlayer(sender._user._player);
                     MapManager.Instance.EntityLeave(sender._user._player);
                 }

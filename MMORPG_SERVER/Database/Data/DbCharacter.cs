@@ -5,9 +5,12 @@ namespace MMORPG_SERVER.Database.Data
     [Table(Name = "Character")]
     public class DbCharacter
     {
+        //常量
         public int UserId { get; set; }
         public int UnitId { get; set; }
         public string Name { get; set; }
+
+        //变量
         public int Hp { get; set; }
         public int Mp { get; set; }
         public float posX { get; set; }

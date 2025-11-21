@@ -62,7 +62,7 @@ namespace MMORPG_SERVER.System.MapSystem
             EntityData entityData = new EntityData();
             entityData.Name = (entity as Player)?._user._dbUser.UserName;
             entityData.EntityId = entity._entityId;
-            entityData.UnitId = entity._unitDefine.unitId;
+            entityData.UnitId = entity._unitDefine.ID;
             entityData.EntityType = (int)entity._entityType;
             entityData.Transform = new NetTransform();
             entityData.Transform.Position = new NetVector3(entity._position.ToNetVector3());
@@ -72,11 +72,13 @@ namespace MMORPG_SERVER.System.MapSystem
                 Y = entity._rotationY,
                 Z = 0
             };
-            //if(entity is Player player)
-            //{
-            //    entityData.Gold = player._dbCharacter.Gold;
-            //    entityData.Level = player._dbCharacter.Level;
-            //}
+            if (entity is Player player)
+            {
+                entityData.Hp = player._dbCharacter.Hp;
+                entityData.Mp = player._dbCharacter.Mp;
+                entityData.Gold = player._dbCharacter.Gold;
+                entityData.Level = player._dbCharacter.Level;
+            }
             return entityData;
         }
     }
