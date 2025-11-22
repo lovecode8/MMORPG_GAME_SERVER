@@ -45,6 +45,10 @@ namespace MMORPG_SERVER.System.PlayerSystem
             EntityManager.Instance.AddEntity(player);
             AddPlayer(player);
             MapManager.Instance.EntityEnter(player);
+
+            var cell = GetCellByPosition(pos);
+            _cellPlayers.GetOrAdd(cell, _ => new HashSet<Player>());
+            _cellPlayers[cell].Add(player);
             return player;
         }
 
@@ -92,7 +96,6 @@ namespace MMORPG_SERVER.System.PlayerSystem
 
                 foreach (var entity in entityDatas.Values)
                 {
-                    //var playerList = _playerDictionary.Values;
                     var playerList = GetVisiblePlayerList(entity);
                     if (playerList.Count == 0) continue;
 
@@ -111,34 +114,15 @@ namespace MMORPG_SERVER.System.PlayerSystem
             
         }
 
-        //同步单个实体信息给视野范围内的玩家
-        public void SyncSingleEntityData(Entity entity)
-        {
-            var playerList = GetVisiblePlayerList(entity);
-            if(playerList.Count > 0)
-            {
-                foreach(var player in playerList)
-                {
-                    player._user._netChannel.SendAsync(new EntitySyncResponse()
-                    {
-                        EntityId = entity._entityId,
-                        Position = entity._position.ToNetVector3(),
-                        RotationY = entity._rotationY,
-                        StateId = entity._stateId
-                    });
-                }
-            }
-        }
-
         //获取视野范围内的玩家
         private List<Player> GetVisiblePlayerList(Entity entity)
         {
             List<Player> res = new();
             Vector2 entityCell = GetCellByPosition(entity._position);
 
-            for(int x = (int)entityCell.X - 1; x <= entityCell.X + 1; x++)
+            for(int x = (int)entityCell.X - 1; x <= (int)entityCell.X + 1; x++)
             {
-                for(int y = (int)entityCell.Y - 1; y <= entityCell.Y + 1; y++)
+                for(int y = (int)entityCell.Y - 1; y <= (int)entityCell.Y + 1; y++)
                 {
                     if(_cellPlayers.TryGetValue(new Vector2(x, y), out var list))
                     {
@@ -153,7 +137,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
                             float distance = Vector3.Distance(entity._position, player._position);
                             if (distance > _playerVisibleDistance)
                             {
-                                //Log.Information($"超过距离{distance}");
+                                Log.Information($"超过距离{distance}");
                                 continue;
                             }
 

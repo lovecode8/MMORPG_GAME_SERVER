@@ -1,0 +1,72 @@
+﻿{
+  "1": {
+    "ID": 1,
+    "Name": "初级宝剑",
+    "Description": "增加20点攻击力",
+    "ItemType": 1,
+    "Hp": 0,
+    "Mp": 0,
+    "Atk": 20,
+    "Def": 0,
+    "Addition": 0,
+    "SpritePath": "atk1",
+    "CanbeDrop": true,
+    "ResouresPath": "Atk1"
+  },
+  "2": {
+    "ID": 2,
+    "Name": "小红药",
+    "Description": "回复10点生命值",
+    "ItemType": 2,
+    "Hp": 10,
+    "Mp": 0,
+    "Atk": 0,
+    "Def": 0,
+    "Addition": 0,
+    "SpritePath": "hp1",
+    "CanbeDrop": true,
+    "ResouresPath": "Hp1"
+  },
+  "3": {
+    "ID": 3,
+    "Name": "牛肉",
+    "Description": "回复20点生命值",
+    "ItemType": 2,
+    "Hp": 20,
+    "Mp": 0,
+    "Atk": 0,
+    "Def": 0,
+    "Addition": 0,
+    "SpritePath": "hp2",
+    "CanbeDrop": true,
+    "ResouresPath": "Hp2"
+  },
+  "4": {
+    "ID": 4,
+    "Name": "初级盔甲",
+    "Description": "增加20点防御力",
+    "ItemType": 1,
+    "Hp": 0,
+    "Mp": 0,
+    "Atk": 0,
+    "Def": 20,
+    "Addition": 0,
+    "SpritePath": "def1",
+    "CanbeDrop": true,
+    "ResouresPath": "Def1"
+  },
+  "5": {
+    "ID": 5,
+    "Name": "移速鞋",
+    "Description": "增加2点移速",
+    "ItemType": 3,
+    "Hp": 0,
+    "Mp": 0,
+    "Atk": 0,
+    "Def": 0,
+    "Addition": 2,
+    "SpritePath": "addition1",
+    "CanbeDrop": false,
+    "ResouresPath": ""
+  }
+}

@@ -84,6 +84,16 @@ namespace MMORPG_SERVER.Service
             });
         }
 
+        //处理玩家退出游戏消息
+        public void OnHandle(object sender, LeaveGameRequest leaveGameRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                channel?.Close();
+            });
+        }
+
         //处理玩家退出登录事件
         public void OnConnectionClosed(NetChannel sender)
         {

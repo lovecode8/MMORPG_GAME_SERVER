@@ -112,7 +112,6 @@ namespace MMORPG_SERVER.Common.Network
 
             try
             {
-                Log.Information(message.GetType().ToString());
                 Packet packet = new Packet(message);
                 byte[] buffer = packet.Pack();
 
