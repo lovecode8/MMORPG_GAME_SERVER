@@ -1,8 +1,10 @@
-﻿using MMORPG_SERVER.Manager;
+﻿using MMORPG_SERVER.Data.CS;
+using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Tool;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,10 +43,8 @@ namespace MMORPG_SERVER.System.AttributeSystem
         }
 
         //获取对应物品的加成属性，并同步在服务端
-        public int GetConsumableValue(Player player, int itemId)
+        public int GetConsumableValue(Player player, ItemDefine item)
         {
-            var item = DataManager.Instance.GetItemDefine(itemId);
-
             switch ((ConsumableType)item.ConsumableType)
             {
                 case ConsumableType.Hp:
@@ -65,6 +65,32 @@ namespace MMORPG_SERVER.System.AttributeSystem
             }
 
             return 0;
+        }
+
+        public void OnUseEquip(int userId, ItemDefine itemDefine)
+        {
+            Attribute attribute = null;
+            if (_attributeDictionary.ContainsKey(userId))
+            {
+                attribute = _attributeDictionary[userId];
+            }
+            else
+            {
+                _attributeDictionary.Add(userId, new());
+                attribute = _attributeDictionary[userId];
+            }
+
+            switch ((EquipType)itemDefine.EquipType)
+            {
+                case EquipType.Sword:
+                    attribute._atkAddition += itemDefine.Atk;
+                    Log.Information($"[AttributeManager] 使用装备成功：增加atk{itemDefine.Atk}");
+                    break;
+                case EquipType.Armor:
+                    attribute._defAddition += itemDefine.Def;
+                    Log.Information($"[AttributeManager] 使用装备成功：增加def{itemDefine.Def}");
+                    break;
+            }
         }
     }
 }

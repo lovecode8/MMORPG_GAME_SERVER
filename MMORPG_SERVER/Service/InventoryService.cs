@@ -1,9 +1,11 @@
 ﻿using MMORPG_SERVER.Common.Network;
+using MMORPG_SERVER.Data.CS;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.AttributeSystem;
 using MMORPG_SERVER.System.InventorySystem;
 using Serilog;
+using static FreeSql.Internal.GlobalFilter;
 
 namespace MMORPG_SERVER.Service
 {
@@ -37,17 +39,39 @@ namespace MMORPG_SERVER.Service
                 var channel = sender as NetChannel;
                 int userId = channel._user._userId;
                 var itemId = useItemRequest.ItemId;
+                var itemDefine = DataManager.Instance.GetItemDefine(itemId);
+
+                if((ItemType)itemDefine.ItemType == ItemType.Equip)
+                {
+                    if(!InventoryManager.Instance.AddEquip(userId, itemDefine))
+                    {
+                        //使用装备失败--满了
+                        channel.SendAsync(new UseItemResponse() { SuccessfulUseItem = false });
+                        return;
+                    }
+                }
+
                 var inventory = InventoryManager.Instance.UseItem(userId, itemId);
                 
                 if(inventory != null)
                 {
-                    int changeValue = AttributeManager.Instance.GetConsumableValue(channel._user._player, itemId);
                     var response = new UseItemResponse()
                     {
-                        SuccessfulUseItem = true,
-                        ChangeValue = changeValue
+                        SuccessfulUseItem = true
                     };
                     response.InventoryList.AddRange(inventory);
+
+                    //使用消耗品
+                    if ((ItemType)itemDefine.ItemType == ItemType.Consunable)
+                    {
+                        int changeValue = AttributeManager.Instance.GetConsumableValue(channel._user._player, itemDefine);
+                        response.ChangeValue = changeValue;
+                    }
+                    //使用装备
+                    else
+                    {
+                        AttributeManager.Instance.OnUseEquip(userId, itemDefine);
+                    }
                     channel.SendAsync(response);
 
                     //向其他玩家同步属性

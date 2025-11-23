@@ -1,10 +1,12 @@
-﻿using MMORPG_SERVER.Database;
+﻿using MMORPG_SERVER.Data.CS;
+using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Tool;
 using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,6 +48,9 @@ namespace MMORPG_SERVER.System.InventorySystem
 
         //玩家id对应库存列表
         private Dictionary<int, List<InventoryInfo>> _playerInventoryDictionary = new();
+
+        //玩家id对应装备列表
+        private Dictionary<int, int[]> _playerEquipDictionary = new();
 
         public void Start()
         {
@@ -107,6 +112,54 @@ namespace MMORPG_SERVER.System.InventorySystem
                 }
             }
             return null;
+        }
+
+        public bool AddEquip(int userId, ItemDefine itemDefine)
+        {
+            int[] list = null;
+            if(_playerEquipDictionary.ContainsKey(userId))
+            {
+                list = _playerEquipDictionary[userId];
+            }
+            else
+            {
+                _playerEquipDictionary.Add(userId, new int[6] {-1, -1, -1, -1, -1, -1});
+                list = _playerEquipDictionary[userId];
+            }
+
+            switch ((EquipType)itemDefine.EquipType)
+            {
+                case EquipType.Sword:
+                    if (list[0] != -1 && list[1] != -1)
+                    {
+                        return false;
+                    }
+                    else if (list[0] == -1)
+                    {
+                        list[0] = itemDefine.ID;
+                    }
+                    else
+                    {
+                        list[1] = itemDefine.ID;
+                    }
+                    return true;
+
+                case EquipType.Armor:
+                    if (list[2] != -1 && list[3] != -1)
+                    {
+                        return false;
+                    }
+                    else if (list[2] == -1)
+                    {
+                        list[2] = itemDefine.ID;
+                    }
+                    else
+                    {
+                        list[3] = itemDefine.ID;
+                    }
+                    return true;
+            }
+            return false;
         }
     }
 }
