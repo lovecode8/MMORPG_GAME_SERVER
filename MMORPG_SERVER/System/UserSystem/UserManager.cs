@@ -38,6 +38,15 @@ namespace MMORPG_SERVER.System.UserSystem
             return null;
         }
 
+        public User? GetUserById(int id)
+        {
+            foreach(var user in _userDictionary.Values)
+            {
+                if (user._userId == id) return user;
+            }
+            return null;
+        }
+
         public void RemoveUser(string userName)
         {
             if(_userDictionary.ContainsKey(userName))

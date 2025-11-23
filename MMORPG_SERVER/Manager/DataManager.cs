@@ -11,14 +11,18 @@ namespace MMORPG_SERVER.Manager
     {
         public Dictionary<int, UnitDefine> unitDictionary;
 
+        public Dictionary<int, ItemDefine> itemDefineDictionary;
+
         private DataManager()
         {
             unitDictionary = new Dictionary<int, UnitDefine>();
+            itemDefineDictionary = new Dictionary<int, ItemDefine>();
         }
 
         public void Start()
         {
             unitDictionary = Load<Dictionary<int, UnitDefine>>("/UnitDefine.json");
+            itemDefineDictionary = Load<Dictionary<int, ItemDefine>>("ItemDefine.json");
         }
 
         public void Update()
@@ -44,6 +48,11 @@ namespace MMORPG_SERVER.Manager
         public UnitDefine GetUnitDefine(int unitId)
         {
             return unitDictionary[unitId];
+        }
+
+        public ItemDefine GetItemDefine(int itemId)
+        {
+            return itemDefineDictionary[itemId];
         }
     }
 }

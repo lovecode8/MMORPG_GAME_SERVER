@@ -120,6 +120,7 @@ namespace MMORPG_SERVER
             GuildService.Instance.HandleMessage(channel, args.packet.Message);
             EntityService.Instance.HandleMessage(channel, args.packet.Message);
             FightService.Instance.HandleMessage(channel, args.packet.Message);
+            InventoryService.Instance.HandleMessage(channel, args.packet.Message);
         }
     }
 }

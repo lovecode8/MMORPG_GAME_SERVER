@@ -20,8 +20,12 @@ namespace MMORPG_SERVER.Data.CS
         public string Name; // 物品名称
         public string Description; // 物品描述
         public int ItemType; // 物品类型
+        public int EquipType; // 装备类型
+        public int ConsumableType; // 消耗品类型
         public int Hp; // 对hp的增加值
         public int Mp; // 对mp的增加值
+        public int MaxHp; // 对最大生命值的增加值
+        public int MaxMp; // 对最大蓝量的增加值
         public int Atk; // 对攻击力的增加值
         public int Def; // 防御力的增加值
         public int Addition; // 对其他属性的增加值
@@ -32,5 +36,7 @@ namespace MMORPG_SERVER.Data.CS
 
 
     // End of Auto Generated Code
+
+
 
 }
