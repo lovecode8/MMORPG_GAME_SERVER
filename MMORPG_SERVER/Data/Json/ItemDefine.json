@@ -2,7 +2,7 @@
   "1": {
     "ID": 1,
     "Name": "初级宝剑",
-    "Description": "增加20点攻击力",
+    "Description": "装备后增加20点攻击力",
     "ItemType": 0,
     "EquipType": 0,
     "ConsumableType": -1,
@@ -56,7 +56,7 @@
   "4": {
     "ID": 4,
     "Name": "初级盔甲",
-    "Description": "增加20点防御力",
+    "Description": "装备后增加20点防御力",
     "ItemType": 0,
     "EquipType": 1,
     "ConsumableType": -1,
@@ -88,5 +88,23 @@
     "SpritePath": "UI/Item/addition1",
     "CanbeDrop": false,
     "ResouresPath": ""
+  },
+  "6": {
+    "ID": 6,
+    "Name": "中级宝剑",
+    "Description": "装备后增加40点攻击力",
+    "ItemType": 0,
+    "EquipType": 0,
+    "ConsumableType": -1,
+    "Hp": 0,
+    "Mp": 0,
+    "MaxHp": 0,
+    "MaxMp": 0,
+    "Atk": 40,
+    "Def": 0,
+    "Addition": 0,
+    "SpritePath": "UI/Item/atk2",
+    "CanbeDrop": true,
+    "ResouresPath": "Atk2"
   }
 }

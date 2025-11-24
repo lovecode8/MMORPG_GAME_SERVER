@@ -92,5 +92,24 @@ namespace MMORPG_SERVER.System.AttributeSystem
                     break;
             }
         }
+
+        public void OnRemoveEquip(int userId, int itemId)
+        {
+            var itemDefine = DataManager.Instance.GetItemDefine(itemId);
+            if(_attributeDictionary.TryGetValue(userId, out var attribute))
+            {
+                switch ((EquipType)itemDefine.EquipType)
+                {
+                    case EquipType.Sword:
+                        attribute._atkAddition -= itemDefine.Atk;
+                        Log.Information($"[AttributeManager] 卸下装备成功：减少atk{itemDefine.Atk}");
+                        break;
+                    case EquipType.Armor:
+                        attribute._defAddition -= itemDefine.Def;
+                        Log.Information($"[AttributeManager] 卸下装备成功：减少def{itemDefine.Def}");
+                        break;
+                }
+            }
+        }
     }
 }

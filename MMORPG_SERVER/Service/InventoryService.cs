@@ -1,5 +1,7 @@
 ﻿using MMORPG_SERVER.Common.Network;
 using MMORPG_SERVER.Data.CS;
+using MMORPG_SERVER.Database;
+using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.AttributeSystem;
@@ -19,12 +21,19 @@ namespace MMORPG_SERVER.Service
                 var channel = sender as NetChannel;
                 int userId = channel._user._userId;
                 Log.Information($"[InventoryService] 收到加载库存请求：{userId}");
-                var inventory = InventoryManager.Instance.GetPlayerInventory(userId);
 
-                var response = new SearchInventoryResponse() { Inventory = new() };
-                if(inventory != null)
+                var response = new SearchInventoryResponse(){ Inventory = new() };
+                var inventory = InventoryManager.Instance.GetPlayerInventory(userId);
+                var equipList = InventoryManager.Instance.GetPlayerEquip(userId);
+
+                if (inventory != null)
                 {
                     response.Inventory.InventoryList.AddRange(inventory);
+                }
+
+                if(equipList != null)
+                {
+                    response.EquipList.AddRange(equipList);
                 }
                 channel.SendAsync(response);
             });
@@ -40,16 +49,6 @@ namespace MMORPG_SERVER.Service
                 int userId = channel._user._userId;
                 var itemId = useItemRequest.ItemId;
                 var itemDefine = DataManager.Instance.GetItemDefine(itemId);
-
-                if((ItemType)itemDefine.ItemType == ItemType.Equip)
-                {
-                    if(!InventoryManager.Instance.AddEquip(userId, itemDefine))
-                    {
-                        //使用装备失败--满了
-                        channel.SendAsync(new UseItemResponse() { SuccessfulUseItem = false });
-                        return;
-                    }
-                }
 
                 var inventory = InventoryManager.Instance.UseItem(userId, itemId);
                 
@@ -70,6 +69,19 @@ namespace MMORPG_SERVER.Service
                     //使用装备
                     else
                     {
+                        int gridIndex = InventoryManager.Instance.AddEquip(userId, itemDefine);
+                        if (gridIndex == -1)
+                        {
+                            //使用装备失败--满了
+                            channel.SendAsync(new UseItemResponse() { SuccessfulUseItem = false });
+                            return;
+                        }
+                        MysqlManager.Instance._freeSql.Insert<DbEquip>(new DbEquip()
+                        {
+                            ownerId = userId,
+                            gridIndex = gridIndex,
+                            itemId = itemId
+                        }).ExecuteAffrows();
                         AttributeManager.Instance.OnUseEquip(userId, itemDefine);
                     }
                     channel.SendAsync(response);
@@ -80,6 +92,35 @@ namespace MMORPG_SERVER.Service
                 {
                     channel.SendAsync(new UseItemResponse() { SuccessfulUseItem = false });
                 }
+            });
+        }
+
+        //处理玩家卸下装备请求
+        public void OnHandle(object sender, RemoveEquipRequest removeEquipRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                int userId = channel._user._userId;
+                var inventoryInfoList =
+                    InventoryManager.Instance.RemoveEquip(userId, removeEquipRequest);
+                var response = new RemoveEquipResponse() { Inventory = new() };
+                if(inventoryInfoList != null)
+                {
+                    response.SuccessfulRemove = true;
+                    response.Inventory.InventoryList.AddRange(inventoryInfoList);
+                    AttributeManager.Instance.OnRemoveEquip(userId, removeEquipRequest.ItemId);
+                    MysqlManager.Instance._freeSql.Delete<DbEquip>().
+                        Where(e => e.ownerId == userId).
+                        Where(e => e.gridIndex == removeEquipRequest.EquipGridIndex).
+                        Where(e => e.itemId == removeEquipRequest.ItemId).
+                        ExecuteAffrows();
+                }
+                else
+                {
+                    response.SuccessfulRemove = false;
+                }
+                channel.SendAsync(response);
             });
         }
     }
