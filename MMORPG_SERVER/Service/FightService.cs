@@ -1,6 +1,7 @@
 ﻿using MMORPG_SERVER.Common.Network;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
+using MMORPG_SERVER.System.AttributeSystem;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using Serilog;
@@ -9,6 +10,7 @@ namespace MMORPG_SERVER.Service
 {
     public class FightService : ServiceBase<FightService>
     {
+
         //处理玩家攻击请求
         public void OnHandle(object sender, PlayerAttackRequest playerAttackRequest)
         {
@@ -37,8 +39,15 @@ namespace MMORPG_SERVER.Service
                 //命中
                 var attacker = EntityManager.Instance.GetEntity(playerId);
                 var target = EntityManager.Instance.GetEntity(targetId);
+                var attackerAttribute = AttributeManager.Instance.GetPlayerAttribute(channel._user._userId);
 
-                int demage = attacker._unitDefine.AttackDemage[playerAttackRequest.CamboCount];
+                //基础伤害  
+                var demage = attacker._unitDefine.AttackDemage[playerAttackRequest.CamboCount];
+                if(attackerAttribute != null)
+                {
+                    demage += attackerAttribute._atkAddition;
+                }
+
                 //发给所有客户端
                 PlayerManager.Instance.Broadcast(new PlayerAttackResponse()
                 {
@@ -47,13 +56,13 @@ namespace MMORPG_SERVER.Service
                     TargetId = targetId,
                     CamboCount = playerAttackRequest.CamboCount,
                     IsHit = true,
-                    Damage = demage
+                    Damage = (int)demage
                 }, channel._user._player, true);
 
                 switch (target._entityType)
                 {
                     case EntityType.Player:
-                        (target as Player).GetHurt(demage);
+                        (target as Player).GetHurt((int)demage);
                         break;
                     //TODO：后续增加敌人处理
                 }

@@ -1,4 +1,5 @@
 ﻿using MMORPG_SERVER.Database;
+using MMORPG_SERVER.System.AttributeSystem;
 using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.FriendSystem;
@@ -46,6 +47,9 @@ namespace MMORPG_SERVER.Manager
 
             InventoryManager.Instance.Start();
             Log.Information("[InventoryManager] 初始化完成");
+
+            AttributeManager.Instance.Start();
+            Log.Information("[AttributeManager] 初始化完成");
 
             Scheduler.Instance.AddScheduler(_updateTime, Update);
         }

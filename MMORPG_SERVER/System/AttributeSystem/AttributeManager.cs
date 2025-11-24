@@ -1,4 +1,6 @@
 ﻿using MMORPG_SERVER.Data.CS;
+using MMORPG_SERVER.Database;
+using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.System.PlayerSystem;
@@ -21,25 +23,36 @@ namespace MMORPG_SERVER.System.AttributeSystem
         //玩家id对应属性
         private Dictionary<int, Attribute> _attributeDictionary = new();
 
-        public void AddPlayer(Player player)
+        public void Start()
         {
-            int userId = player._user._userId;
+            LoadAttributeFromDatabase();
+        }
 
-            //TODO:去数据库获取玩家的装备信息
-            _attributeDictionary.Add(userId, new Attribute()
+        private void LoadAttributeFromDatabase()
+        {
+            var list = MysqlManager.Instance._freeSql.Select<DbAttribute>().ToList();
+            foreach(var attribute in list)
             {
-                _atkAddition = 0,
-                _defAddition = 0
-            });
+                _attributeDictionary.Add(attribute.ownerId, new()
+                {
+                    _maxHpAddition = attribute.hpAddition,
+                    _maxMpAddition = attribute.mpAddition,
+                    _atkAddition = attribute.atkAddition,
+                    _defAddition = attribute.defAddition
+                });
+            }
         }
 
         public Attribute? GetPlayerAttribute(int userId)
         {
-            if (_attributeDictionary.TryGetValue(userId, out var attribute))
+            lock (_attributeDictionary)
             {
-                return attribute;
+                if (_attributeDictionary.TryGetValue(userId, out var attribute))
+                {
+                    return attribute;
+                }
+                return null;
             }
-            return null;
         }
 
         //获取对应物品的加成属性，并同步在服务端
@@ -56,12 +69,26 @@ namespace MMORPG_SERVER.System.AttributeSystem
                     return item.Mp;
 
                 case ConsumableType.MaxHp:
-                    _attributeDictionary[player._user._userId]._maxHpAddition += item.MaxHp;
-                    return item.MaxHp;
+                    lock (_attributeDictionary)
+                    {
+                        if (!_attributeDictionary.ContainsKey(player._user._userId))
+                        {
+                            _attributeDictionary.Add(player._user._userId, new());
+                        }
+                        _attributeDictionary[player._user._userId]._maxHpAddition += item.MaxHp;
+                        return item.MaxHp;
+                    }
 
                 case ConsumableType.MaxMp:
-                    _attributeDictionary[player._user._userId]._maxMpAddition += item.MaxMp;
-                    return item.MaxMp;
+                    lock (_attributeDictionary)
+                    {
+                        if (!_attributeDictionary.ContainsKey(player._user._userId))
+                        {
+                            _attributeDictionary.Add(player._user._userId, new());
+                        }
+                        _attributeDictionary[player._user._userId]._maxMpAddition += item.MaxMp;
+                        return item.MaxMp;
+                    }
             }
 
             return 0;
@@ -69,45 +96,80 @@ namespace MMORPG_SERVER.System.AttributeSystem
 
         public void OnUseEquip(int userId, ItemDefine itemDefine)
         {
-            Attribute attribute = null;
-            if (_attributeDictionary.ContainsKey(userId))
+            lock (_attributeDictionary)
             {
-                attribute = _attributeDictionary[userId];
-            }
-            else
-            {
-                _attributeDictionary.Add(userId, new());
-                attribute = _attributeDictionary[userId];
-            }
+                Attribute attribute = null;
+                if (_attributeDictionary.ContainsKey(userId))
+                {
+                    attribute = _attributeDictionary[userId];
+                }
+                else
+                {
+                    _attributeDictionary.Add(userId, new());
+                    attribute = _attributeDictionary[userId];
 
-            switch ((EquipType)itemDefine.EquipType)
-            {
-                case EquipType.Sword:
-                    attribute._atkAddition += itemDefine.Atk;
-                    Log.Information($"[AttributeManager] 使用装备成功：增加atk{itemDefine.Atk}");
-                    break;
-                case EquipType.Armor:
-                    attribute._defAddition += itemDefine.Def;
-                    Log.Information($"[AttributeManager] 使用装备成功：增加def{itemDefine.Def}");
-                    break;
+                    MysqlManager.Instance._freeSql.Insert<DbAttribute>(new DbAttribute()
+                    {
+                        ownerId = userId
+                    }).ExecuteAffrows();
+                }
+
+                switch ((EquipType)itemDefine.EquipType)
+                {
+                    case EquipType.Sword:
+                        attribute._atkAddition += itemDefine.Atk;
+
+                        MysqlManager.Instance._freeSql.Update<DbAttribute>().
+                            Where(a => a.ownerId == userId).
+                            Set(a => a.atkAddition, attribute._atkAddition)
+                            .ExecuteAffrows();
+
+                        Log.Information($"[AttributeManager] 使用装备成功：增加atk{itemDefine.Atk}");
+                        break;
+                    case EquipType.Armor:
+                        attribute._defAddition += itemDefine.Def;
+                        
+                        MysqlManager.Instance._freeSql.Update<DbAttribute>().
+                            Where(a => a.ownerId == userId).
+                            Set(a => a.defAddition, attribute._defAddition)
+                            .ExecuteAffrows();
+
+                        Log.Information($"[AttributeManager] 使用装备成功：增加def{itemDefine.Def}");
+                        break;
+                }
             }
         }
 
         public void OnRemoveEquip(int userId, int itemId)
         {
-            var itemDefine = DataManager.Instance.GetItemDefine(itemId);
-            if(_attributeDictionary.TryGetValue(userId, out var attribute))
+            lock (_attributeDictionary)
             {
-                switch ((EquipType)itemDefine.EquipType)
+                var itemDefine = DataManager.Instance.GetItemDefine(itemId);
+                if (_attributeDictionary.TryGetValue(userId, out var attribute))
                 {
-                    case EquipType.Sword:
-                        attribute._atkAddition -= itemDefine.Atk;
-                        Log.Information($"[AttributeManager] 卸下装备成功：减少atk{itemDefine.Atk}");
-                        break;
-                    case EquipType.Armor:
-                        attribute._defAddition -= itemDefine.Def;
-                        Log.Information($"[AttributeManager] 卸下装备成功：减少def{itemDefine.Def}");
-                        break;
+                    switch ((EquipType)itemDefine.EquipType)
+                    {
+                        case EquipType.Sword:
+                            attribute._atkAddition -= itemDefine.Atk;
+
+                            MysqlManager.Instance._freeSql.Update<DbAttribute>().
+                            Where(a => a.ownerId == userId).
+                            Set(a => a.atkAddition, attribute._atkAddition)
+                            .ExecuteAffrows();
+
+                            Log.Information($"[AttributeManager] 卸下装备成功：减少atk{itemDefine.Atk}");
+                            break;
+                        case EquipType.Armor:
+                            attribute._defAddition -= itemDefine.Def;
+
+                            MysqlManager.Instance._freeSql.Update<DbAttribute>().
+                            Where(a => a.ownerId == userId).
+                            Set(a => a.defAddition, attribute._defAddition)
+                            .ExecuteAffrows();
+
+                            Log.Information($"[AttributeManager] 卸下装备成功：减少def{itemDefine.Def}");
+                            break;
+                    }
                 }
             }
         }

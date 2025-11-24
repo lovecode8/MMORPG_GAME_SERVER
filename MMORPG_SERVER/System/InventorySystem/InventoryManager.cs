@@ -151,6 +151,12 @@ namespace MMORPG_SERVER.System.InventorySystem
                         if(info.ItemId == itemId)
                         {
                             info.ItemCount += count;
+
+                            MysqlManager.Instance._freeSql.Update<DbInventory>().
+                                Where(i => i.itemId == itemId).
+                                Set(i => i.itemCount, info.ItemCount).
+                                ExecuteAffrows();
+
                             return list;
                         }
                     }
@@ -160,6 +166,14 @@ namespace MMORPG_SERVER.System.InventorySystem
                         ItemId = itemId,
                         ItemCount = count
                     });
+
+                    MysqlManager.Instance._freeSql.Insert<DbInventory>(new DbInventory()
+                    {
+                        ownerId = userId,
+                        itemId = itemId,
+                        itemCount = count
+                    }).ExecuteAffrows();
+
                     return list;
                 }
                 return null;
@@ -169,22 +183,37 @@ namespace MMORPG_SERVER.System.InventorySystem
         //使用物品
         public List<InventoryInfo>? UseItem(int userId, int itemId)
         {
-            if(_playerInventoryDictionary.TryGetValue(userId, out var inventory))
+            lock (_playerInventoryDictionary)
             {
-                foreach(var item in inventory)
+                if (_playerInventoryDictionary.TryGetValue(userId, out var inventory))
                 {
-                    if(item.ItemId == itemId)
+                    foreach (var item in inventory)
                     {
-                        item.ItemCount--;
-                        if(item.ItemCount == 0)
+                        if (item.ItemId == itemId)
                         {
-                            inventory.Remove(item);
+                            item.ItemCount--;
+
+                            MysqlManager.Instance._freeSql.Update<DbInventory>().
+                                Where(i => i.itemId == itemId).
+                                Set(i => i.itemCount, item.ItemCount).
+                                ExecuteAffrows();
+
+                            //该物品用完了
+                            if (item.ItemCount == 0)
+                            {
+                                inventory.Remove(item);
+
+                                MysqlManager.Instance._freeSql.Delete<DbInventory>().
+                                    Where(i => i.itemId == itemId).
+                                    ExecuteAffrows();
+                            }
+
+                            return inventory;
                         }
-                        return inventory;
                     }
                 }
+                return null;
             }
-            return null;
         }
 
         //增加装备
