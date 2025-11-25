@@ -35,8 +35,6 @@ namespace MMORPG_SERVER.System.AttributeSystem
             {
                 _attributeDictionary.Add(attribute.ownerId, new()
                 {
-                    _maxHpAddition = attribute.hpAddition,
-                    _maxMpAddition = attribute.mpAddition,
                     _atkAddition = attribute.atkAddition,
                     _defAddition = attribute.defAddition
                 });
@@ -61,34 +59,28 @@ namespace MMORPG_SERVER.System.AttributeSystem
             switch ((ConsumableType)item.ConsumableType)
             {
                 case ConsumableType.Hp:
-                    player._dbCharacter.Hp += item.Hp;
+                    player._dbCharacter.Hp = Math.Clamp
+                        (player._dbCharacter.Hp + item.Hp, 
+                        0, 
+                        DataManager.Instance.GetUnitDefine
+                        (player._dbCharacter.UnitId).Hp + player._dbCharacter.MaxHpAddition);
                     return item.Hp;
 
                 case ConsumableType.Mp:
-                    player._dbCharacter.Mp += item.Mp;
+                    player._dbCharacter.Mp = Math.Clamp
+                        (player._dbCharacter.Mp + item.Mp,
+                        0,
+                        DataManager.Instance.GetUnitDefine
+                        (player._dbCharacter.UnitId).Mp + player._dbCharacter.MaxMpAddition);
                     return item.Mp;
 
                 case ConsumableType.MaxHp:
-                    lock (_attributeDictionary)
-                    {
-                        if (!_attributeDictionary.ContainsKey(player._user._userId))
-                        {
-                            _attributeDictionary.Add(player._user._userId, new());
-                        }
-                        _attributeDictionary[player._user._userId]._maxHpAddition += item.MaxHp;
-                        return item.MaxHp;
-                    }
+                    player._dbCharacter.MaxHpAddition += item.MaxHp;
+                    return item.MaxHp;
 
                 case ConsumableType.MaxMp:
-                    lock (_attributeDictionary)
-                    {
-                        if (!_attributeDictionary.ContainsKey(player._user._userId))
-                        {
-                            _attributeDictionary.Add(player._user._userId, new());
-                        }
-                        _attributeDictionary[player._user._userId]._maxMpAddition += item.MaxMp;
-                        return item.MaxMp;
-                    }
+                    player._dbCharacter.MaxMpAddition += item.MaxMp;
+                    return item.MaxMp;
             }
 
             return 0;

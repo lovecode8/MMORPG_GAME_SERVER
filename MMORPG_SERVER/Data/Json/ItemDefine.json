@@ -106,5 +106,23 @@
     "SpritePath": "UI/Item/atk2",
     "CanbeDrop": true,
     "ResouresPath": "Atk2"
+  },
+  "7": {
+    "ID": 7,
+    "Name": "鸡肉",
+    "Description": "使用后增加50点最大生命值",
+    "ItemType": 1,
+    "EquipType": -1,
+    "ConsumableType": 2,
+    "Hp": 0,
+    "Mp": 0,
+    "MaxHp": 50,
+    "MaxMp": 0,
+    "Atk": 0,
+    "Def": 0,
+    "Addition": 0,
+    "SpritePath": "UI/Item/maxHp1",
+    "CanbeDrop": true,
+    "ResouresPath": " MaxHp1"
   }
 }

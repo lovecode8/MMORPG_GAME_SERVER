@@ -21,6 +21,8 @@ namespace MMORPG_SERVER.Extension
                 Name = dbCharacter.Name,
                 Hp = dbCharacter.Hp,
                 Mp = dbCharacter.Mp,
+                MaxHpAddition = dbCharacter.MaxHpAddition,
+                MaxMpAddition = dbCharacter.MaxMpAddition,
                 Transform = netTransform,
                 Level = dbCharacter.Level,
                 Gold = dbCharacter.Gold

@@ -6,6 +6,7 @@ using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.AttributeSystem;
 using MMORPG_SERVER.System.InventorySystem;
+using MMORPG_SERVER.System.PlayerSystem;
 using Serilog;
 using static FreeSql.Internal.GlobalFilter;
 
@@ -65,6 +66,19 @@ namespace MMORPG_SERVER.Service
                     {
                         int changeValue = AttributeManager.Instance.GetConsumableValue(channel._user._player, itemDefine);
                         response.ChangeValue = changeValue;
+
+                        //向其他玩家同步属性（仅同步Hp和maxHp）
+                        if((ConsumableType)itemDefine.ConsumableType == ConsumableType.Hp || 
+                        (ConsumableType)itemDefine.ConsumableType == ConsumableType.MaxMp)
+                        {
+                            PlayerManager.Instance.Broadcast(new SyncAttributeResponse()
+                            {
+                                PlayerId = channel._user._player._playerId,
+                                ConsumableType = itemDefine.ConsumableType,
+                                ChangeValue = changeValue
+                            }, channel._user._player);
+                        }
+                        
                     }
                     //使用装备
                     else
@@ -85,8 +99,6 @@ namespace MMORPG_SERVER.Service
                         AttributeManager.Instance.OnUseEquip(userId, itemDefine);
                     }
                     channel.SendAsync(response);
-
-                    //向其他玩家同步属性
                 }
                 else
                 {

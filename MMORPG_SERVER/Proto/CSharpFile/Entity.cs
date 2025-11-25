@@ -25,23 +25,24 @@ public static partial class EntityReflection {
           "CgxFbnRpdHkucHJvdG8aEk5ldFRyYW5zZm9ybS5wcm90bxoQTmV0VmVjdG9y",
           "My5wcm90byJbCg5FbnRpdHlEYXRhTGlzdBInCg5lbnRpdHlEYXRhVHlwZRgB",
           "IAEoDjIPLkVudGl0eURhdGFUeXBlEiAKC2VudGl0eURhdGFzGAIgAygLMgsu",
-          "RW50aXR5RGF0YSKnAQoKRW50aXR5RGF0YRIQCghlbnRpdHlJZBgBIAEoBRIO",
+          "RW50aXR5RGF0YSLVAQoKRW50aXR5RGF0YRIQCghlbnRpdHlJZBgBIAEoBRIO",
           "CgZ1bml0SWQYAiABKAUSDAoEbmFtZRgDIAEoCRIgCgl0cmFuc2Zvcm0YBCAB",
           "KAsyDS5OZXRUcmFuc2Zvcm0SEgoKZW50aXR5VHlwZRgFIAEoBRIKCgJocBgG",
-          "IAEoBRIKCgJtcBgHIAEoBRINCgVsZXZlbBgIIAEoBRIMCgRnb2xkGAkgASgF",
-          "IjYKE0VudGl0eUxlYXZlUmVzcG9uc2USHwoKZW50aXR5RGF0YRgBIAEoCzIL",
-          "LkVudGl0eURhdGEiaAoRRW50aXR5U3luY1JlcXVlc3QSEAoIZW50aXR5SWQY",
-          "ASABKAUSDwoHc3RhdGVJZBgCIAEoBRIdCghwb3NpdGlvbhgDIAEoCzILLk5l",
-          "dFZlY3RvcjMSEQoJcm90YXRpb25ZGAQgASgCImkKEkVudGl0eVN5bmNSZXNw",
-          "b25zZRIQCghlbnRpdHlJZBgBIAEoBRIPCgdzdGF0ZUlkGAIgASgFEh0KCHBv",
-          "c2l0aW9uGAMgASgLMgsuTmV0VmVjdG9yMxIRCglyb3RhdGlvblkYBCABKAIq",
-          "NwoORW50aXR5RGF0YVR5cGUSEgoOTmV3RW50aXR5RW50ZXIQABIRCg1TeW5j",
-          "QWxsRW50aXR5EAFiBnByb3RvMw=="));
+          "IAEoBRIKCgJtcBgHIAEoBRIVCg1tYXhIcEFkZGl0aW9uGAggASgFEhUKDW1h",
+          "eE1wQWRkaXRpb24YCSABKAUSDQoFbGV2ZWwYCiABKAUSDAoEZ29sZBgLIAEo",
+          "BSI2ChNFbnRpdHlMZWF2ZVJlc3BvbnNlEh8KCmVudGl0eURhdGEYASABKAsy",
+          "Cy5FbnRpdHlEYXRhImgKEUVudGl0eVN5bmNSZXF1ZXN0EhAKCGVudGl0eUlk",
+          "GAEgASgFEg8KB3N0YXRlSWQYAiABKAUSHQoIcG9zaXRpb24YAyABKAsyCy5O",
+          "ZXRWZWN0b3IzEhEKCXJvdGF0aW9uWRgEIAEoAiJpChJFbnRpdHlTeW5jUmVz",
+          "cG9uc2USEAoIZW50aXR5SWQYASABKAUSDwoHc3RhdGVJZBgCIAEoBRIdCghw",
+          "b3NpdGlvbhgDIAEoCzILLk5ldFZlY3RvcjMSEQoJcm90YXRpb25ZGAQgASgC",
+          "KjcKDkVudGl0eURhdGFUeXBlEhIKDk5ld0VudGl0eUVudGVyEAASEQoNU3lu",
+          "Y0FsbEVudGl0eRABYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::NetTransformReflection.Descriptor, global::NetVector3Reflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::EntityDataType), }, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::EntityDataList), global::EntityDataList.Parser, new[]{ "EntityDataType", "EntityDatas" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::EntityData), global::EntityData.Parser, new[]{ "EntityId", "UnitId", "Name", "Transform", "EntityType", "Hp", "Mp", "Level", "Gold" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::EntityData), global::EntityData.Parser, new[]{ "EntityId", "UnitId", "Name", "Transform", "EntityType", "Hp", "Mp", "MaxHpAddition", "MaxMpAddition", "Level", "Gold" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::EntityLeaveResponse), global::EntityLeaveResponse.Parser, new[]{ "EntityData" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::EntitySyncRequest), global::EntitySyncRequest.Parser, new[]{ "EntityId", "StateId", "Position", "RotationY" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::EntitySyncResponse), global::EntitySyncResponse.Parser, new[]{ "EntityId", "StateId", "Position", "RotationY" }, null, null, null, null)
@@ -328,6 +329,8 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
     entityType_ = other.entityType_;
     hp_ = other.hp_;
     mp_ = other.mp_;
+    maxHpAddition_ = other.maxHpAddition_;
+    maxMpAddition_ = other.maxMpAddition_;
     level_ = other.level_;
     gold_ = other.gold_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -423,8 +426,32 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
     }
   }
 
+  /// <summary>Field number for the "maxHpAddition" field.</summary>
+  public const int MaxHpAdditionFieldNumber = 8;
+  private int maxHpAddition_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int MaxHpAddition {
+    get { return maxHpAddition_; }
+    set {
+      maxHpAddition_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "maxMpAddition" field.</summary>
+  public const int MaxMpAdditionFieldNumber = 9;
+  private int maxMpAddition_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int MaxMpAddition {
+    get { return maxMpAddition_; }
+    set {
+      maxMpAddition_ = value;
+    }
+  }
+
   /// <summary>Field number for the "level" field.</summary>
-  public const int LevelFieldNumber = 8;
+  public const int LevelFieldNumber = 10;
   private int level_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -436,7 +463,7 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
   }
 
   /// <summary>Field number for the "gold" field.</summary>
-  public const int GoldFieldNumber = 9;
+  public const int GoldFieldNumber = 11;
   private int gold_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -469,6 +496,8 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
     if (EntityType != other.EntityType) return false;
     if (Hp != other.Hp) return false;
     if (Mp != other.Mp) return false;
+    if (MaxHpAddition != other.MaxHpAddition) return false;
+    if (MaxMpAddition != other.MaxMpAddition) return false;
     if (Level != other.Level) return false;
     if (Gold != other.Gold) return false;
     return Equals(_unknownFields, other._unknownFields);
@@ -485,6 +514,8 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
     if (EntityType != 0) hash ^= EntityType.GetHashCode();
     if (Hp != 0) hash ^= Hp.GetHashCode();
     if (Mp != 0) hash ^= Mp.GetHashCode();
+    if (MaxHpAddition != 0) hash ^= MaxHpAddition.GetHashCode();
+    if (MaxMpAddition != 0) hash ^= MaxMpAddition.GetHashCode();
     if (Level != 0) hash ^= Level.GetHashCode();
     if (Gold != 0) hash ^= Gold.GetHashCode();
     if (_unknownFields != null) {
@@ -533,12 +564,20 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
       output.WriteRawTag(56);
       output.WriteInt32(Mp);
     }
-    if (Level != 0) {
+    if (MaxHpAddition != 0) {
       output.WriteRawTag(64);
+      output.WriteInt32(MaxHpAddition);
+    }
+    if (MaxMpAddition != 0) {
+      output.WriteRawTag(72);
+      output.WriteInt32(MaxMpAddition);
+    }
+    if (Level != 0) {
+      output.WriteRawTag(80);
       output.WriteInt32(Level);
     }
     if (Gold != 0) {
-      output.WriteRawTag(72);
+      output.WriteRawTag(88);
       output.WriteInt32(Gold);
     }
     if (_unknownFields != null) {
@@ -579,12 +618,20 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
       output.WriteRawTag(56);
       output.WriteInt32(Mp);
     }
-    if (Level != 0) {
+    if (MaxHpAddition != 0) {
       output.WriteRawTag(64);
+      output.WriteInt32(MaxHpAddition);
+    }
+    if (MaxMpAddition != 0) {
+      output.WriteRawTag(72);
+      output.WriteInt32(MaxMpAddition);
+    }
+    if (Level != 0) {
+      output.WriteRawTag(80);
       output.WriteInt32(Level);
     }
     if (Gold != 0) {
-      output.WriteRawTag(72);
+      output.WriteRawTag(88);
       output.WriteInt32(Gold);
     }
     if (_unknownFields != null) {
@@ -617,6 +664,12 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
     }
     if (Mp != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Mp);
+    }
+    if (MaxHpAddition != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHpAddition);
+    }
+    if (MaxMpAddition != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxMpAddition);
     }
     if (Level != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
@@ -659,6 +712,12 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
     }
     if (other.Mp != 0) {
       Mp = other.Mp;
+    }
+    if (other.MaxHpAddition != 0) {
+      MaxHpAddition = other.MaxHpAddition;
+    }
+    if (other.MaxMpAddition != 0) {
+      MaxMpAddition = other.MaxMpAddition;
     }
     if (other.Level != 0) {
       Level = other.Level;
@@ -717,10 +776,18 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
           break;
         }
         case 64: {
-          Level = input.ReadInt32();
+          MaxHpAddition = input.ReadInt32();
           break;
         }
         case 72: {
+          MaxMpAddition = input.ReadInt32();
+          break;
+        }
+        case 80: {
+          Level = input.ReadInt32();
+          break;
+        }
+        case 88: {
           Gold = input.ReadInt32();
           break;
         }
@@ -775,10 +842,18 @@ public sealed partial class EntityData : pb::IMessage<EntityData>
           break;
         }
         case 64: {
-          Level = input.ReadInt32();
+          MaxHpAddition = input.ReadInt32();
           break;
         }
         case 72: {
+          MaxMpAddition = input.ReadInt32();
+          break;
+        }
+        case 80: {
+          Level = input.ReadInt32();
+          break;
+        }
+        case 88: {
           Gold = input.ReadInt32();
           break;
         }

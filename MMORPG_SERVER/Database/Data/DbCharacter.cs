@@ -13,6 +13,8 @@ namespace MMORPG_SERVER.Database.Data
         //变量
         public int Hp { get; set; }
         public int Mp { get; set; }
+        public int MaxHpAddition { get; set; }
+        public int MaxMpAddition { get; set; }
         public float posX { get; set; }
         public float posY { get; set; }
         public float posZ { get; set; }

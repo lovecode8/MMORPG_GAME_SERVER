@@ -6,8 +6,6 @@ namespace MMORPG_SERVER.Database.Data
     public class DbAttribute
     {
         public int ownerId { get; set; }
-        public int hpAddition { get; set; }
-        public int mpAddition { get; set; }
         public int atkAddition { get; set; }
         public int defAddition { get; set; }
     }

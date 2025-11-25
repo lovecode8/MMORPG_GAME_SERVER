@@ -27,18 +27,20 @@ public static partial class CharacterReflection {
           "YXJhY3RlciImChRMb2FkQ2hhcmFjdGVyUmVxdWVzdBIOCgZ1c2VySWQYASAB",
           "KAUiXwoVTG9hZENoYXJhY3RlclJlc3BvbnNlEiQKBnJlc3VsdBgBIAEoDjIU",
           "LkxvYWRDaGFyYWN0ZXJSZXN1bHQSIAoJY2hhcmFjdGVyGAIgASgLMg0uTmV0",
-          "Q2hhcmFjdGVyIpMBCgxOZXRDaGFyYWN0ZXISDgoGdXNlcklkGAEgASgFEg4K",
+          "Q2hhcmFjdGVyIsEBCgxOZXRDaGFyYWN0ZXISDgoGdXNlcklkGAEgASgFEg4K",
           "BnVuaXRJZBgCIAEoBRIMCgRuYW1lGAMgASgJEgoKAmhwGAQgASgFEgoKAm1w",
-          "GAUgASgFEg0KBWxldmVsGAYgASgFEgwKBGdvbGQYByABKAUSIAoJdHJhbnNm",
-          "b3JtGAggASgLMg0uTmV0VHJhbnNmb3JtKjgKE0xvYWRDaGFyYWN0ZXJSZXN1",
-          "bHQSEAoMTE9BRF9TVUNDRVNTEAASDwoLTE9BRF9GQUlMRUQQAWIGcHJvdG8z"));
+          "GAUgASgFEhUKDW1heEhwQWRkaXRpb24YBiABKAUSFQoNbWF4TXBBZGRpdGlv",
+          "bhgHIAEoBRINCgVsZXZlbBgIIAEoBRIMCgRnb2xkGAkgASgFEiAKCXRyYW5z",
+          "Zm9ybRgKIAEoCzINLk5ldFRyYW5zZm9ybSo4ChNMb2FkQ2hhcmFjdGVyUmVz",
+          "dWx0EhAKDExPQURfU1VDQ0VTUxAAEg8KC0xPQURfRkFJTEVEEAFiBnByb3Rv",
+          "Mw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::NetTransformReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LoadCharacterResult), }, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::CreateCharacterRequest), global::CreateCharacterRequest.Parser, new[]{ "Character" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoadCharacterRequest), global::LoadCharacterRequest.Parser, new[]{ "UserId" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoadCharacterResponse), global::LoadCharacterResponse.Parser, new[]{ "Result", "Character" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::NetCharacter), global::NetCharacter.Parser, new[]{ "UserId", "UnitId", "Name", "Hp", "Mp", "Level", "Gold", "Transform" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::NetCharacter), global::NetCharacter.Parser, new[]{ "UserId", "UnitId", "Name", "Hp", "Mp", "MaxHpAddition", "MaxMpAddition", "Level", "Gold", "Transform" }, null, null, null, null)
         }));
   }
   #endregion
@@ -742,6 +744,8 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     name_ = other.name_;
     hp_ = other.hp_;
     mp_ = other.mp_;
+    maxHpAddition_ = other.maxHpAddition_;
+    maxMpAddition_ = other.maxMpAddition_;
     level_ = other.level_;
     gold_ = other.gold_;
     transform_ = other.transform_ != null ? other.transform_.Clone() : null;
@@ -814,8 +818,32 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     }
   }
 
+  /// <summary>Field number for the "maxHpAddition" field.</summary>
+  public const int MaxHpAdditionFieldNumber = 6;
+  private int maxHpAddition_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int MaxHpAddition {
+    get { return maxHpAddition_; }
+    set {
+      maxHpAddition_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "maxMpAddition" field.</summary>
+  public const int MaxMpAdditionFieldNumber = 7;
+  private int maxMpAddition_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int MaxMpAddition {
+    get { return maxMpAddition_; }
+    set {
+      maxMpAddition_ = value;
+    }
+  }
+
   /// <summary>Field number for the "level" field.</summary>
-  public const int LevelFieldNumber = 6;
+  public const int LevelFieldNumber = 8;
   private int level_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -827,7 +855,7 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
   }
 
   /// <summary>Field number for the "gold" field.</summary>
-  public const int GoldFieldNumber = 7;
+  public const int GoldFieldNumber = 9;
   private int gold_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -839,7 +867,7 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
   }
 
   /// <summary>Field number for the "transform" field.</summary>
-  public const int TransformFieldNumber = 8;
+  public const int TransformFieldNumber = 10;
   private global::NetTransform transform_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -870,6 +898,8 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     if (Name != other.Name) return false;
     if (Hp != other.Hp) return false;
     if (Mp != other.Mp) return false;
+    if (MaxHpAddition != other.MaxHpAddition) return false;
+    if (MaxMpAddition != other.MaxMpAddition) return false;
     if (Level != other.Level) return false;
     if (Gold != other.Gold) return false;
     if (!object.Equals(Transform, other.Transform)) return false;
@@ -885,6 +915,8 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     if (Name.Length != 0) hash ^= Name.GetHashCode();
     if (Hp != 0) hash ^= Hp.GetHashCode();
     if (Mp != 0) hash ^= Mp.GetHashCode();
+    if (MaxHpAddition != 0) hash ^= MaxHpAddition.GetHashCode();
+    if (MaxMpAddition != 0) hash ^= MaxMpAddition.GetHashCode();
     if (Level != 0) hash ^= Level.GetHashCode();
     if (Gold != 0) hash ^= Gold.GetHashCode();
     if (transform_ != null) hash ^= Transform.GetHashCode();
@@ -926,16 +958,24 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
       output.WriteRawTag(40);
       output.WriteInt32(Mp);
     }
-    if (Level != 0) {
+    if (MaxHpAddition != 0) {
       output.WriteRawTag(48);
+      output.WriteInt32(MaxHpAddition);
+    }
+    if (MaxMpAddition != 0) {
+      output.WriteRawTag(56);
+      output.WriteInt32(MaxMpAddition);
+    }
+    if (Level != 0) {
+      output.WriteRawTag(64);
       output.WriteInt32(Level);
     }
     if (Gold != 0) {
-      output.WriteRawTag(56);
+      output.WriteRawTag(72);
       output.WriteInt32(Gold);
     }
     if (transform_ != null) {
-      output.WriteRawTag(66);
+      output.WriteRawTag(82);
       output.WriteMessage(Transform);
     }
     if (_unknownFields != null) {
@@ -968,16 +1008,24 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
       output.WriteRawTag(40);
       output.WriteInt32(Mp);
     }
-    if (Level != 0) {
+    if (MaxHpAddition != 0) {
       output.WriteRawTag(48);
+      output.WriteInt32(MaxHpAddition);
+    }
+    if (MaxMpAddition != 0) {
+      output.WriteRawTag(56);
+      output.WriteInt32(MaxMpAddition);
+    }
+    if (Level != 0) {
+      output.WriteRawTag(64);
       output.WriteInt32(Level);
     }
     if (Gold != 0) {
-      output.WriteRawTag(56);
+      output.WriteRawTag(72);
       output.WriteInt32(Gold);
     }
     if (transform_ != null) {
-      output.WriteRawTag(66);
+      output.WriteRawTag(82);
       output.WriteMessage(Transform);
     }
     if (_unknownFields != null) {
@@ -1004,6 +1052,12 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     }
     if (Mp != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Mp);
+    }
+    if (MaxHpAddition != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHpAddition);
+    }
+    if (MaxMpAddition != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxMpAddition);
     }
     if (Level != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
@@ -1040,6 +1094,12 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     }
     if (other.Mp != 0) {
       Mp = other.Mp;
+    }
+    if (other.MaxHpAddition != 0) {
+      MaxHpAddition = other.MaxHpAddition;
+    }
+    if (other.MaxMpAddition != 0) {
+      MaxMpAddition = other.MaxMpAddition;
     }
     if (other.Level != 0) {
       Level = other.Level;
@@ -1093,14 +1153,22 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
           break;
         }
         case 48: {
-          Level = input.ReadInt32();
+          MaxHpAddition = input.ReadInt32();
           break;
         }
         case 56: {
+          MaxMpAddition = input.ReadInt32();
+          break;
+        }
+        case 64: {
+          Level = input.ReadInt32();
+          break;
+        }
+        case 72: {
           Gold = input.ReadInt32();
           break;
         }
-        case 66: {
+        case 82: {
           if (transform_ == null) {
             Transform = new global::NetTransform();
           }
@@ -1147,14 +1215,22 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
           break;
         }
         case 48: {
-          Level = input.ReadInt32();
+          MaxHpAddition = input.ReadInt32();
           break;
         }
         case 56: {
+          MaxMpAddition = input.ReadInt32();
+          break;
+        }
+        case 64: {
+          Level = input.ReadInt32();
+          break;
+        }
+        case 72: {
           Gold = input.ReadInt32();
           break;
         }
-        case 66: {
+        case 82: {
           if (transform_ == null) {
             Transform = new global::NetTransform();
           }

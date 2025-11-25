@@ -76,6 +76,8 @@ namespace MMORPG_SERVER.System.MapSystem
             {
                 entityData.Hp = player._dbCharacter.Hp;
                 entityData.Mp = player._dbCharacter.Mp;
+                entityData.MaxHpAddition = player._dbCharacter.MaxHpAddition;
+                entityData.MaxMpAddition = player._dbCharacter.MaxMpAddition;
                 entityData.Gold = player._dbCharacter.Gold;
                 entityData.Level = player._dbCharacter.Level;
             }

@@ -38,6 +38,8 @@ namespace MMORPG_SERVER.Service
                         Where(c => c.UserId == userId).
                         Set(c => c.Hp, player._dbCharacter.Hp).
                         Set(c => c.Mp, player._dbCharacter.Mp).
+                        Set(c => c.MaxHpAddition, player._dbCharacter.MaxHpAddition).
+                        Set(c => c.MaxMpAddition, player._dbCharacter.MaxMpAddition).
                         Set(c => c.posX, player._position.X).
                         Set(c => c.posY, player._position.Y).
                         Set(c => c.posZ, player._position.Z).
