@@ -42,5 +42,16 @@
     "Hp": 1500,
     "Mp": 60,
     "AttackDemage": [ 20, 30, 40 ]
+  },
+  "5": {
+    "ID": 5,
+    "Name": "小红药",
+    "Type": "物品",
+    "Tool": "",
+    "Skill": "",
+    "Path": "Entity/Item/Hp1",
+    "Hp": 0,
+    "Mp": 0,
+    "AttackDemage": []
   }
 }

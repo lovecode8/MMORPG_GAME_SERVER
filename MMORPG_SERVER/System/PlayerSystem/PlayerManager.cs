@@ -41,9 +41,9 @@ namespace MMORPG_SERVER.System.PlayerSystem
                 user,
                 dbCharacter
                 );
+            AddPlayer(player);
 
             EntityManager.Instance.AddEntity(player);
-            AddPlayer(player);
             MapManager.Instance.EntityEnter(player);
 
             var cell = GetCellByPosition(pos);

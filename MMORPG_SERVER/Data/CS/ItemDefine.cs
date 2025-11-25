@@ -31,7 +31,7 @@ namespace MMORPG_SERVER.Data.CS
         public int Addition; // 对其他属性的增加值
         public string SpritePath; // 图片路径
         public bool CanbeDrop; // 是否可以被丢弃
-        public string ResouresPath; // 资源路径
+        public int UnitId; // 对应实体id
     }
 
 

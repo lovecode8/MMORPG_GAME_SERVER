@@ -5,9 +5,12 @@ using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.AttributeSystem;
+using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.InventorySystem;
+using MMORPG_SERVER.System.MapSystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using Serilog;
+using System.Numerics;
 using static FreeSql.Internal.GlobalFilter;
 
 namespace MMORPG_SERVER.Service
@@ -133,6 +136,44 @@ namespace MMORPG_SERVER.Service
                     response.SuccessfulRemove = false;
                 }
                 channel.SendAsync(response);
+            });
+        }
+
+        //处理玩家丢弃物品请求
+        public void OnHandle(object sender, DropItemRequest dropItemRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                int userId = channel._user._userId;
+                int itemId = dropItemRequest.ItemId;
+                var itemDefine = DataManager.Instance.GetItemDefine(itemId);
+                var player = channel._user._player;
+
+                Log.Information($"[InventoryService] 收到玩家丢弃物品请求：{userId} 丢弃 {itemId}");
+
+                var inventory = InventoryManager.Instance.UseItem(userId, itemId);
+                var response = new DropItemResponse() { Inventory = new() };
+                if (inventory == null)
+                {
+                    response.IsSuccessfulDrop = false;
+                    channel.SendAsync(response);
+                }
+                else
+                {
+                    response.IsSuccessfulDrop = true;
+                    response.Inventory.InventoryList.AddRange(inventory);
+                    channel.SendAsync(response);
+
+                    //在场景中创建物品
+                    var entity = new Entity(EntityManager.Instance.NewEntityId(),
+                        EntityType.Item,
+                        DataManager.Instance.GetUnitDefine(itemDefine.UnitId),
+                        player._position + new Vector3(0, 1, 0),
+                        0);
+                    EntityManager.Instance.AddEntity(entity);
+                    MapManager.Instance.EntityEnter(entity);
+                }
             });
         }
     }

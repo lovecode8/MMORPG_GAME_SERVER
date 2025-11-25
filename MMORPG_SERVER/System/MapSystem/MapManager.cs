@@ -60,7 +60,6 @@ namespace MMORPG_SERVER.System.MapSystem
         {
             //hp、mp等属性未实现
             EntityData entityData = new EntityData();
-            entityData.Name = (entity as Player)?._user._dbUser.UserName;
             entityData.EntityId = entity._entityId;
             entityData.UnitId = entity._unitDefine.ID;
             entityData.EntityType = (int)entity._entityType;
@@ -74,6 +73,7 @@ namespace MMORPG_SERVER.System.MapSystem
             };
             if (entity is Player player)
             {
+                entityData.Name = (entity as Player)?._user._dbUser.UserName;
                 entityData.Hp = player._dbCharacter.Hp;
                 entityData.Mp = player._dbCharacter.Mp;
                 entityData.MaxHpAddition = player._dbCharacter.MaxHpAddition;
