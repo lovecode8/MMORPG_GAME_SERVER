@@ -2,6 +2,7 @@
 using MMORPG_SERVER.Data.CS;
 using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
+using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.AttributeSystem;
@@ -169,7 +170,8 @@ namespace MMORPG_SERVER.Service
                     var entity = new Entity(EntityManager.Instance.NewEntityId(),
                         EntityType.Item,
                         DataManager.Instance.GetUnitDefine(itemDefine.UnitId),
-                        player._position + new Vector3(0, 1, 0),
+                        player._position + 
+                            Vector3Extensions.CalculateForwardDirection(player._rotationY) * 2f,
                         0);
                     EntityManager.Instance.AddEntity(entity);
                     MapManager.Instance.EntityEnter(entity);

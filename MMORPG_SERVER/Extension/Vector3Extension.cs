@@ -73,5 +73,20 @@ namespace MMORPG_SERVER.Extension
             // 7. 点积≥半角余弦值 → 夹角≤半角 → 在总角度范围内
             return dotProduct >= minDotProduct - 1e-6f; // 减1e-6f处理浮点精度误差
         }
+
+        //根据旋转Y值计算实体前方方向向量
+        public static Vector3 CalculateForwardDirection(float yawAngle)
+        {
+            float rad = (float)(yawAngle * Math.PI / 180.0); // 度转弧度
+            float x = (float)Math.Sin(rad);
+            float z = (float)Math.Cos(rad);
+            float y = 0f;
+
+            // 自定义归一化（若需）
+            float magnitude = (float)Math.Sqrt(x * x + y * y + z * z);
+            Vector3 forwardDir = new Vector3(x / magnitude, y / magnitude, z / magnitude);
+
+            return forwardDir;
+        }
     }
 }

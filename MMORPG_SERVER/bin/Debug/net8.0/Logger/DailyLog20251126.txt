@@ -1,0 +1,766 @@
+2025-11-26 20:44:27.348 +08:00 [INF] [server] 服务器已开启
+2025-11-26 20:44:27.375 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 20:44:27.547 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 20:44:27.692 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 20:44:27.692 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 20:44:28.526 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 20:44:28.540 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 20:44:28.592 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 20:44:28.617 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 20:44:28.622 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 20:44:28.623 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 20:44:41.040 +08:00 [INF] [server] 客户端连接：127.0.0.1:65000
+2025-11-26 20:44:46.221 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 20:44:46.272 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 20:44:46.424 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 20:44:46.448 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 20:44:48.922 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 20:44:48.926 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 20:44:48.942 +08:00 [INF] 0
+2025-11-26 20:44:48.947 +08:00 [INF] [MapManager] 实体进入场景：Player 0
+2025-11-26 20:44:48.953 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 20:44:49.104 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 20:44:49.274 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 20:44:49.282 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 20:44:59.715 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 20:44:59.780 +08:00 [INF] 1
+2025-11-26 20:44:59.780 +08:00 [INF] [MapManager] 实体进入场景：Item 1
+2025-11-26 20:45:30.514 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 20:45:30.514 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 20:45:30.514 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 20:45:30.667 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 20:45:30.669 +08:00 [INF] [PlayerService] 玩家离开游戏：0
+2025-11-26 20:45:30.683 +08:00 [INF] [MapManager]实体0离开游戏
+2025-11-26 20:46:42.900 +08:00 [INF] [server] 客户端连接：127.0.0.1:60974
+2025-11-26 20:46:45.360 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 20:46:45.378 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 20:46:45.530 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 20:46:45.536 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 20:46:47.397 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 20:46:47.401 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 20:46:47.403 +08:00 [INF] 2
+2025-11-26 20:46:47.403 +08:00 [INF] [MapManager] 实体进入场景：Player 2
+2025-11-26 20:46:47.403 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 20:46:47.568 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 20:46:47.723 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 20:46:47.725 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 20:47:04.972 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 20:47:04.976 +08:00 [INF] 3
+2025-11-26 20:47:04.976 +08:00 [INF] [MapManager] 实体进入场景：Item 3
+2025-11-26 20:48:06.179 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 20:48:06.179 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 20:48:06.179 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 20:48:06.179 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 20:48:06.179 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 20:48:06.333 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 20:48:06.333 +08:00 [INF] [PlayerService] 玩家离开游戏：2
+2025-11-26 20:48:06.337 +08:00 [INF] [MapManager]实体2离开游戏
+2025-11-26 20:48:37.683 +08:00 [INF] [server] 客户端连接：127.0.0.1:61021
+2025-11-26 20:48:41.331 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 20:48:41.345 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 20:48:41.503 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 20:48:41.509 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 20:48:43.367 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 20:48:43.371 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 20:48:43.382 +08:00 [INF] 4
+2025-11-26 20:48:43.382 +08:00 [INF] [MapManager] 实体进入场景：Player 4
+2025-11-26 20:48:43.382 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 20:48:43.534 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 20:48:43.688 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 20:48:43.690 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 20:48:50.846 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 20:48:50.850 +08:00 [INF] 5
+2025-11-26 20:48:50.850 +08:00 [INF] [MapManager] 实体进入场景：Item 5
+2025-11-26 20:49:19.744 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 20:49:19.744 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 20:49:19.744 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 20:49:19.744 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 20:49:19.744 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 20:49:19.744 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 20:49:19.744 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 20:49:19.897 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 20:49:19.897 +08:00 [INF] [PlayerService] 玩家离开游戏：4
+2025-11-26 20:49:19.902 +08:00 [INF] [MapManager]实体4离开游戏
+2025-11-26 20:51:41.149 +08:00 [INF] [server] 服务器已开启
+2025-11-26 20:51:41.169 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 20:51:41.323 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 20:51:41.514 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 20:51:41.514 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 20:51:42.495 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 20:51:42.512 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 20:51:42.604 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 20:51:42.633 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 20:51:42.640 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 20:51:42.641 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 20:51:46.585 +08:00 [INF] [server] 客户端连接：127.0.0.1:61263
+2025-11-26 20:51:51.667 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 20:51:51.710 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 20:51:51.853 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 20:51:51.874 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 20:51:53.719 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 20:51:53.724 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 20:51:53.734 +08:00 [INF] 0
+2025-11-26 20:51:53.740 +08:00 [INF] [MapManager] 实体进入场景：Player 0
+2025-11-26 20:51:53.745 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 20:51:53.888 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 20:51:54.060 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 20:51:54.071 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 20:52:03.560 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 20:52:03.592 +08:00 [INF] 1
+2025-11-26 20:52:03.593 +08:00 [INF] [MapManager] 实体进入场景：Item 1
+2025-11-26 20:53:35.855 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 20:53:35.856 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 20:53:35.856 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 20:53:36.009 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 20:53:36.010 +08:00 [INF] [PlayerService] 玩家离开游戏：0
+2025-11-26 20:53:36.017 +08:00 [INF] [MapManager]实体0离开游戏
+2025-11-26 21:02:50.018 +08:00 [INF] [server] 服务器已开启
+2025-11-26 21:02:50.032 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 21:02:50.168 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 21:02:50.340 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 21:02:50.340 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 21:02:51.035 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 21:02:51.050 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 21:02:51.109 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 21:02:51.136 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 21:02:51.141 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 21:02:51.142 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 21:02:56.467 +08:00 [INF] [server] 客户端连接：127.0.0.1:53085
+2025-11-26 21:03:00.810 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 21:03:00.855 +08:00 [INF] [UserService] 登录失败：用户名或密码错误
+2025-11-26 21:03:02.880 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 21:03:02.892 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 21:03:03.051 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 21:03:03.076 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:03:05.076 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 21:03:05.081 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 21:03:05.083 +08:00 [INF] 0
+2025-11-26 21:03:05.088 +08:00 [INF] [MapManager] 实体进入场景：Player 0
+2025-11-26 21:03:05.093 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 21:03:05.244 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 21:03:05.413 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 21:03:05.421 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:03:21.607 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:03:21.637 +08:00 [INF] 1
+2025-11-26 21:03:21.637 +08:00 [INF] [MapManager] 实体进入场景：Item 1
+2025-11-26 21:03:25.379 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:03:25.384 +08:00 [INF] 2
+2025-11-26 21:03:25.384 +08:00 [INF] [MapManager] 实体进入场景：Item 2
+2025-11-26 21:04:07.793 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:04:07.797 +08:00 [INF] 3
+2025-11-26 21:04:07.797 +08:00 [INF] [MapManager] 实体进入场景：Item 3
+2025-11-26 21:04:11.834 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:04:11.839 +08:00 [INF] 4
+2025-11-26 21:04:11.839 +08:00 [INF] [MapManager] 实体进入场景：Item 4
+2025-11-26 21:04:15.560 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:04:15.564 +08:00 [INF] 5
+2025-11-26 21:04:15.564 +08:00 [INF] [MapManager] 实体进入场景：Item 5
+2025-11-26 21:04:22.541 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:04:22.545 +08:00 [INF] 6
+2025-11-26 21:04:22.545 +08:00 [INF] [MapManager] 实体进入场景：Item 6
+2025-11-26 21:04:30.770 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:04:30.774 +08:00 [INF] 7
+2025-11-26 21:04:30.774 +08:00 [INF] [MapManager] 实体进入场景：Item 7
+2025-11-26 21:04:35.429 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 21:04:35.429 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:04:35.429 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:04:35.430 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:04:35.582 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 21:04:35.583 +08:00 [INF] [PlayerService] 玩家离开游戏：0
+2025-11-26 21:04:35.591 +08:00 [INF] [MapManager]实体0离开游戏
+2025-11-26 21:05:44.851 +08:00 [INF] [server] 客户端连接：127.0.0.1:55034
+2025-11-26 21:05:47.357 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 21:05:47.374 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 21:05:47.527 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 21:05:47.534 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:05:49.399 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 21:05:49.402 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 21:05:49.405 +08:00 [INF] 8
+2025-11-26 21:05:49.405 +08:00 [INF] [MapManager] 实体进入场景：Player 8
+2025-11-26 21:05:49.405 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 21:05:49.553 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 21:05:49.709 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 21:05:49.712 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:06:07.433 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:06:07.438 +08:00 [INF] 9
+2025-11-26 21:06:07.438 +08:00 [INF] [MapManager] 实体进入场景：Item 9
+2025-11-26 21:06:14.596 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:06:14.600 +08:00 [INF] 10
+2025-11-26 21:06:14.600 +08:00 [INF] [MapManager] 实体进入场景：Item 10
+2025-11-26 21:06:17.236 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:06:17.247 +08:00 [INF] 11
+2025-11-26 21:06:17.247 +08:00 [INF] [MapManager] 实体进入场景：Item 11
+2025-11-26 21:06:31.843 +08:00 [INF] 超过角度 15.377906
+2025-11-26 21:06:32.000 +08:00 [INF] 超过角度 15.698293
+2025-11-26 21:07:13.199 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:07:13.199 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:07:13.354 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 21:07:13.355 +08:00 [INF] [PlayerService] 玩家离开游戏：8
+2025-11-26 21:07:13.358 +08:00 [INF] [MapManager]实体8离开游戏
+2025-11-26 21:08:27.025 +08:00 [INF] [server] 服务器已开启
+2025-11-26 21:08:27.061 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 21:08:27.258 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 21:08:27.520 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 21:08:27.520 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 21:08:28.661 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 21:08:28.675 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 21:08:28.734 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 21:08:28.764 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 21:08:28.771 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 21:08:28.772 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 21:08:33.036 +08:00 [INF] [server] 客户端连接：127.0.0.1:55148
+2025-11-26 21:08:38.263 +08:00 [INF] [server] 客户端连接：127.0.0.1:55151
+2025-11-26 21:08:41.210 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 21:08:41.259 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 21:08:41.414 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 21:08:41.438 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:08:43.303 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 21:08:43.308 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 21:08:43.317 +08:00 [INF] 0
+2025-11-26 21:08:43.322 +08:00 [INF] [MapManager] 实体进入场景：Player 0
+2025-11-26 21:08:43.326 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 21:08:43.473 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 21:08:43.957 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 21:08:43.963 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:08:44.903 +08:00 [INF] [UserService] 收到玩家登录请求：userName：555555
+2025-11-26 21:08:44.910 +08:00 [INF] [UserService] 登录成功：555555登录成功
+2025-11-26 21:08:45.058 +08:00 [INF] [CharacterService]查询用户角色信息：10
+2025-11-26 21:08:45.066 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:08:46.920 +08:00 [INF] [PlayerService]请求加入游戏：10
+2025-11-26 21:08:46.924 +08:00 [INF] [InventoryService] 收到加载库存请求：10
+2025-11-26 21:08:46.927 +08:00 [INF] 1
+2025-11-26 21:08:46.927 +08:00 [INF] [MapManager] 实体进入场景：Player 1
+2025-11-26 21:08:46.928 +08:00 [INF] [PlayerService] 加入成功：10成功加入游戏
+2025-11-26 21:08:47.075 +08:00 [INF] [FriendService] 收到加载好友信息请求：555555
+2025-11-26 21:08:47.229 +08:00 [INF] [GuildService] 收到加载我的公会请求：555555
+2025-11-26 21:08:47.231 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:09:07.732 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:07.762 +08:00 [INF] 2
+2025-11-26 21:09:07.763 +08:00 [INF] [MapManager] 实体进入场景：Item 2
+2025-11-26 21:09:31.403 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:31.408 +08:00 [INF] 3
+2025-11-26 21:09:31.408 +08:00 [INF] [MapManager] 实体进入场景：Item 3
+2025-11-26 21:09:32.819 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:32.823 +08:00 [INF] 4
+2025-11-26 21:09:32.823 +08:00 [INF] [MapManager] 实体进入场景：Item 4
+2025-11-26 21:09:35.459 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:35.463 +08:00 [INF] 5
+2025-11-26 21:09:35.463 +08:00 [INF] [MapManager] 实体进入场景：Item 5
+2025-11-26 21:09:35.612 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:35.616 +08:00 [INF] 6
+2025-11-26 21:09:35.616 +08:00 [INF] [MapManager] 实体进入场景：Item 6
+2025-11-26 21:09:35.768 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:35.772 +08:00 [INF] 7
+2025-11-26 21:09:35.772 +08:00 [INF] [MapManager] 实体进入场景：Item 7
+2025-11-26 21:09:35.772 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:35.775 +08:00 [INF] 8
+2025-11-26 21:09:35.775 +08:00 [INF] [MapManager] 实体进入场景：Item 8
+2025-11-26 21:09:35.938 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:35.942 +08:00 [INF] 9
+2025-11-26 21:09:35.942 +08:00 [INF] [MapManager] 实体进入场景：Item 9
+2025-11-26 21:09:36.097 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:36.101 +08:00 [INF] 10
+2025-11-26 21:09:36.101 +08:00 [INF] [MapManager] 实体进入场景：Item 10
+2025-11-26 21:09:36.254 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:36.265 +08:00 [INF] 11
+2025-11-26 21:09:36.265 +08:00 [INF] [MapManager] 实体进入场景：Item 11
+2025-11-26 21:09:36.266 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:09:36.424 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:10:32.886 +08:00 [INF] 超过角度 15.093733
+2025-11-26 21:10:50.175 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:50.176 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:50.330 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 21:10:50.331 +08:00 [INF] [PlayerService] 玩家离开游戏：0
+2025-11-26 21:10:50.340 +08:00 [INF] [MapManager]实体0离开游戏
+2025-11-26 21:10:54.699 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:10:54.699 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:10:54.852 +08:00 [INF] [UserService]用户连接断开：10
+2025-11-26 21:10:54.852 +08:00 [INF] [PlayerService] 玩家离开游戏：1
+2025-11-26 21:10:54.856 +08:00 [INF] [MapManager]实体1离开游戏
+2025-11-26 21:25:00.246 +08:00 [INF] [server] 服务器已开启
+2025-11-26 21:25:00.272 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 21:25:00.395 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 21:25:00.576 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 21:25:00.576 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 21:25:01.320 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 21:25:01.337 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 21:25:01.419 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 21:25:01.451 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 21:25:01.459 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 21:25:01.460 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 21:25:24.984 +08:00 [INF] [server] 服务器已开启
+2025-11-26 21:25:24.998 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 21:25:25.105 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 21:25:25.266 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 21:25:25.267 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 21:25:25.917 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 21:25:25.928 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 21:25:25.990 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 21:25:26.010 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 21:25:26.015 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 21:25:26.016 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 21:25:38.833 +08:00 [INF] [server] 客户端连接：127.0.0.1:62766
+2025-11-26 21:25:42.524 +08:00 [INF] [server] 客户端连接：127.0.0.1:62767
+2025-11-26 21:25:50.774 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 21:25:50.827 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 21:25:50.976 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 21:25:51.007 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:25:53.782 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 21:25:53.788 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 21:25:53.796 +08:00 [INF] 0
+2025-11-26 21:25:53.802 +08:00 [INF] [MapManager] 实体进入场景：Player 0
+2025-11-26 21:25:53.807 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 21:25:53.948 +08:00 [INF] [UserService] 收到玩家登录请求：userName：555555
+2025-11-26 21:25:53.953 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 21:25:53.956 +08:00 [INF] [UserService] 登录成功：555555登录成功
+2025-11-26 21:25:54.118 +08:00 [INF] [CharacterService]查询用户角色信息：10
+2025-11-26 21:25:54.123 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 21:25:54.126 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:25:54.132 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:25:55.987 +08:00 [INF] [PlayerService]请求加入游戏：10
+2025-11-26 21:25:55.991 +08:00 [INF] [InventoryService] 收到加载库存请求：10
+2025-11-26 21:25:55.994 +08:00 [INF] 1
+2025-11-26 21:25:55.995 +08:00 [INF] [MapManager] 实体进入场景：Player 1
+2025-11-26 21:25:55.995 +08:00 [INF] [PlayerService] 加入成功：10成功加入游戏
+2025-11-26 21:25:56.142 +08:00 [INF] [FriendService] 收到加载好友信息请求：555555
+2025-11-26 21:25:56.296 +08:00 [INF] [GuildService] 收到加载我的公会请求：555555
+2025-11-26 21:25:56.299 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:26:11.387 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:11.429 +08:00 [INF] 2
+2025-11-26 21:26:11.430 +08:00 [INF] [MapManager] 实体进入场景：Item 2
+2025-11-26 21:26:14.227 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:14.232 +08:00 [INF] 3
+2025-11-26 21:26:14.232 +08:00 [INF] [MapManager] 实体进入场景：Item 3
+2025-11-26 21:26:17.954 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:17.959 +08:00 [INF] 4
+2025-11-26 21:26:17.959 +08:00 [INF] [MapManager] 实体进入场景：Item 4
+2025-11-26 21:26:28.375 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:28.379 +08:00 [INF] 5
+2025-11-26 21:26:28.379 +08:00 [INF] [MapManager] 实体进入场景：Item 5
+2025-11-26 21:26:30.856 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:30.860 +08:00 [INF] 6
+2025-11-26 21:26:30.860 +08:00 [INF] [MapManager] 实体进入场景：Item 6
+2025-11-26 21:26:32.563 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:32.567 +08:00 [INF] 7
+2025-11-26 21:26:32.567 +08:00 [INF] [MapManager] 实体进入场景：Item 7
+2025-11-26 21:26:45.801 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:45.805 +08:00 [INF] 8
+2025-11-26 21:26:45.805 +08:00 [INF] [MapManager] 实体进入场景：Item 8
+2025-11-26 21:26:51.235 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:51.238 +08:00 [INF] 9
+2025-11-26 21:26:51.238 +08:00 [INF] [MapManager] 实体进入场景：Item 9
+2025-11-26 21:26:56.072 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:56.076 +08:00 [INF] 10
+2025-11-26 21:26:56.076 +08:00 [INF] [MapManager] 实体进入场景：Item 10
+2025-11-26 21:26:57.318 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:26:57.322 +08:00 [INF] 11
+2025-11-26 21:26:57.322 +08:00 [INF] [MapManager] 实体进入场景：Item 11
+2025-11-26 21:26:59.486 +08:00 [INF] 超过角度 15.007088
+2025-11-26 21:26:59.487 +08:00 [INF] 超过角度 15.007088
+2025-11-26 21:26:59.487 +08:00 [INF] 超过角度 15.007088
+2025-11-26 21:27:03.527 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:03.531 +08:00 [INF] 12
+2025-11-26 21:27:03.531 +08:00 [INF] [MapManager] 实体进入场景：Item 12
+2025-11-26 21:27:03.682 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:03.686 +08:00 [INF] 13
+2025-11-26 21:27:03.686 +08:00 [INF] [MapManager] 实体进入场景：Item 13
+2025-11-26 21:27:03.839 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:03.843 +08:00 [INF] 14
+2025-11-26 21:27:03.843 +08:00 [INF] [MapManager] 实体进入场景：Item 14
+2025-11-26 21:27:03.995 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:04.000 +08:00 [INF] 15
+2025-11-26 21:27:04.000 +08:00 [INF] [MapManager] 实体进入场景：Item 15
+2025-11-26 21:27:04.150 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:04.153 +08:00 [INF] 16
+2025-11-26 21:27:04.153 +08:00 [INF] [MapManager] 实体进入场景：Item 16
+2025-11-26 21:27:04.307 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:04.310 +08:00 [INF] 17
+2025-11-26 21:27:04.310 +08:00 [INF] [MapManager] 实体进入场景：Item 17
+2025-11-26 21:27:04.462 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:04.465 +08:00 [INF] 18
+2025-11-26 21:27:04.465 +08:00 [INF] [MapManager] 实体进入场景：Item 18
+2025-11-26 21:27:04.466 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:04.475 +08:00 [INF] 19
+2025-11-26 21:27:04.475 +08:00 [INF] [MapManager] 实体进入场景：Item 19
+2025-11-26 21:27:04.630 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:04.634 +08:00 [INF] 20
+2025-11-26 21:27:04.634 +08:00 [INF] [MapManager] 实体进入场景：Item 20
+2025-11-26 21:27:04.787 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:04.798 +08:00 [INF] 21
+2025-11-26 21:27:04.798 +08:00 [INF] [MapManager] 实体进入场景：Item 21
+2025-11-26 21:27:04.954 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:27:11.469 +08:00 [INF] 超过角度 15.25586
+2025-11-26 21:27:11.625 +08:00 [INF] 超过角度 15.492183
+2025-11-26 21:27:20.798 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.799 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.800 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.800 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.800 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.800 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.800 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.800 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.800 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:27:20.800 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:27:20.953 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 21:27:20.954 +08:00 [INF] [PlayerService] 玩家离开游戏：0
+2025-11-26 21:27:20.964 +08:00 [INF] [MapManager]实体0离开游戏
+2025-11-26 21:27:51.229 +08:00 [INF] [server] 服务器已开启
+2025-11-26 21:27:51.243 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 21:27:51.381 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 21:27:51.597 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 21:27:51.597 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 21:27:52.417 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 21:27:52.431 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 21:27:52.500 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 21:27:52.529 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 21:27:52.535 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 21:27:52.537 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 21:27:55.244 +08:00 [INF] [server] 客户端连接：127.0.0.1:54497
+2025-11-26 21:28:03.305 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 21:28:03.357 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 21:28:03.508 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 21:28:03.521 +08:00 [INF] [server] 客户端连接：127.0.0.1:54500
+2025-11-26 21:28:03.530 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:28:05.388 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 21:28:05.405 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 21:28:05.408 +08:00 [INF] 0
+2025-11-26 21:28:05.413 +08:00 [INF] [MapManager] 实体进入场景：Player 0
+2025-11-26 21:28:05.419 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 21:28:05.571 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 21:28:05.742 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 21:28:05.750 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:28:06.219 +08:00 [INF] [UserService] 收到玩家登录请求：userName：555555
+2025-11-26 21:28:06.226 +08:00 [INF] [UserService] 登录成功：555555登录成功
+2025-11-26 21:28:06.531 +08:00 [INF] [CharacterService]查询用户角色信息：10
+2025-11-26 21:28:06.538 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:28:08.387 +08:00 [INF] [PlayerService]请求加入游戏：10
+2025-11-26 21:28:08.391 +08:00 [INF] [InventoryService] 收到加载库存请求：10
+2025-11-26 21:28:08.393 +08:00 [INF] 1
+2025-11-26 21:28:08.393 +08:00 [INF] [MapManager] 实体进入场景：Player 1
+2025-11-26 21:28:08.394 +08:00 [INF] [PlayerService] 加入成功：10成功加入游戏
+2025-11-26 21:28:08.542 +08:00 [INF] [FriendService] 收到加载好友信息请求：555555
+2025-11-26 21:28:08.696 +08:00 [INF] [GuildService] 收到加载我的公会请求：555555
+2025-11-26 21:28:08.699 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:28:25.938 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:28:25.964 +08:00 [INF] 2
+2025-11-26 21:28:25.964 +08:00 [INF] [MapManager] 实体进入场景：Item 2
+2025-11-26 21:28:28.926 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:28:28.936 +08:00 [INF] 3
+2025-11-26 21:28:28.936 +08:00 [INF] [MapManager] 实体进入场景：Item 3
+2025-11-26 21:28:32.971 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:28:32.974 +08:00 [INF] 4
+2025-11-26 21:28:32.974 +08:00 [INF] [MapManager] 实体进入场景：Item 4
+2025-11-26 21:28:35.617 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:28:35.622 +08:00 [INF] 5
+2025-11-26 21:28:35.622 +08:00 [INF] [MapManager] 实体进入场景：Item 5
+2025-11-26 21:29:08.739 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:08.743 +08:00 [INF] 6
+2025-11-26 21:29:08.743 +08:00 [INF] [MapManager] 实体进入场景：Item 6
+2025-11-26 21:29:08.895 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:08.899 +08:00 [INF] 7
+2025-11-26 21:29:08.899 +08:00 [INF] [MapManager] 实体进入场景：Item 7
+2025-11-26 21:29:09.050 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:09.054 +08:00 [INF] 8
+2025-11-26 21:29:09.054 +08:00 [INF] [MapManager] 实体进入场景：Item 8
+2025-11-26 21:29:09.204 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:09.208 +08:00 [INF] 9
+2025-11-26 21:29:09.208 +08:00 [INF] [MapManager] 实体进入场景：Item 9
+2025-11-26 21:29:09.361 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:09.365 +08:00 [INF] 10
+2025-11-26 21:29:09.365 +08:00 [INF] [MapManager] 实体进入场景：Item 10
+2025-11-26 21:29:09.365 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:09.367 +08:00 [INF] 11
+2025-11-26 21:29:09.367 +08:00 [INF] [MapManager] 实体进入场景：Item 11
+2025-11-26 21:29:09.532 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:09.536 +08:00 [INF] 12
+2025-11-26 21:29:09.536 +08:00 [INF] [MapManager] 实体进入场景：Item 12
+2025-11-26 21:29:09.690 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:09.694 +08:00 [INF] 13
+2025-11-26 21:29:09.694 +08:00 [INF] [MapManager] 实体进入场景：Item 13
+2025-11-26 21:29:09.847 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:09.850 +08:00 [INF] 14
+2025-11-26 21:29:09.850 +08:00 [INF] [MapManager] 实体进入场景：Item 14
+2025-11-26 21:29:10.002 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:10.005 +08:00 [INF] 15
+2025-11-26 21:29:10.005 +08:00 [INF] [MapManager] 实体进入场景：Item 15
+2025-11-26 21:29:10.157 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:10.161 +08:00 [INF] 16
+2025-11-26 21:29:10.161 +08:00 [INF] [MapManager] 实体进入场景：Item 16
+2025-11-26 21:29:10.161 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:10.164 +08:00 [INF] 17
+2025-11-26 21:29:10.164 +08:00 [INF] [MapManager] 实体进入场景：Item 17
+2025-11-26 21:29:10.325 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:10.328 +08:00 [INF] 18
+2025-11-26 21:29:10.328 +08:00 [INF] [MapManager] 实体进入场景：Item 18
+2025-11-26 21:29:10.480 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:10.484 +08:00 [INF] 19
+2025-11-26 21:29:10.484 +08:00 [INF] [MapManager] 实体进入场景：Item 19
+2025-11-26 21:29:10.636 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:10.640 +08:00 [INF] 20
+2025-11-26 21:29:10.640 +08:00 [INF] [MapManager] 实体进入场景：Item 20
+2025-11-26 21:29:10.792 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:10.803 +08:00 [INF] 21
+2025-11-26 21:29:10.803 +08:00 [INF] [MapManager] 实体进入场景：Item 21
+2025-11-26 21:29:10.964 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:29:21.555 +08:00 [INF] 超过角度 15.627603
+2025-11-26 21:29:21.555 +08:00 [INF] 超过角度 15.627603
+2025-11-26 21:29:21.710 +08:00 [INF] 超过角度 15.881533
+2025-11-26 21:29:21.711 +08:00 [INF] 超过角度 15.881533
+2025-11-26 21:30:01.945 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.946 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:30:01.947 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:30:02.100 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 21:30:02.101 +08:00 [INF] [PlayerService] 玩家离开游戏：0
+2025-11-26 21:30:02.108 +08:00 [INF] [MapManager]实体0离开游戏
+2025-11-26 21:30:03.666 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 21:30:03.820 +08:00 [INF] [UserService]用户连接断开：10
+2025-11-26 21:30:03.820 +08:00 [INF] [PlayerService] 玩家离开游戏：1
+2025-11-26 21:30:03.824 +08:00 [INF] [MapManager]实体1离开游戏
+2025-11-26 21:30:32.708 +08:00 [INF] [server] 服务器已开启
+2025-11-26 21:30:32.727 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 21:30:32.837 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 21:30:32.995 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 21:30:32.996 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 21:30:33.745 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 21:30:33.759 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 21:30:33.828 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 21:30:33.850 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 21:30:33.855 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 21:30:33.857 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 21:30:36.383 +08:00 [INF] [server] 客户端连接：127.0.0.1:63278
+2025-11-26 21:30:39.336 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 21:30:39.379 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 21:30:39.521 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 21:30:39.548 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:30:41.559 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 21:30:41.564 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 21:30:41.575 +08:00 [INF] 0
+2025-11-26 21:30:41.580 +08:00 [INF] [MapManager] 实体进入场景：Player 0
+2025-11-26 21:30:41.587 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 21:30:41.729 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 21:30:41.898 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 21:30:41.906 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:30:44.940 +08:00 [INF] [server] 客户端连接：127.0.0.1:63286
+2025-11-26 21:31:11.728 +08:00 [INF] [UserService] 收到玩家登录请求：userName：555555
+2025-11-26 21:31:11.739 +08:00 [INF] [UserService] 登录成功：555555登录成功
+2025-11-26 21:31:12.055 +08:00 [INF] [CharacterService]查询用户角色信息：10
+2025-11-26 21:31:12.061 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:31:13.923 +08:00 [INF] [PlayerService]请求加入游戏：10
+2025-11-26 21:31:13.927 +08:00 [INF] [InventoryService] 收到加载库存请求：10
+2025-11-26 21:31:13.939 +08:00 [INF] 1
+2025-11-26 21:31:13.940 +08:00 [INF] [MapManager] 实体进入场景：Player 1
+2025-11-26 21:31:13.940 +08:00 [INF] [PlayerService] 加入成功：10成功加入游戏
+2025-11-26 21:31:14.077 +08:00 [INF] [FriendService] 收到加载好友信息请求：555555
+2025-11-26 21:31:14.232 +08:00 [INF] [GuildService] 收到加载我的公会请求：555555
+2025-11-26 21:31:14.235 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:31:45.051 +08:00 [INF] [server] 服务器已开启
+2025-11-26 21:31:45.074 +08:00 [INF] [UpdateManager]连接数据库中......
+2025-11-26 21:31:45.184 +08:00 [INF] [MysqlManager] 数据库连接成功！
+2025-11-26 21:31:45.310 +08:00 [INF] [DataManager] 初始化完成
+2025-11-26 21:31:45.310 +08:00 [INF] [UserManager] 初始化完成
+2025-11-26 21:31:45.966 +08:00 [INF] [FriendManager] 初始化完成
+2025-11-26 21:31:45.979 +08:00 [INF] [ChatManager] 初始化完成
+2025-11-26 21:31:46.048 +08:00 [INF] [GuildManager] 初始化完成
+2025-11-26 21:31:46.069 +08:00 [INF] [InventoryManager] 初始化完成
+2025-11-26 21:31:46.075 +08:00 [INF] [AttributeManager] 初始化完成
+2025-11-26 21:31:46.076 +08:00 [INF] [server] 等待客户端连接......
+2025-11-26 21:31:51.161 +08:00 [INF] [server] 客户端连接：127.0.0.1:58989
+2025-11-26 21:31:54.171 +08:00 [INF] [UserService] 收到玩家登录请求：userName：444444
+2025-11-26 21:31:54.213 +08:00 [INF] [UserService] 登录成功：444444登录成功
+2025-11-26 21:31:54.360 +08:00 [INF] [CharacterService]查询用户角色信息：9
+2025-11-26 21:31:54.387 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:31:56.223 +08:00 [INF] [PlayerService]请求加入游戏：9
+2025-11-26 21:31:56.230 +08:00 [INF] [InventoryService] 收到加载库存请求：9
+2025-11-26 21:31:56.249 +08:00 [INF] 0
+2025-11-26 21:31:56.254 +08:00 [INF] [MapManager] 实体进入场景：Player 0
+2025-11-26 21:31:56.259 +08:00 [INF] [PlayerService] 加入成功：9成功加入游戏
+2025-11-26 21:31:56.409 +08:00 [INF] [FriendService] 收到加载好友信息请求：444444
+2025-11-26 21:31:56.579 +08:00 [INF] [GuildService] 收到加载我的公会请求：444444
+2025-11-26 21:31:56.587 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:31:59.330 +08:00 [INF] [server] 客户端连接：127.0.0.1:59003
+2025-11-26 21:32:02.973 +08:00 [INF] [UserService] 收到玩家登录请求：userName：555555
+2025-11-26 21:32:02.980 +08:00 [INF] [UserService] 登录成功：555555登录成功
+2025-11-26 21:32:03.301 +08:00 [INF] [CharacterService]查询用户角色信息：10
+2025-11-26 21:32:03.307 +08:00 [INF] [CharacterService] 查询结果：有角色信息
+2025-11-26 21:32:05.164 +08:00 [INF] [PlayerService]请求加入游戏：10
+2025-11-26 21:32:05.168 +08:00 [INF] [InventoryService] 收到加载库存请求：10
+2025-11-26 21:32:05.177 +08:00 [INF] 1
+2025-11-26 21:32:05.177 +08:00 [INF] [MapManager] 实体进入场景：Player 1
+2025-11-26 21:32:05.177 +08:00 [INF] [PlayerService] 加入成功：10成功加入游戏
+2025-11-26 21:32:05.315 +08:00 [INF] [FriendService] 收到加载好友信息请求：555555
+2025-11-26 21:32:05.469 +08:00 [INF] [GuildService] 收到加载我的公会请求：555555
+2025-11-26 21:32:05.472 +08:00 [INF] [GuildService] 查询结果：测试全功能
+2025-11-26 21:32:19.591 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:32:19.617 +08:00 [INF] 2
+2025-11-26 21:32:19.617 +08:00 [INF] [MapManager] 实体进入场景：Item 2
+2025-11-26 21:32:22.403 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:32:22.408 +08:00 [INF] 3
+2025-11-26 21:32:22.408 +08:00 [INF] [MapManager] 实体进入场景：Item 3
+2025-11-26 21:32:22.561 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:32:22.565 +08:00 [INF] 4
+2025-11-26 21:32:22.565 +08:00 [INF] [MapManager] 实体进入场景：Item 4
+2025-11-26 21:32:25.348 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:32:25.352 +08:00 [INF] 5
+2025-11-26 21:32:25.352 +08:00 [INF] [MapManager] 实体进入场景：Item 5
+2025-11-26 21:32:25.501 +08:00 [INF] [InventoryService] 收到玩家丢弃物品请求：9 丢弃 2
+2025-11-26 21:32:25.505 +08:00 [INF] 6
+2025-11-26 21:32:25.505 +08:00 [INF] [MapManager] 实体进入场景：Item 6
+2025-11-26 21:33:30.726 +08:00 [INF] [channel:MMORPG_SERVER.Network.NetChannel] 主动断开连接
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试向已经关闭的对象发送数据
+2025-11-26 21:33:30.727 +08:00 [WRN] [channel:MMORPG_SERVER.Network.NetChannel] 出现警告：尝试重复关闭同一个连接
+2025-11-26 21:33:30.881 +08:00 [INF] [UserService]用户连接断开：9
+2025-11-26 21:33:30.883 +08:00 [INF] [PlayerService] 玩家离开游戏：0
+2025-11-26 21:33:30.891 +08:00 [INF] [MapManager]实体0离开游戏

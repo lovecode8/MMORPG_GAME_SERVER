@@ -58,7 +58,7 @@ namespace MMORPG_SERVER.System.EntitySystem
         //向客户端发送所有实体数据
         private void SyncEntityToClient()
         {
-            if (_entityDictionaty.Count > 0)
+            if (SyncCondition())
             {
                 PlayerManager.Instance.SyncAllEntityData(_entityDictionaty);
             }
@@ -139,6 +139,24 @@ namespace MMORPG_SERVER.System.EntitySystem
                 return false;
             }
             return true;
+        }
+
+        //同步实体的条件
+        private bool SyncCondition()
+        {
+            int count = 0;
+            foreach(var entity in _entityDictionaty.Values)
+            {
+                if(entity._entityType != EntityType.Item)
+                {
+                    count++;
+                }
+                if(count >= 2)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

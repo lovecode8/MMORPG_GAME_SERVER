@@ -18,6 +18,8 @@ namespace MMORPG_SERVER.System.MapSystem
     {
         private MapManager() { }
 
+        private Random _random = new();
+
         //新实体进入游戏
         public void EntityEnter(Entity entity)
         {
@@ -71,6 +73,14 @@ namespace MMORPG_SERVER.System.MapSystem
                 Y = entity._rotationY,
                 Z = 0
             };
+
+            //如果是物品则随机分配旋转值，避免重叠
+            if(entityData.EntityType == (int)EntityType.Item)
+            {
+                entityData.Transform.Rotation.X = _random.Next(100, 300);
+                entityData.Transform.Rotation.Z = _random.Next(50, 300);
+            }
+
             if (entity is Player player)
             {
                 entityData.Name = (entity as Player)?._user._dbUser.UserName;

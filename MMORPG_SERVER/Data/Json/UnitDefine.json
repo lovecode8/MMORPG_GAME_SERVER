@@ -5,7 +5,7 @@
     "Type": "战士",
     "Tool": "血吼宝剑",
     "Skill": "旋风斩，对周围3米内所有敌人造成150%武器伤害，冷却12秒。",
-    "Path": "",
+    "Path": "Entity/RemotePlayer/remotePlayer1",
     "Hp": 1200,
     "Mp": 80,
     "AttackDemage": [ 20, 25, 35 ]
@@ -16,7 +16,7 @@
     "Type": "法师",
     "Tool": "小魔棒",
     "Skill": "向最近的敌人发射火球，命中后爆炸造成200%法术伤害，冷却10秒。",
-    "Path": "",
+    "Path": "Entity/RemotePlayer/remotePlayer2",
     "Hp": 800,
     "Mp": 100,
     "AttackDemage": [ 15, 20, 25 ]
@@ -27,7 +27,7 @@
     "Type": "弓箭手",
     "Tool": "毒箭",
     "Skill": "向四周发射毒箭，被打中的敌人将受到持续伤害。",
-    "Path": "",
+    "Path": "Entity/RemotePlayer/remotePlayer3",
     "Hp": 1000,
     "Mp": 80,
     "AttackDemage": [ 15, 20, 25 ]
@@ -38,7 +38,7 @@
     "Type": "战士",
     "Tool": "深海重剑",
     "Skill": "将巨剑猛力砸向地面，引发扇形范围的岩刺爆发，对近距离敌人造成击飞效果。",
-    "Path": "",
+    "Path": "Entity/RemotePlayer/remotePlayer4",
     "Hp": 1500,
     "Mp": 60,
     "AttackDemage": [ 20, 30, 40 ]
@@ -49,7 +49,7 @@
     "Type": "物品",
     "Tool": "",
     "Skill": "",
-    "Path": "Entity/Item/Hp1",
+    "Path": "Entity/Item/item1",
     "Hp": 0,
     "Mp": 0,
     "AttackDemage": []
