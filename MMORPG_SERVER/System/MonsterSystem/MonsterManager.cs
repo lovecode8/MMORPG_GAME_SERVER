@@ -57,12 +57,27 @@ namespace MMORPG_SERVER.System.MonsterSystem
                 unitDefine,
                 unitDefine.OriginalPosition.ToVector3(),
                 0,
-                monsterAi
+                monsterAi,
+                new()
                 );
+
+            //导入移动数据
+            foreach(var pos in unitDefine.MovePosition)
+            {
+                monster._movePosition.Add(new()
+                {
+                    X = pos[0],
+                    Y = pos[1],
+                    Z = pos[2]
+                });
+            }
+
             monsterAi.SetMonster(monster);
+            monsterAi.Start();
             AddMonster(monster);
             EntityManager.Instance.AddEntity(monster);
             MapManager.Instance.EntityEnter(monster);
+            _monsterCount++;
         }
 
         public void AddMonster(Monster monster)
@@ -84,7 +99,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
         private bool CreateMonsterCondition()
         {
             return _timer > _createMonsterInterval &&
-                _monsterCount < 5 &&
+                _monsterCount < 1 &&
                 PlayerManager.Instance.GetPlayerCount() > 0;
         }
     }

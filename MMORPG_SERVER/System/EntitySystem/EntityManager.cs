@@ -107,17 +107,16 @@ namespace MMORPG_SERVER.System.EntitySystem
         public void OnReceiveEntitySyncRequest(EntitySyncRequest entitySyncRequest)
         {
             var entity = GetEntity(entitySyncRequest.EntityId);
-            if(entity != null)
-            {
-                entity._position = entitySyncRequest.Position.ToVector3();
-                entity._rotationY = entitySyncRequest.RotationY;
-                entity._stateId = entitySyncRequest.StateId;
+            SyncEntityData(entity, entitySyncRequest.Position.ToVector3(),
+                entitySyncRequest.RotationY, entitySyncRequest.StateId);
+            PlayerManager.Instance.OnPlayerMove(entity as Player);
+        }
 
-                if(entity is Player)
-                {
-                    PlayerManager.Instance.OnPlayerMove(entity as Player);
-                }
-            }
+        public void SyncEntityData(Entity entity, Vector3 pos, float rotY, int stateId)
+        {
+            entity._position = pos;
+            entity._rotationY = rotY;
+            entity._stateId = stateId;
         }
 
         public Dictionary<int, Entity> GetEntityDict()

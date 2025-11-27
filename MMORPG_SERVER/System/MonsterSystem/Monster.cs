@@ -1,6 +1,7 @@
 ﻿using MMORPG_SERVER.Data.CS;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.Tool;
+using System.Net;
 using System.Numerics;
 
 namespace MMORPG_SERVER.System.MonsterSystem
@@ -21,15 +22,19 @@ namespace MMORPG_SERVER.System.MonsterSystem
 
         public MonsterAi _controller;
 
+        public List<Vector3> _movePosition; //巡逻点
+
         public Monster
             (int entityId, 
             EntityType entityType, 
             UnitDefine unitDefine, 
             Vector3 pos, 
             float dir,
-            MonsterAi controller) : base(entityId, entityType, unitDefine, pos, dir)
+            MonsterAi controller,
+            List<Vector3> movePos) : base(entityId, entityType, unitDefine, pos, dir)
         {
             _controller = controller;
+            _movePosition = movePos;
         }
     }
 }

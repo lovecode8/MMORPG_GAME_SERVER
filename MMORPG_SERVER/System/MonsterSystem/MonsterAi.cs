@@ -11,7 +11,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
     //MonsterAi控制器
     public class MonsterAi : FSM<MonsterState>
     {
-        private Monster _monster;
+        public Monster _monster;
 
         public void SetMonster(Monster monster) => _monster = monster;
 
@@ -24,6 +24,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
         private void AddMonsterState()
         {
             AddState(MonsterState.idle, new MonsterIdleState(this));
+            AddState(MonsterState.move, new MonsterMoveState(this, _monster._movePosition));
         }
     }
 }

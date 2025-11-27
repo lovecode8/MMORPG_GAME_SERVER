@@ -64,6 +64,10 @@
     "Hp": 300,
     "Mp": 0,
     "AttackDemage": [ 30 ],
-    "OriginalPosition": [ 18, 0, 95 ]
+    "OriginalPosition": [ 18, 0, 95 ],
+    "MovePosition": [
+      [ 18, 0, 100 ],
+      [ 25, 0, 100 ]
+    ]
   }
 }
