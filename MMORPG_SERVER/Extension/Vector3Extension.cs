@@ -88,5 +88,15 @@ namespace MMORPG_SERVER.Extension
 
             return forwardDir;
         }
+
+        public static Vector3 ToVector3(this int[] pos)
+        {
+            return new Vector3()
+            {
+                X = pos[0],
+                Y = pos[1],
+                Z = pos[2]
+            };
+        }
     }
 }

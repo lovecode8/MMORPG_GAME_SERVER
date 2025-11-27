@@ -12,6 +12,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 namespace MMORPG_SERVER.System.PlayerSystem
 {
     //玩家管理器
@@ -50,6 +51,12 @@ namespace MMORPG_SERVER.System.PlayerSystem
             _cellPlayers.GetOrAdd(cell, _ => new HashSet<Player>());
             _cellPlayers[cell].Add(player);
             return player;
+        }
+
+        //获取在线玩家数量
+        public int GetPlayerCount()
+        {
+            return _playerDictionary.Count;
         }
 
         //玩家移动--更新网格信息

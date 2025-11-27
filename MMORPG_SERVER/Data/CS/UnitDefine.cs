@@ -20,9 +20,11 @@ namespace MMORPG_SERVER.Data.CS
         public int Hp; // 初始血量
         public int Mp; // 初始蓝量
         public int[] AttackDemage; // 三段攻击的伤害
+        public int[] OriginalPosition; // 生成点
     }
 
 
     // End of Auto Generated Code
+
 
 }

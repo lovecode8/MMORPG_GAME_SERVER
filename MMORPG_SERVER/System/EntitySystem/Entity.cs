@@ -28,6 +28,9 @@ namespace MMORPG_SERVER.System.EntitySystem
         public float _rotationY;
         public int _stateId;
 
+        //如果是Item，存储ItemId
+        public int itemId;
+
         public Entity(int entityId, EntityType entityType, UnitDefine unitDefine, Vector3 pos, float dir)
         {
             _entityId = entityId;

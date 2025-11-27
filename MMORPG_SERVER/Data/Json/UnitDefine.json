@@ -53,5 +53,17 @@
     "Hp": 0,
     "Mp": 0,
     "AttackDemage": []
+  },
+  "6": {
+    "ID": 6,
+    "Name": "毒蝎龙",
+    "Type": "敌人",
+    "Tool": "",
+    "Skill": "",
+    "Path": "Entity/Monster/monster1",
+    "Hp": 300,
+    "Mp": 0,
+    "AttackDemage": [ 30 ],
+    "OriginalPosition": [ 18, 0, 95 ]
   }
 }

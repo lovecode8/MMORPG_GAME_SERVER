@@ -37,7 +37,10 @@ public static partial class InventoryReflection {
           "EHN1Y2Nlc3NmdWxSZW1vdmUYASABKAgSHQoJaW52ZW50b3J5GAIgASgLMgou",
           "SW52ZW50b3J5IiEKD0Ryb3BJdGVtUmVxdWVzdBIOCgZpdGVtSWQYASABKAUi",
           "SwoQRHJvcEl0ZW1SZXNwb25zZRIYChBpc1N1Y2Nlc3NmdWxEcm9wGAEgASgI",
-          "Eh0KCWludmVudG9yeRgCIAEoCzIKLkludmVudG9yeWIGcHJvdG8z"));
+          "Eh0KCWludmVudG9yeRgCIAEoCzIKLkludmVudG9yeSIlChFQaWNrVXBJdGVt",
+          "UmVxdWVzdBIQCghlbnRpdHlJZBgBIAEoBSJhChJQaWNrVXBJdGVtUmVzcG9u",
+          "c2USGgoSaXNTdWNjZXNzZnVsUGlja1VwGAEgASgIEhAKCGl0ZW1OYW1lGAIg",
+          "ASgJEh0KCWludmVudG9yeRgDIAEoCzIKLkludmVudG9yeWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -51,7 +54,9 @@ public static partial class InventoryReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::RemoveEquipRequest), global::RemoveEquipRequest.Parser, new[]{ "EquipGridIndex", "ItemId" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::RemoveEquipResponse), global::RemoveEquipResponse.Parser, new[]{ "SuccessfulRemove", "Inventory" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::DropItemRequest), global::DropItemRequest.Parser, new[]{ "ItemId" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::DropItemResponse), global::DropItemResponse.Parser, new[]{ "IsSuccessfulDrop", "Inventory" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::DropItemResponse), global::DropItemResponse.Parser, new[]{ "IsSuccessfulDrop", "Inventory" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::PickUpItemRequest), global::PickUpItemRequest.Parser, new[]{ "EntityId" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::PickUpItemResponse), global::PickUpItemResponse.Parser, new[]{ "IsSuccessfulPickUp", "ItemName", "Inventory" }, null, null, null, null)
         }));
   }
   #endregion
@@ -2560,6 +2565,491 @@ public sealed partial class DropItemResponse : pb::IMessage<DropItemResponse>
           break;
         }
         case 18: {
+          if (inventory_ == null) {
+            Inventory = new global::Inventory();
+          }
+          input.ReadMessage(Inventory);
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+/// <summary>
+///捡起物品请求
+/// </summary>
+[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+public sealed partial class PickUpItemRequest : pb::IMessage<PickUpItemRequest>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<PickUpItemRequest> _parser = new pb::MessageParser<PickUpItemRequest>(() => new PickUpItemRequest());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<PickUpItemRequest> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::InventoryReflection.Descriptor.MessageTypes[11]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public PickUpItemRequest() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public PickUpItemRequest(PickUpItemRequest other) : this() {
+    entityId_ = other.entityId_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public PickUpItemRequest Clone() {
+    return new PickUpItemRequest(this);
+  }
+
+  /// <summary>Field number for the "entityId" field.</summary>
+  public const int EntityIdFieldNumber = 1;
+  private int entityId_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int EntityId {
+    get { return entityId_; }
+    set {
+      entityId_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as PickUpItemRequest);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(PickUpItemRequest other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (EntityId != other.EntityId) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (EntityId != 0) hash ^= EntityId.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (EntityId != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(EntityId);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (EntityId != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(EntityId);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (EntityId != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(EntityId);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(PickUpItemRequest other) {
+    if (other == null) {
+      return;
+    }
+    if (other.EntityId != 0) {
+      EntityId = other.EntityId;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          EntityId = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          EntityId = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+/// <summary>
+///捡起物品回复
+/// </summary>
+[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+public sealed partial class PickUpItemResponse : pb::IMessage<PickUpItemResponse>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<PickUpItemResponse> _parser = new pb::MessageParser<PickUpItemResponse>(() => new PickUpItemResponse());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<PickUpItemResponse> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::InventoryReflection.Descriptor.MessageTypes[12]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public PickUpItemResponse() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public PickUpItemResponse(PickUpItemResponse other) : this() {
+    isSuccessfulPickUp_ = other.isSuccessfulPickUp_;
+    itemName_ = other.itemName_;
+    inventory_ = other.inventory_ != null ? other.inventory_.Clone() : null;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public PickUpItemResponse Clone() {
+    return new PickUpItemResponse(this);
+  }
+
+  /// <summary>Field number for the "isSuccessfulPickUp" field.</summary>
+  public const int IsSuccessfulPickUpFieldNumber = 1;
+  private bool isSuccessfulPickUp_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool IsSuccessfulPickUp {
+    get { return isSuccessfulPickUp_; }
+    set {
+      isSuccessfulPickUp_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "itemName" field.</summary>
+  public const int ItemNameFieldNumber = 2;
+  private string itemName_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public string ItemName {
+    get { return itemName_; }
+    set {
+      itemName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "inventory" field.</summary>
+  public const int InventoryFieldNumber = 3;
+  private global::Inventory inventory_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public global::Inventory Inventory {
+    get { return inventory_; }
+    set {
+      inventory_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as PickUpItemResponse);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(PickUpItemResponse other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (IsSuccessfulPickUp != other.IsSuccessfulPickUp) return false;
+    if (ItemName != other.ItemName) return false;
+    if (!object.Equals(Inventory, other.Inventory)) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (IsSuccessfulPickUp != false) hash ^= IsSuccessfulPickUp.GetHashCode();
+    if (ItemName.Length != 0) hash ^= ItemName.GetHashCode();
+    if (inventory_ != null) hash ^= Inventory.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (IsSuccessfulPickUp != false) {
+      output.WriteRawTag(8);
+      output.WriteBool(IsSuccessfulPickUp);
+    }
+    if (ItemName.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(ItemName);
+    }
+    if (inventory_ != null) {
+      output.WriteRawTag(26);
+      output.WriteMessage(Inventory);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (IsSuccessfulPickUp != false) {
+      output.WriteRawTag(8);
+      output.WriteBool(IsSuccessfulPickUp);
+    }
+    if (ItemName.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(ItemName);
+    }
+    if (inventory_ != null) {
+      output.WriteRawTag(26);
+      output.WriteMessage(Inventory);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (IsSuccessfulPickUp != false) {
+      size += 1 + 1;
+    }
+    if (ItemName.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(ItemName);
+    }
+    if (inventory_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(Inventory);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(PickUpItemResponse other) {
+    if (other == null) {
+      return;
+    }
+    if (other.IsSuccessfulPickUp != false) {
+      IsSuccessfulPickUp = other.IsSuccessfulPickUp;
+    }
+    if (other.ItemName.Length != 0) {
+      ItemName = other.ItemName;
+    }
+    if (other.inventory_ != null) {
+      if (inventory_ == null) {
+        Inventory = new global::Inventory();
+      }
+      Inventory.MergeFrom(other.Inventory);
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          IsSuccessfulPickUp = input.ReadBool();
+          break;
+        }
+        case 18: {
+          ItemName = input.ReadString();
+          break;
+        }
+        case 26: {
+          if (inventory_ == null) {
+            Inventory = new global::Inventory();
+          }
+          input.ReadMessage(Inventory);
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          IsSuccessfulPickUp = input.ReadBool();
+          break;
+        }
+        case 18: {
+          ItemName = input.ReadString();
+          break;
+        }
+        case 26: {
           if (inventory_ == null) {
             Inventory = new global::Inventory();
           }

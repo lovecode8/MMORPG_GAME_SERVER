@@ -173,9 +173,51 @@ namespace MMORPG_SERVER.Service
                         player._position + 
                             Vector3Extensions.CalculateForwardDirection(player._rotationY) * 2f,
                         0);
+                    entity.itemId = itemId;
                     EntityManager.Instance.AddEntity(entity);
                     MapManager.Instance.EntityEnter(entity);
                 }
+            });
+        }
+
+        //处理玩家拾取物品请求
+        public void OnHandle(object sender, PickUpItemRequest pickUpItemRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                int userId = channel._user._userId;
+                var player = channel._user._player;
+                var entity = EntityManager.Instance.GetEntity(pickUpItemRequest.EntityId);
+                var direction = entity._position - player._position;
+
+                //实体不存在或不在拾取范围内
+                if (entity == null || 
+                    !Vector3Extensions.IsInAngleRange(direction, player._rotationY, 60)) 
+                {
+                    channel?.SendAsync(new PickUpItemResponse()
+                    {
+                        IsSuccessfulPickUp = false
+                    });
+                }
+
+                var inventory = InventoryManager.Instance.AddItem(userId, entity.itemId, 1);
+                if(inventory != null)
+                {
+                    var itemName = DataManager.Instance.GetItemDefine(entity.itemId).Name;
+                    var response = new PickUpItemResponse()
+                    {
+                        IsSuccessfulPickUp = true,
+                        Inventory = new(),
+                        ItemName = itemName
+                    };
+                    response.Inventory.InventoryList.AddRange(inventory);
+                    channel.SendAsync(response);
+                }
+
+                //向所有客户端广播实体离开消息
+                EntityManager.Instance.RemoveEntity(entity);
+                MapManager.Instance.EntityLeave(entity);
             });
         }
     }
