@@ -10,7 +10,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private float _timer;
 
-        private float _idleInterval = 1f;
+        private float _idleInterval = 1.5f;
 
         public MonsterIdleState(MonsterAi monsterAi)
         {
@@ -39,7 +39,6 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         public void Update()
         {
-            Log.Information(_timer.ToString());
             _timer += MMORPG_SERVER.Time.Timer.deltaTime;
 
             //TODO：判断追逐

@@ -19,7 +19,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private int _currentMoveIndex = 0;
 
-        private float _moveSpeed = 5f;
+        private float _moveSpeed = 3f;
 
         private Vector3 _currentTarget;
 
@@ -39,6 +39,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
             Log.Information("move");
             _monsterAi._monster._stateId = (int)MonsterState.move;
             _currentTarget = _movePosition[_currentMoveIndex];
+            _currentTarget.Y = _monsterAi._monster._position.Y;
         }
 
         public void Exit()
@@ -53,33 +54,40 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         public void Update()
         {
-            UpdatePostion();
-            UpdateRotation();
-
-            if(Vector3.Distance(_monsterAi._monster._position, _currentTarget) < 0.5f)
+            if(Vector3.Distance(_monsterAi._monster._position, _currentTarget) < 0.3f)
             {
-                _monsterAi.ChangeState(MonsterState.idle);
+                _monsterAi._monster._position = _currentTarget; // 校准位置
                 _currentMoveIndex = (_currentMoveIndex + 1) % _movePosition.Count;
                 _currentTarget = _movePosition[_currentMoveIndex];
+                _monsterAi.ChangeState(MonsterState.idle);
+                UpdateRotation();
+                return;
             }
-        }
-
-        private bool MoveCondition()
-        {
-            return Vector3.Distance(_monsterAi._monster._position, _currentTarget) > 0.1f;
+            UpdatePostion();
+            UpdateRotation();
         }
 
         private void UpdatePostion()
         {
-            if (MoveCondition())
-            {
-                Vector3 direction = _currentTarget - _monsterAi._monster._position;
-                direction.Y = 0;
-                direction = Vector3.Normalize(direction);
+            Vector3 direction = _currentTarget - _monsterAi._monster._position;
+            direction.Y = 0;
 
+            // 使用平滑插值而不是直接归一化
+            float distance = direction.Length();
+            if (distance > 0.1f)
+            {
+                direction = Vector3.Normalize(direction);
                 Vector3 moveDelta = _moveSpeed * direction * MMORPG_SERVER.Time.Timer.deltaTime;
-                _monsterAi._monster._position += moveDelta;
-                Log.Information(_monsterAi._monster._position.ToString());
+
+                // 防止 overshoot
+                if (moveDelta.Length() > distance)
+                {
+                    _monsterAi._monster._position = _currentTarget;
+                }
+                else
+                {
+                    _monsterAi._monster._position += moveDelta;
+                }
             }
         }
 

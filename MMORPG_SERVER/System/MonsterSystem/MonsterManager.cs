@@ -22,6 +22,8 @@ namespace MMORPG_SERVER.System.MonsterSystem
 
         private float _createMonsterInterval = 10f;
 
+        private Random _random = new Random();
+
         public void Start()
         {
             foreach(var monster in _monsterDictionary.Values)
@@ -40,15 +42,15 @@ namespace MMORPG_SERVER.System.MonsterSystem
             _timer += MMORPG_SERVER.Time.Timer.deltaTime;
             if (CreateMonsterCondition())
             {
-                CreateMonster();
+                CreateMonster(_random.Next(6, 8));
                 _timer = 0;
             }
         }
 
-        private void CreateMonster()
+        private void CreateMonster(int unitId)
         {
             Log.Information($"[MonsterManager] 生成Monster");
-            var unitDefine = DataManager.Instance.GetUnitDefine(6);
+            var unitDefine = DataManager.Instance.GetUnitDefine(unitId);
             var monsterAi = new MonsterAi();
 
             var monster = new Monster(
@@ -99,7 +101,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
         private bool CreateMonsterCondition()
         {
             return _timer > _createMonsterInterval &&
-                _monsterCount < 1 &&
+                _monsterCount < 3 &&
                 PlayerManager.Instance.GetPlayerCount() > 0;
         }
     }
