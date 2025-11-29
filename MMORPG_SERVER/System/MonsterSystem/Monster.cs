@@ -24,6 +24,8 @@ namespace MMORPG_SERVER.System.MonsterSystem
 
         public List<Vector3> _movePosition; //巡逻点
 
+        public int _hp;
+
         public Monster
             (int entityId, 
             EntityType entityType, 
@@ -31,10 +33,12 @@ namespace MMORPG_SERVER.System.MonsterSystem
             Vector3 pos, 
             float dir,
             MonsterAi controller,
-            List<Vector3> movePos) : base(entityId, entityType, unitDefine, pos, dir)
+            List<Vector3> movePos,
+            int hp) : base(entityId, entityType, unitDefine, pos, dir)
         {
             _controller = controller;
             _movePosition = movePos;
+            _hp = hp;
         }
     }
 }

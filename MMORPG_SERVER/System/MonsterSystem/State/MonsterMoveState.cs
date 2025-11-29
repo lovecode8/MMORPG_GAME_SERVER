@@ -1,4 +1,5 @@
-﻿using MMORPG_SERVER.System.EntitySystem;
+﻿using Extension;
+using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.Tool;
 using Org.BouncyCastle.Asn1.X509;
 using Serilog;

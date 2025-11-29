@@ -60,7 +60,8 @@ namespace MMORPG_SERVER.System.MonsterSystem
                 unitDefine.OriginalPosition.ToVector3(),
                 0,
                 monsterAi,
-                new()
+                new(),
+                unitDefine.Hp
                 );
 
             //导入移动数据

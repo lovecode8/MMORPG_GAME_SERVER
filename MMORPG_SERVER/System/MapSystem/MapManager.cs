@@ -1,6 +1,7 @@
 ﻿using Extension;
 using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.System.EntitySystem;
+using MMORPG_SERVER.System.MonsterSystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using MMORPG_SERVER.Tool;
 using Serilog;
@@ -82,7 +83,7 @@ namespace MMORPG_SERVER.System.MapSystem
                 entityData.Transform.Rotation.Z = _random.Next(-50, 50);
             }
 
-            if (entity is Player player)
+            else if (entity is Player player)
             {
                 entityData.Name = (entity as Player)?._user._dbUser.UserName;
                 entityData.Hp = player._dbCharacter.Hp;
@@ -92,7 +93,12 @@ namespace MMORPG_SERVER.System.MapSystem
                 entityData.Gold = player._dbCharacter.Gold;
                 entityData.Level = player._dbCharacter.Level;
             }
-            return entityData;
+
+            else if(entity is Monster monster)
+            {
+                entityData.Hp = monster._hp; 
+            }
+                return entityData;
         }
     }
 }
