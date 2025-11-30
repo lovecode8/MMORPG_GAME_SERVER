@@ -124,13 +124,11 @@ namespace MMORPG_SERVER.System.EntitySystem
             return _entityDictionaty;
         }
 
-        public bool IsAttackTargetVaild(int attackerId, int targetId)
+        public bool IsAttackTargetVaild(Entity attacker, Entity target, float attackRange)
         {
-            var attacker = GetEntity(attackerId);
-            var target = GetEntity(targetId);
             if (attacker == null || target == null) return false;
 
-            if (Vector3.Distance(attacker._position, target._position) > 5f) return false;
+            if (Vector3.Distance(attacker._position, target._position) > attackRange) return false;
 
             var directionAttackerToTarget = target._position - attacker._position;
             if(!Vector3Extensions.IsInAngleRange(directionAttackerToTarget, attacker._rotationY, 60))

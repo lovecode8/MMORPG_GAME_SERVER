@@ -1,5 +1,6 @@
 ﻿using Extension;
 using MMORPG_SERVER.System.EntitySystem;
+using MMORPG_SERVER.System.PlayerSystem;
 using MMORPG_SERVER.Tool;
 using Org.BouncyCastle.Asn1.X509;
 using Serilog;
@@ -55,7 +56,15 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         public void Update()
         {
-            if(Vector3.Distance(_monsterAi._monster._position, _currentTarget) < 0.3f)
+            //TODO：判断追逐
+            var player = PlayerManager.Instance.GetChaseablePlayer(_monsterAi._monster);
+            if (player != null)
+            {
+                _monsterAi.SetChaseTarget(player);
+                _monsterAi.ChangeState(MonsterState.chase);
+            }
+
+            if (Vector3.Distance(_monsterAi._monster._position, _currentTarget) < 0.3f)
             {
                 _monsterAi._monster._position = _currentTarget; // 校准位置
                 _currentMoveIndex = (_currentMoveIndex + 1) % _movePosition.Count;
@@ -64,6 +73,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
                 UpdateRotation();
                 return;
             }
+
             UpdatePostion();
             UpdateRotation();
         }

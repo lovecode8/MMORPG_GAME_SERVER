@@ -42,7 +42,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
             _timer += MMORPG_SERVER.Time.Timer.deltaTime;
             if (CreateMonsterCondition())
             {
-                CreateMonster(_random.Next(6, 8));
+                CreateMonster(_random.Next(6, 7));
                 _timer = 0;
             }
         }
@@ -102,7 +102,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
         private bool CreateMonsterCondition()
         {
             return _timer > _createMonsterInterval &&
-                _monsterCount < 3 &&
+                _monsterCount < 1 &&
                 PlayerManager.Instance.GetPlayerCount() > 0;
         }
     }

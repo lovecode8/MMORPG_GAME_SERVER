@@ -1,4 +1,5 @@
-﻿using MMORPG_SERVER.Time;
+﻿using MMORPG_SERVER.System.PlayerSystem;
+using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
 using Serilog;
 
@@ -42,6 +43,12 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
             _timer += MMORPG_SERVER.Time.Timer.deltaTime;
 
             //TODO：判断追逐
+            var player = PlayerManager.Instance.GetChaseablePlayer(_monsterAi._monster);
+            if (player != null)
+            {
+                _monsterAi.SetChaseTarget(player);
+                _monsterAi.ChangeState(MonsterState.chase);
+            }
 
             if(_timer > _idleInterval)
             {

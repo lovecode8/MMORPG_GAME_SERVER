@@ -3,6 +3,8 @@ using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.AttributeSystem;
 using MMORPG_SERVER.System.EntitySystem;
+using MMORPG_SERVER.System.FightSystem;
+using MMORPG_SERVER.System.MonsterSystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using Serilog;
 
@@ -19,11 +21,14 @@ namespace MMORPG_SERVER.Service
                 var channel = sender as NetChannel;
                 int playerId = playerAttackRequest.PlayerId;
                 int targetId = playerAttackRequest.TargetId;
+                var attacker = EntityManager.Instance.GetEntity(playerId);
+                var target = EntityManager.Instance.GetEntity(targetId);
+
                 Log.Information($"[FightService] 收到攻击请求：{playerId}攻击{targetId}");
 
                 //未命中
                 if (playerAttackRequest.TargetId == -1 || 
-                !EntityManager.Instance.IsAttackTargetVaild(playerId, targetId))
+                !EntityManager.Instance.IsAttackTargetVaild(attacker, target, 5f))
                 {
                     //仅同步动画
                     PlayerManager.Instance.Broadcast(new PlayerAttackResponse()
@@ -37,30 +42,13 @@ namespace MMORPG_SERVER.Service
                 }
 
                 //命中
-                var attacker = EntityManager.Instance.GetEntity(playerId);
-                var target = EntityManager.Instance.GetEntity(targetId);
-                var attackerAttribute = AttributeManager.Instance.GetPlayerAttribute(channel._user._userId);
-                
-                //基础伤害  
-                var demage = attacker._unitDefine.AttackDemage[playerAttackRequest.CamboCount];
-
-                //附加伤害
-                if(attackerAttribute != null)
+                if(target is Monster monster)
                 {
-                    demage += attackerAttribute._atkAddition;
+                    monster._controller.ChangeState(MonsterState.getHit);
                 }
 
-
-                //目标防御
-                if (target?._entityType == EntityType.Player)
-                {
-                    var targetAttribute = AttributeManager.Instance.
-                        GetPlayerAttribute((target as Player)._user._userId);
-                    if (targetAttribute != null) demage -= targetAttribute._defAddition;
-                }
-
-                //最低伤害校准
-                demage = Math.Clamp(demage, 10, 9999);
+                var demage = FightManager.Instance.
+                    GetFightHurtValue(attacker, target, playerAttackRequest.CamboCount);
 
                 Log.Information($"[FightService] 攻击结果：对{targetId}造成{demage}点伤害");
 
@@ -74,14 +62,6 @@ namespace MMORPG_SERVER.Service
                     IsHit = true,
                     Damage = (int)demage
                 }, channel._user._player, true);
-
-                switch (target._entityType)
-                {
-                    case EntityType.Player:
-                        (target as Player).GetHurt((int)demage);
-                        break;
-                    //TODO：后续增加敌人处理
-                }
             });
         }
     }
