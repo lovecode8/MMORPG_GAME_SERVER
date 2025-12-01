@@ -1,4 +1,5 @@
 ﻿using MMORPG_SERVER.Database;
+using MMORPG_SERVER.System.AStarSystem;
 using MMORPG_SERVER.System.AttributeSystem;
 using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.EntitySystem;
@@ -54,6 +55,9 @@ namespace MMORPG_SERVER.Manager
 
             MonsterManager.Instance.Start();
             Log.Information("[MonsterManager] 初始化完成");
+
+            AStarManager.Instance.Start();
+            Log.Information("[AStarManager] 初始化完成");
 
             Scheduler.Instance.AddScheduler(_updateTime, Update);
         }

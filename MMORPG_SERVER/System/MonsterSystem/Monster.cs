@@ -17,6 +17,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
         die
     }
 
+    //敌人类
     public class Monster : Entity
     {
         public int _monsterId => _entityId;
