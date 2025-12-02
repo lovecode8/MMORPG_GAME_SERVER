@@ -1,4 +1,5 @@
 ﻿using Extension;
+using MMORPG_SERVER.System.AStarSystem;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using MMORPG_SERVER.Tool;
@@ -21,9 +22,15 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private int _currentMoveIndex = 0;
 
-        private float _moveSpeed = 3f;
+        private float _moveSpeed = 2f;
 
         private Vector3 _currentTarget;
+
+        private List<Vector3> _currentPath = new();
+
+        private int _currentPathIndex = 0;
+
+        private Vector3 _currentPathTarget;
 
         public MonsterMoveState(MonsterAi monsterAi, List<Vector3> list)
         {
@@ -36,12 +43,35 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
             return true;
         }
 
-        public void Enter()
+        public void Enter() => _ = EnterAsync();
+
+        private async Task EnterAsync()
         {
             Log.Information("move");
             _monsterAi._monster._stateId = (int)MonsterState.move;
             _currentTarget = _movePosition[_currentMoveIndex];
             _currentTarget.Y = _monsterAi._monster._position.Y;
+
+            _currentPath.Clear();
+
+            var startPos = new Vector3(_monsterAi._monster._position.X, -2, _monsterAi._monster._position.Z);
+
+            var newPath = await AStarManager.Instance.
+                GetAStarPath(startPos, _currentTarget);
+
+            if(newPath == null)
+            {
+                Log.Information("路径获取失败");
+                //若路径为空--自动切换到下一个巡逻点
+                _currentMoveIndex = (_currentMoveIndex + 1) % _movePosition.Count;
+                _monsterAi.ChangeState(MonsterState.idle);
+                return;
+            }
+
+            _currentPath = newPath;
+            _currentPathIndex = 0;
+            _currentPathTarget = _currentPath[_currentPathIndex];
+            _currentPathTarget.Y = _monsterAi._monster._position.Y;
         }
 
         public void Exit()
@@ -56,7 +86,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         public void Update()
         {
-            //TODO：判断追逐
+            //判断追逐
             var player = PlayerManager.Instance.GetChaseablePlayer(_monsterAi._monster);
             if (player != null)
             {
@@ -64,13 +94,11 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
                 _monsterAi.ChangeState(MonsterState.chase);
             }
 
-            if (Vector3.Distance(_monsterAi._monster._position, _currentTarget) < 0.3f)
+            //到达目的地
+            if (Vector3.Distance(_monsterAi._monster._position, _currentTarget) < 0.5f)
             {
-                _monsterAi._monster._position = _currentTarget; // 校准位置
                 _currentMoveIndex = (_currentMoveIndex + 1) % _movePosition.Count;
-                _currentTarget = _movePosition[_currentMoveIndex];
                 _monsterAi.ChangeState(MonsterState.idle);
-                UpdateRotation();
                 return;
             }
 
@@ -80,7 +108,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private void UpdatePostion()
         {
-            Vector3 direction = _currentTarget - _monsterAi._monster._position;
+            Vector3 direction = _currentPathTarget - _monsterAi._monster._position;
             direction.Y = 0;
 
             // 使用平滑插值而不是直接归一化
@@ -88,24 +116,31 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
             if (distance > 0.1f)
             {
                 direction = Vector3.Normalize(direction);
+                direction.Y = 0;
                 Vector3 moveDelta = _moveSpeed * direction * MMORPG_SERVER.Time.Timer.deltaTime;
 
                 // 防止 overshoot
                 if (moveDelta.Length() > distance)
                 {
-                    _monsterAi._monster._position = _currentTarget;
+                    _monsterAi._monster._position = _currentPathTarget;
                 }
                 else
                 {
                     _monsterAi._monster._position += moveDelta;
                 }
             }
+            if(distance < 0.1f && _currentPathIndex < _currentPath.Count - 1)
+            {
+                _monsterAi._monster._position = _currentPathTarget;
+                _currentPathTarget = _currentPath[++_currentPathIndex];
+                _currentPathTarget.Y = _monsterAi._monster._position.Y;
+            }
         }
 
         private void UpdateRotation()
         {
             // 1. 计算方向向量（排除Y轴）
-            Vector3 direction = _currentTarget - _monsterAi._monster._position;
+            Vector3 direction = _currentPathTarget - _monsterAi._monster._position;
             direction.Y = 0;
 
             // 2. 计算Yaw角（绕Y轴旋转，弧度转角度）

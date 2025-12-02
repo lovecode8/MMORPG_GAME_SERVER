@@ -22,11 +22,15 @@ namespace MMORPG_SERVER.System.AStarSystem
         //三角形字典 -- 边的Key对应三角形索引表
         private Dictionary<string, List<int>> _edgeToTriangle = new();
 
+        // 新增：采样配置（可根据场景调整）
+        private readonly float _searchRadius = 10f; // 最大搜索半径（米）
+        private readonly int _sampleStep = 8; // 每层采样步数
+        private readonly int _sampleLayer = 5; // 采样层数（半径分层）
+
         public void Start()
         {
             LoadNavMeshData();
             BuildEdgeToTriangle();
-            GetAStarPath(new Vector3(24, -2.75f, 98), new Vector3(32, -2.75f, 103));
         }
 
         //加载NavMesh数据
@@ -41,7 +45,7 @@ namespace MMORPG_SERVER.System.AStarSystem
         //构建边对应三角形字典
         private void BuildEdgeToTriangle()
         {
-            for(int i = 0; i < _allTriangles.Count; i++)
+            for (int i = 0; i < _allTriangles.Count; i++)
             {
                 var triangle = _allTriangles[i];
                 AddEdgeToTriangle(triangle.Vertices[0], triangle.Vertices[1], i);
@@ -53,16 +57,7 @@ namespace MMORPG_SERVER.System.AStarSystem
         //增加边对应三角形
         private void AddEdgeToTriangle(Vector3 point1, Vector3 point2, int triangleIndex)
         {
-            string key;
-
-            if(point1.X + point1.Z > point2.X + point2.Z)
-            {
-                key = $"{point1.X}_{point1.Y}_{point1.Z}|{point2.X}_{point2.Y}_{point2.Z}";
-            }
-            else
-            {
-                key = $"{point2.X}_{point2.Y}_{point2.Z}|{point1.X}_{point1.Y}_{point1.Z}";
-            }
+            var key = GetEdgeKey(point1, point2);
 
             if (!_edgeToTriangle.ContainsKey(key))
             {
@@ -76,18 +71,25 @@ namespace MMORPG_SERVER.System.AStarSystem
         }
 
         //核心算法--获取路径
-        public List<Vector3> GetAStarPath(Vector3 startPos, Vector3 endPos)
+        public async Task<List<Vector3>> GetAStarPath(Vector3 startPos, Vector3 endPos)
         {
             int startIndex = GetTriangleIndexByPos(startPos);
             int endIndex = GetTriangleIndexByPos(endPos);
 
-            if(startIndex == -1 || endIndex == -1)
+            if (startIndex == -1 || endIndex == -1)
             {
-                Log.Information("起点或终点不可抵达");
+                if(startIndex == -1)
+                {
+                    startIndex = GetTriangleIndexByPos(FindNearestReachablePoint(startPos));
+                }
+                if(endIndex == -1)
+                {
+                    endIndex = GetTriangleIndexByPos(FindNearestReachablePoint(endPos));
+                }
                 return null;
             }
 
-            if(startIndex == endIndex)
+            if (startIndex == endIndex)
             {
                 return new() { startPos, endPos };
             }
@@ -108,76 +110,93 @@ namespace MMORPG_SERVER.System.AStarSystem
             hCost[startIndex] = GetHCost(startPos, endPos);
             openSet.Enqueue(startIndex, gCost[startIndex] + hCost[startIndex]);
 
-            while(openSet.Count > 0)
+            var ans = await Task.Run(() =>
             {
-                int currentIndex = openSet.Dequeue();
-
-                if(currentIndex == endIndex)
+                while (openSet.Count > 0)
                 {
-                    return ReConstructPath(parentDict, startIndex, endIndex);
-                }
+                    int currentIndex = openSet.Dequeue();
 
-                closeSet.Add(currentIndex);
-
-                var neighborTriangleIndexList = GetNeighborTriangle(currentIndex);
-
-                foreach(var neighborIndex in neighborTriangleIndexList)
-                {
-                    if (closeSet.Contains(neighborIndex)) continue;
-
-                    Vector3 neighborCenter = _allTriangles[currentIndex].Center;
-
-                    float neighborGCost = gCost[currentIndex] +
-                        Vector3.Distance(_allTriangles[currentIndex].Center, neighborCenter);
-
-                    if (!gCost.ContainsKey(neighborIndex) || neighborGCost < gCost[neighborIndex])
+                    if (currentIndex == endIndex)
                     {
-                        gCost[neighborIndex] = neighborGCost;
-                        hCost[neighborIndex] = GetHCost(neighborCenter, _allTriangles[endIndex].Center) * 3;
-                        parentDict[neighborIndex] = currentIndex;
+                        var ans = SmoothPath
+                            (ReConstructPath(parentDict, startIndex, endIndex), startPos, endPos);
+                        foreach (var pos in ans)
+                        {
+                            Log.Information(pos.ToString());
+                        }
+                        return ans;
+                    }
 
-                        openSet.Enqueue(neighborIndex, gCost[neighborIndex] + hCost[neighborIndex]);
+                    closeSet.Add(currentIndex);
+
+                    var neighborTriangleIndexList = GetNeighborTriangle(currentIndex);
+
+                    foreach (var neighborIndex in neighborTriangleIndexList)
+                    {
+                        if (closeSet.Contains(neighborIndex)) continue;
+
+                        Vector3 neighborCenter = _allTriangles[neighborIndex].Center;
+
+                        float neighborGCost = gCost[currentIndex] +
+                            Vector3.Distance(_allTriangles[currentIndex].Center, neighborCenter);
+
+                        if (!gCost.ContainsKey(neighborIndex) || neighborGCost < gCost[neighborIndex])
+                        {
+                            gCost[neighborIndex] = neighborGCost;
+                            hCost[neighborIndex] = GetHCost(neighborCenter, _allTriangles[endIndex].Center);
+                            parentDict[neighborIndex] = currentIndex;
+
+                            openSet.Enqueue(neighborIndex, gCost[neighborIndex] + hCost[neighborIndex]);
+                        }
                     }
                 }
-            }
-
-            Log.Information("找不到路径");
-            return null;
+                Log.Information("找不到路径");
+                return null;
+            });
+            return ans;
         }
 
         //获取点所在的三角形
         private int GetTriangleIndexByPos(Vector3 point)
         {
-            for(int i = 0; i < _allTriangles.Count; i++)
+            for (int i = 0; i < _allTriangles.Count; i++)
             {
-                if(isPointInTriangle(point, _allTriangles[i].Vertices))
+                if (isPointInTriangle(point, _allTriangles[i].Vertices))
                 {
                     return i;
                 }
             }
+
             return -1;
         }
 
         //判断点是否在三角形中
         private bool isPointInTriangle(Vector3 point, Vector3[] vertices)
         {
-            // 转换为二维（X/Z）进行判断
+            if (vertices == null || vertices.Length != 3)
+                return false;
+
             Vector2 p = new Vector2(point.X, point.Z);
             Vector2 v0 = new Vector2(vertices[0].X, vertices[0].Z);
             Vector2 v1 = new Vector2(vertices[1].X, vertices[1].Z);
             Vector2 v2 = new Vector2(vertices[2].X, vertices[2].Z);
 
-            // 计算重心坐标（判断点是否在三角形内部）
             float s1 = v2.Y - v0.Y;
             float s2 = v2.X - v0.X;
             float s3 = v1.Y - v0.Y;
             float s4 = p.Y - v0.Y;
 
-            float w1 = (v0.X * s1 + s4 * s2 - p.X * s1) / (s3 * s2 - (v1.X - v0.X) * s1);
+            // 分母计算 + 非零保护（避免除以0）
+            float denominator = s3 * s2 - (v1.X - v0.X) * s1;
+            if (Math.Abs(denominator) < 0.0001f)
+                return false; // 三角形退化为线，无意义
+
+            float w1 = (v0.X * s1 + s4 * s2 - p.X * s1) / denominator;
             float w2 = (s4 - w1 * s3) / s1;
 
-            // 重心坐标在0~1之间 → 点在三角形内
-            return (w1 >= -0.01f && w2 >= -0.01f && (w1 + w2) <= 1.01f); // 浮点误差容忍
+            // 扩大误差容忍范围（从0.01→0.05，适配游戏场景）
+            const float tolerance = 0.05f;
+            return (w1 >= -tolerance && w2 >= -tolerance && (w1 + w2) <= 1 + tolerance);
         }
 
         //获取该点到终点的消耗值
@@ -191,8 +210,8 @@ namespace MMORPG_SERVER.System.AStarSystem
         {
             List<Vector3> ans = new List<Vector3>();
             int currentIndex = endIndex;
-            
-            while(currentIndex != startIndex)
+
+            while (currentIndex != startIndex)
             {
                 ans.Add(_allTriangles[currentIndex].Center);
                 currentIndex = parentDict[currentIndex];
@@ -203,31 +222,113 @@ namespace MMORPG_SERVER.System.AStarSystem
 
             Log.Information($"路径生成成功：共{ans.Count}个点");
 
-            foreach(var pos in ans)
-            {
-                Log.Information(pos.ToString());
-            }
-
             return ans;
         }
+
+        #region 新增核心方法：查找最近可达点
+        /// <summary>
+        /// 查找指定点附近最近的可达点（在NavMesh三角形内）
+        /// </summary>
+        /// <param name="originPos">原始不可达点</param>
+        /// <returns>最近的可达点（无则返回原始点）</returns>
+        private Vector3 FindNearestReachablePoint(Vector3 originPos)
+        {
+            // 存储采样点和距离，用于找最近点
+            Dictionary<Vector3, float> samplePoints = new Dictionary<Vector3, float>();
+
+            // 分层采样（从近到远，提高效率）
+            for (int layer = 1; layer <= _sampleLayer; layer++)
+            {
+                float currentRadius = _searchRadius * (layer / (float)_sampleLayer);
+                float stepAngle = 360f / _sampleStep;
+
+                // 1. 平面（X/Z）圆形采样
+                for (int step = 0; step < _sampleStep; step++)
+                {
+                    float angle = step * stepAngle * (float)Math.PI / 180f;
+                    float offsetX = currentRadius * (float)Math.Cos(angle);
+                    float offsetZ = currentRadius * (float)Math.Sin(angle);
+
+                    // 生成采样点（固定Y轴为原始点Y，或适配三角形Y）
+                    Vector3 samplePos = new Vector3(
+                        originPos.X + offsetX,
+                        originPos.Y,
+                        originPos.Z + offsetZ
+                    );
+
+                    // 检查是否可达
+                    if (GetTriangleIndexByPos(samplePos) != -1)
+                    {
+                        float distance = Vector3.Distance(originPos, samplePos);
+                        samplePoints[samplePos] = distance;
+                    }
+
+                    // 2. Y轴上下采样（适配地形高度）
+                    Vector3 samplePosYUp = samplePos with { Y = originPos.Y + 0.5f * layer };
+                    Vector3 samplePosYDown = samplePos with { Y = originPos.Y - 0.5f * layer };
+                    if (GetTriangleIndexByPos(samplePosYUp) != -1)
+                    {
+                        float distance = Vector3.Distance(originPos, samplePosYUp);
+                        samplePoints[samplePosYUp] = distance;
+                    }
+                    if (GetTriangleIndexByPos(samplePosYDown) != -1)
+                    {
+                        float distance = Vector3.Distance(originPos, samplePosYDown);
+                        samplePoints[samplePosYDown] = distance;
+                    }
+                }
+
+                // 3. 十字形采样（上下左右）
+                Vector3[] crossOffsets = new[]
+                {
+                    new Vector3(currentRadius, 0, 0),   // X+
+                    new Vector3(-currentRadius, 0, 0),  // X-
+                    new Vector3(0, 0, currentRadius),   // Z+
+                    new Vector3(0, 0, -currentRadius)   // Z-
+                };
+                foreach (var offset in crossOffsets)
+                {
+                    Vector3 samplePos = originPos + offset;
+                    if (GetTriangleIndexByPos(samplePos) != -1)
+                    {
+                        float distance = Vector3.Distance(originPos, samplePos);
+                        samplePoints[samplePos] = distance;
+                    }
+                }
+
+                // 找到当前层的最近点，直接返回（无需继续采样）
+                if (samplePoints.Count > 0)
+                {
+                    break;
+                }
+            }
+
+            // 无采样点则返回原始点，否则返回最近点
+            if (samplePoints.Count == 0)
+            {
+                return originPos;
+            }
+            return samplePoints.OrderBy(kv => kv.Value).First().Key;
+        }
+        #endregion
 
         //获取指定节点三角形的相邻三角形的索引值
         private List<int> GetNeighborTriangle(int currentIndex)
         {
             HashSet<int> triangles = new HashSet<int>();
             var vertices = _allTriangles[currentIndex].Vertices;
-            foreach(var key in new[]
+            foreach (var key in new[]
             {
                 GetEdgeKey(vertices[0], vertices[1]),
                 GetEdgeKey(vertices[0], vertices[2]),
                 GetEdgeKey(vertices[1], vertices[2])
             })
             {
-                if(_edgeToTriangle.TryGetValue(key, out var list))
+                if (_edgeToTriangle.TryGetValue(key, out var list))
                 {
-                    foreach(var tarangleIndex in list)
+                    foreach (var tarangleIndex in list)
                     {
-                        if(tarangleIndex != currentIndex)
+                        if (tarangleIndex != currentIndex)
                         {
                             triangles.Add(tarangleIndex);
                         }
@@ -241,14 +342,88 @@ namespace MMORPG_SERVER.System.AStarSystem
         //根据三角形顶点信息获取Key
         private string GetEdgeKey(Vector3 point1, Vector3 point2)
         {
-            if (point1.X + point1.Z > point2.X + point2.Z)
+            var p1_x = Math.Round(point1.X, 2);
+            var p1_y = Math.Round(point1.Y, 2);
+            var p1_z = Math.Round(point1.Z, 2);
+            var p2_x = Math.Round(point2.X, 2);
+            var p2_y = Math.Round(point2.Y, 2);
+            var p2_z = Math.Round(point2.Z, 2);
+
+            if (p1_x + p1_z > p2_x + p2_z)
             {
-                return $"{point1.X}_{point1.Y}_{point1.Z}|{point2.X}_{point2.Y}_{point2.Z}";
+                return $"{p1_x}_{p1_y}_{p1_z}|{p2_x}_{p2_y}_{p2_z}";
             }
             else
             {
-                return $"{point2.X}_{point2.Y}_{point2.Z}|{point1.X}_{point1.Y}_{point1.Z}";
+                return $"{p2_x}_{p2_y}_{p2_z}|{p1_x}_{p1_y}_{p1_z}";
             }
+        }
+
+        /// <summary>
+        /// 路径平滑核心方法：剔除冗余拐点，减少路径拐弯（仅保留必要节点）
+        /// </summary>
+        /// <param name="rawPath">A星生成的原始路径（三角形中心列表）</param>
+        /// <param name="startPos">路径起点（原始输入的起点）</param>
+        /// <param name="endPos">路径终点（原始输入的终点）</param>
+        /// <returns>平滑后的路径点列表</returns>
+        public List<Vector3> SmoothPath(List<Vector3> rawPath, Vector3 startPos, Vector3 endPos)
+        {
+            // 空值/短路径直接返回
+            if (rawPath == null || rawPath.Count <= 2)
+                return rawPath ?? new List<Vector3> { startPos, endPos };
+
+            // 步骤1：替换原始路径首尾为真实起点/终点（剔除三角形中心偏差）
+            List<Vector3> path = new List<Vector3> { startPos };
+            path.AddRange(rawPath.Skip(1).Take(rawPath.Count - 2));
+            path.Add(endPos);
+
+            // 步骤2：核心拐点剔除（从起点开始，跳过可直线通行的中间点）
+            List<Vector3> smoothPath = new List<Vector3> { path[0] };
+            int lastValidIdx = 0; // 上一个保留的节点索引
+
+            // 遍历路径，只保留"必须拐弯"的节点
+            for (int i = 1; i < path.Count - 1; i++)
+            {
+                // 检查上一个有效节点到下一个节点是否可直线通行
+                if (!IsLineWalkable(path[lastValidIdx], path[i + 1]))
+                {
+                    smoothPath.Add(path[i]);
+                    lastValidIdx = i; // 更新上一个有效节点
+                }
+            }
+
+            // 步骤3：添加终点，完成平滑
+            smoothPath.Add(endPos);
+
+            // 日志输出优化前后对比
+            Log.Information($"路径平滑完成：原始{rawPath.Count}个点 → 平滑后{smoothPath.Count}个点");
+            return smoothPath;
+        }
+
+        /// <summary>
+        /// 辅助方法：判断两点间直线是否可通行（采样验证是否全在NavMesh内）
+        /// </summary>
+        private bool IsLineWalkable(Vector3 start, Vector3 end)
+        {
+            // 两点距离过近，直接判定可通行
+            if (Vector3.Distance(start, end) < 0.1f) return true;
+
+            // 采样直线上的点（可根据场景调整采样数，8个足够平衡精度和性能）
+            int sampleCount = 8;
+            for (int i = 1; i < sampleCount; i++)
+            {
+                float t = (float)i / sampleCount;
+                // 线性插值生成采样点
+                Vector3 samplePoint = new Vector3(
+                    start.X + (end.X - start.X) * t,
+                    start.Y + (end.Y - start.Y) * t,
+                    start.Z + (end.Z - start.Z) * t
+                );
+                // 采样点不在任何三角形内 → 直线不可通行
+                if (GetTriangleIndexByPos(samplePoint) == -1)
+                    return false;
+            }
+            return true;
         }
     }
 }

@@ -7,11 +7,27 @@
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\astarsystem\\astarmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\monstersystem\\state\\monsterchasestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\monstersystem\\state\\monsterchasestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\monstersystem\\state\\monstermovestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\monstersystem\\state\\monstermovestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\data\\json\\unitdefine.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:data\\json\\unitdefine.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\data\\json\\navmeshdata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:data\\json\\navmeshdata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\game\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\tool\\fsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:tool\\fsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\astarsystem\\triangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -32,14 +48,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\service\\fightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:service\\fightservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\monstersystem\\state\\monstermovestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\monstersystem\\state\\monstermovestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\monstersystem\\state\\monsterchasestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\monstersystem\\state\\monsterchasestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\extension\\vector3extension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,10 +82,6 @@
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\monstersystem\\state\\monsteridlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\data\\json\\unitdefine.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:data\\json\\unitdefine.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\system\\monstersystem\\monstermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:system\\monstersystem\\monstermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -99,10 +103,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\service\\entityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:service\\entityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\tool\\fsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|solutionrelative:tool\\fsm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AFFDC81-D02A-45C3-AB94-E55B8CDCDEB3}|MMORPG_SERVER.csproj|d:\\game\\mmorpg_game_server\\mmorpg_server\\data\\cs\\unitdefine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -271,11 +271,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Monster.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\Monster.cs",
               "RelativeDocumentMoniker": "System\\MonsterSystem\\Monster.cs",
@@ -284,8 +284,7 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-27T07:43:43.224Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -293,15 +292,65 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Vector3Extension.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Extension\\Vector3Extension.cs",
+              "RelativeDocumentMoniker": "Extension\\Vector3Extension.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Extension\\Vector3Extension.cs",
+              "RelativeToolTip": "Extension\\Vector3Extension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T07:01:23.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DataManager.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Manager\\DataManager.cs",
+              "RelativeDocumentMoniker": "Manager\\DataManager.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Manager\\DataManager.cs",
+              "RelativeToolTip": "Manager\\DataManager.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAABAwC0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T07:46:06.472Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SimpleNavMesh3D.json",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json",
-              "RelativeDocumentMoniker": "..\\..\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json",
-              "ToolTip": "D:\\game\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json",
-              "RelativeToolTip": "..\\..\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json",
-              "ViewState": "AgIAAKSKAQAAAAAAAAAcwL2KAQABAAAAAAAAAA==",
+              "Title": "MonsterMoveState.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterMoveState.cs",
+              "RelativeDocumentMoniker": "System\\MonsterSystem\\State\\MonsterMoveState.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterMoveState.cs",
+              "RelativeToolTip": "System\\MonsterSystem\\State\\MonsterMoveState.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAAADAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T12:42:19.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UnitDefine.json",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Data\\Json\\UnitDefine.json",
+              "RelativeDocumentMoniker": "Data\\Json\\UnitDefine.json",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Data\\Json\\UnitDefine.json",
+              "RelativeToolTip": "Data\\Json\\UnitDefine.json",
+              "ViewState": "AgIAAEUAAAAAAAAAAAA/wEwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-01T13:30:31.418Z",
+              "WhenOpened": "2025-11-25T08:17:41.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FSM.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Tool\\FSM.cs",
+              "RelativeDocumentMoniker": "Tool\\FSM.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Tool\\FSM.cs",
+              "RelativeToolTip": "Tool\\FSM.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAxwDAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T07:42:08.8Z",
               "EditorCaption": ""
             },
             {
@@ -312,53 +361,53 @@
               "RelativeDocumentMoniker": "System\\AStarSystem\\AStarManager.cs",
               "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\AStarSystem\\AStarManager.cs",
               "RelativeToolTip": "System\\AStarSystem\\AStarManager.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAswIcAAABrAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAABsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-01T07:43:00.179Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Triangle.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\AStarSystem\\Triangle.cs",
-              "RelativeDocumentMoniker": "System\\AStarSystem\\Triangle.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\AStarSystem\\Triangle.cs",
-              "RelativeToolTip": "System\\AStarSystem\\Triangle.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T07:41:11.937Z",
+              "DocumentIndex": 5,
+              "Title": "SimpleNavMesh3D.json",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json",
+              "RelativeDocumentMoniker": "..\\..\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json",
+              "ToolTip": "D:\\game\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json",
+              "RelativeToolTip": "..\\..\\MMORPG_GAME\\Assets\\SimpleNavMesh3D.json",
+              "ViewState": "AgIAAJclAwAAAAAAAAAcwK0lAwABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-01T13:30:31.418Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "NavMeshData.json",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Data\\Json\\NavMeshData.json",
               "RelativeDocumentMoniker": "Data\\Json\\NavMeshData.json",
               "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Data\\Json\\NavMeshData.json",
               "RelativeToolTip": "Data\\Json\\NavMeshData.json",
-              "ViewState": "AgIAACCKAQAAAAAAAAA/wL2KAQABAAAAAAAAAA==",
+              "ViewState": "AgIAAJglAwAAAAAAAAAAAJ0lAwAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-12-01T07:38:52.468Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MonsterGetHitState.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterGetHitState.cs",
-              "RelativeDocumentMoniker": "System\\MonsterSystem\\State\\MonsterGetHitState.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterGetHitState.cs",
-              "RelativeToolTip": "System\\MonsterSystem\\State\\MonsterGetHitState.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAYwCkAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "MonsterChaseState.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterChaseState.cs",
+              "RelativeDocumentMoniker": "System\\MonsterSystem\\State\\MonsterChaseState.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterChaseState.cs",
+              "RelativeToolTip": "System\\MonsterSystem\\State\\MonsterChaseState.cs",
+              "ViewState": "AgIAAKgAAAAAAAAAAAASwGcAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T08:09:59.482Z",
+              "WhenOpened": "2025-11-30T06:11:26.967Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "PlayerManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\PlayerSystem\\PlayerManager.cs",
               "RelativeDocumentMoniker": "System\\PlayerSystem\\PlayerManager.cs",
@@ -366,38 +415,35 @@
               "RelativeToolTip": "System\\PlayerSystem\\PlayerManager.cs",
               "ViewState": "AgIAAIsAAAAAAAAAAAAywJkAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T13:06:46.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T13:06:46.754Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Vector3Extension.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Extension\\Vector3Extension.cs",
-              "RelativeDocumentMoniker": "Extension\\Vector3Extension.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Extension\\Vector3Extension.cs",
-              "RelativeToolTip": "Extension\\Vector3Extension.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAABEAAAAAAAAAA==",
+              "Title": "MonsterGetHitState.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterGetHitState.cs",
+              "RelativeDocumentMoniker": "System\\MonsterSystem\\State\\MonsterGetHitState.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterGetHitState.cs",
+              "RelativeToolTip": "System\\MonsterSystem\\State\\MonsterGetHitState.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAYwCkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T07:01:23.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T08:09:59.482Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DataManager.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Manager\\DataManager.cs",
-              "RelativeDocumentMoniker": "Manager\\DataManager.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Manager\\DataManager.cs",
-              "RelativeToolTip": "Manager\\DataManager.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAABAwC0AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Triangle.cs",
+              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\AStarSystem\\Triangle.cs",
+              "RelativeDocumentMoniker": "System\\AStarSystem\\Triangle.cs",
+              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\AStarSystem\\Triangle.cs",
+              "RelativeToolTip": "System\\AStarSystem\\Triangle.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T07:46:06.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-01T07:41:11.937Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "UpdateManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Manager\\UpdateManager.cs",
               "RelativeDocumentMoniker": "Manager\\UpdateManager.cs",
@@ -405,12 +451,11 @@
               "RelativeToolTip": "Manager\\UpdateManager.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAwwDsAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T07:45:42.786Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T07:45:42.786Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "MonsterIdleState.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterIdleState.cs",
               "RelativeDocumentMoniker": "System\\MonsterSystem\\State\\MonsterIdleState.cs",
@@ -418,12 +463,11 @@
               "RelativeToolTip": "System\\MonsterSystem\\State\\MonsterIdleState.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAiwC0AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:57:17.231Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-27T07:57:17.231Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "MonsterAi.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\MonsterAi.cs",
               "RelativeDocumentMoniker": "System\\MonsterSystem\\MonsterAi.cs",
@@ -431,38 +475,11 @@
               "RelativeToolTip": "System\\MonsterSystem\\MonsterAi.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:46:41.661Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-27T07:46:41.661Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MonsterChaseState.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterChaseState.cs",
-              "RelativeDocumentMoniker": "System\\MonsterSystem\\State\\MonsterChaseState.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterChaseState.cs",
-              "RelativeToolTip": "System\\MonsterSystem\\State\\MonsterChaseState.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAADoAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T06:11:26.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MonsterMoveState.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterMoveState.cs",
-              "RelativeDocumentMoniker": "System\\MonsterSystem\\State\\MonsterMoveState.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterMoveState.cs",
-              "RelativeToolTip": "System\\MonsterSystem\\State\\MonsterMoveState.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAA7wFIAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T12:42:19.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "FightService.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Service\\FightService.cs",
               "RelativeDocumentMoniker": "Service\\FightService.cs",
@@ -470,12 +487,11 @@
               "RelativeToolTip": "Service\\FightService.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAywA0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T12:25:29.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-20T12:25:29.458Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "EntityManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\EntitySystem\\EntityManager.cs",
               "RelativeDocumentMoniker": "System\\EntitySystem\\EntityManager.cs",
@@ -483,12 +499,11 @@
               "RelativeToolTip": "System\\EntitySystem\\EntityManager.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAIwD4AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:29:51.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:29:51.92Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "ChatManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\ChatSystem\\ChatManager.cs",
               "RelativeDocumentMoniker": "System\\ChatSystem\\ChatManager.cs",
@@ -496,12 +511,11 @@
               "RelativeToolTip": "System\\ChatSystem\\ChatManager.cs",
               "ViewState": "AgIAAHoAAAAAAAAAAAA7wH8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T12:04:27.958Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T12:04:27.958Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "MonsterAttackState.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\State\\MonsterAttackState.cs",
               "RelativeDocumentMoniker": "System\\MonsterSystem\\State\\MonsterAttackState.cs",
@@ -509,25 +523,11 @@
               "RelativeToolTip": "System\\MonsterSystem\\State\\MonsterAttackState.cs",
               "ViewState": "AgIAACUAAAAAAAAAAABCwCwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T06:43:42.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T06:43:42.171Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "UnitDefine.json",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Data\\Json\\UnitDefine.json",
-              "RelativeDocumentMoniker": "Data\\Json\\UnitDefine.json",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Data\\Json\\UnitDefine.json",
-              "RelativeToolTip": "Data\\Json\\UnitDefine.json",
-              "ViewState": "AgIAAEsAAAAAAAAAAAA/wFMAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-25T08:17:41.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "MonsterManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MonsterSystem\\MonsterManager.cs",
               "RelativeDocumentMoniker": "System\\MonsterSystem\\MonsterManager.cs",
@@ -535,12 +535,11 @@
               "RelativeToolTip": "System\\MonsterSystem\\MonsterManager.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAIA/wCwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:47:15.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-27T07:47:15.813Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "FightManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\FightSystem\\FightManager.cs",
               "RelativeDocumentMoniker": "System\\FightSystem\\FightManager.cs",
@@ -548,12 +547,11 @@
               "RelativeToolTip": "System\\FightSystem\\FightManager.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAowDQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T06:58:15.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-30T06:58:15.418Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "UnitDefine.json",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME\\Assets\\StreamingAssets\\Data\\UnitDefine.json",
               "RelativeDocumentMoniker": "..\\..\\MMORPG_GAME\\Assets\\StreamingAssets\\Data\\UnitDefine.json",
@@ -561,12 +559,11 @@
               "RelativeToolTip": "..\\..\\MMORPG_GAME\\Assets\\StreamingAssets\\Data\\UnitDefine.json",
               "ViewState": "AgIAAEwAAAAAAAAAAAA+wGQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-25T13:09:48.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T13:09:48.633Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "MapManager.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\MapSystem\\MapManager.cs",
               "RelativeDocumentMoniker": "System\\MapSystem\\MapManager.cs",
@@ -574,12 +571,11 @@
               "RelativeToolTip": "System\\MapSystem\\MapManager.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAASwGIAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T05:12:22.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-21T05:12:22.946Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Entity.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\System\\EntitySystem\\Entity.cs",
               "RelativeDocumentMoniker": "System\\EntitySystem\\Entity.cs",
@@ -587,12 +583,11 @@
               "RelativeToolTip": "System\\EntitySystem\\Entity.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAuwBQAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:22:54.816Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:22:54.816Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "EntityService.cs",
               "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Service\\EntityService.cs",
               "RelativeDocumentMoniker": "Service\\EntityService.cs",
@@ -600,8 +595,7 @@
               "RelativeToolTip": "Service\\EntityService.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAywBIAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T13:22:44.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T13:22:44.345Z"
             },
             {
               "$type": "Document",
@@ -613,21 +607,7 @@
               "RelativeToolTip": "Data\\CS\\UnitDefine.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAiwBIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:24:55.689Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "FSM.cs",
-              "DocumentMoniker": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Tool\\FSM.cs",
-              "RelativeDocumentMoniker": "Tool\\FSM.cs",
-              "ToolTip": "D:\\game\\MMORPG_GAME_SERVER\\MMORPG_SERVER\\Tool\\FSM.cs",
-              "RelativeToolTip": "Tool\\FSM.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAD4vycAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T07:42:08.8Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:24:55.689Z"
             },
             {
               "$type": "Document",
@@ -639,8 +619,7 @@
               "RelativeToolTip": "Data\\Json\\ItemDefine.json",
               "ViewState": "AgIAAA8AAAAAAAAAAAAcwHIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-23T07:01:48.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T07:01:48.681Z"
             },
             {
               "$type": "Document",
@@ -652,8 +631,7 @@
               "RelativeToolTip": "Service\\InventoryService.cs",
               "ViewState": "AgIAAMkAAAAAAAAAAAAiwMEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T07:22:46.349Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T07:22:46.349Z"
             },
             {
               "$type": "Document",
@@ -665,8 +643,7 @@
               "RelativeToolTip": "Tool\\Singleton.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-11T07:50:12.984Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-11T07:50:12.984Z"
             },
             {
               "$type": "Document",
@@ -678,8 +655,7 @@
               "RelativeToolTip": "System\\PlayerSystem\\Player.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAIAwwCEAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T12:57:09.8Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-20T12:57:09.8Z"
             },
             {
               "$type": "Document",
@@ -691,8 +667,7 @@
               "RelativeToolTip": "System\\InventorySystem\\InventoryManager.cs",
               "ViewState": "AgIAAKAAAAAAAAAAAIAzwLcAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T07:24:32.181Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T07:24:32.181Z"
             },
             {
               "$type": "Document",
@@ -704,8 +679,7 @@
               "RelativeToolTip": "..\\..\\MMORPG_GAME\\Assets\\StreamingAssets\\Data\\ItemDefine.json",
               "ViewState": "AgIAAGwAAAAAAAAAAAAcwHEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-22T13:37:50.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-22T13:37:50.153Z"
             },
             {
               "$type": "Document",
@@ -717,8 +691,7 @@
               "RelativeToolTip": "Data\\CS\\ItemDefine.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAA4wA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-22T07:23:27.214Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-22T07:23:27.214Z"
             },
             {
               "$type": "Document",
@@ -730,8 +703,7 @@
               "RelativeToolTip": "Service\\PlayerService.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAAxwFsAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T08:21:31.143Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:21:31.143Z"
             },
             {
               "$type": "Document",
@@ -743,8 +715,7 @@
               "RelativeToolTip": "Proto\\CSharpFile\\Entity.cs",
               "ViewState": "AgIAABcBAAAAAAAAAAASwCcBAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-23T03:04:28.023Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-23T03:04:28.023Z"
             },
             {
               "$type": "Document",
@@ -756,8 +727,7 @@
               "RelativeToolTip": "Database\\Data\\DbAttribute.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T13:01:21.143Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-24T13:01:21.143Z"
             },
             {
               "$type": "Document",
@@ -769,8 +739,7 @@
               "RelativeToolTip": "Proto\\CSharpFile\\Character.cs",
               "ViewState": "AgIAANECAAAAAAAAAAASwNwCAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T12:05:20.046Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T12:05:20.046Z"
             },
             {
               "$type": "Document",
@@ -782,8 +751,7 @@
               "RelativeToolTip": "Service\\CharacterService.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAqwBsAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T12:22:54.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T12:22:54.905Z"
             },
             {
               "$type": "Document",
@@ -795,8 +763,7 @@
               "RelativeToolTip": "System\\AttributeSystem\\AttributeManager.cs",
               "ViewState": "AgIAADMAAAAAAAAAAIAzwEUAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-22T07:40:20.135Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-22T07:40:20.135Z"
             },
             {
               "$type": "Document",
@@ -808,8 +775,7 @@
               "RelativeToolTip": "System\\AttributeSystem\\Attribute.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-22T07:38:04.287Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-22T07:38:04.287Z"
             },
             {
               "$type": "Document",
@@ -821,8 +787,7 @@
               "RelativeToolTip": "Database\\Data\\DbCharacter.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAIBAwA4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T12:31:10.898Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-17T12:31:10.898Z"
             },
             {
               "$type": "Document",
@@ -834,8 +799,7 @@
               "RelativeToolTip": "Extension\\MysqlExtension.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAywBgAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T07:55:21.343Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T07:55:21.343Z"
             },
             {
               "$type": "Document",
@@ -847,8 +811,7 @@
               "RelativeToolTip": "Service\\FriendService.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAIwAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T08:18:57.634Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:18:57.634Z"
             },
             {
               "$type": "Document",
@@ -860,8 +823,7 @@
               "RelativeToolTip": "Database\\Data\\DbEquip.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T12:53:32.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T12:53:32.061Z"
             },
             {
               "$type": "Document",
@@ -873,8 +835,7 @@
               "RelativeToolTip": "Database\\Data\\DbFriend.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T08:07:33.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T08:07:33.255Z"
             },
             {
               "$type": "Document",
@@ -886,8 +847,7 @@
               "RelativeToolTip": "GameServer.cs",
               "ViewState": "AgIAAGwAAAAAAAAAAIA2wHoAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T08:21:01.996Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T08:21:01.996Z"
             },
             {
               "$type": "Document",
@@ -899,8 +859,7 @@
               "RelativeToolTip": "Common\\Network\\Connection.cs",
               "ViewState": "AgIAAF0AAAAAAAAAAABAwGgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T07:42:29.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T07:42:29.339Z"
             },
             {
               "$type": "Document",
@@ -912,8 +871,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T12:31:08.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-10T12:31:08.242Z"
             },
             {
               "$type": "Document",
@@ -925,8 +883,7 @@
               "RelativeToolTip": "System\\UserSystem\\UserManager.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAlwC4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T07:57:41.507Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T07:57:41.507Z"
             },
             {
               "$type": "Document",
@@ -938,8 +895,7 @@
               "RelativeToolTip": "Database\\Data\\DbInventory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T08:07:30.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T08:07:30.844Z"
             },
             {
               "$type": "Document",
@@ -951,8 +907,7 @@
               "RelativeToolTip": "System\\GuildSystem\\GuildManager.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T08:10:13.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T08:10:13.009Z"
             },
             {
               "$type": "Document",
@@ -964,8 +919,7 @@
               "RelativeToolTip": "Service\\UserService.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAIAzwFwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T08:26:43.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-13T08:26:43.465Z"
             },
             {
               "$type": "Document",
@@ -977,8 +931,7 @@
               "RelativeToolTip": "Network\\NetChannel.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAA9wCsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T07:42:01.655Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-19T07:42:01.655Z"
             },
             {
               "$type": "Document",
@@ -990,8 +943,7 @@
               "RelativeToolTip": "System\\UserSystem\\User.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAIAwwBYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T12:59:24.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-14T12:59:24.766Z"
             },
             {
               "$type": "Document",
