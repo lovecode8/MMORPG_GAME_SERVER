@@ -2,6 +2,7 @@
 using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
 using Serilog;
+using System.Numerics;
 
 namespace MMORPG_SERVER.System.MonsterSystem.State
 {
@@ -42,12 +43,20 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
         {
             _timer += MMORPG_SERVER.Time.Timer.deltaTime;
 
-            //TODO：判断追逐
             var player = PlayerManager.Instance.GetChaseablePlayer(_monsterAi._monster);
+            //判断攻击
+            if(player != null && Vector3.DistanceSquared(player._position, _monsterAi._monster._position) < 9f)
+            {
+                _monsterAi.ChangeState(MonsterState.attack);
+                return;
+            }
+
+            //TODO：判断追逐
             if (player != null)
             {
                 _monsterAi.SetChaseTarget(player);
                 _monsterAi.ChangeState(MonsterState.chase);
+                return;
             }
 
             if(_timer > _idleInterval)

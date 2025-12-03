@@ -82,7 +82,6 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
         {
             var distanceToTarget =
                 Vector3.Distance(_monsterAi._monster._position, _monsterAi._chaseTarget._position);
-            Log.Information($"和玩家的距离:{distanceToTarget.ToString()}");
 
             //攻击
             if (distanceToTarget < _attackDistance && _monsterAi._canAttack)
@@ -96,11 +95,11 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
                 _monsterAi.ChangeState(MonsterState.move);
             }
 
-            var distanceToNextPoint =
-                Vector3.Distance(_monsterAi._monster._position, _currentPathTarget);
+            var distanceToNextPoint = Vector3.DistanceSquared
+                (_monsterAi._monster._position, _currentPathTarget);
 
             //切换寻路点
-            if (distanceToNextPoint < 3f)
+            if (distanceToNextPoint < 9f)
             {
                 if(_currentPathIndex < _chasePathList.Count - 1)
                 {
@@ -134,7 +133,8 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
         private void CheckUpdatePath()
         {
             _timer += MMORPG_SERVER.Time.Timer.deltaTime;
-            var distance = Vector3.Distance(_monsterAi._chaseTarget._position, _targetLastPosition);
+            var distance = 
+                Vector3.DistanceSquared(_monsterAi._chaseTarget._position, _targetLastPosition);
             
             //目标偏移
             if (distance > 1f)
@@ -161,15 +161,11 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
             try
             {
-                var startPos = new Vector3
-                (_monsterAi._monster._position.X,
-                -2,
-                _monsterAi._monster._position.Z);
+                var startPos = _monsterAi._monster._position;
+                startPos.Y = -2;
 
-                var endPos = new Vector3
-                (_monsterAi._chaseTarget._position.X,
-                -2,
-                _monsterAi._chaseTarget._position.Z);
+                var endPos = _monsterAi._chaseTarget._position;
+                endPos.Y = -2;
 
                 var list = await AStarManager.Instance.
                     GetAStarPath(startPos, endPos);

@@ -26,7 +26,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
         //网格对应玩家列表
         private ConcurrentDictionary<Vector2, HashSet<Player>> _cellPlayers = new();
 
-        private float _playerVisibleDistance = 50f;
+        private float _playerVisibleDistance = 100f;
 
         private float _playerVisibleAngle = 90f;
 
@@ -145,7 +145,6 @@ namespace MMORPG_SERVER.System.PlayerSystem
                             float distance = Vector3.Distance(entity._position, player._position);
                             if (distance > _playerVisibleDistance)
                             {
-                                Log.Information($"超过距离{distance}");
                                 continue;
                             }
 
@@ -153,7 +152,6 @@ namespace MMORPG_SERVER.System.PlayerSystem
                             Vector3 dir = entity._position - player._position;
                             if (! Vector3Extensions.IsInAngleRange(dir, player._rotationY, 180) && distance > 15f)
                             {
-                                Log.Information($"超过角度 {distance}");
                                 continue;
                             }
 

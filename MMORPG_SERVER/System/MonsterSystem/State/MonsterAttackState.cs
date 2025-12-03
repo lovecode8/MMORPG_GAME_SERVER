@@ -29,10 +29,10 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
             return true;
         }
 
-        public void Enter()
+        public async void Enter()
         {
             _monsterAi._monster._stateId = (int)MonsterState.attack;
-            _ = AttackTarget();
+            await AttackTarget();
         }
 
         public void Exit()

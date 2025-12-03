@@ -45,7 +45,9 @@ namespace MMORPG_SERVER.Service
                         Set(c => c.posZ, player._position.Z).
                         Set(c => c.rotY, player._rotationY).
                         Set(c => c.Level, player._dbCharacter.Level).
-                        Set(c => c.Gold, player._dbCharacter.Gold).ExecuteAffrows();
+                        Set(c => c.Gold, player._dbCharacter.Gold).
+                        Set(c => c.Exp, player._dbCharacter.Exp)
+                        .ExecuteAffrows();
 
                     PlayerManager.Instance.RemovePlayer(sender._user._player);
                     MapManager.Instance.EntityLeave(sender._user._player);

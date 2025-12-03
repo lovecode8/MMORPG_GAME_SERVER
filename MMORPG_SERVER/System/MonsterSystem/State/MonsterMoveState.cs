@@ -32,6 +32,8 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private Vector3 _currentPathTarget;
 
+        private Random _random = new();
+
         public MonsterMoveState(MonsterAi monsterAi, List<Vector3> list)
         {
             _monsterAi = monsterAi;
@@ -50,6 +52,8 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
             Log.Information("move");
             _monsterAi._monster._stateId = (int)MonsterState.move;
             _currentTarget = _movePosition[_currentMoveIndex];
+            _currentTarget +=
+                    new Vector3(_random.NextSingle() * 2, 0, _random.NextSingle() * 2);
             _currentTarget.Y = _monsterAi._monster._position.Y;
 
             _currentPath.Clear();
@@ -93,7 +97,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
             }
 
             //到达目的地
-            if (Vector3.Distance(_monsterAi._monster._position, _currentTarget) < 0.5f)
+            if (Vector3.DistanceSquared(_monsterAi._monster._position, _currentTarget) < 0.25f)
             {
                 _currentMoveIndex = (_currentMoveIndex + 1) % _movePosition.Count;
                 _monsterAi.ChangeState(MonsterState.idle);
@@ -102,7 +106,6 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
             UpdatePostion();
             UpdateRotation();
-            Log.Information(Vector3.Distance(_monsterAi._monster._position, _currentTarget).ToString());
         }
 
         private void UpdatePostion()

@@ -23,9 +23,9 @@ namespace MMORPG_SERVER.System.AStarSystem
         private Dictionary<string, List<int>> _edgeToTriangle = new();
 
         // 新增：采样配置（可根据场景调整）
-        private readonly float _searchRadius = 10f; // 最大搜索半径（米）
-        private readonly int _sampleStep = 8; // 每层采样步数
-        private readonly int _sampleLayer = 5; // 采样层数（半径分层）
+        private readonly float _searchRadius = 50f; // 最大搜索半径（米）
+        private readonly int _sampleStep = 10; // 每层采样步数
+        private readonly int _sampleLayer = 10; // 采样层数（半径分层）
 
         public void Start()
         {

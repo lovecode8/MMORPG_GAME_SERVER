@@ -24,6 +24,8 @@ namespace MMORPG_SERVER.System.MonsterSystem
 
         private Random _random = new Random();
 
+        private int _maxMonsterCount = 3;
+
         public void Start()
         {
             foreach(var monster in _monsterDictionary.Values)
@@ -39,10 +41,16 @@ namespace MMORPG_SERVER.System.MonsterSystem
                 monster._controller.Update();
             }
 
-            _timer += MMORPG_SERVER.Time.Timer.deltaTime;
+            if(_monsterCount < _maxMonsterCount)
+            {
+                _timer += MMORPG_SERVER.Time.Timer.deltaTime;
+            }
+
             if (CreateMonsterCondition())
             {
-                CreateMonster(_random.Next(6, 7));
+                CreateMonster(_random.Next(6, 8));
+                _createMonsterInterval = 
+                    Math.Clamp(_createMonsterInterval + _random.Next(-2, 2), 5, 15);
                 _timer = 0;
             }
         }
@@ -80,7 +88,6 @@ namespace MMORPG_SERVER.System.MonsterSystem
             AddMonster(monster);
             EntityManager.Instance.AddEntity(monster);
             MapManager.Instance.EntityEnter(monster);
-            _monsterCount++;
         }
 
         public void AddMonster(Monster monster)
@@ -88,6 +95,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
             if (!_monsterDictionary.ContainsKey(monster._monsterId))
             {
                 _monsterDictionary.Add(monster._monsterId, monster);
+                _monsterCount++;
             }
         }
 
@@ -96,13 +104,14 @@ namespace MMORPG_SERVER.System.MonsterSystem
             if (_monsterDictionary.ContainsKey(monster._monsterId))
             {
                 _monsterDictionary.Remove(monster._monsterId);
+                _monsterCount--;
             }
         }
         
         private bool CreateMonsterCondition()
         {
             return _timer > _createMonsterInterval &&
-                _monsterCount < 1 &&
+                _monsterCount < _maxMonsterCount &&
                 PlayerManager.Instance.GetPlayerCount() > 0;
         }
     }

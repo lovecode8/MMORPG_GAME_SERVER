@@ -84,11 +84,11 @@
     "Hp": 300,
     "Mp": 0,
     "AttackDemage": [ 30 ],
-    "OriginalPosition": [ 18, -2, 95 ],
+    "OriginalPosition": [ 20, -2, 95 ],
     "MovePosition": [
-      [ -5, -4, 90 ],
-      [ 15, -4, 95 ],
-      [ 10, -4, 102 ]
+      [ -5, -4, 95 ],
+      [ 15, -4, 93 ],
+      [ 6, -4, 100 ]
     ],
     "RequireExp": [],
     "KilledExp": 30
@@ -103,11 +103,11 @@
     "Hp": 500,
     "Mp": 0,
     "AttackDemage": [ 50 ],
-    "OriginalPosition": [ -30, -3, 90 ],
+    "OriginalPosition": [ -30, -2, 95 ],
     "MovePosition": [
-      [ -30, -3, 100 ],
-      [ -10, -3, 95 ],
-      [ -15, -3, 97 ]
+      [ -10, -4, 93 ],
+      [ -6, -4, 109 ],
+      [ -25, -4, 95 ]
     ],
     "RequireExp": [],
     "KilledExp": 50
