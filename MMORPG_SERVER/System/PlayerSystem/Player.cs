@@ -38,6 +38,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
             _currentCell = PlayerManager.Instance.GetCellByPosition(pos);
         }
 
+        //受伤
         public void GetHurt(int demage)
         {
             _dbCharacter.Hp -= demage;
@@ -46,6 +47,25 @@ namespace MMORPG_SERVER.System.PlayerSystem
                 //处理死亡逻辑
                 Log.Information($"[Player] {_playerId}死亡");
             }
+        }
+
+        //增加经验值
+        public void AddExp(int exp)
+        {
+            _dbCharacter.Exp += exp;
+            var response = new AddExpResponse() { IsAddLevel = false };
+
+            //升级
+            if(_dbCharacter.Exp >= _unitDefine.RequireExp[_dbCharacter.Level])
+            {
+                _dbCharacter.Exp = _dbCharacter.Exp % _unitDefine.RequireExp[_dbCharacter.Level];
+                _dbCharacter.Level++;
+                response.IsAddLevel = true;
+                response.Level = _dbCharacter.Level;
+            }
+
+            response.Exp = _dbCharacter.Exp;
+            _user._netChannel.SendAsync(response);
         }
     }
 }

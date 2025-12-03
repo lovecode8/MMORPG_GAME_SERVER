@@ -25,7 +25,8 @@ namespace MMORPG_SERVER.Extension
                 MaxMpAddition = dbCharacter.MaxMpAddition,
                 Transform = netTransform,
                 Level = dbCharacter.Level,
-                Gold = dbCharacter.Gold
+                Gold = dbCharacter.Gold,
+                Exp = dbCharacter.Exp
             };
         }
 
@@ -45,7 +46,8 @@ namespace MMORPG_SERVER.Extension
                 rotX = netCharacter.Transform.Rotation.X,
                 rotY = netCharacter.Transform.Rotation.Y,
                 rotZ = netCharacter.Transform.Rotation.Z,
-                Gold = netCharacter.Gold
+                Gold = netCharacter.Gold,
+                Exp = netCharacter.Exp
             };
         }
 

@@ -27,20 +27,20 @@ public static partial class CharacterReflection {
           "YXJhY3RlciImChRMb2FkQ2hhcmFjdGVyUmVxdWVzdBIOCgZ1c2VySWQYASAB",
           "KAUiXwoVTG9hZENoYXJhY3RlclJlc3BvbnNlEiQKBnJlc3VsdBgBIAEoDjIU",
           "LkxvYWRDaGFyYWN0ZXJSZXN1bHQSIAoJY2hhcmFjdGVyGAIgASgLMg0uTmV0",
-          "Q2hhcmFjdGVyIsEBCgxOZXRDaGFyYWN0ZXISDgoGdXNlcklkGAEgASgFEg4K",
+          "Q2hhcmFjdGVyIs4BCgxOZXRDaGFyYWN0ZXISDgoGdXNlcklkGAEgASgFEg4K",
           "BnVuaXRJZBgCIAEoBRIMCgRuYW1lGAMgASgJEgoKAmhwGAQgASgFEgoKAm1w",
           "GAUgASgFEhUKDW1heEhwQWRkaXRpb24YBiABKAUSFQoNbWF4TXBBZGRpdGlv",
           "bhgHIAEoBRINCgVsZXZlbBgIIAEoBRIMCgRnb2xkGAkgASgFEiAKCXRyYW5z",
-          "Zm9ybRgKIAEoCzINLk5ldFRyYW5zZm9ybSo4ChNMb2FkQ2hhcmFjdGVyUmVz",
-          "dWx0EhAKDExPQURfU1VDQ0VTUxAAEg8KC0xPQURfRkFJTEVEEAFiBnByb3Rv",
-          "Mw=="));
+          "Zm9ybRgKIAEoCzINLk5ldFRyYW5zZm9ybRILCgNleHAYCyABKAUqOAoTTG9h",
+          "ZENoYXJhY3RlclJlc3VsdBIQCgxMT0FEX1NVQ0NFU1MQABIPCgtMT0FEX0ZB",
+          "SUxFRBABYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::NetTransformReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LoadCharacterResult), }, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::CreateCharacterRequest), global::CreateCharacterRequest.Parser, new[]{ "Character" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoadCharacterRequest), global::LoadCharacterRequest.Parser, new[]{ "UserId" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoadCharacterResponse), global::LoadCharacterResponse.Parser, new[]{ "Result", "Character" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::NetCharacter), global::NetCharacter.Parser, new[]{ "UserId", "UnitId", "Name", "Hp", "Mp", "MaxHpAddition", "MaxMpAddition", "Level", "Gold", "Transform" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::NetCharacter), global::NetCharacter.Parser, new[]{ "UserId", "UnitId", "Name", "Hp", "Mp", "MaxHpAddition", "MaxMpAddition", "Level", "Gold", "Transform", "Exp" }, null, null, null, null)
         }));
   }
   #endregion
@@ -749,6 +749,7 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     level_ = other.level_;
     gold_ = other.gold_;
     transform_ = other.transform_ != null ? other.transform_.Clone() : null;
+    exp_ = other.exp_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -878,6 +879,18 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     }
   }
 
+  /// <summary>Field number for the "exp" field.</summary>
+  public const int ExpFieldNumber = 11;
+  private int exp_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int Exp {
+    get { return exp_; }
+    set {
+      exp_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -903,6 +916,7 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     if (Level != other.Level) return false;
     if (Gold != other.Gold) return false;
     if (!object.Equals(Transform, other.Transform)) return false;
+    if (Exp != other.Exp) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -920,6 +934,7 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     if (Level != 0) hash ^= Level.GetHashCode();
     if (Gold != 0) hash ^= Gold.GetHashCode();
     if (transform_ != null) hash ^= Transform.GetHashCode();
+    if (Exp != 0) hash ^= Exp.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -978,6 +993,10 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
       output.WriteRawTag(82);
       output.WriteMessage(Transform);
     }
+    if (Exp != 0) {
+      output.WriteRawTag(88);
+      output.WriteInt32(Exp);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -1028,6 +1047,10 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
       output.WriteRawTag(82);
       output.WriteMessage(Transform);
     }
+    if (Exp != 0) {
+      output.WriteRawTag(88);
+      output.WriteInt32(Exp);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -1067,6 +1090,9 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
     }
     if (transform_ != null) {
       size += 1 + pb::CodedOutputStream.ComputeMessageSize(Transform);
+    }
+    if (Exp != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Exp);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1112,6 +1138,9 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
         Transform = new global::NetTransform();
       }
       Transform.MergeFrom(other.Transform);
+    }
+    if (other.Exp != 0) {
+      Exp = other.Exp;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -1175,6 +1204,10 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
           input.ReadMessage(Transform);
           break;
         }
+        case 88: {
+          Exp = input.ReadInt32();
+          break;
+        }
       }
     }
   #endif
@@ -1235,6 +1268,10 @@ public sealed partial class NetCharacter : pb::IMessage<NetCharacter>
             Transform = new global::NetTransform();
           }
           input.ReadMessage(Transform);
+          break;
+        }
+        case 88: {
+          Exp = input.ReadInt32();
           break;
         }
       }

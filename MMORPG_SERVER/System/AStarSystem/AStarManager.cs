@@ -81,10 +81,12 @@ namespace MMORPG_SERVER.System.AStarSystem
                 if(startIndex == -1)
                 {
                     startIndex = GetTriangleIndexByPos(FindNearestReachablePoint(startPos));
+                    Log.Information($"起点不可到达：{startPos}");
                 }
                 if(endIndex == -1)
                 {
                     endIndex = GetTriangleIndexByPos(FindNearestReachablePoint(endPos));
+                    Log.Information($"终点不可到达：{endPos}");
                 }
                 return null;
             }
@@ -195,7 +197,7 @@ namespace MMORPG_SERVER.System.AStarSystem
             float w2 = (s4 - w1 * s3) / s1;
 
             // 扩大误差容忍范围（从0.01→0.05，适配游戏场景）
-            const float tolerance = 0.05f;
+            const float tolerance = 0.1f;
             return (w1 >= -tolerance && w2 >= -tolerance && (w1 + w2) <= 1 + tolerance);
         }
 
@@ -369,7 +371,7 @@ namespace MMORPG_SERVER.System.AStarSystem
         public List<Vector3> SmoothPath(List<Vector3> rawPath, Vector3 startPos, Vector3 endPos)
         {
             // 空值/短路径直接返回
-            if (rawPath == null || rawPath.Count <= 2)
+            if (rawPath == null)
                 return rawPath ?? new List<Vector3> { startPos, endPos };
 
             // 步骤1：替换原始路径首尾为真实起点/终点（剔除三角形中心偏差）

@@ -22,6 +22,8 @@ namespace MMORPG_SERVER.Data.CS
         public int[] AttackDemage; // 三段攻击的伤害
         public int[] OriginalPosition; // 生成点
         public int[][] MovePosition; // 巡逻点
+        public int[] RequireExp; //升级所需经验值
+        public int KilledExp; //击败后可以获得的经验值
     }
 
 

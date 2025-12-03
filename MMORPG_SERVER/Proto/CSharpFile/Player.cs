@@ -25,14 +25,16 @@ public static partial class PlayerReflection {
           "CgxQbGF5ZXIucHJvdG8aD0NoYXJhY3Rlci5wcm90byIgCg5Kb2luTWFwUmVx",
           "dWVzdBIOCgZ1bml0SWQYASABKAUibwoPSm9pbk1hcFJlc3BvbnNlEiUKDWpv",
           "aW5NYXBSZXN1bHQYASABKA4yDi5Kb2luTWFwUmVzdWx0EhAKCGVudGl0eUlk",
-          "GAIgASgFEiMKDG5ldENoYXJhY3RlchgDIAEoCzINLk5ldENoYXJhY3Rlcioo",
-          "Cg1Kb2luTWFwUmVzdWx0EgsKB1N1Y2Nlc3MQABIKCgZGYWlsZWQQAWIGcHJv",
-          "dG8z"));
+          "GAIgASgFEiMKDG5ldENoYXJhY3RlchgDIAEoCzINLk5ldENoYXJhY3RlciJA",
+          "Cg5BZGRFeHBSZXNwb25zZRISCgppc0FkZExldmVsGAEgASgIEg0KBWxldmVs",
+          "GAIgASgFEgsKA2V4cBgDIAEoBSooCg1Kb2luTWFwUmVzdWx0EgsKB1N1Y2Nl",
+          "c3MQABIKCgZGYWlsZWQQAWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::CharacterReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::JoinMapResult), }, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::JoinMapRequest), global::JoinMapRequest.Parser, new[]{ "UnitId" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::JoinMapResponse), global::JoinMapResponse.Parser, new[]{ "JoinMapResult", "EntityId", "NetCharacter" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::JoinMapResponse), global::JoinMapResponse.Parser, new[]{ "JoinMapResult", "EntityId", "NetCharacter" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::AddExpResponse), global::AddExpResponse.Parser, new[]{ "IsAddLevel", "Level", "Exp" }, null, null, null, null)
         }));
   }
   #endregion
@@ -517,6 +519,281 @@ public sealed partial class JoinMapResponse : pb::IMessage<JoinMapResponse>
             NetCharacter = new global::NetCharacter();
           }
           input.ReadMessage(NetCharacter);
+          break;
+        }
+      }
+    }
+  }
+  #endif
+
+}
+
+/// <summary>
+///升级回复
+/// </summary>
+[global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+public sealed partial class AddExpResponse : pb::IMessage<AddExpResponse>
+#if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    , pb::IBufferMessage
+#endif
+{
+  private static readonly pb::MessageParser<AddExpResponse> _parser = new pb::MessageParser<AddExpResponse>(() => new AddExpResponse());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pb::MessageParser<AddExpResponse> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::PlayerReflection.Descriptor.MessageTypes[2]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public AddExpResponse() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public AddExpResponse(AddExpResponse other) : this() {
+    isAddLevel_ = other.isAddLevel_;
+    level_ = other.level_;
+    exp_ = other.exp_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public AddExpResponse Clone() {
+    return new AddExpResponse(this);
+  }
+
+  /// <summary>Field number for the "isAddLevel" field.</summary>
+  public const int IsAddLevelFieldNumber = 1;
+  private bool isAddLevel_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool IsAddLevel {
+    get { return isAddLevel_; }
+    set {
+      isAddLevel_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "level" field.</summary>
+  public const int LevelFieldNumber = 2;
+  private int level_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int Level {
+    get { return level_; }
+    set {
+      level_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "exp" field.</summary>
+  public const int ExpFieldNumber = 3;
+  private int exp_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int Exp {
+    get { return exp_; }
+    set {
+      exp_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override bool Equals(object other) {
+    return Equals(other as AddExpResponse);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool Equals(AddExpResponse other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (IsAddLevel != other.IsAddLevel) return false;
+    if (Level != other.Level) return false;
+    if (Exp != other.Exp) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (IsAddLevel != false) hash ^= IsAddLevel.GetHashCode();
+    if (Level != 0) hash ^= Level.GetHashCode();
+    if (Exp != 0) hash ^= Exp.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void WriteTo(pb::CodedOutputStream output) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    output.WriteRawMessage(this);
+  #else
+    if (IsAddLevel != false) {
+      output.WriteRawTag(8);
+      output.WriteBool(IsAddLevel);
+    }
+    if (Level != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(Level);
+    }
+    if (Exp != 0) {
+      output.WriteRawTag(24);
+      output.WriteInt32(Exp);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+    if (IsAddLevel != false) {
+      output.WriteRawTag(8);
+      output.WriteBool(IsAddLevel);
+    }
+    if (Level != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(Level);
+    }
+    if (Exp != 0) {
+      output.WriteRawTag(24);
+      output.WriteInt32(Exp);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(ref output);
+    }
+  }
+  #endif
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int CalculateSize() {
+    int size = 0;
+    if (IsAddLevel != false) {
+      size += 1 + 1;
+    }
+    if (Level != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Level);
+    }
+    if (Exp != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Exp);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(AddExpResponse other) {
+    if (other == null) {
+      return;
+    }
+    if (other.IsAddLevel != false) {
+      IsAddLevel = other.IsAddLevel;
+    }
+    if (other.Level != 0) {
+      Level = other.Level;
+    }
+    if (other.Exp != 0) {
+      Exp = other.Exp;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public void MergeFrom(pb::CodedInputStream input) {
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    input.ReadRawMessage(this);
+  #else
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          IsAddLevel = input.ReadBool();
+          break;
+        }
+        case 16: {
+          Level = input.ReadInt32();
+          break;
+        }
+        case 24: {
+          Exp = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  #endif
+  }
+
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+    if ((tag & 7) == 4) {
+      // Abort on any end group tag.
+      return;
+    }
+    switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+          break;
+        case 8: {
+          IsAddLevel = input.ReadBool();
+          break;
+        }
+        case 16: {
+          Level = input.ReadInt32();
+          break;
+        }
+        case 24: {
+          Exp = input.ReadInt32();
           break;
         }
       }

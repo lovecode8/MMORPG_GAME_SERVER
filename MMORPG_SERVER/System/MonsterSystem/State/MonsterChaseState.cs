@@ -16,9 +16,9 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
     {
         private MonsterAi _monsterAi;
 
-        private float _chaseSpeed = 4f;
+        private float _chaseSpeed = 5f;
 
-        private float _chaseMaxDistance = 12f;
+        private float _chaseMaxDistance = 20f;
 
         private float _attackDistance = 3f;
 
@@ -82,6 +82,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
         {
             var distanceToTarget =
                 Vector3.Distance(_monsterAi._monster._position, _monsterAi._chaseTarget._position);
+            Log.Information($"和玩家的距离:{distanceToTarget.ToString()}");
 
             //攻击
             if (distanceToTarget < _attackDistance && _monsterAi._canAttack)

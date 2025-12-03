@@ -22,7 +22,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private int _currentMoveIndex = 0;
 
-        private float _moveSpeed = 2f;
+        private float _moveSpeed = 3.5f;
 
         private Vector3 _currentTarget;
 
@@ -56,14 +56,12 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
             var startPos = new Vector3(_monsterAi._monster._position.X, -2, _monsterAi._monster._position.Z);
 
-            var newPath = await AStarManager.Instance.
-                GetAStarPath(startPos, _currentTarget);
+            var newPath = await AStarManager.Instance.GetAStarPath(startPos, _currentTarget);
 
             if(newPath == null)
             {
                 Log.Information("路径获取失败");
-                //若路径为空--自动切换到下一个巡逻点
-                _currentMoveIndex = (_currentMoveIndex + 1) % _movePosition.Count;
+                _monsterAi._monster._position += new Vector3(0.1f, 0, 0.1f);
                 _monsterAi.ChangeState(MonsterState.idle);
                 return;
             }
@@ -104,6 +102,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
             UpdatePostion();
             UpdateRotation();
+            Log.Information(Vector3.Distance(_monsterAi._monster._position, _currentTarget).ToString());
         }
 
         private void UpdatePostion()
@@ -129,7 +128,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
                     _monsterAi._monster._position += moveDelta;
                 }
             }
-            if(distance < 0.1f && _currentPathIndex < _currentPath.Count - 1)
+            if(distance < 0.3f && _currentPathIndex < _currentPath.Count - 1)
             {
                 _monsterAi._monster._position = _currentPathTarget;
                 _currentPathTarget = _currentPath[++_currentPathIndex];

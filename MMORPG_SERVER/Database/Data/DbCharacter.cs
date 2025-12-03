@@ -23,5 +23,6 @@ namespace MMORPG_SERVER.Database.Data
         public float rotZ { get; set; }
         public int Level { get; set; }
         public int Gold { get; set; }
+        public int Exp { get; set; }
     }
 }

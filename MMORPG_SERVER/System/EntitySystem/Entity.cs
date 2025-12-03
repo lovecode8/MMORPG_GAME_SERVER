@@ -27,6 +27,7 @@ namespace MMORPG_SERVER.System.EntitySystem
         public Vector3 _position;
         public float _rotationY;
         public int _stateId;
+        public bool _isDead;
 
         //如果是Item，存储ItemId
         public int itemId;

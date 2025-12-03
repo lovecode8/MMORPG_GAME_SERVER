@@ -1,5 +1,6 @@
 ﻿using MMORPG_SERVER.Data.CS;
 using MMORPG_SERVER.System.EntitySystem;
+using MMORPG_SERVER.System.FightSystem;
 using MMORPG_SERVER.Tool;
 using Serilog;
 using System.Net;
@@ -43,13 +44,15 @@ namespace MMORPG_SERVER.System.MonsterSystem
             _hp = hp;
         }
 
-        public void GetHurt(int demage)
+        public void GetHurt(Entity attacker, int demage)
         {
             _hp -= demage;
 
             if(_hp <= 0)
             {
                 Log.Information($"[Monster] {_entityId}死亡");
+                _isDead = true;
+                FightManager.Instance.OnMonsterDie(attacker, this);
             }
         }
     }

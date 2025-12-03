@@ -178,7 +178,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
                         foreach(var player in list)
                         {
                             var distance = Vector3.Distance(monster._position, player._position);
-                            if(distance < 10f)
+                            if(distance < 15f)
                             {
                                 return player;
                             }

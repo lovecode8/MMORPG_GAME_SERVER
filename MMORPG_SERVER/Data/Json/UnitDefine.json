@@ -10,7 +10,9 @@
     "Mp": 80,
     "AttackDemage": [ 20, 25, 35 ],
     "OriginalPosition": [],
-    "MovePosition": []
+    "MovePosition": [],
+    "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
+    "KilledExp": 100
   },
   "2": {
     "ID": 2,
@@ -23,7 +25,9 @@
     "Mp": 100,
     "AttackDemage": [ 15, 20, 25 ],
     "OriginalPosition": [],
-    "MovePosition": []
+    "MovePosition": [],
+    "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
+    "KilledExp": 100
   },
   "3": {
     "ID": 3,
@@ -36,7 +40,9 @@
     "Mp": 80,
     "AttackDemage": [ 15, 20, 25 ],
     "OriginalPosition": [],
-    "MovePosition": []
+    "MovePosition": [],
+    "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
+    "KilledExp": 100
   },
   "4": {
     "ID": 4,
@@ -49,7 +55,9 @@
     "Mp": 60,
     "AttackDemage": [ 20, 30, 40 ],
     "OriginalPosition": [],
-    "MovePosition": []
+    "MovePosition": [],
+    "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
+    "KilledExp": 100
   },
   "5": {
     "ID": 5,
@@ -62,7 +70,9 @@
     "Mp": 0,
     "AttackDemage": [],
     "OriginalPosition": [],
-    "MovePosition": []
+    "MovePosition": [],
+    "RequireExp": [],
+    "KilledExp": 0
   },
   "6": {
     "ID": 6,
@@ -73,13 +83,15 @@
     "Path": "Entity/Monster/monster1",
     "Hp": 300,
     "Mp": 0,
-    "AttackDemage": [ 20 ],
+    "AttackDemage": [ 30 ],
     "OriginalPosition": [ 18, -2, 95 ],
     "MovePosition": [
-      [ 30, -4, 92 ],
+      [ -5, -4, 90 ],
       [ 15, -4, 95 ],
       [ 10, -4, 102 ]
-    ]
+    ],
+    "RequireExp": [],
+    "KilledExp": 30
   },
   "7": {
     "ID": 7,
@@ -96,6 +108,8 @@
       [ -30, -3, 100 ],
       [ -10, -3, 95 ],
       [ -15, -3, 97 ]
-    ]
+    ],
+    "RequireExp": [],
+    "KilledExp": 50
   }
 }

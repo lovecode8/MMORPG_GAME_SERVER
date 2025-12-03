@@ -1,5 +1,9 @@
-﻿using MMORPG_SERVER.System.AttributeSystem;
+﻿using MMORPG_SERVER.Data.CS;
+using MMORPG_SERVER.Extension;
+using MMORPG_SERVER.Manager;
+using MMORPG_SERVER.System.AttributeSystem;
 using MMORPG_SERVER.System.EntitySystem;
+using MMORPG_SERVER.System.MapSystem;
 using MMORPG_SERVER.System.MonsterSystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using MMORPG_SERVER.Tool;
@@ -10,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
+using static FreeSql.Internal.GlobalFilter;
 
 namespace MMORPG_SERVER.System.FightSystem
 {
@@ -53,11 +58,40 @@ namespace MMORPG_SERVER.System.FightSystem
                     (target as Player).GetHurt(demage);
                     break;
                 case EntityType.Monster:
-                    (target as Monster).GetHurt(demage);
+                    (target as Monster).GetHurt(attacker, demage);
                     break;
             }
 
             return demage;
+        }
+
+        //某个Monster死亡
+        public void OnMonsterDie(Entity attacker, Entity deadMonster)
+        {
+            //击败者增加经验值
+            if(attacker is Player player)
+            {
+                player.AddExp(deadMonster._unitDefine.KilledExp);
+            }
+
+            //实体离开游戏
+            MonsterManager.Instance.RemoveMonster(deadMonster as Monster);
+            EntityManager.Instance.RemoveEntity(deadMonster);
+            MapManager.Instance.EntityLeave(deadMonster);
+
+            //生成奖励
+            //在场景中创建物品
+            //TODO：后续增加随机物品功能
+            int itemId = 2;
+            var itemDefine = DataManager.Instance.GetItemDefine(itemId);
+            var entity = new Entity(EntityManager.Instance.NewEntityId(),
+                EntityType.Item,
+                DataManager.Instance.GetUnitDefine(itemDefine.UnitId),
+                deadMonster._position,
+                0);
+            entity.itemId = itemId;
+            EntityManager.Instance.AddEntity(entity);
+            MapManager.Instance.EntityEnter(entity);
         }
     }
 }
