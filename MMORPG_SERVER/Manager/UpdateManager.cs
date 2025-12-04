@@ -7,6 +7,7 @@ using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.GuildSystem;
 using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.System.MonsterSystem;
+using MMORPG_SERVER.System.SkillSystem;
 using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
@@ -53,8 +54,8 @@ namespace MMORPG_SERVER.Manager
             AttributeManager.Instance.Start();
             Log.Information("[AttributeManager] 初始化完成");
 
-            MonsterManager.Instance.Start();
-            Log.Information("[MonsterManager] 初始化完成");
+            //MonsterManager.Instance.Start();
+            //Log.Information("[MonsterManager] 初始化完成");
 
             AStarManager.Instance.Start();
             Log.Information("[AStarManager] 初始化完成");
@@ -89,7 +90,8 @@ namespace MMORPG_SERVER.Manager
             {
                 DataManager.Instance.Update();
                 EntityManager.Instance.Update();
-                MonsterManager.Instance.Update();
+                //MonsterManager.Instance.Update();
+                SkillManager.Instance.Update();
             }
             catch (Exception ex)
             {

@@ -41,6 +41,7 @@ namespace MMORPG_SERVER.System.MapSystem
 
                 foreach(Entity e in EntityManager.Instance.GetEntityDict().Values)
                 {
+                    if (e._entityId == entity._entityId) continue;
                     entityDatalist.EntityDatas.Add(ConstructEntityData(e));
                 }
 

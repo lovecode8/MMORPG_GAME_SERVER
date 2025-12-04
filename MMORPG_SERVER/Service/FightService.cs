@@ -6,6 +6,7 @@ using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.FightSystem;
 using MMORPG_SERVER.System.MonsterSystem;
 using MMORPG_SERVER.System.PlayerSystem;
+using MMORPG_SERVER.System.SkillSystem;
 using Serilog;
 
 namespace MMORPG_SERVER.Service
@@ -71,11 +72,25 @@ namespace MMORPG_SERVER.Service
             UpdateManager.Instance.AddTask(() =>
             {
                 var channel = sender as NetChannel;
-                var userId = channel._user._userId;
-                var playerId = channel._user._player._playerId;
-                Log.Information($"使用玩家使用技能请求：{userId}");
+                var user = channel._user;
+                var playerId = user._player._playerId;
+                Log.Information($"使用玩家使用技能请求：{user._userId}");
 
-
+                if (SkillManager.Instance.UseSkill(user))
+                {
+                    PlayerManager.Instance.Broadcast(new PlayerUseSkillResponse()
+                    {
+                        IsSuccessfulUseSkill = true,
+                        PlayerId = playerId
+                    }, user._player, true);
+                }
+                else
+                {
+                    channel.SendAsync(new PlayerUseSkillResponse()
+                    {
+                        IsSuccessfulUseSkill = false
+                    });
+                }
             });
         }
     }

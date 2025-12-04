@@ -66,8 +66,8 @@ namespace MMORPG_SERVER.System.EntitySystem
 
         public int NewEntityId()
         {
-            Log.Information(_entityAddId.ToString());
-            return _entityAddId++;
+            Log.Information((_entityAddId + 1).ToString());
+            return ++_entityAddId;
         }
 
         public Entity? GetEntity(int entityId)

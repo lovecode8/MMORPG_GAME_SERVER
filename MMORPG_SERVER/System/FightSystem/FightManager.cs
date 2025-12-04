@@ -18,40 +18,12 @@ using static FreeSql.Internal.GlobalFilter;
 
 namespace MMORPG_SERVER.System.FightSystem
 {
+    //战斗管理器
     public class FightManager : Singleton<FightManager>
     {
         private FightManager() { }
 
-        //各个玩家技能冷却时间
-        private Dictionary<int, float> _playerSkillColdTimeDict = new();
-
-        private List<int> _tempUserIdList = new();
-
-        private Random _random = new Random();
-
-        public void Update()
-        {
-            _tempUserIdList.Clear();
-
-            foreach(int userId in _playerSkillColdTimeDict.Keys)
-            {
-                _tempUserIdList.Add(userId);
-            }
-
-            foreach(var key in _tempUserIdList)
-            {
-                if(_playerSkillColdTimeDict.TryGetValue(key, out var time))
-                {
-                    time -= MMORPG_SERVER.Time.Timer.deltaTime;
-                    _playerSkillColdTimeDict[key] = time;
-
-                    if(time < 0)
-                    {
-                        _playerSkillColdTimeDict.Remove(key);
-                    }
-                }
-            }
-        }
+        private Random _random = new();
 
         public int GetFightHurtValue(Entity attacker, Entity target, int camboCount = 0)
         {

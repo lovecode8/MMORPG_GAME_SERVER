@@ -1,5 +1,5 @@
-﻿[
-  {
+﻿{
+  "1": {
     "ID": 1,
     "Name": "兔人战士",
     "Type": "战士",
@@ -16,7 +16,7 @@
     "SkillInterval": 12,
     "SkillIconPath": "UI/SkillIcon/Character1"
   },
-  {
+  "2": {
     "ID": 2,
     "Name": "老魔法师",
     "Type": "法师",
@@ -33,7 +33,7 @@
     "SkillInterval": 10,
     "SkillIconPath": "UI/SkillIcon/Character2"
   },
-  {
+  "3": {
     "ID": 3,
     "Name": "独眼少女",
     "Type": "弓箭手",
@@ -50,7 +50,7 @@
     "SkillInterval": 13,
     "SkillIconPath": "UI/SkillIcon/Character3"
   },
-  {
+  "4": {
     "ID": 4,
     "Name": "盔甲战士",
     "Type": "战士",
@@ -67,7 +67,7 @@
     "SkillInterval": 15,
     "SkillIconPath": "UI/SkillIcon/Character4"
   },
-  {
+  "5": {
     "ID": 5,
     "Name": "小红药",
     "Type": "物品",
@@ -84,7 +84,7 @@
     "SkillInterval": 0,
     "SkillIconPath": ""
   },
-  {
+  "6": {
     "ID": 6,
     "Name": "毒蝎龙",
     "Type": "敌人",
@@ -105,7 +105,7 @@
     "SkillInterval": 0,
     "SkillIconPath": ""
   },
-  {
+  "7": {
     "ID": 7,
     "Name": "石头人",
     "Type": "敌人",
@@ -126,4 +126,4 @@
     "SkillInterval": 0,
     "SkillIconPath": ""
   }
-]
+}
