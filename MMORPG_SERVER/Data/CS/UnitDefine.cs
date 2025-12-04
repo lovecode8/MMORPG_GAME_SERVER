@@ -24,6 +24,8 @@ namespace MMORPG_SERVER.Data.CS
         public int[][] MovePosition; // 巡逻点
         public int[] RequireExp; //升级所需经验值
         public int KilledExp; //击败后可以获得的经验值
+        public int SkillInterval; //技能冷却时间
+        public string SkillIconPath; //技能图标路径
     }
 
 

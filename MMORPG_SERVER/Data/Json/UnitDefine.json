@@ -1,5 +1,5 @@
-﻿{
-  "1": {
+﻿[
+  {
     "ID": 1,
     "Name": "兔人战士",
     "Type": "战士",
@@ -12,9 +12,11 @@
     "OriginalPosition": [],
     "MovePosition": [],
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
-    "KilledExp": 100
+    "KilledExp": 100,
+    "SkillInterval": 12,
+    "SkillIconPath": "UI/SkillIcon/Character1"
   },
-  "2": {
+  {
     "ID": 2,
     "Name": "老魔法师",
     "Type": "法师",
@@ -27,14 +29,16 @@
     "OriginalPosition": [],
     "MovePosition": [],
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
-    "KilledExp": 100
+    "KilledExp": 100,
+    "SkillInterval": 10,
+    "SkillIconPath": "UI/SkillIcon/Character2"
   },
-  "3": {
+  {
     "ID": 3,
     "Name": "独眼少女",
     "Type": "弓箭手",
     "Tool": "毒箭",
-    "Skill": "向四周发射毒箭，被打中的敌人将受到持续伤害。",
+    "Skill": "向四周发射毒箭，被打中的敌人将受到持续伤害。冷却13秒",
     "Path": "Entity/RemotePlayer/remotePlayer3",
     "Hp": 1000,
     "Mp": 80,
@@ -42,14 +46,16 @@
     "OriginalPosition": [],
     "MovePosition": [],
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
-    "KilledExp": 100
+    "KilledExp": 100,
+    "SkillInterval": 13,
+    "SkillIconPath": "UI/SkillIcon/Character3"
   },
-  "4": {
+  {
     "ID": 4,
     "Name": "盔甲战士",
     "Type": "战士",
     "Tool": "深海重剑",
-    "Skill": "将巨剑猛力砸向地面，引发扇形范围的岩刺爆发，对近距离敌人造成击飞效果。",
+    "Skill": "将巨剑猛力砸向地面，引发扇形范围的岩刺爆发，对近距离敌人造成击飞效果。冷却15秒。",
     "Path": "Entity/RemotePlayer/remotePlayer4",
     "Hp": 1500,
     "Mp": 60,
@@ -57,9 +63,11 @@
     "OriginalPosition": [],
     "MovePosition": [],
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
-    "KilledExp": 100
+    "KilledExp": 100,
+    "SkillInterval": 15,
+    "SkillIconPath": "UI/SkillIcon/Character4"
   },
-  "5": {
+  {
     "ID": 5,
     "Name": "小红药",
     "Type": "物品",
@@ -72,9 +80,11 @@
     "OriginalPosition": [],
     "MovePosition": [],
     "RequireExp": [],
-    "KilledExp": 0
+    "KilledExp": 0,
+    "SkillInterval": 0,
+    "SkillIconPath": ""
   },
-  "6": {
+  {
     "ID": 6,
     "Name": "毒蝎龙",
     "Type": "敌人",
@@ -91,9 +101,11 @@
       [ 6, -4, 100 ]
     ],
     "RequireExp": [],
-    "KilledExp": 30
+    "KilledExp": 30,
+    "SkillInterval": 0,
+    "SkillIconPath": ""
   },
-  "7": {
+  {
     "ID": 7,
     "Name": "石头人",
     "Type": "敌人",
@@ -110,6 +122,8 @@
       [ -25, -4, 95 ]
     ],
     "RequireExp": [],
-    "KilledExp": 50
+    "KilledExp": 50,
+    "SkillInterval": 0,
+    "SkillIconPath": ""
   }
-}
+]

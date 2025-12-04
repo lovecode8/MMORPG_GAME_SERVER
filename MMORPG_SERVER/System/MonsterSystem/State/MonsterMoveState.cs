@@ -51,6 +51,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
         {
             Log.Information("move");
             _monsterAi._monster._stateId = (int)MonsterState.move;
+            _currentMoveIndex = _random.Next(0, _movePosition.Count);
             _currentTarget = _movePosition[_currentMoveIndex];
             _currentTarget +=
                     new Vector3(_random.NextSingle() * 2, 0, _random.NextSingle() * 2);

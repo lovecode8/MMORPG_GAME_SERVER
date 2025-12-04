@@ -22,22 +22,56 @@ namespace MMORPG_SERVER.System.FightSystem
     {
         private FightManager() { }
 
+        //各个玩家技能冷却时间
+        private Dictionary<int, float> _playerSkillColdTimeDict = new();
+
+        private List<int> _tempUserIdList = new();
+
+        private Random _random = new Random();
+
+        public void Update()
+        {
+            _tempUserIdList.Clear();
+
+            foreach(int userId in _playerSkillColdTimeDict.Keys)
+            {
+                _tempUserIdList.Add(userId);
+            }
+
+            foreach(var key in _tempUserIdList)
+            {
+                if(_playerSkillColdTimeDict.TryGetValue(key, out var time))
+                {
+                    time -= MMORPG_SERVER.Time.Timer.deltaTime;
+                    _playerSkillColdTimeDict[key] = time;
+
+                    if(time < 0)
+                    {
+                        _playerSkillColdTimeDict.Remove(key);
+                    }
+                }
+            }
+        }
+
         public int GetFightHurtValue(Entity attacker, Entity target, int camboCount = 0)
         {
             //基础伤害  
             var demage = attacker._unitDefine.AttackDemage[camboCount];
 
             //攻击者是Player--考虑攻击力加成
-            if (attacker._entityType == EntityType.Player)
+            if (attacker is Player player)
             {
-                var attackerAttribute = AttributeManager.Instance.
-                    GetPlayerAttribute((attacker as Player)._user._userId);
+                var attackerAttribute = 
+                    AttributeManager.Instance.GetPlayerAttribute(player._user._userId);
 
                 //附加伤害
                 if (attackerAttribute != null)
                 {
                     demage += attackerAttribute._atkAddition;
                 }
+
+                //等级伤害
+                demage += player._dbCharacter.Level * 10;
             }
             
             //攻击目标是Player--考虑防御力加成
@@ -47,6 +81,9 @@ namespace MMORPG_SERVER.System.FightSystem
                     GetPlayerAttribute((target as Player)._user._userId);
                 if (targetAttribute != null) demage -= targetAttribute._defAddition;
             }
+
+            //随机浮动
+            demage = (int)(demage * _random.NextSingle() * 1.5);
 
             //最低伤害校准
             demage = Math.Clamp(demage, 10, 9999);
@@ -74,24 +111,7 @@ namespace MMORPG_SERVER.System.FightSystem
                 player.AddExp(deadMonster._unitDefine.KilledExp);
             }
 
-            //实体离开游戏
-            MonsterManager.Instance.RemoveMonster(deadMonster as Monster);
-            EntityManager.Instance.RemoveEntity(deadMonster);
-            MapManager.Instance.EntityLeave(deadMonster);
-
-            //生成奖励
-            //在场景中创建物品
-            //TODO：后续增加随机物品功能
-            int itemId = 2;
-            var itemDefine = DataManager.Instance.GetItemDefine(itemId);
-            var entity = new Entity(EntityManager.Instance.NewEntityId(),
-                EntityType.Item,
-                DataManager.Instance.GetUnitDefine(itemDefine.UnitId),
-                deadMonster._position,
-                0);
-            entity.itemId = itemId;
-            EntityManager.Instance.AddEntity(entity);
-            MapManager.Instance.EntityEnter(entity);
+            (deadMonster as Monster)._controller.ChangeState(MonsterState.die);
         }
     }
 }

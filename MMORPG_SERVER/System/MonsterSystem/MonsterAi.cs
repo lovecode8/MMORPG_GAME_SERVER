@@ -35,6 +35,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
             AddState(MonsterState.chase, new MonsterChaseState(this));
             AddState(MonsterState.attack, new MonsterAttackState(this));
             AddState(MonsterState.getHit, new MonsterGetHitState(this));
+            AddState(MonsterState.die, new MonsterDieState(this));
         }
 
         public void SetChaseTarget(Entity entity) => _chaseTarget = entity;

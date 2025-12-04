@@ -23,6 +23,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         public bool Condition(IState newState)
         {
+            if (newState is MonsterDieState) return true;
             return _timer > _getHitInterval;
         }
 

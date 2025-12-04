@@ -64,5 +64,19 @@ namespace MMORPG_SERVER.Service
                 }, channel._user._player, true);
             });
         }
+
+        //处理玩家使用技能请求
+        public void OnHandle(object sender, PlayerUseSkillRequest playerUseSkillRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                var userId = channel._user._userId;
+                var playerId = channel._user._player._playerId;
+                Log.Information($"使用玩家使用技能请求：{userId}");
+
+
+            });
+        }
     }
 }
