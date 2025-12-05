@@ -2,10 +2,12 @@
 using MMORPG_SERVER.System.AStarSystem;
 using MMORPG_SERVER.System.AttributeSystem;
 using MMORPG_SERVER.System.ChatSystem;
+using MMORPG_SERVER.System.EffectSystem;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.GuildSystem;
 using MMORPG_SERVER.System.InventorySystem;
+using MMORPG_SERVER.System.MissileSystem;
 using MMORPG_SERVER.System.MonsterSystem;
 using MMORPG_SERVER.System.SkillSystem;
 using MMORPG_SERVER.System.UserSystem;
@@ -92,6 +94,8 @@ namespace MMORPG_SERVER.Manager
                 EntityManager.Instance.Update();
                 //MonsterManager.Instance.Update();
                 SkillManager.Instance.Update();
+                MissileManager.Instance.Update();
+                EffectManager.Instance.Update();
             }
             catch (Exception ex)
             {

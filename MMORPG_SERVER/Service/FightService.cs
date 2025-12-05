@@ -17,7 +17,7 @@ namespace MMORPG_SERVER.Service
         //处理玩家攻击请求
         public void OnHandle(object sender, PlayerAttackRequest playerAttackRequest)
         {
-            UpdateManager.Instance.AddTask(() =>
+            UpdateManager.Instance.AddTask(async () =>
             {
                 var channel = sender as NetChannel;
                 int playerId = playerAttackRequest.PlayerId;
@@ -27,9 +27,9 @@ namespace MMORPG_SERVER.Service
 
                 Log.Information($"[FightService] 收到攻击请求：{playerId}攻击{targetId}");
 
+                bool isHit = await EntityManager.Instance.IsAttackTargetVaild(attacker, target, 5f, 200);
                 //未命中
-                if (playerAttackRequest.TargetId == -1 || 
-                !EntityManager.Instance.IsAttackTargetVaild(attacker, target, 5f))
+                if (playerAttackRequest.TargetId == -1 || !isHit)
                 {
                     //仅同步动画
                     PlayerManager.Instance.Broadcast(new PlayerAttackResponse()

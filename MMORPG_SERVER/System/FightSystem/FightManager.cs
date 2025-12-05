@@ -55,7 +55,7 @@ namespace MMORPG_SERVER.System.FightSystem
             }
 
             //随机浮动
-            demage = (int)(demage * _random.NextSingle() * 1.5);
+            demage = (int)(demage * _random.Next(5, 7) * 0.1f);
 
             //最低伤害校准
             demage = Math.Clamp(demage, 10, 9999);
@@ -69,6 +69,29 @@ namespace MMORPG_SERVER.System.FightSystem
                 case EntityType.Monster:
                     (target as Monster).GetHurt(attacker, demage);
                     break;
+            }
+
+            return demage;
+        }
+
+        //获取技能伤害
+        public int GetSkillHurt(Player attacker, Entity target)
+        {
+            //基础伤害
+            int demage = DataManager.Instance.GetUnitDefine
+                (attacker._unitDefine.SkillUnitId).AttackDemage[0];
+
+            //等级加成
+            demage += (int)(attacker._dbCharacter.Level * 10f);
+
+            //目标防御
+            if(target is Player player)
+            {
+                var attribute = AttributeManager.Instance.GetPlayerAttribute(player._user._userId);
+                if(attribute != null)
+                {
+                    demage -= attribute._defAddition;
+                }
             }
 
             return demage;

@@ -60,12 +60,10 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
             var attacker = _monsterAi._monster;
             var target = _monsterAi._chaseTarget;
 
-            //延迟0.5秒判断
-            await Task.Delay(500);
+            bool isHit = await EntityManager.Instance.IsAttackTargetVaild(attacker, target, 3.5f, 500);
             //命中
-            if (EntityManager.Instance.IsAttackTargetVaild(attacker, target, 3.5f))
+            if (isHit)
             {
-                Log.Information("攻击");
                 var demage = FightManager.Instance.GetFightHurtValue(attacker, target);
                 PlayerManager.Instance.Broadcast(new PlayerAttackResponse()
                 {

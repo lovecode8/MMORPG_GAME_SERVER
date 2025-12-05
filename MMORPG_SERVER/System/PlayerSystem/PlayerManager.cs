@@ -148,9 +148,9 @@ namespace MMORPG_SERVER.System.PlayerSystem
                                 continue;
                             }
 
-                            //超过指定角度(超过90度且距离大于15)
+                            //超过指定角度(超过100度且距离大于30)
                             Vector3 dir = entity._position - player._position;
-                            if (! Vector3Extensions.IsInAngleRange(dir, player._rotationY, 180) && distance > 15f)
+                            if (! Vector3Extensions.IsInAngleRange(dir, player._rotationY, 200) && distance > 30f)
                             {
                                 continue;
                             }

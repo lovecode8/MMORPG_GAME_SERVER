@@ -26,6 +26,8 @@ namespace MMORPG_SERVER.Data.CS
         public int KilledExp; //击败后可以获得的经验值
         public int SkillInterval; //技能冷却时间
         public string SkillIconPath; //技能图标路径
+        public string InteractEffectPath; //触发后产生的特效路径
+        public int SkillUnitId; //技能产生的实体Id
     }
 
 

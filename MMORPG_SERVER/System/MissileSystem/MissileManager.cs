@@ -1,4 +1,6 @@
-﻿using MMORPG_SERVER.Tool;
+﻿using MMORPG_SERVER.System.EntitySystem;
+using MMORPG_SERVER.System.MapSystem;
+using MMORPG_SERVER.Tool;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,12 +27,18 @@ namespace MMORPG_SERVER.System.MissileSystem
 
         public void AddMissile(MissileAi missile)
         {
-            _missileDict[missile._entityId] = missile;
+            _missileDict.Add(missile._entityId, missile);
+
+            EntityManager.Instance.AddEntity(missile);
+            MapManager.Instance.EntityEnter(missile);
         }
 
         public void RemoveMissile(MissileAi missile)
         {
             _missileDict.Remove(missile._entityId);
+
+            EntityManager.Instance.RemoveEntity(missile);
+            MapManager.Instance.EntityLeave(missile);
         }
     }
 }

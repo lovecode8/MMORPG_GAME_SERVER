@@ -14,7 +14,9 @@
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
     "KilledExp": 100,
     "SkillInterval": 12,
-    "SkillIconPath": "UI/SkillIcon/Character1"
+    "SkillIconPath": "UI/SkillIcon/Character1",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0
   },
   "2": {
     "ID": 2,
@@ -31,7 +33,9 @@
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
     "KilledExp": 100,
     "SkillInterval": 10,
-    "SkillIconPath": "UI/SkillIcon/Character2"
+    "SkillIconPath": "UI/SkillIcon/Character2",
+    "InteractEffectPath": "",
+    "SkillUnitId": 8
   },
   "3": {
     "ID": 3,
@@ -48,7 +52,9 @@
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
     "KilledExp": 100,
     "SkillInterval": 13,
-    "SkillIconPath": "UI/SkillIcon/Character3"
+    "SkillIconPath": "UI/SkillIcon/Character3",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0
   },
   "4": {
     "ID": 4,
@@ -65,7 +71,9 @@
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
     "KilledExp": 100,
     "SkillInterval": 15,
-    "SkillIconPath": "UI/SkillIcon/Character4"
+    "SkillIconPath": "UI/SkillIcon/Character4",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0
   },
   "5": {
     "ID": 5,
@@ -82,7 +90,9 @@
     "RequireExp": [],
     "KilledExp": 0,
     "SkillInterval": 0,
-    "SkillIconPath": ""
+    "SkillIconPath": "",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0
   },
   "6": {
     "ID": 6,
@@ -103,7 +113,9 @@
     "RequireExp": [],
     "KilledExp": 30,
     "SkillInterval": 0,
-    "SkillIconPath": ""
+    "SkillIconPath": "",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0
   },
   "7": {
     "ID": 7,
@@ -124,6 +136,27 @@
     "RequireExp": [],
     "KilledExp": 50,
     "SkillInterval": 0,
-    "SkillIconPath": ""
+    "SkillIconPath": "",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0
+  },
+  "8": {
+    "ID": 8,
+    "Name": "老魔弹",
+    "Type": "导弹",
+    "Tool": "",
+    "Skill": "",
+    "Path": "Entity/Missile/character2Skill",
+    "Hp": 0,
+    "Mp": 0,
+    "AttackDemage": [ 100 ],
+    "OriginalPosition": [],
+    "MovePosition": [],
+    "RequireExp": [],
+    "KilledExp": 0,
+    "SkillInterval": 0,
+    "SkillIconPath": "",
+    "InteractEffectPath": "Entity/Effect/character2Skill",
+    "SkillUnitId": 0
   }
 }

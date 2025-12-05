@@ -5,6 +5,7 @@ using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
 using Serilog;
 using System;
+using System.Drawing;
 using System.Numerics;
 
 
@@ -124,9 +125,13 @@ namespace MMORPG_SERVER.System.EntitySystem
             return _entityDictionaty;
         }
 
-        public bool IsAttackTargetVaild(Entity attacker, Entity target, float attackRange)
+        //判断攻击者目前是否有实体（延迟0.3秒判断）
+        public async Task<bool> 
+            IsAttackTargetVaild(Entity attacker, Entity target, float attackRange, int waitTime)
         {
             if (attacker == null || target == null) return false;
+
+            await Task.Delay(waitTime);
 
             if (Vector3.Distance(attacker._position, target._position) > attackRange) return false;
 
@@ -136,6 +141,23 @@ namespace MMORPG_SERVER.System.EntitySystem
                 return false;
             }
             return true;
+        }
+
+        //获取最近的实体
+        public Entity GetClosedEntity(Player player)
+        {
+            var distanceSquared = 1000000;
+            Entity ans = null;
+            foreach(var entity in _entityDictionaty.Values)
+            {
+                if (entity is Player && (entity as Player) == player) continue;
+
+                if(Vector3.DistanceSquared(entity._position, player._position) < distanceSquared)
+                {
+                    ans = entity;
+                }
+            }
+            return ans;
         }
 
         //同步实体的条件

@@ -14,7 +14,9 @@ namespace MMORPG_SERVER.System.EntitySystem
         Player = 0,
         Monster = 1,
         NPC = 2,
-        Item = 3
+        Item = 3,
+        Missile = 4,
+        Effect = 5
     }
 
     //场景中的实体
