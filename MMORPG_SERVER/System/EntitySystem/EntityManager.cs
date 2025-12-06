@@ -5,6 +5,7 @@ using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
 using Serilog;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Numerics;
 
@@ -125,7 +126,7 @@ namespace MMORPG_SERVER.System.EntitySystem
             return _entityDictionaty;
         }
 
-        //判断攻击者目前是否有实体（延迟0.3秒判断）
+        //判断攻击者目前是否有实体（延迟判断）
         public async Task<bool> 
             IsAttackTargetVaild(Entity attacker, Entity target, float attackRange, int waitTime)
         {
@@ -143,7 +144,7 @@ namespace MMORPG_SERVER.System.EntitySystem
             return true;
         }
 
-        //获取最近的实体
+        //获取最近的实体（玩家2的技能使用）
         public Entity GetClosedEntity(Player player)
         {
             var distanceSquared = 1000000;
@@ -155,6 +156,42 @@ namespace MMORPG_SERVER.System.EntitySystem
                 if(Vector3.DistanceSquared(entity._position, player._position) < distanceSquared)
                 {
                     ans = entity;
+                }
+            }
+            return ans;
+        }
+
+        //获取指定范围内的实体（技能3使用）
+        public List<Entity> GetEntityListWithRange(Vector3 originPos, float radiusSquared)
+        {
+            List<Entity> ans = new();
+
+            foreach(var entity in _entityDictionaty.Values)
+            {
+                if(entity._entityType == EntityType.Player || entity._entityType == EntityType.Monster)
+                {
+                    if(Vector3.DistanceSquared(originPos, entity._position) <= radiusSquared)
+                    {
+                        ans.Add(entity);
+                    }
+                }
+            }
+
+            return ans;
+        }
+
+        //获取指定玩家前方的实体（技能4使用）
+        public List<Entity> GetWayEntity(Player player)
+        {
+            List<Entity> ans = new();
+            foreach(var entity in _entityDictionaty.Values)
+            {
+                if(entity._entityType == EntityType.Player || entity._entityType == EntityType.Monster)
+                {
+                    if (Vector3Extensions.IsEnemyInSkillArea(player._position, player._rotationY, entity._position))
+                    {
+                        ans.Add(entity);
+                    }
                 }
             }
             return ans;

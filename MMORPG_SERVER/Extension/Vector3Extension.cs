@@ -89,6 +89,68 @@ namespace MMORPG_SERVER.Extension
             return forwardDir;
         }
 
+        /// <summary>
+        /// 检测单个敌人是否在技能区域内
+        /// </summary>
+        /// <param name="playerPos">玩家位置（x/z为平面坐标）</param>
+        /// <param name="playerYRot">玩家旋转Y值（度）</param>
+        /// <param name="enemyPos">敌人位置（x/z为平面坐标）</param>
+        /// <returns>是否在区域内</returns>
+        public static bool IsEnemyInSkillArea(Vector3 playerPos, float playerYRot, Vector3 enemyPos)
+        {
+            // 1. 计算玩家前方向量（平面向量，忽略Y轴）
+            // 旋转Y值转换为弧度
+            float rotRadian = playerYRot * (float)Math.PI / 180f;
+            // 正Z轴为0度，顺时针旋转Y角后的前方向量（x=sinθ，z=cosθ，右手坐标系）
+            Vector3 playerForward = new Vector3(
+                (float)Math.Sin(rotRadian),
+                0,
+                (float)Math.Cos(rotRadian)
+            );
+            // 归一化前方向量（避免旋转计算误差导致长度不为1）
+            float forwardLength = playerForward.Length();
+            if (forwardLength > 0.0001f)
+            {
+                playerForward.X /= forwardLength;
+                playerForward.Z /= forwardLength;
+            }
+
+            // 2. 计算敌人相对于玩家的平面向量（忽略Y轴高度差）
+            Vector3 enemyRelative = new Vector3(
+                enemyPos.X - playerPos.X,
+                0,
+                enemyPos.Z - playerPos.Z
+            );
+
+            // 3. 先判断敌人到玩家的平面距离是否超过15米（平方比较，优化性能）
+            float distanceSquared = enemyRelative.LengthSquared();
+            if (distanceSquared > 15 * 15)
+            {
+                return false;
+            }
+
+            // 4. 计算敌人相对向量在玩家前方向量上的投影长度（即“前方距离”）
+            float forwardDot = Vector3.Dot(enemyRelative, playerForward);
+            // 投影长度需>0（在前方）且<=15米（在长度范围内）
+            if (forwardDot <= 0 || forwardDot > 15)
+            {
+                return false;
+            }
+
+            // 5. 计算敌人相对向量在垂直于玩家朝向方向上的分量长度（即“左右偏移”）
+            // 垂直向量：玩家前方向量逆时针转90度（x=-z，z=x）
+            Vector3 playerRight = new Vector3(-playerForward.Z, 0, playerForward.X);
+            float rightDot = Vector3.Dot(enemyRelative, playerRight);
+            // 绝对值需<=2.5米（在宽度范围内）
+            if (Math.Abs(rightDot) > 2.5)
+            {
+                return false;
+            }
+
+            // 所有条件满足，敌人在技能区域内
+            return true;
+        }
+
         public static Vector3 ToVector3(this int[] pos)
         {
             return new Vector3()

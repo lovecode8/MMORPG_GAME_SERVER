@@ -19,4 +19,6 @@
     <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties data_4json_4unitdefine_1json__JsonSchema="https://atmos.tools/schemas/atmos/atmos-manifest/1.0/atmos-manifest.json" /></VisualStudio></ProjectExtensions>
+
 </Project>

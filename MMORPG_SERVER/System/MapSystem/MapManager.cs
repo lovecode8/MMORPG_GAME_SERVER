@@ -63,7 +63,6 @@ namespace MMORPG_SERVER.System.MapSystem
         //构造网络实体数据
         private EntityData ConstructEntityData(Entity entity)
         {
-            //hp、mp等属性未实现
             EntityData entityData = new EntityData();
             entityData.EntityId = entity._entityId;
             entityData.UnitId = entity._unitDefine.ID;

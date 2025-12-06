@@ -1,7 +1,11 @@
-﻿using MMORPG_SERVER.Manager;
+﻿using MMORPG_SERVER.Extension;
+using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.System.EntitySystem;
+using MMORPG_SERVER.System.FightSystem;
 using MMORPG_SERVER.System.MapSystem;
 using MMORPG_SERVER.System.MissileSystem;
+using MMORPG_SERVER.System.PlayerSystem;
+using MMORPG_SERVER.System.SkillSystem.Skill;
 using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Tool;
 using Serilog;
@@ -9,29 +13,49 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MMORPG_SERVER.System.SkillSystem
 {
+    public interface ISkill
+    {
+        Task UseSkill(User user);
+    }
+
     public class SkillManager : Singleton<SkillManager>
     {
         private SkillManager() { }
+
+        //角色Id对应技能
+        private Dictionary<int, ISkill> _characterSkillDict = new();
 
         //各个玩家技能冷却时间
         private Dictionary<int, int> _playerSkillColdTimeDict = new();
 
         private List<int> _tempUserIdList = new();
 
-        private Random _random = new Random();
-
         private float _updateSkillTimeInterval = 1f;
 
         private float _timer;
 
+        public void Start()
+        {
+            LoadSkill();
+        }
+
         public void Update()
         {
             UpdatePlayerSkillColdTime();
+        }
+
+        //加载技能
+        private void LoadSkill()
+        {
+            _characterSkillDict.Add(2, new Skill2());
+            _characterSkillDict.Add(3, new Skill3());
+            _characterSkillDict.Add(4, new Skill4());
         }
 
         //更新玩家的技能冷却时间
@@ -96,49 +120,12 @@ namespace MMORPG_SERVER.System.SkillSystem
                 _playerSkillColdTimeDict[user._userId] = user._player._unitDefine.SkillInterval;
 
                 //释放技能
-                ShowSkill(user);
+                _ = Task.Run(() =>
+                {
+                    _characterSkillDict[user._player._unitDefine.ID].UseSkill(user);
+                });
                 return true;
             }
-        }
-
-        private void ShowSkill(User user)
-        {
-            switch(user._player._unitDefine.ID)
-            {
-                case 1:
-                    Player1Skill();
-                    break;
-                case 2:
-                    Player2Skill(user);
-                    break;
-            }
-        }
-
-        private void Player1Skill()
-        {
-
-        }
-
-        private void Player2Skill(User user)
-        {
-            //生成导弹
-            var target = EntityManager.Instance.GetClosedEntity(user._player);
-            if (target == null) return;
-            Log.Information($"[SkillManager]生成导弹，追踪{target._entityId}");
-
-            var missile = new MissileAi
-                (EntityManager.Instance.NewEntityId(),
-                EntityType.Missile,
-                DataManager.Instance.GetUnitDefine(user._player._unitDefine.SkillUnitId),
-                user._player._position + new Vector3(0, 2, 0),
-                0,
-                target,
-                null,
-                5f,
-                user._player,
-                2f);
-
-            MissileManager.Instance.AddMissile(missile);
         }
     }
 }

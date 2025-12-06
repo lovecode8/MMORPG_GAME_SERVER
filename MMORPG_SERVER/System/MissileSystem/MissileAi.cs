@@ -45,7 +45,10 @@ namespace MMORPG_SERVER.System.MissileSystem
 
         public void Update()
         {
-            ChaseTarget();
+            if(_chaseTarget != null || _destination != Vector3.Zero)
+            {
+                ChaseTarget();
+            }
         }
 
         private void ChaseTarget()
@@ -63,6 +66,7 @@ namespace MMORPG_SERVER.System.MissileSystem
 
             if(distanceToTarget > _interactDistance)
             {
+                Log.Information($"移动{_position}");
                 var direction = _target - _position;
 
                 var moveDelta = 
@@ -75,18 +79,18 @@ namespace MMORPG_SERVER.System.MissileSystem
                 //触发（追踪弹）
                 if(_chaseTarget != null)
                 {
-                    Interact();
+                    Interact1();
                 }
                 //（范围弹）
                 else
                 {
-
+                    Interact2();
                 }
             }
         }
 
         //触发 -- 对目标造成伤害、删除实体、产生特效
-        private void Interact()
+        private void Interact1()
         {
             Log.Information("[MissileAi]导弹爆炸");
             //广播删除实体
@@ -113,6 +117,38 @@ namespace MMORPG_SERVER.System.MissileSystem
                 IsHit = true,
                 TargetId = _chaseTarget._entityId
             }, this);
+        }
+
+        private void Interact2()
+        {
+            Log.Information($"[MissileAi] 导弹爆炸");
+
+            MissileManager.Instance.RemoveMissile(this);
+
+            var effect = new Effect(EntityManager.Instance.NewEntityId(),
+                EntityType.Effect,
+                _unitDefine,
+                _position + new Vector3(0, 2, 0),
+                0,
+                2f);
+            EffectManager.Instance.AddEffect(effect);
+
+            //获取范围内的实体
+            var entityList = EntityManager.Instance.GetEntityListWithRange(_position, 5f);
+
+            foreach(var entity in entityList)
+            {
+                int demage = FightManager.Instance.GetSkillHurt(_owner, entity);
+
+                PlayerManager.Instance.Broadcast(new PlayerAttackResponse()
+                {
+                    IsSuccessfulAttack = true,
+                    IsHit = true,
+                    Damage = demage,
+                    PlayerId = -1,
+                    TargetId = entity._entityId
+                }, this);
+            }
         }
     }
 }

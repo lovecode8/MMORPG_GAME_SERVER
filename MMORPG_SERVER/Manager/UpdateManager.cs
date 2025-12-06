@@ -62,6 +62,9 @@ namespace MMORPG_SERVER.Manager
             AStarManager.Instance.Start();
             Log.Information("[AStarManager] 初始化完成");
 
+            SkillManager.Instance.Start();
+            Log.Information("[SkillManager] 初始化完成");
+
             Scheduler.Instance.AddScheduler(_updateTime, Update);
         }
 
