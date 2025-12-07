@@ -55,6 +55,14 @@ namespace MMORPG_SERVER.System.MissileSystem
         {
             if(_chaseTarget == null)
             {
+                //判断是否碰到实体
+                var entityList = EntityManager.Instance.GetEntityListWithRange(_position, 2f);
+                if (entityList.Count > 0)
+                {
+                    Log.Information("提前爆炸");
+                    Interact2();
+                }
+
                 _target = _destination;
             }
             else

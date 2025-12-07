@@ -53,6 +53,7 @@ namespace MMORPG_SERVER.System.SkillSystem
         //加载技能
         private void LoadSkill()
         {
+            _characterSkillDict.Add(1, new Skill1());
             _characterSkillDict.Add(2, new Skill2());
             _characterSkillDict.Add(3, new Skill3());
             _characterSkillDict.Add(4, new Skill4());
@@ -122,7 +123,7 @@ namespace MMORPG_SERVER.System.SkillSystem
                 //释放技能
                 _ = Task.Run(() =>
                 {
-                    _characterSkillDict[user._player._unitDefine.ID].UseSkill(user);
+                    _characterSkillDict[user._player._dbCharacter.UnitId].UseSkill(user);
                 });
                 return true;
             }

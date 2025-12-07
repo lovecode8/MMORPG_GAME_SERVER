@@ -13,12 +13,15 @@ namespace MMORPG_SERVER.System.SkillSystem.Skill
     public class Skill3 : ISkill
     {
         //最远距离
-        private float _maxDistance = 10f;
+        private float _maxDistance = 15f;
+
+        //飞行速度
+        private float _moveSpeed = 8f;
 
         public async Task UseSkill(User user)
         {
             var missileDestination = user._player._position +
-                Vector3Extensions.CalculateForwardDirection(user._player._rotationY) * 15;
+                Vector3Extensions.CalculateForwardDirection(user._player._rotationY) * _maxDistance;
             Log.Information($"{user._player._position}   {missileDestination}");
 
             var missile = new MissileAi(EntityManager.Instance.NewEntityId(),
@@ -28,9 +31,9 @@ namespace MMORPG_SERVER.System.SkillSystem.Skill
                 0,
                 null,
                 missileDestination,
-                5f,
+                _moveSpeed,
                 user._player,
-                3f);
+                0.5f);
 
             await Task.Delay(500);
             MissileManager.Instance.AddMissile(missile);
