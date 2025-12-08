@@ -19,10 +19,10 @@ namespace MMORPG_SERVER.System.AStarSystem
         //所有三角形
         private List<Triangle> _allTriangles = new();
 
-        //三角形字典 -- 边的Key对应三角形索引表
+        //三角形字典 -- Key为边，value为具体的三角形列表，用于根据已知的边查找三角形
         private Dictionary<string, List<int>> _edgeToTriangle = new();
 
-        // 新增：采样配置（可根据场景调整）
+        // 采样配置（可根据场景调整）
         private readonly float _searchRadius = 50f; // 最大搜索半径（米）
         private readonly int _sampleStep = 10; // 每层采样步数
         private readonly int _sampleLayer = 10; // 采样层数（半径分层）
@@ -45,6 +45,7 @@ namespace MMORPG_SERVER.System.AStarSystem
         //构建边对应三角形字典
         private void BuildEdgeToTriangle()
         {
+            //遍历所有三角形
             for (int i = 0; i < _allTriangles.Count; i++)
             {
                 var triangle = _allTriangles[i];
@@ -54,9 +55,10 @@ namespace MMORPG_SERVER.System.AStarSystem
             }
         }
 
-        //增加边对应三角形
+        //增加边对应三角形数据
         private void AddEdgeToTriangle(Vector3 point1, Vector3 point2, int triangleIndex)
         {
+            //获取一条表（即两个点）的唯一索引Key
             var key = GetEdgeKey(point1, point2);
 
             if (!_edgeToTriangle.ContainsKey(key))
@@ -81,12 +83,12 @@ namespace MMORPG_SERVER.System.AStarSystem
                 if(startIndex == -1)
                 {
                     startIndex = GetTriangleIndexByPos(FindNearestReachablePoint(startPos));
-                    Log.Information($"起点不可到达：{startPos}");
+                    //Log.Information($"起点不可到达：{startPos}");
                 }
                 if(endIndex == -1)
                 {
                     endIndex = GetTriangleIndexByPos(FindNearestReachablePoint(endPos));
-                    Log.Information($"终点不可到达：{endPos}");
+                    //Log.Information($"终点不可到达：{endPos}");
                 }
                 return null;
             }
@@ -158,7 +160,11 @@ namespace MMORPG_SERVER.System.AStarSystem
             return ans;
         }
 
-        //获取点所在的三角形
+        /// <summary>
+        /// 获取点所在的三角形
+        /// </summary>
+        /// <param name="point">点的位置信息</param>
+        /// <returns></returns>
         private int GetTriangleIndexByPos(Vector3 point)
         {
             for (int i = 0; i < _allTriangles.Count; i++)
@@ -172,7 +178,12 @@ namespace MMORPG_SERVER.System.AStarSystem
             return -1;
         }
 
-        //判断点是否在三角形中
+        /// <summary>
+        /// 判断一个点是否在三角形中
+        /// </summary>
+        /// <param name="point">点的位置信息</param>
+        /// <param name="vertices">三角形的三条边位置信息</param>
+        /// <returns></returns>
         private bool isPointInTriangle(Vector3 point, Vector3[] vertices)
         {
             if (vertices == null || vertices.Length != 3)
@@ -196,18 +207,29 @@ namespace MMORPG_SERVER.System.AStarSystem
             float w1 = (v0.X * s1 + s4 * s2 - p.X * s1) / denominator;
             float w2 = (s4 - w1 * s3) / s1;
 
-            // 扩大误差容忍范围（从0.01→0.05，适配游戏场景）
+            // 误差容忍范围（0.1，适配大型游戏场景）
             const float tolerance = 0.1f;
             return (w1 >= -tolerance && w2 >= -tolerance && (w1 + w2) <= 1 + tolerance);
         }
 
-        //获取该点到终点的消耗值
+        /// <summary>
+        /// 获取该点到终点的消耗值（即该点和终点的直线距离）
+        /// </summary>
+        /// <param name="current">当前节点位置</param>
+        /// <param name="end">终点位置</param>
+        /// <returns></returns>
         private float GetHCost(Vector3 current, Vector3 end)
         {
             return Vector3.Distance(current, end);
         }
 
-        //回溯路径
+        /// <summary>
+        /// 回溯路径
+        /// </summary>
+        /// <param name="parentDict">父节点字典</param>
+        /// <param name="startIndex">起始点索引</param>
+        /// <param name="endIndex">终点索引</param>
+        /// <returns></returns>
         private List<Vector3> ReConstructPath(Dictionary<int, int> parentDict, int startIndex, int endIndex)
         {
             List<Vector3> ans = new List<Vector3>();
@@ -227,7 +249,6 @@ namespace MMORPG_SERVER.System.AStarSystem
             return ans;
         }
 
-        #region 新增核心方法：查找最近可达点
         /// <summary>
         /// 查找指定点附近最近的可达点（在NavMesh三角形内）
         /// </summary>
@@ -312,7 +333,6 @@ namespace MMORPG_SERVER.System.AStarSystem
             }
             return samplePoints.OrderBy(kv => kv.Value).First().Key;
         }
-        #endregion
 
         //获取指定节点三角形的相邻三角形的索引值
         private List<int> GetNeighborTriangle(int currentIndex)

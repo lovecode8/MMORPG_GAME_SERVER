@@ -32,6 +32,7 @@ namespace MMORPG_SERVER.Data.CS
         public string SpritePath; // 图片路径
         public bool CanbeDrop; // 是否可以被丢弃
         public int UnitId; // 对应实体id
+        public int Price; //售价
     }
 
 

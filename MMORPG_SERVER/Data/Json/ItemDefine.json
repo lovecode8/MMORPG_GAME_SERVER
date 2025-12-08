@@ -15,7 +15,8 @@
     "Addition": 0,
     "SpritePath": "UI/Item/atk1",
     "CanbeDrop": true,
-    "UnitId": 0
+    "UnitId": 0,
+    "Price": 500
   },
   "2": {
     "ID": 2,
@@ -33,7 +34,8 @@
     "Addition": 0,
     "SpritePath": "UI/Item/hp1",
     "CanbeDrop": true,
-    "UnitId": 5
+    "UnitId": 5,
+    "Price": 200
   },
   "3": {
     "ID": 3,
@@ -51,7 +53,8 @@
     "Addition": 0,
     "SpritePath": "UI/Item/hp2",
     "CanbeDrop": true,
-    "UnitId": 0
+    "UnitId": 0,
+    "Price": 300
   },
   "4": {
     "ID": 4,
@@ -69,7 +72,8 @@
     "Addition": 0,
     "SpritePath": "UI/Item/def1",
     "CanbeDrop": true,
-    "UnitId": 0
+    "UnitId": 0,
+    "Price": 300
   },
   "5": {
     "ID": 5,
@@ -87,7 +91,8 @@
     "Addition": 2,
     "SpritePath": "UI/Item/addition1",
     "CanbeDrop": false,
-    "UnitId": 0
+    "UnitId": 0,
+    "Price": 400
   },
   "6": {
     "ID": 6,
@@ -105,13 +110,14 @@
     "Addition": 0,
     "SpritePath": "UI/Item/atk2",
     "CanbeDrop": true,
-    "UnitId": 0
+    "UnitId": 0,
+    "Price": 800
   },
   "7": {
     "ID": 7,
     "Name": "鸡肉",
     "Description": "使用后增加50点最大生命值",
-    "ItemType": 1,
+    "ItemType": 0,
     "EquipType": -1,
     "ConsumableType": 2,
     "Hp": 0,
@@ -123,6 +129,7 @@
     "Addition": 0,
     "SpritePath": "UI/Item/maxHp1",
     "CanbeDrop": true,
-    "UnitId": 0
+    "UnitId": 0,
+    "Price": 400
   }
 }

@@ -9,6 +9,7 @@ using MMORPG_SERVER.System.GuildSystem;
 using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.System.MissileSystem;
 using MMORPG_SERVER.System.MonsterSystem;
+using MMORPG_SERVER.System.ShopSystem;
 using MMORPG_SERVER.System.SkillSystem;
 using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Time;
@@ -64,6 +65,9 @@ namespace MMORPG_SERVER.Manager
 
             SkillManager.Instance.Start();
             Log.Information("[SkillManager] 初始化完成");
+
+            ShopManager.Instance.Start();
+            Log.Information("[ShopManager] 初始化完成");
 
             Scheduler.Instance.AddScheduler(_updateTime, Update);
         }
