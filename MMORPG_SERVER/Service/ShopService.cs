@@ -1,6 +1,7 @@
 ﻿using MMORPG_SERVER.Common.Network;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
+using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.System.ShopSystem;
 using Serilog;
 
@@ -21,6 +22,39 @@ namespace MMORPG_SERVER.Service
                 var response = new SelectShopResponse();
                 response.ShopItemList.AddRange(ShopManager.Instance.GetShopItemByShopType(shopType));
                 channel.SendAsync(response);
+                Log.Information(response.ShopItemList.Count.ToString());
+            });
+        }
+
+        //处理购买商品请求
+        public void OnHandle(object sender, BuyShopItemRequest buyShopItemRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                int itemId = buyShopItemRequest.ItemId;
+
+                Log.Information($"收到购买商品请求：{channel._user._userId}买{itemId}");
+                var playerGold = channel._user._player._dbCharacter.Gold;
+                var itemPrice = DataManager.Instance.GetItemDefine(itemId).Price;
+                var response = new BuyShopItemResponse() { Inventory = new() };
+
+                //金币不足
+                if(itemPrice > playerGold)
+                {
+                    response.IsSuccessfulBuy = false;
+                    channel.SendAsync(response);
+                }
+                else
+                {
+                    var itemList = InventoryManager.Instance.AddItem(channel._user._userId, itemId, 1);
+                    var gold = playerGold - itemPrice;
+                    channel._user._player._dbCharacter.Gold = gold;
+                    response.IsSuccessfulBuy = true;
+                    response.Inventory.InventoryList.AddRange(itemList);
+                    response.Gold = gold;
+                    channel.SendAsync(response);
+                }
             });
         }
     }

@@ -32,7 +32,8 @@ namespace MMORPG_SERVER.System.ShopSystem
                 {
                     ShopName = item.Name,
                     SpritePath = item.SpritePath,
-                    Price = item.Price
+                    Price = item.Price,
+                    ItemId = item.ID
                 };
                 if (!_shopItemDict.ContainsKey(item.ItemType))
                 {
@@ -55,7 +56,7 @@ namespace MMORPG_SERVER.System.ShopSystem
             }
             else
             {
-                ans.AddRange(_shopItemDict[shopType]);
+                ans.AddRange(_shopItemDict[shopType - 1]);
             }
             return ans;
         }

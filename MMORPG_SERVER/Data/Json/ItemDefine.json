@@ -117,7 +117,7 @@
     "ID": 7,
     "Name": "鸡肉",
     "Description": "使用后增加50点最大生命值",
-    "ItemType": 0,
+    "ItemType": 1,
     "EquipType": -1,
     "ConsumableType": 2,
     "Hp": 0,
