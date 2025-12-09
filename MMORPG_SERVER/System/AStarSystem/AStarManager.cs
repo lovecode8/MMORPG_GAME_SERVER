@@ -382,11 +382,11 @@ namespace MMORPG_SERVER.System.AStarSystem
         }
 
         /// <summary>
-        /// 路径平滑核心方法：剔除冗余拐点，减少路径拐弯（仅保留必要节点）
+        /// 路径平滑方法：剔除冗余拐点，减少路径拐弯（仅保留必要节点）
         /// </summary>
         /// <param name="rawPath">A星生成的原始路径（三角形中心列表）</param>
-        /// <param name="startPos">路径起点（原始输入的起点）</param>
-        /// <param name="endPos">路径终点（原始输入的终点）</param>
+        /// <param name="startPos">路径起点</param>
+        /// <param name="endPos">路径终点</param>
         /// <returns>平滑后的路径点列表</returns>
         public List<Vector3> SmoothPath(List<Vector3> rawPath, Vector3 startPos, Vector3 endPos)
         {

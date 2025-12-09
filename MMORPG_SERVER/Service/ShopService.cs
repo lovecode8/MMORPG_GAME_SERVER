@@ -57,5 +57,21 @@ namespace MMORPG_SERVER.Service
                 }
             });
         }
+
+        //处理获取抽奖物品列表请求
+        public void OnHandle(object sender, SelectDrawItemRequest selectDrawItemRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                var response = new SelectDrawItemResponse()
+                {
+                    DrawOneGold = ShopManager.Instance.GetDrawOnePrice(),
+                    DrawFiveGold = ShopManager.Instance.GetDrawFivePrice()
+                };
+                response.ItemList.AddRange(ShopManager.Instance.GetDrawShopItemList());
+                channel?.SendAsync(response);
+            });
+        }
     }
 }

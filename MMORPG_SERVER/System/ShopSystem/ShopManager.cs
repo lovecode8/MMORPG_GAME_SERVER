@@ -1,11 +1,14 @@
-﻿using MMORPG_SERVER.Manager;
+﻿using MMORPG_SERVER.Data.CS;
+using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.Tool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using static FreeSql.Internal.GlobalFilter;
 
 namespace MMORPG_SERVER.System.ShopSystem
 {
@@ -17,14 +20,25 @@ namespace MMORPG_SERVER.System.ShopSystem
         //商品类型对应该类型商品列表
         private Dictionary<int, List<ShopItem>> _shopItemDict = new();
 
+        //可供抽奖的物品列表
+        private List<ShopItem> _drawItemList = new();
+
+        //抽1次费用
+        private int _drawOnePrice;
+
+        //抽5次费用
+        private int _drawFivePrice;
+
         public void Start()
         {
-            LoadShopItem();
+            LoadShopItems();
+            LoadDrawItems();
         }
 
-        private void LoadShopItem()
+        //加载商店商品
+        private void LoadShopItems()
         {
-            var itemList = DataManager.Instance.itemDefineDictionary.Values;
+            var itemList = DataManager.Instance.GetAllItems();
 
             foreach(var item in itemList)
             {
@@ -44,6 +58,44 @@ namespace MMORPG_SERVER.System.ShopSystem
             }
         }
 
+        //加载可供抽奖的商品
+        private void LoadDrawItems()
+        {
+            var allItems = DataManager.Instance.GetAllItems();
+            allItems.Sort((i1, i2) => i1.ItemQuality.CompareTo(i2.ItemQuality));
+
+            //普通取5个、稀有取3个、至尊取2个
+            AddDrawItems(allItems, RandomManager.Instance.GetRandomNumbersWithRange(5, 0, 5));
+            AddDrawItems(allItems, RandomManager.Instance.GetRandomNumbersWithRange(3, 6, 12));
+            AddDrawItems(allItems, RandomManager.Instance.GetRandomNumbersWithRange(2, 13, 18));
+
+            //获取抽奖花费
+            int averagePrice = _drawItemList.Sum(i => i.Price) / 10;
+            _drawOnePrice = averagePrice - averagePrice % 100;
+            _drawFivePrice = (int)(averagePrice * 4.5f);
+
+            //打乱顺序
+            _drawItemList = _drawItemList.OrderBy(i => RandomManager.Instance.GetRandomInt()).ToList();
+        }
+
+        private void AddDrawItems(List<ItemDefine> allItems, List<int> indexList)
+        {
+            foreach(var index in indexList)
+            {
+                var item = allItems[index];
+                var shopItem = new ShopItem()
+                {
+                    ShopName = item.Name,
+                    SpritePath = item.SpritePath,
+                    Price = item.Price,
+                    ItemId = item.ID,
+                    ItemQuality = item.ItemQuality
+                };
+                _drawItemList.Add(shopItem);
+            }
+        }
+
+        //根据商品类型获取商品
         public List<ShopItem> GetShopItemByShopType(int shopType)
         {
             var ans = new List<ShopItem>();
@@ -59,6 +111,23 @@ namespace MMORPG_SERVER.System.ShopSystem
                 ans.AddRange(_shopItemDict[shopType - 1]);
             }
             return ans;
+        }
+
+        //获取抽奖商品列表
+        public List<ShopItem> GetDrawShopItemList()
+        {
+            return _drawItemList;
+        }
+
+        //获取抽奖花费
+        public int GetDrawOnePrice()
+        {
+            return _drawOnePrice;
+        }
+
+        public int GetDrawFivePrice()
+        {
+            return _drawFivePrice;
         }
     }
 }

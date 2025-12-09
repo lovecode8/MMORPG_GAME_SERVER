@@ -33,6 +33,7 @@ namespace MMORPG_SERVER.Data.CS
         public bool CanbeDrop; // 是否可以被丢弃
         public int UnitId; // 对应实体id
         public int Price; //售价
+        public int ItemQuality; //物品价值
     }
 
 

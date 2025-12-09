@@ -45,6 +45,14 @@ namespace MMORPG_SERVER.Manager
             return content;
         }
 
+        public List<ItemDefine> GetAllItems()
+        {
+            lock(itemDefineDictionary)
+            {
+                return itemDefineDictionary.Values.ToList();
+            }
+        }
+
         public UnitDefine GetUnitDefine(int unitId)
         {
             return unitDictionary[unitId];

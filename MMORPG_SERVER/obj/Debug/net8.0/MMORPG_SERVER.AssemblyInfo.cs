@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MMORPG_SERVER")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ca7be918d6220fd5653a2176364bb46498fe2f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4473aa2e1b5c79b80f9c2573cd8fdfc257371ce")]
 [assembly: System.Reflection.AssemblyProductAttribute("MMORPG_SERVER")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MMORPG_SERVER")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
