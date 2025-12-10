@@ -72,12 +72,19 @@ namespace MMORPG_SERVER.System.AStarSystem
             }
         }
 
-        //核心算法--获取路径
+        /// <summary>
+        /// 核心A*算法
+        /// </summary>
+        /// <param name="startPos">起始点位置</param>
+        /// <param name="endPos">终点位置</param>
+        /// <returns></returns>
         public async Task<List<Vector3>> GetAStarPath(Vector3 startPos, Vector3 endPos)
         {
+            //获取起始点和终点所在的三角形索引
             int startIndex = GetTriangleIndexByPos(startPos);
             int endIndex = GetTriangleIndexByPos(endPos);
 
+            //如果找不到起点或终点所在的三角形，则找距离它最近的三角形
             if (startIndex == -1 || endIndex == -1)
             {
                 if(startIndex == -1)
@@ -90,60 +97,68 @@ namespace MMORPG_SERVER.System.AStarSystem
                     endIndex = GetTriangleIndexByPos(FindNearestReachablePoint(endPos));
                     //Log.Information($"终点不可到达：{endPos}");
                 }
-                return null;
             }
 
+            //如果起点和终点重合，直接返回
             if (startIndex == endIndex)
             {
                 return new() { startPos, endPos };
             }
 
-            //数据结构
-            //从起点到该点的消耗
+            //A*算法用到的数据结构
+
+            //从起点到该点的消耗字典
             Dictionary<int, float> gCost = new Dictionary<int, float>();
-            //从该点到终点的消耗
+            //从该点到终点的消耗字典
             Dictionary<int, float> hCost = new Dictionary<int, float>();
             //父节点字典
             Dictionary<int, int> parentDict = new Dictionary<int, int>();
-            //已遍历节点表
+            //关闭列表--已遍历节点表
             HashSet<int> closeSet = new HashSet<int>();
-            //待遍历节点表
+            //开发列表--待遍历节点表
             PriorityQueue<int, float> openSet = new PriorityQueue<int, float>();
 
+            //加入起点
             gCost[startIndex] = 0;
             hCost[startIndex] = GetHCost(startPos, endPos);
             openSet.Enqueue(startIndex, gCost[startIndex] + hCost[startIndex]);
 
+            //异步计算路径点
             var ans = await Task.Run(() =>
             {
                 while (openSet.Count > 0)
                 {
+                    //获取当前点所在三角形的索引
                     int currentIndex = openSet.Dequeue();
 
+                    //当前点索引等于字典索引--找到路径，构建路径点后平滑
                     if (currentIndex == endIndex)
                     {
                         var ans = SmoothPath
                             (ReConstructPath(parentDict, startIndex, endIndex), startPos, endPos);
-                        foreach (var pos in ans)
-                        {
-                            Log.Information(pos.ToString());
-                        }
                         return ans;
                     }
 
+                    //当前点已经计算，加入关闭列表，避免重复计算
                     closeSet.Add(currentIndex);
 
+                    //获取当前点的所有邻接点
                     var neighborTriangleIndexList = GetNeighborTriangle(currentIndex);
 
+                    //遍历所有邻接点，计算gCost和hCost
                     foreach (var neighborIndex in neighborTriangleIndexList)
                     {
                         if (closeSet.Contains(neighborIndex)) continue;
 
+                        //计算该邻接点所在三角形的中心位置
                         Vector3 neighborCenter = _allTriangles[neighborIndex].Center;
 
+                        //计算邻接点的gCost
+                        //gCost是起点到邻接点的花费，也就是起点到当前点加上当前点到邻接点的花费
                         float neighborGCost = gCost[currentIndex] +
                             Vector3.Distance(_allTriangles[currentIndex].Center, neighborCenter);
 
+                        //如果邻接点未被计算过或者花费更小，则更新数据
                         if (!gCost.ContainsKey(neighborIndex) || neighborGCost < gCost[neighborIndex])
                         {
                             gCost[neighborIndex] = neighborGCost;

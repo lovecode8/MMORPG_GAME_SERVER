@@ -30,5 +30,10 @@ namespace MMORPG_SERVER.Tool
         {
             return _random.Next();
         }
+
+        public int GetRandomInt(int min, int max)
+        {
+            return _random.Next(min, max + 1);
+        }
     }
 }

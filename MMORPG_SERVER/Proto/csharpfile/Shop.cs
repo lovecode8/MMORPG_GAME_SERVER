@@ -32,12 +32,14 @@ public static partial class ShopReflection {
           "Eh0KCWludmVudG9yeRgCIAEoCzIKLkludmVudG9yeRIMCgRnb2xkGAMgASgF",
           "IhcKFVNlbGVjdERyYXdJdGVtUmVxdWVzdCJgChZTZWxlY3REcmF3SXRlbVJl",
           "c3BvbnNlEhsKCGl0ZW1MaXN0GAEgAygLMgkuU2hvcEl0ZW0SEwoLRHJhd09u",
-          "ZUdvbGQYAiABKAUSFAoMRHJhd0ZpdmVHb2xkGAMgASgFIjYKD0RyYXdJdGVt",
-          "UmVxdWVzdBIUCgxEcmF3SXRlbVR5cGUYASABKAUSDQoFY291bnQYAiABKAUi",
-          "SwoQRHJhd0l0ZW1SZXNwb25zZRIYChBpc1N1Y2Nlc3NmdWxEcmF3GAEgASgI",
-          "Eh0KCGl0ZW1MaXN0GAIgAygLMgsuRHJhd2VkSXRlbSJWCgpEcmF3ZWRJdGVt",
-          "EhAKCGl0ZW1OYW1lGAEgASgJEhIKCnNwcml0ZVBhdGgYAiABKAkSEwoLaXRl",
-          "bVF1YWxpdHkYAyABKAUSDQoFY291bnQYBCABKAViBnByb3RvMw=="));
+          "ZUdvbGQYAiABKAUSFAoMRHJhd0ZpdmVHb2xkGAMgASgFIiAKD0RyYXdJdGVt",
+          "UmVxdWVzdBINCgVjb3VudBgBIAEoBSJ4ChBEcmF3SXRlbVJlc3BvbnNlEhgK",
+          "EGlzU3VjY2Vzc2Z1bERyYXcYASABKAgSHQoIaXRlbUxpc3QYAiADKAsyCy5E",
+          "cmF3ZWRJdGVtEgwKBGdvbGQYAyABKAUSHQoJaW52ZW50b3J5GAQgASgLMgou",
+          "SW52ZW50b3J5InsKCkRyYXdlZEl0ZW0SEAoIaXRlbU5hbWUYASABKAkSEgoK",
+          "c3ByaXRlUGF0aBgCIAEoCRITCgtpdGVtUXVhbGl0eRgDIAEoBRINCgVjb3Vu",
+          "dBgEIAEoBRITCgt0YXJnZXRJbmRleBgFIAEoBRIOCgZpdGVtSWQYBiABKAVi",
+          "BnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::InventoryReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -48,9 +50,9 @@ public static partial class ShopReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::BuyShopItemResponse), global::BuyShopItemResponse.Parser, new[]{ "IsSuccessfulBuy", "Inventory", "Gold" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::SelectDrawItemRequest), global::SelectDrawItemRequest.Parser, null, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::SelectDrawItemResponse), global::SelectDrawItemResponse.Parser, new[]{ "ItemList", "DrawOneGold", "DrawFiveGold" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::DrawItemRequest), global::DrawItemRequest.Parser, new[]{ "DrawItemType", "Count" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::DrawItemResponse), global::DrawItemResponse.Parser, new[]{ "IsSuccessfulDraw", "ItemList" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::DrawedItem), global::DrawedItem.Parser, new[]{ "ItemName", "SpritePath", "ItemQuality", "Count" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::DrawItemRequest), global::DrawItemRequest.Parser, new[]{ "Count" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::DrawItemResponse), global::DrawItemResponse.Parser, new[]{ "IsSuccessfulDraw", "ItemList", "Gold", "Inventory" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::DrawedItem), global::DrawedItem.Parser, new[]{ "ItemName", "SpritePath", "ItemQuality", "Count", "TargetIndex", "ItemId" }, null, null, null, null)
         }));
   }
   #endregion
@@ -1778,7 +1780,6 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public DrawItemRequest(DrawItemRequest other) : this() {
-    drawItemType_ = other.drawItemType_;
     count_ = other.count_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
@@ -1789,23 +1790,8 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
     return new DrawItemRequest(this);
   }
 
-  /// <summary>Field number for the "DrawItemType" field.</summary>
-  public const int DrawItemTypeFieldNumber = 1;
-  private int drawItemType_;
-  /// <summary>
-  ///抽奖的商品类型：0-装备，1-消耗品
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-  public int DrawItemType {
-    get { return drawItemType_; }
-    set {
-      drawItemType_ = value;
-    }
-  }
-
   /// <summary>Field number for the "count" field.</summary>
-  public const int CountFieldNumber = 2;
+  public const int CountFieldNumber = 1;
   private int count_;
   /// <summary>
   ///抽奖次数
@@ -1834,7 +1820,6 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
     if (ReferenceEquals(other, this)) {
       return true;
     }
-    if (DrawItemType != other.DrawItemType) return false;
     if (Count != other.Count) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -1843,7 +1828,6 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override int GetHashCode() {
     int hash = 1;
-    if (DrawItemType != 0) hash ^= DrawItemType.GetHashCode();
     if (Count != 0) hash ^= Count.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -1863,12 +1847,8 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     output.WriteRawMessage(this);
   #else
-    if (DrawItemType != 0) {
-      output.WriteRawTag(8);
-      output.WriteInt32(DrawItemType);
-    }
     if (Count != 0) {
-      output.WriteRawTag(16);
+      output.WriteRawTag(8);
       output.WriteInt32(Count);
     }
     if (_unknownFields != null) {
@@ -1881,12 +1861,8 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-    if (DrawItemType != 0) {
-      output.WriteRawTag(8);
-      output.WriteInt32(DrawItemType);
-    }
     if (Count != 0) {
-      output.WriteRawTag(16);
+      output.WriteRawTag(8);
       output.WriteInt32(Count);
     }
     if (_unknownFields != null) {
@@ -1899,9 +1875,6 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public int CalculateSize() {
     int size = 0;
-    if (DrawItemType != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeInt32Size(DrawItemType);
-    }
     if (Count != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
     }
@@ -1916,9 +1889,6 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
   public void MergeFrom(DrawItemRequest other) {
     if (other == null) {
       return;
-    }
-    if (other.DrawItemType != 0) {
-      DrawItemType = other.DrawItemType;
     }
     if (other.Count != 0) {
       Count = other.Count;
@@ -1943,10 +1913,6 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
         case 8: {
-          DrawItemType = input.ReadInt32();
-          break;
-        }
-        case 16: {
           Count = input.ReadInt32();
           break;
         }
@@ -1970,10 +1936,6 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
           break;
         case 8: {
-          DrawItemType = input.ReadInt32();
-          break;
-        }
-        case 16: {
           Count = input.ReadInt32();
           break;
         }
@@ -1984,6 +1946,9 @@ public sealed partial class DrawItemRequest : pb::IMessage<DrawItemRequest>
 
 }
 
+/// <summary>
+///抽奖回复
+/// </summary>
 [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
 public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
 #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -2021,6 +1986,8 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
   public DrawItemResponse(DrawItemResponse other) : this() {
     isSuccessfulDraw_ = other.isSuccessfulDraw_;
     itemList_ = other.itemList_.Clone();
+    gold_ = other.gold_;
+    inventory_ = other.inventory_ != null ? other.inventory_.Clone() : null;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -2056,6 +2023,33 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
     get { return itemList_; }
   }
 
+  /// <summary>Field number for the "gold" field.</summary>
+  public const int GoldFieldNumber = 3;
+  private int gold_;
+  /// <summary>
+  ///剩余金币数
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int Gold {
+    get { return gold_; }
+    set {
+      gold_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "inventory" field.</summary>
+  public const int InventoryFieldNumber = 4;
+  private global::Inventory inventory_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public global::Inventory Inventory {
+    get { return inventory_; }
+    set {
+      inventory_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -2073,6 +2067,8 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
     }
     if (IsSuccessfulDraw != other.IsSuccessfulDraw) return false;
     if(!itemList_.Equals(other.itemList_)) return false;
+    if (Gold != other.Gold) return false;
+    if (!object.Equals(Inventory, other.Inventory)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -2082,6 +2078,8 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
     int hash = 1;
     if (IsSuccessfulDraw != false) hash ^= IsSuccessfulDraw.GetHashCode();
     hash ^= itemList_.GetHashCode();
+    if (Gold != 0) hash ^= Gold.GetHashCode();
+    if (inventory_ != null) hash ^= Inventory.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -2105,6 +2103,14 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
       output.WriteBool(IsSuccessfulDraw);
     }
     itemList_.WriteTo(output, _repeated_itemList_codec);
+    if (Gold != 0) {
+      output.WriteRawTag(24);
+      output.WriteInt32(Gold);
+    }
+    if (inventory_ != null) {
+      output.WriteRawTag(34);
+      output.WriteMessage(Inventory);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -2120,6 +2126,14 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
       output.WriteBool(IsSuccessfulDraw);
     }
     itemList_.WriteTo(ref output, _repeated_itemList_codec);
+    if (Gold != 0) {
+      output.WriteRawTag(24);
+      output.WriteInt32(Gold);
+    }
+    if (inventory_ != null) {
+      output.WriteRawTag(34);
+      output.WriteMessage(Inventory);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -2134,6 +2148,12 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
       size += 1 + 1;
     }
     size += itemList_.CalculateSize(_repeated_itemList_codec);
+    if (Gold != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Gold);
+    }
+    if (inventory_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(Inventory);
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -2150,6 +2170,15 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
       IsSuccessfulDraw = other.IsSuccessfulDraw;
     }
     itemList_.Add(other.itemList_);
+    if (other.Gold != 0) {
+      Gold = other.Gold;
+    }
+    if (other.inventory_ != null) {
+      if (inventory_ == null) {
+        Inventory = new global::Inventory();
+      }
+      Inventory.MergeFrom(other.Inventory);
+    }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
 
@@ -2177,6 +2206,17 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
           itemList_.AddEntriesFrom(input, _repeated_itemList_codec);
           break;
         }
+        case 24: {
+          Gold = input.ReadInt32();
+          break;
+        }
+        case 34: {
+          if (inventory_ == null) {
+            Inventory = new global::Inventory();
+          }
+          input.ReadMessage(Inventory);
+          break;
+        }
       }
     }
   #endif
@@ -2202,6 +2242,17 @@ public sealed partial class DrawItemResponse : pb::IMessage<DrawItemResponse>
         }
         case 18: {
           itemList_.AddEntriesFrom(ref input, _repeated_itemList_codec);
+          break;
+        }
+        case 24: {
+          Gold = input.ReadInt32();
+          break;
+        }
+        case 34: {
+          if (inventory_ == null) {
+            Inventory = new global::Inventory();
+          }
+          input.ReadMessage(Inventory);
           break;
         }
       }
@@ -2253,6 +2304,8 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
     spritePath_ = other.spritePath_;
     itemQuality_ = other.itemQuality_;
     count_ = other.count_;
+    targetIndex_ = other.targetIndex_;
+    itemId_ = other.itemId_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -2316,6 +2369,30 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
     }
   }
 
+  /// <summary>Field number for the "targetIndex" field.</summary>
+  public const int TargetIndexFieldNumber = 5;
+  private int targetIndex_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int TargetIndex {
+    get { return targetIndex_; }
+    set {
+      targetIndex_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "itemId" field.</summary>
+  public const int ItemIdFieldNumber = 6;
+  private int itemId_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int ItemId {
+    get { return itemId_; }
+    set {
+      itemId_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -2335,6 +2412,8 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
     if (SpritePath != other.SpritePath) return false;
     if (ItemQuality != other.ItemQuality) return false;
     if (Count != other.Count) return false;
+    if (TargetIndex != other.TargetIndex) return false;
+    if (ItemId != other.ItemId) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -2346,6 +2425,8 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
     if (SpritePath.Length != 0) hash ^= SpritePath.GetHashCode();
     if (ItemQuality != 0) hash ^= ItemQuality.GetHashCode();
     if (Count != 0) hash ^= Count.GetHashCode();
+    if (TargetIndex != 0) hash ^= TargetIndex.GetHashCode();
+    if (ItemId != 0) hash ^= ItemId.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -2380,6 +2461,14 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
       output.WriteRawTag(32);
       output.WriteInt32(Count);
     }
+    if (TargetIndex != 0) {
+      output.WriteRawTag(40);
+      output.WriteInt32(TargetIndex);
+    }
+    if (ItemId != 0) {
+      output.WriteRawTag(48);
+      output.WriteInt32(ItemId);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -2406,6 +2495,14 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
       output.WriteRawTag(32);
       output.WriteInt32(Count);
     }
+    if (TargetIndex != 0) {
+      output.WriteRawTag(40);
+      output.WriteInt32(TargetIndex);
+    }
+    if (ItemId != 0) {
+      output.WriteRawTag(48);
+      output.WriteInt32(ItemId);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -2427,6 +2524,12 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
     }
     if (Count != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
+    }
+    if (TargetIndex != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(TargetIndex);
+    }
+    if (ItemId != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(ItemId);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -2451,6 +2554,12 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
     }
     if (other.Count != 0) {
       Count = other.Count;
+    }
+    if (other.TargetIndex != 0) {
+      TargetIndex = other.TargetIndex;
+    }
+    if (other.ItemId != 0) {
+      ItemId = other.ItemId;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -2487,6 +2596,14 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
           Count = input.ReadInt32();
           break;
         }
+        case 40: {
+          TargetIndex = input.ReadInt32();
+          break;
+        }
+        case 48: {
+          ItemId = input.ReadInt32();
+          break;
+        }
       }
     }
   #endif
@@ -2520,6 +2637,14 @@ public sealed partial class DrawedItem : pb::IMessage<DrawedItem>
         }
         case 32: {
           Count = input.ReadInt32();
+          break;
+        }
+        case 40: {
+          TargetIndex = input.ReadInt32();
+          break;
+        }
+        case 48: {
+          ItemId = input.ReadInt32();
           break;
         }
       }

@@ -73,5 +73,48 @@ namespace MMORPG_SERVER.Service
                 channel?.SendAsync(response);
             });
         }
+
+        //处理抽奖请求
+        public void OnHandle(object sender, DrawItemRequest drawItemRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                var playerGold = channel._user._player._dbCharacter.Gold;
+                var drawPrice = drawItemRequest.Count == 1 ?
+                    ShopManager.Instance.GetDrawOnePrice() : ShopManager.Instance.GetDrawFivePrice();
+                var response = new DrawItemResponse() { Inventory = new() };
+
+                if(playerGold < drawPrice)
+                {
+                    response.IsSuccessfulDraw = false;
+                    channel?.SendAsync(response);
+                    return;
+                }
+
+                int remainGold = playerGold - drawPrice;
+                channel._user._player._dbCharacter.Gold = remainGold;
+
+                var itemList = ShopManager.Instance.GetDrawItem(drawItemRequest.Count);
+                for(int i = 0; i < itemList.Count - 1; i++)
+                {
+                    InventoryManager.Instance.AddItem
+                        (channel._user._userId, itemList[i].ItemId, itemList[i].Count);
+                }
+
+                var inventoryList = 
+                InventoryManager.Instance.AddItem(channel._user._userId, 
+                itemList[itemList.Count - 1].ItemId, itemList[itemList.Count - 1].Count);
+
+                response.Inventory.InventoryList.AddRange(inventoryList);
+                response.IsSuccessfulDraw = true;
+                response.Gold = remainGold;
+                response.ItemList.AddRange(itemList);
+                channel?.SendAsync(response);
+
+                Log.Information($"收到用户抽奖请求{channel?._user._userId}," +
+                    $"抽中{response.ItemList.Count}个商品,第一个是{response.ItemList[0].ItemName}");
+            });
+        }
     }
 }

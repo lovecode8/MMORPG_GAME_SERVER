@@ -2,6 +2,7 @@
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.Tool;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,7 +73,7 @@ namespace MMORPG_SERVER.System.ShopSystem
             //获取抽奖花费
             int averagePrice = _drawItemList.Sum(i => i.Price) / 10;
             _drawOnePrice = averagePrice - averagePrice % 100;
-            _drawFivePrice = (int)(averagePrice * 4.5f);
+            _drawFivePrice = (int)(_drawOnePrice * 4.5f);
 
             //打乱顺序
             _drawItemList = _drawItemList.OrderBy(i => RandomManager.Instance.GetRandomInt()).ToList();
@@ -128,6 +129,37 @@ namespace MMORPG_SERVER.System.ShopSystem
         public int GetDrawFivePrice()
         {
             return _drawFivePrice;
+        }
+
+        //抽奖算法--返回抽中的商品列表
+        public List<DrawedItem> GetDrawItem(int count)
+        {
+            List<DrawedItem> ans = new();
+
+            for(int i = 0; i < count; i++)
+            {
+                int index = RandomManager.Instance.GetRandomInt(0, 9);
+                var item = _drawItemList[index];
+                var drawedItem = ans.Find(i => i.ItemName == item.ShopName);
+                if(drawedItem != null)
+                {
+                    drawedItem.Count++;
+                }
+                else
+                {
+                    ans.Add(new DrawedItem()
+                    {
+                        ItemName = item.ShopName,
+                        SpritePath = item.SpritePath,
+                        ItemQuality = item.ItemQuality,
+                        TargetIndex = index,
+                        Count = 1,
+                        ItemId = item.ItemId
+                    });
+                }
+                Log.Information(item.ShopName);
+            }
+            return ans;
         }
     }
 }
