@@ -64,10 +64,10 @@ namespace MMORPG_SERVER.System.FightSystem
             switch (target._entityType)
             {
                 case EntityType.Player:
-                    (target as Player).GetHurt(demage);
+                    (target as Player)?.GetHurt(demage);
                     break;
                 case EntityType.Monster:
-                    (target as Monster).GetHurt(attacker, demage);
+                    (target as Monster)?.GetHurt(attacker, demage);
                     break;
             }
 
@@ -92,6 +92,17 @@ namespace MMORPG_SERVER.System.FightSystem
                 {
                     demage -= attribute._defAddition;
                 }
+            }
+
+            //更新属性
+            switch (target._entityType)
+            {
+                case EntityType.Player:
+                    (target as Player)?.GetHurt(demage);
+                    break;
+                case EntityType.Monster:
+                    (target as Monster)?.GetHurt(attacker, demage);
+                    break;
             }
 
             return demage;

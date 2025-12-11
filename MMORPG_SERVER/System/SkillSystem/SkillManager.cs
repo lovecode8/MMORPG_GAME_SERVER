@@ -116,9 +116,16 @@ namespace MMORPG_SERVER.System.SkillSystem
                 {
                     return false;
                 }
+                if(user._player._dbCharacter.Mp < 20)
+                {
+                    return false;
+                }
 
                 //更新冷却
                 _playerSkillColdTimeDict[user._userId] = user._player._unitDefine.SkillInterval;
+
+                //更新蓝量
+                user._player._dbCharacter.Mp -= 20;
 
                 //释放技能
                 _ = Task.Run(() =>

@@ -147,15 +147,17 @@ namespace MMORPG_SERVER.System.EntitySystem
         //获取最近的实体（玩家2的技能使用）
         public Entity GetClosedEntity(Player player)
         {
-            var distanceSquared = 1000000;
+            var minDistanceSquared = 1000000f;
             Entity ans = null;
             foreach(var entity in _entityDictionaty.Values)
             {
                 if (entity is Player && (entity as Player) == player) continue;
 
-                if(Vector3.DistanceSquared(entity._position, player._position) < distanceSquared)
+                var distanceSquared = Vector3.DistanceSquared(entity._position, player._position);
+                if (distanceSquared < minDistanceSquared)
                 {
                     ans = entity;
+                    minDistanceSquared = distanceSquared;
                 }
             }
             return ans;
