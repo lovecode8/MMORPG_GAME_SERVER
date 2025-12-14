@@ -1,4 +1,5 @@
 ﻿using MMORPG_SERVER.Database.Data;
+using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.System.GuildSystem;
 using System.Runtime.CompilerServices;
 
@@ -92,6 +93,20 @@ namespace MMORPG_SERVER.Extension
                 slogan = guild.slogan,
                 iconIndex = guild.iconIndex,
                 needEnterCheck = guild.needEnterCheck? 1 : 0
+            };
+        }
+
+        //DbTask转BaseTask
+        public static BaseTask ToBaseTask(this DbTask dbTask)
+        {
+            var taskDefine = DataManager.Instance.GetTaskDefine(dbTask.taskId);
+
+            return new BaseTask()
+            {
+                TaskId = dbTask.taskId,
+                CurrentCount = dbTask.currentCount,
+                TaskContent = taskDefine.taskContent,
+                TargetCount = taskDefine.targetCount
             };
         }
     }

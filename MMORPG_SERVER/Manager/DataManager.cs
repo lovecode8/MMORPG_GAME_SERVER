@@ -13,16 +13,20 @@ namespace MMORPG_SERVER.Manager
 
         public Dictionary<int, ItemDefine> itemDefineDictionary;
 
+        public Dictionary<int, TaskDefine> taskDefineDictionary;
+
         private DataManager()
         {
             unitDictionary = new Dictionary<int, UnitDefine>();
             itemDefineDictionary = new Dictionary<int, ItemDefine>();
+            taskDefineDictionary = new Dictionary<int, TaskDefine>();
         }
 
         public void Start()
         {
             unitDictionary = Load<Dictionary<int, UnitDefine>>("/UnitDefine.json");
             itemDefineDictionary = Load<Dictionary<int, ItemDefine>>("ItemDefine.json");
+            taskDefineDictionary = Load<Dictionary<int, TaskDefine>>("TaskDefine.json");
         }
 
         public void Update()
@@ -55,12 +59,26 @@ namespace MMORPG_SERVER.Manager
 
         public UnitDefine GetUnitDefine(int unitId)
         {
-            return unitDictionary[unitId];
+            lock (unitDictionary)
+            {
+                return unitDictionary[unitId];
+            }
         }
 
         public ItemDefine GetItemDefine(int itemId)
         {
-            return itemDefineDictionary[itemId];
+            lock(itemDefineDictionary)
+            {
+                return itemDefineDictionary[itemId];
+            }
+        }
+
+        public TaskDefine GetTaskDefine(int taskId)
+        {
+            lock (taskDefineDictionary)
+            {
+               return taskDefineDictionary[taskId];
+            }
         }
     }
 }
