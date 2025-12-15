@@ -27,8 +27,8 @@ namespace MMORPG_SERVER.Extension
             float angleLimit)
         {
             // 1. 非法角度限制校验
-            if (angleLimit <= 0f || angleLimit > 200f)
-                throw new ArgumentOutOfRangeException(nameof(angleLimit), "角度限制必须大于0且不超过200°");
+            if (angleLimit <= 0f || angleLimit > 360f)
+                throw new ArgumentOutOfRangeException(nameof(angleLimit), "角度限制必须大于0且不超过360°");
 
             // 2. 处理目标与观察者重合的情况（相对向量长度接近0）
             float horizontalDistance = (float)Math.Sqrt(

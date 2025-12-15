@@ -122,6 +122,7 @@ namespace MMORPG_SERVER
             FightService.Instance.HandleMessage(channel, args.packet.Message);
             InventoryService.Instance.HandleMessage(channel, args.packet.Message);
             ShopService.Instance.HandleMessage(channel, args.packet.Message);
+            TaskService.Instance.HandleMessage(channel, args.packet.Message);
         }
     }
 }

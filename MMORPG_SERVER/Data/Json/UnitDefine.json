@@ -13,10 +13,12 @@
     "MovePosition": [],
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
     "KilledExp": 100,
-    "SkillInterval": 2,
+    "SkillInterval": 12,
     "SkillIconPath": "UI/SkillIcon/Character1",
     "InteractEffectPath": "",
-    "SkillUnitId": 11
+    "SkillUnitId": 11,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "2": {
     "ID": 2,
@@ -32,10 +34,12 @@
     "MovePosition": [],
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
     "KilledExp": 100,
-    "SkillInterval": 2,
+    "SkillInterval": 10,
     "SkillIconPath": "UI/SkillIcon/Character2",
     "InteractEffectPath": "",
-    "SkillUnitId": 8
+    "SkillUnitId": 8,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "3": {
     "ID": 3,
@@ -51,10 +55,12 @@
     "MovePosition": [],
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
     "KilledExp": 100,
-    "SkillInterval": 2,
+    "SkillInterval": 13,
     "SkillIconPath": "UI/SkillIcon/Character3",
     "InteractEffectPath": "",
-    "SkillUnitId": 10
+    "SkillUnitId": 10,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "4": {
     "ID": 4,
@@ -70,10 +76,12 @@
     "MovePosition": [],
     "RequireExp": [ 20, 30, 50, 100, 150, 200, 250, 300, 350, 400 ],
     "KilledExp": 100,
-    "SkillInterval": 2,
+    "SkillInterval": 15,
     "SkillIconPath": "UI/SkillIcon/Character4",
     "InteractEffectPath": "",
-    "SkillUnitId": 9
+    "SkillUnitId": 9,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "5": {
     "ID": 5,
@@ -92,7 +100,9 @@
     "SkillInterval": 0,
     "SkillIconPath": "",
     "InteractEffectPath": "",
-    "SkillUnitId": 0
+    "SkillUnitId": 0,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "6": {
     "ID": 6,
@@ -115,7 +125,9 @@
     "SkillInterval": 0,
     "SkillIconPath": "",
     "InteractEffectPath": "",
-    "SkillUnitId": 0
+    "SkillUnitId": 0,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "7": {
     "ID": 7,
@@ -138,7 +150,9 @@
     "SkillInterval": 0,
     "SkillIconPath": "",
     "InteractEffectPath": "",
-    "SkillUnitId": 0
+    "SkillUnitId": 0,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "8": {
     "ID": 8,
@@ -157,7 +171,9 @@
     "SkillInterval": 0,
     "SkillIconPath": "",
     "InteractEffectPath": "Entity/Effect/character2Skill",
-    "SkillUnitId": 0
+    "SkillUnitId": 0,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "9": {
     "ID": 9,
@@ -176,7 +192,9 @@
     "SkillInterval": 0,
     "SkillIconPath": "",
     "InteractEffectPath": "",
-    "SkillUnitId": 0
+    "SkillUnitId": 0,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "10": {
     "ID": 10,
@@ -195,7 +213,9 @@
     "SkillInterval": 0,
     "SkillIconPath": "",
     "InteractEffectPath": "Entity/Effect/character3Skill",
-    "SkillUnitId": 0
+    "SkillUnitId": 0,
+    "CommunicationId": 0,
+    "TaskId": []
   },
   "11": {
     "ID": 11,
@@ -214,6 +234,32 @@
     "SkillInterval": 0,
     "SkillIconPath": "",
     "InteractEffectPath": "",
-    "SkillUnitId": 0
+    "SkillUnitId": 0,
+    "CommunicationId": 0,
+    "TaskId": []
+  },
+  "12": {
+    "ID": 12,
+    "Name": "村长",
+    "Type": "Npc",
+    "Tool": "",
+    "Skill": "",
+    "Path": "Entity/Npc/Npc1",
+    "Hp": 0,
+    "Mp": 0,
+    "AttackDemage": [],
+    "OriginalPosition": [ 3, -2, 93 ],
+    "MovePosition": [
+      [ -15, -2, 93 ],
+      [ 3, -2, 93 ]
+    ],
+    "RequireExp": [],
+    "KilledExp": 0,
+    "SkillInterval": 0,
+    "SkillIconPath": "",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0,
+    "CommunicationId": 1,
+    "TaskId": [ 2, 3 ]
   }
 }

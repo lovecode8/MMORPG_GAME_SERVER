@@ -8,10 +8,10 @@ namespace MMORPG_SERVER.Data.CS
 {
     public class TaskDefine
     {
-        public int taskId;
+        public int ID;
 
-        public string taskContent;
+        public string Content;
 
-        public int targetCount;
+        public int TargetCount;
     }
 }

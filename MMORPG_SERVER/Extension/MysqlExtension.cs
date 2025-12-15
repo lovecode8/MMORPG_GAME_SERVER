@@ -105,8 +105,8 @@ namespace MMORPG_SERVER.Extension
             {
                 TaskId = dbTask.taskId,
                 CurrentCount = dbTask.currentCount,
-                TaskContent = taskDefine.taskContent,
-                TargetCount = taskDefine.targetCount
+                TaskContent = taskDefine.Content,
+                TargetCount = taskDefine.TargetCount
             };
         }
     }

@@ -37,7 +37,7 @@ namespace MMORPG_SERVER.System.TaskSystem
         }
 
         //获取指定玩家的任务列表
-        public List<BaseTask> GetTaskListByUserId(int userId)
+        public List<BaseTask>? GetTaskListByUserId(int userId)
         {
             lock(_userTaskDict)
             {

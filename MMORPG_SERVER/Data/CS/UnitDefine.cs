@@ -28,6 +28,8 @@ namespace MMORPG_SERVER.Data.CS
         public string SkillIconPath; //技能图标路径
         public string InteractEffectPath; //触发后产生的特效路径
         public int SkillUnitId; //技能产生的实体Id
+        public int CommunicationId; //对应对话的Id
+        public int[] TaskId; //接收的任务id数组
     }
 
 

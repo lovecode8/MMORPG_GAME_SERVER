@@ -75,12 +75,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
             //导入移动数据
             foreach(var pos in unitDefine.MovePosition)
             {
-                monster._movePosition.Add(new()
-                {
-                    X = pos[0],
-                    Y = pos[1],
-                    Z = pos[2]
-                });
+                monster._movePosition.Add(pos.ToVector3());
             }
 
             monsterAi.SetMonster(monster);

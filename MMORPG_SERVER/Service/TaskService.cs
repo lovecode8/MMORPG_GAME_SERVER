@@ -21,6 +21,16 @@ namespace MMORPG_SERVER.Service
                 var channel = sender as NetChannel;
                 int userId = channel._user._userId;
                 var taskList = TaskManager.Instance.GetTaskListByUserId(userId);
+                var response = new LoadTaskResponse();
+                if(taskList == null)
+                {
+                    channel.SendAsync(response);
+                }
+                else
+                {
+                    response.TaskList.AddRange(taskList);
+                    channel.SendAsync(response);
+                }
             });
         }
     }

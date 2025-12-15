@@ -434,6 +434,10 @@ namespace MMORPG_SERVER.System.AStarSystem
 
             // 日志输出优化前后对比
             Log.Information($"路径平滑完成：原始{rawPath.Count}个点 → 平滑后{smoothPath.Count}个点");
+            foreach(var p in smoothPath)
+            {
+                Log.Information(p.ToString());
+            }
             return smoothPath;
         }
 

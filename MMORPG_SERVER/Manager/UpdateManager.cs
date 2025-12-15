@@ -9,8 +9,10 @@ using MMORPG_SERVER.System.GuildSystem;
 using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.System.MissileSystem;
 using MMORPG_SERVER.System.MonsterSystem;
+using MMORPG_SERVER.System.NpcSystem;
 using MMORPG_SERVER.System.ShopSystem;
 using MMORPG_SERVER.System.SkillSystem;
+using MMORPG_SERVER.System.TaskSystem;
 using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
@@ -57,7 +59,7 @@ namespace MMORPG_SERVER.Manager
             AttributeManager.Instance.Start();
             Log.Information("[AttributeManager] 初始化完成");
 
-            MonsterManager.Instance.Start();
+            //MonsterManager.Instance.Start();
             Log.Information("[MonsterManager] 初始化完成");
 
             AStarManager.Instance.Start();
@@ -68,6 +70,12 @@ namespace MMORPG_SERVER.Manager
 
             ShopManager.Instance.Start();
             Log.Information("[ShopManager] 初始化完成");
+
+            TaskManager.Instance.Start();
+            Log.Information("[TaskManager] 初始化完成");
+
+            NpcManager.Instance.Start();
+            Log.Information("[NpcManager] 初始化完成");
 
             Scheduler.Instance.AddScheduler(_updateTime, Update);
         }
@@ -99,10 +107,11 @@ namespace MMORPG_SERVER.Manager
             {
                 DataManager.Instance.Update();
                 EntityManager.Instance.Update();
-                MonsterManager.Instance.Update();
+                //MonsterManager.Instance.Update();
                 SkillManager.Instance.Update();
                 MissileManager.Instance.Update();
                 EffectManager.Instance.Update();
+                NpcManager.Instance.Update();
             }
             catch (Exception ex)
             {
