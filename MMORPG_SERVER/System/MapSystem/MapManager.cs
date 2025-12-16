@@ -2,6 +2,7 @@
 using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.MonsterSystem;
+using MMORPG_SERVER.System.NpcSystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using MMORPG_SERVER.Tool;
 using Serilog;
@@ -99,7 +100,12 @@ namespace MMORPG_SERVER.System.MapSystem
             {
                 entityData.Hp = monster._hp; 
             }
-                return entityData;
+
+            else if(entity is Npc npc)
+            {
+                entityData.Name = entity._unitDefine.Name;
+            }
+            return entityData;
         }
     }
 }

@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace MMORPG_SERVER.Data.CS
 {
-    public class TaskDefine
+    public class TalkDefine
     {
         public int ID;
 
-        public string Content;
+        public string SpeakerName;
 
-        public int TargetCount;
-
-        public int RewordCount;
+        public string[] Content;
     }
 }

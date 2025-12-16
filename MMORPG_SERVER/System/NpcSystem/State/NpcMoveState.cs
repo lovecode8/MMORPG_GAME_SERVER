@@ -84,7 +84,6 @@ namespace MMORPG_SERVER.System.NpcSystem.State
 
             //到达目标点
             var distanceToTarget = Vector3.DistanceSquared(_npcAi._npc._position, _currentTarget);
-            Log.Information(_npcAi._npc._position.ToString());
             if(distanceToTarget < 1)
             {
                 _npcAi.ChangeState(NpcState.idle);

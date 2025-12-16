@@ -2,36 +2,43 @@
   "1": {
     "id": 1,
     "content": "和村长进行对话",
-    "targetCount": 1
+    "targetCount": 1,
+    "RewordCount": 0
   },
   "2": {
     "id": 2,
     "content": "击败2只毒蝎龙",
-    "targetCount": 2
+    "targetCount": 2,
+    "RewordCount": 1000
   },
   "3": {
     "id": 3,
     "content": "击败2只石头人",
-    "targetCount": 2
+    "targetCount": 2,
+    "RewordCount": 2000
   },
   "4": {
     "id": 4,
     "content": "结交1个好友",
-    "targetCount": 1
+    "targetCount": 1,
+    "RewordCount": 500
   },
   "5": {
     "id": 5,
     "content": "创建或加入一个公会",
-    "targetCount": 1
+    "targetCount": 1,
+    "RewordCount": 500
   },
   "6": {
     "id": 6,
     "content": "购买任意3个商品",
-    "targetCount": 3
+    "targetCount": 3,
+    "RewordCount": 500
   },
   "7": {
     "id": 7,
     "content": "尝试1次5连抽",
-    "targetCount": 1
+    "targetCount": 1,
+    "RewordCount": 500
   }
 }

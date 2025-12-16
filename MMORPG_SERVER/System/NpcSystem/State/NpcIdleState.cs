@@ -3,6 +3,7 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,10 @@ namespace MMORPG_SERVER.System.NpcSystem.State
 
         public bool Condition(IState newState)
         {
+            if(newState is NpcMoveState)
+            {
+                return _npcAi._userId == -1;
+            }
             return true;
         }
 

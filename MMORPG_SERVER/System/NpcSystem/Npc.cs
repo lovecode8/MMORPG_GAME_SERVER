@@ -16,7 +16,7 @@ namespace MMORPG_SERVER.System.NpcSystem
 
         public List<Vector3> _movePosList = new();
 
-        private NpcAi _npcAi;
+        public NpcAi _npcAi;
 
         public void SetController(NpcAi npcAi)
         {

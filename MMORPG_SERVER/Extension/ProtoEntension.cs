@@ -1,9 +1,11 @@
 ﻿
 
+using MMORPG_SERVER.Data.CS;
 using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.GuildSystem;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace Extension
 {
@@ -77,5 +79,16 @@ namespace Extension
             return guildInfo;
         }
 
+        //TaskDefine转BaseTask
+        public static BaseTask ToBaseTask(this TaskDefine taskDefine)
+        {
+            return new BaseTask()
+            {
+                CurrentCount = 0,
+                TargetCount = taskDefine.TargetCount,
+                TaskContent = taskDefine.Content,
+                TaskId = taskDefine.ID
+            };
+        }
     }
 }
