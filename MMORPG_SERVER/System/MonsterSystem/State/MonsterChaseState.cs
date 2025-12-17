@@ -167,8 +167,7 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
                 var endPos = _monsterAi._chaseTarget._position;
                 endPos.Y = -2;
 
-                var list = await AStarManager.Instance.
-                    GetAStarPath(startPos, endPos);
+                var list = await AStarManager.Instance.GetAStarPath(startPos, endPos);
                 if (list == null)
                 {
                     Log.Information("目标点不可达，追逐结束");

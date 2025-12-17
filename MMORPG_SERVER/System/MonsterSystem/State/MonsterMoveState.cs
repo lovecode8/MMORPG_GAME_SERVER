@@ -65,7 +65,6 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
             if(newPath == null)
             {
-                Log.Information("路径获取失败");
                 _monsterAi._monster._position += new Vector3(0.1f, 0, 0.1f);
                 _monsterAi.ChangeState(MonsterState.idle);
                 return;

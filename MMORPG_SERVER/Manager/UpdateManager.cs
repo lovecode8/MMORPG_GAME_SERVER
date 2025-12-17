@@ -59,7 +59,7 @@ namespace MMORPG_SERVER.Manager
             AttributeManager.Instance.Start();
             Log.Information("[AttributeManager] 初始化完成");
 
-            //MonsterManager.Instance.Start();
+            MonsterManager.Instance.Start();
             Log.Information("[MonsterManager] 初始化完成");
 
             AStarManager.Instance.Start();
@@ -107,7 +107,7 @@ namespace MMORPG_SERVER.Manager
             {
                 DataManager.Instance.Update();
                 EntityManager.Instance.Update();
-                //MonsterManager.Instance.Update();
+                MonsterManager.Instance.Update();
                 SkillManager.Instance.Update();
                 MissileManager.Instance.Update();
                 EffectManager.Instance.Update();

@@ -6,6 +6,7 @@ using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.MapSystem;
 using MMORPG_SERVER.System.MonsterSystem;
 using MMORPG_SERVER.System.PlayerSystem;
+using MMORPG_SERVER.System.TaskSystem;
 using MMORPG_SERVER.Tool;
 using Org.BouncyCastle.Asn1.X509;
 using System;
@@ -115,9 +116,14 @@ namespace MMORPG_SERVER.System.FightSystem
             if(attacker is Player player)
             {
                 player.AddExp(deadMonster._unitDefine.KilledExp);
+                //增加任务进度--若有
+                if(deadMonster._unitDefine.ID == 6 || deadMonster._unitDefine.ID == 7)
+                {
+                    TaskManager.Instance.UpdateTask(player._user._userId, 2, 1);
+                }
             }
 
-            (deadMonster as Monster)._controller.ChangeState(MonsterState.die);
+            (deadMonster as Monster)?._controller.ChangeState(MonsterState.die);
         }
     }
 }

@@ -3,6 +3,7 @@ using MMORPG_SERVER.System.EffectSystem;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.FightSystem;
 using MMORPG_SERVER.System.MapSystem;
+using MMORPG_SERVER.System.MonsterSystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using Serilog;
 using System.Numerics;
@@ -68,13 +69,12 @@ namespace MMORPG_SERVER.System.MissileSystem
             else
             {
                 _target = _chaseTarget._position;
+                _target.Y = -3;
             }
 
             var distanceToTarget = Vector3.Distance(_position, _target);
-
             if(distanceToTarget > _interactDistance)
             {
-                Log.Information($"移动{_position}");
                 var direction = _target - _position;
 
                 var moveDelta = 
@@ -87,6 +87,8 @@ namespace MMORPG_SERVER.System.MissileSystem
                 //触发（追踪弹）
                 if(_chaseTarget != null)
                 {
+                    Log.Information(_position.ToString());
+                    Log.Information(_target.ToString());
                     Interact1();
                 }
                 //（范围弹）
@@ -115,6 +117,8 @@ namespace MMORPG_SERVER.System.MissileSystem
             EffectManager.Instance.AddEffect(effect);
 
             int demage = FightManager.Instance.GetSkillHurt(_owner, _chaseTarget);
+
+            (_chaseTarget as Monster)?._controller.ChangeState(MonsterState.getHit);
 
             //广播受伤消息
             PlayerManager.Instance.Broadcast(new PlayerAttackResponse()

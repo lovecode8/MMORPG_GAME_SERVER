@@ -23,7 +23,7 @@ namespace MMORPG_SERVER.Tool
     {
         protected Dictionary<TState, IState> _stateDictionary = new();
 
-        protected IState _currentState;
+        public IState _currentState;
 
         protected TState _currentStateId;
 

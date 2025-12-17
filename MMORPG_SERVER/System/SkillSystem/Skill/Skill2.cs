@@ -30,9 +30,9 @@ namespace MMORPG_SERVER.System.SkillSystem.Skill
                 0,
                 target,
                 null,
-                5f,
+                8f,
                 user._player,
-                2f);
+                1f);
 
             MissileManager.Instance.AddMissile(missile);
         }

@@ -3,6 +3,7 @@ using Google.Protobuf;
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.Manager;
+using MMORPG_SERVER.System.AStarSystem;
 using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.MapSystem;
 using MMORPG_SERVER.System.MonsterSystem;
@@ -164,8 +165,11 @@ namespace MMORPG_SERVER.System.PlayerSystem
             return res;
         }
 
+        //获取可以追逐的玩家
         public Player? GetChaseablePlayer(Monster monster)
         {
+            if (AStarManager.Instance.GetTriangleIndexByPos(monster._position) == -1) return null;
+
             Vector2 cell = GetCellByPosition(monster._position);
             for(int x = (int)cell.X - 1; x < (int)cell.X + 1; x++)
             {
@@ -175,6 +179,10 @@ namespace MMORPG_SERVER.System.PlayerSystem
                     {
                         foreach(var player in list)
                         {
+                            //追逐对象不可到达
+                            if (AStarManager.Instance.GetTriangleIndexByPos(player._position) == -1 || 
+                                player._position.Y > 3.5f) continue;
+                            
                             var distance = Vector3.Distance(monster._position, player._position);
                             if(distance < 15f)
                             {

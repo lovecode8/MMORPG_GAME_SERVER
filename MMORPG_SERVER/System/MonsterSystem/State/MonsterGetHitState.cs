@@ -45,7 +45,6 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         public void Update()
         {
-            Log.Information("受击中");
             _timer += MMORPG_SERVER.Time.Timer.deltaTime;
 
             if(_timer > _getHitInterval)

@@ -180,7 +180,7 @@ namespace MMORPG_SERVER.System.AStarSystem
         /// </summary>
         /// <param name="point">点的位置信息</param>
         /// <returns></returns>
-        private int GetTriangleIndexByPos(Vector3 point)
+        public int GetTriangleIndexByPos(Vector3 point)
         {
             for (int i = 0; i < _allTriangles.Count; i++)
             {

@@ -1,5 +1,6 @@
 ﻿using Extension;
 using MMORPG_SERVER.Extension;
+using MMORPG_SERVER.System.NpcSystem;
 using MMORPG_SERVER.System.PlayerSystem;
 using MMORPG_SERVER.Time;
 using MMORPG_SERVER.Tool;
@@ -153,7 +154,10 @@ namespace MMORPG_SERVER.System.EntitySystem
             Entity ans = null;
             foreach(var entity in _entityDictionaty.Values)
             {
+                //是自己
                 if (entity is Player && (entity as Player) == player) continue;
+                //非Monster
+                if (entity is Npc || entity._entityType == EntityType.Item) continue;
 
                 var distanceSquared = Vector3.DistanceSquared(entity._position, player._position);
                 if (distanceSquared < minDistanceSquared)

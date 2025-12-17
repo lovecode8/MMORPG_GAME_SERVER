@@ -27,7 +27,7 @@ namespace MMORPG_SERVER.Service
 
                 Log.Information($"[FightService] 收到攻击请求：{playerId}攻击{targetId}");
 
-                bool isHit = await EntityManager.Instance.IsAttackTargetVaild(attacker, target, 5f, 200);
+                bool isHit = await EntityManager.Instance.IsAttackTargetVaild(attacker, target, 5f, 100);
                 //未命中
                 if (playerAttackRequest.TargetId == -1 || !isHit)
                 {

@@ -59,8 +59,11 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
         {
             var attacker = _monsterAi._monster;
             var target = _monsterAi._chaseTarget;
+            if (attacker._isDead) return;
 
             bool isHit = await EntityManager.Instance.IsAttackTargetVaild(attacker, target, 3.5f, 500);
+            if (_monsterAi._currentState is MonsterGetHitState) return;
+
             //命中
             if (isHit)
             {

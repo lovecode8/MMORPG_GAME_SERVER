@@ -24,7 +24,7 @@ namespace MMORPG_SERVER.System.MonsterSystem
 
         private Random _random = new Random();
 
-        private int _maxMonsterCount = 3;
+        private int _maxMonsterCount = 2;
 
         public void Start()
         {

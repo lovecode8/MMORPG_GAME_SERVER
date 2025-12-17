@@ -1,6 +1,7 @@
 ﻿using MMORPG_SERVER.System.EntitySystem;
 using MMORPG_SERVER.System.MapSystem;
 using MMORPG_SERVER.Tool;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -27,6 +28,7 @@ namespace MMORPG_SERVER.System.MissileSystem
 
         public void AddMissile(MissileAi missile)
         {
+            Log.Information(missile._position.ToString());
             _missileDict.Add(missile._entityId, missile);
 
             EntityManager.Instance.AddEntity(missile);
