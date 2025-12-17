@@ -27,7 +27,8 @@ namespace MMORPG_SERVER.Extension
                 Transform = netTransform,
                 Level = dbCharacter.Level,
                 Gold = dbCharacter.Gold,
-                Exp = dbCharacter.Exp
+                Exp = dbCharacter.Exp,
+                InteractedUnitId = dbCharacter.InteractedUnitId
             };
         }
 
@@ -48,7 +49,8 @@ namespace MMORPG_SERVER.Extension
                 rotY = netCharacter.Transform.Rotation.Y,
                 rotZ = netCharacter.Transform.Rotation.Z,
                 Gold = netCharacter.Gold,
-                Exp = netCharacter.Exp
+                Exp = netCharacter.Exp,
+                InteractedUnitId = netCharacter.InteractedUnitId
             };
         }
 
@@ -107,6 +109,17 @@ namespace MMORPG_SERVER.Extension
                 CurrentCount = dbTask.currentCount,
                 TaskContent = taskDefine.Content,
                 TargetCount = taskDefine.TargetCount
+            };
+        }
+
+        //BaseTask转DBTask
+        public static DbTask ToDbTask(this BaseTask baseTask, int userId)
+        {
+            return new DbTask()
+            {
+                taskId = baseTask.TaskId,
+                ownerId = userId,
+                currentCount = baseTask.CurrentCount
             };
         }
     }

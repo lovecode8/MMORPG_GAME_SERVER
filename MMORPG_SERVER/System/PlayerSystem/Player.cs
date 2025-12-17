@@ -67,5 +67,23 @@ namespace MMORPG_SERVER.System.PlayerSystem
             response.Exp = _dbCharacter.Exp;
             _user._netChannel.SendAsync(response);
         }
+
+        public void AddInteractedNpc(int unitId)
+        {
+            _dbCharacter.InteractedUnitId = $"{_dbCharacter.InteractedUnitId}|{unitId}";
+        }
+
+        public bool IsInteractedWithNpc(int unitId)
+        {
+            if (_dbCharacter.InteractedUnitId == "") return false;
+            foreach(var id in _dbCharacter.InteractedUnitId.Split('|'))
+            {
+                if(int.TryParse(id, out var npcId) && npcId == unitId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

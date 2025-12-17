@@ -62,7 +62,7 @@ namespace MMORPG_SERVER.System.NpcSystem.State
         {
             //到达目的地
             var distanceToTarget = Vector3.DistanceSquared(_npcAi._npc._position, _currentTarget);
-            if(distanceToTarget < 9f)
+            if(distanceToTarget < 4f)
             {
                 _npcAi._currentTarget = Vector3.Zero;
                 _npcAi.ChangeState(NpcState.idle);

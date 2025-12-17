@@ -2,6 +2,7 @@
 using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Extension;
+using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Tool;
 
 namespace MMORPG_SERVER.System.TaskSystem
@@ -63,9 +64,12 @@ namespace MMORPG_SERVER.System.TaskSystem
                     _userTaskDict[userId] = new() { task };
                 }
             }
+
+            //数据库增加任务
+            MysqlManager.Instance._freeSql.Insert<DbTask>(task.ToDbTask(userId)).ExecuteAffrows();
         }
 
-        //更新任务进度
+        //任务进度发生变化--各模块调用--更新任务进度
         public void UpdateTask(int userId, int taskId, int count)
         {
             lock(_userTaskDict)
@@ -76,11 +80,29 @@ namespace MMORPG_SERVER.System.TaskSystem
                     if (task != null)
                     {
                         task.CurrentCount += count;
+                        //移除
                         if (task.CurrentCount >= task.TargetCount)
                         {
-                            //任务进度完成--移除任务
                             RemoveTask(userId, taskId);
                             //TODO：获得奖励，客户端更新任务
+                        }
+                        //更新
+                        else
+                        {
+                            //数据库更新任务
+                            MysqlManager.Instance._freeSql.Update<DbTask>().
+                                Where(t => t.ownerId == userId).
+                                Where(t => t.taskId == taskId).
+                                Set(t => t.currentCount, task.CurrentCount)
+                                .ExecuteAffrows();
+
+                            //通知客户端渲染
+                            UserManager.Instance.GetUserById(userId)?._netChannel.SendAsync(
+                                new UpdateTaskResponse()
+                                {
+                                    TaskId = taskId,
+                                    CurrentCount = task.CurrentCount
+                                });
                         }
                     }
                 }
@@ -101,6 +123,19 @@ namespace MMORPG_SERVER.System.TaskSystem
                     }
                 }
             }
+
+            //数据库移除任务
+            MysqlManager.Instance._freeSql.Delete<DbTask>().
+                Where(t => t.ownerId == userId).
+                Where(t => t.taskId == taskId).
+                ExecuteAffrows();
+
+            //客户端渲染
+            UserManager.Instance.GetUserById(userId)?._netChannel.SendAsync(
+                new RemoveTaskResponse()
+                {
+                    TaskId = taskId
+                });
         }
     }
 }

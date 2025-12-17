@@ -260,6 +260,6 @@
     "InteractEffectPath": "",
     "SkillUnitId": 0,
     "CommunicationId": 1,
-    "TaskId": [ 2, 3 ]
+    "TaskId": [ 2 ]
   }
 }

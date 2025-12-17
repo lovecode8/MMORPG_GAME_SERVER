@@ -24,5 +24,6 @@ namespace MMORPG_SERVER.Database.Data
         public int Level { get; set; }
         public int Gold { get; set; }
         public int Exp { get; set; }
+        public string InteractedUnitId { get; set; } //交流过的Npc的UnitId
     }
 }

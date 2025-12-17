@@ -20,8 +20,6 @@ namespace MMORPG_SERVER.System.NpcSystem
 
         private Dictionary<int, Npc> _npcDict = new();
 
-        private float _timer;
-
         public void Start()
         {
             AddFirstNpc();
@@ -76,6 +74,15 @@ namespace MMORPG_SERVER.System.NpcSystem
                 EntityManager.Instance.RemoveEntity(npc);
                 MapManager.Instance.EntityLeave(npc);
             }
+        }
+
+        public Npc? GetNpc(int npcId)
+        {
+            if(_npcDict.TryGetValue(npcId, out var npc))
+            {
+                return npc;
+            }
+            return null;
         }
     }
 }

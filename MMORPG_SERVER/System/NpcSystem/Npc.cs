@@ -11,8 +11,6 @@ namespace MMORPG_SERVER.System.NpcSystem
 {
     public class Npc : Entity
     {
-        //已经交谈过的玩家Id
-        private List<int> _interactedUserIdList = new();
 
         public List<Vector3> _movePosList = new();
 

@@ -8,6 +8,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 
 namespace MMORPG_SERVER.System.EntitySystem
@@ -131,6 +132,7 @@ namespace MMORPG_SERVER.System.EntitySystem
             IsAttackTargetVaild(Entity attacker, Entity target, float attackRange, int waitTime)
         {
             if (attacker == null || target == null) return false;
+            if (target._entityType != EntityType.Player && target._entityType != EntityType.Monster) return false;
 
             await Task.Delay(waitTime);
 
