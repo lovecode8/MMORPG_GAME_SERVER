@@ -38,6 +38,7 @@ namespace MMORPG_SERVER.System.NpcSystem.State
         {
             _npcAi._npc._stateId = (int)NpcState.move;
             _currentTarget = _npcAi._currentTarget;
+            _npcAi._npc._position.Y = _currentTarget.Y;
             _currentIndex = 0;
             _pathList = await AStarManager.Instance.GetAStarPath(_npcAi._npc._position, _currentTarget);
             _currentPathTarget = _pathList[_currentIndex];

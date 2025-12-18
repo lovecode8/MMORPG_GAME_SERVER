@@ -120,7 +120,6 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
                 var moveDelta =
                     Vector3.Normalize(direction) * _chaseSpeed * MMORPG_SERVER.Time.Timer.deltaTime;
                 _monsterAi._monster._position += moveDelta;
-                Log.Information(_monsterAi._monster._position.ToString());
 
                 //rot
                 float yawRadians = (float)Math.Atan2(direction.X, direction.Z);

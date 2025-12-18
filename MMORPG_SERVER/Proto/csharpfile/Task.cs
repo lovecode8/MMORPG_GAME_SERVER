@@ -22,21 +22,21 @@ public static partial class TaskReflection {
   static TaskReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "CgpUYXNrLnByb3RvIloKCEJhc2VUYXNrEg4KBnRhc2tJZBgBIAEoBRITCgt0",
-          "YXNrQ29udGVudBgCIAEoCRIUCgxjdXJyZW50Q291bnQYAyABKAUSEwoLdGFy",
-          "Z2V0Q291bnQYBCABKAUiEQoPTG9hZFRhc2tSZXF1ZXN0Ii8KEExvYWRUYXNr",
-          "UmVzcG9uc2USGwoIdGFza0xpc3QYASADKAsyCS5CYXNlVGFzayI6ChJVcGRh",
-          "dGVUYXNrUmVzcG9uc2USDgoGdGFza0lkGAEgASgFEhQKDGN1cnJlbnRDb3Vu",
-          "dBgCIAEoBSIkChJSZW1vdmVUYXNrUmVzcG9uc2USDgoGdGFza0lkGAEgASgF",
-          "YgZwcm90bzM="));
+          "CgpUYXNrLnByb3RvGg9JbnZlbnRvcnkucHJvdG8iWgoIQmFzZVRhc2sSDgoG",
+          "dGFza0lkGAEgASgFEhMKC3Rhc2tDb250ZW50GAIgASgJEhQKDGN1cnJlbnRD",
+          "b3VudBgDIAEoBRITCgt0YXJnZXRDb3VudBgEIAEoBSIRCg9Mb2FkVGFza1Jl",
+          "cXVlc3QiLwoQTG9hZFRhc2tSZXNwb25zZRIbCgh0YXNrTGlzdBgBIAMoCzIJ",
+          "LkJhc2VUYXNrIjoKElVwZGF0ZVRhc2tSZXNwb25zZRIOCgZ0YXNrSWQYASAB",
+          "KAUSFAoMY3VycmVudENvdW50GAIgASgFIjcKElJlbW92ZVRhc2tSZXNwb25z",
+          "ZRIOCgZ0YXNrSWQYASABKAUSEQoJZ29sZENvdW50GAIgASgFYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-        new pbr::FileDescriptor[] { },
+        new pbr::FileDescriptor[] { global::InventoryReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::BaseTask), global::BaseTask.Parser, new[]{ "TaskId", "TaskContent", "CurrentCount", "TargetCount" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoadTaskRequest), global::LoadTaskRequest.Parser, null, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoadTaskResponse), global::LoadTaskResponse.Parser, new[]{ "TaskList" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::UpdateTaskResponse), global::UpdateTaskResponse.Parser, new[]{ "TaskId", "CurrentCount" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::RemoveTaskResponse), global::RemoveTaskResponse.Parser, new[]{ "TaskId" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::RemoveTaskResponse), global::RemoveTaskResponse.Parser, new[]{ "TaskId", "GoldCount" }, null, null, null, null)
         }));
   }
   #endregion
@@ -989,6 +989,7 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public RemoveTaskResponse(RemoveTaskResponse other) : this() {
     taskId_ = other.taskId_;
+    goldCount_ = other.goldCount_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1010,6 +1011,21 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
     }
   }
 
+  /// <summary>Field number for the "goldCount" field.</summary>
+  public const int GoldCountFieldNumber = 2;
+  private int goldCount_;
+  /// <summary>
+  ///获得金币奖励后金币数
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public int GoldCount {
+    get { return goldCount_; }
+    set {
+      goldCount_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -1026,6 +1042,7 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
       return true;
     }
     if (TaskId != other.TaskId) return false;
+    if (GoldCount != other.GoldCount) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1034,6 +1051,7 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
   public override int GetHashCode() {
     int hash = 1;
     if (TaskId != 0) hash ^= TaskId.GetHashCode();
+    if (GoldCount != 0) hash ^= GoldCount.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1056,6 +1074,10 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
       output.WriteRawTag(8);
       output.WriteInt32(TaskId);
     }
+    if (GoldCount != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(GoldCount);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -1070,6 +1092,10 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
       output.WriteRawTag(8);
       output.WriteInt32(TaskId);
     }
+    if (GoldCount != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(GoldCount);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -1082,6 +1108,9 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
     int size = 0;
     if (TaskId != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskId);
+    }
+    if (GoldCount != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(GoldCount);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1097,6 +1126,9 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
     }
     if (other.TaskId != 0) {
       TaskId = other.TaskId;
+    }
+    if (other.GoldCount != 0) {
+      GoldCount = other.GoldCount;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -1121,6 +1153,10 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
           TaskId = input.ReadInt32();
           break;
         }
+        case 16: {
+          GoldCount = input.ReadInt32();
+          break;
+        }
       }
     }
   #endif
@@ -1142,6 +1178,10 @@ public sealed partial class RemoveTaskResponse : pb::IMessage<RemoveTaskResponse
           break;
         case 8: {
           TaskId = input.ReadInt32();
+          break;
+        }
+        case 16: {
+          GoldCount = input.ReadInt32();
           break;
         }
       }

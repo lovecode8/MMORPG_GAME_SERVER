@@ -22,7 +22,7 @@ namespace MMORPG_SERVER.System.NpcSystem
 
         public void Start()
         {
-            AddFirstNpc();
+            CreateAllNpc();
         }
 
         public void Update()
@@ -33,27 +33,30 @@ namespace MMORPG_SERVER.System.NpcSystem
             }
         }
 
-        //生成第一个Npc
-        private void AddFirstNpc()
+        //生成所有Npc
+        private void CreateAllNpc()
         {
-            var unitDefine = DataManager.Instance.GetUnitDefine(12);
-            var movePosList = new List<Vector3>();
-            //导入移动数据
-            foreach (var pos in unitDefine.MovePosition)
+            for(int i = 12; i <= 13; i++)
             {
-                movePosList.Add(pos.ToVector3());
-            }
-            var npc = new Npc
-                (EntityManager.Instance.NewEntityId(),
-                EntityType.NPC,
-                unitDefine,
-                unitDefine.OriginalPosition.ToVector3(),
-                0,
-                movePosList);
-            var controller = new NpcAi(npc);
-            npc.SetController(controller);
-            controller.Start();
-            AddNpc(npc);
+                var unitDefine = DataManager.Instance.GetUnitDefine(i);
+                var movePosList = new List<Vector3>();
+                //导入移动数据
+                foreach (var pos in unitDefine.MovePosition)
+                {
+                    movePosList.Add(pos.ToVector3());
+                }
+                var npc = new Npc
+                    (EntityManager.Instance.NewEntityId(),
+                    EntityType.NPC,
+                    unitDefine,
+                    unitDefine.OriginalPosition.ToVector3(),
+                    0,
+                    movePosList);
+                var controller = new NpcAi(npc);
+                npc.SetController(controller);
+                controller.Start();
+                AddNpc(npc);
+            }   
         }
 
         public void AddNpc(Npc npc)

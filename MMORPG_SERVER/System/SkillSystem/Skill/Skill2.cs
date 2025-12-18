@@ -26,7 +26,7 @@ namespace MMORPG_SERVER.System.SkillSystem.Skill
                 (EntityManager.Instance.NewEntityId(),
                 EntityType.Missile,
                 DataManager.Instance.GetUnitDefine(user._player._unitDefine.SkillUnitId),
-                user._player._position + new Vector3(0, 2, 0),
+                user._player._position + new Vector3(0, 1, 0),
                 0,
                 target,
                 null,

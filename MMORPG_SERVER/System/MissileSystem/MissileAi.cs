@@ -69,7 +69,6 @@ namespace MMORPG_SERVER.System.MissileSystem
             else
             {
                 _target = _chaseTarget._position;
-                _target.Y = -3;
             }
 
             var distanceToTarget = Vector3.Distance(_position, _target);
@@ -87,8 +86,6 @@ namespace MMORPG_SERVER.System.MissileSystem
                 //触发（追踪弹）
                 if(_chaseTarget != null)
                 {
-                    Log.Information(_position.ToString());
-                    Log.Information(_target.ToString());
                     Interact1();
                 }
                 //（范围弹）

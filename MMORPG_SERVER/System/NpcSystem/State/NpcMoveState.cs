@@ -100,7 +100,6 @@ namespace MMORPG_SERVER.System.NpcSystem.State
 
             //向目标点移动
             var directionToPathTarget = _currentPathTarget - _npcAi._npc._position;
-            directionToPathTarget.Y = 0;
             directionToPathTarget = Vector3.Normalize(directionToPathTarget);
             var moveDelta = directionToPathTarget * _moveSpeed * MMORPG_SERVER.Time.Timer.deltaTime;
             _npcAi._npc._position += moveDelta;

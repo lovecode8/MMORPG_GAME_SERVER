@@ -262,5 +262,30 @@
     "SkillUnitId": 0,
     "CommunicationId": 1,
     "TaskId": [ 2 ]
+  },
+  "13": {
+    "ID": 13,
+    "Name": "媒婆",
+    "Type": "Npc",
+    "Tool": "",
+    "Skill": "",
+    "Path": "Entity/Npc/Npc2",
+    "Hp": 0,
+    "Mp": 0,
+    "AttackDemage": [],
+    "OriginalPosition": [ 35, 0, 96 ],
+    "MovePosition": [
+      [ 31, 0, 90 ],
+      [ 31, 0, 103 ],
+      [ 35, 0, 96 ]
+    ],
+    "RequireExp": [],
+    "KilledExp": 0,
+    "SkillInterval": 0,
+    "SkillIconPath": "",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0,
+    "CommunicationId": 2,
+    "TaskId": [ 3, 4 ]
   }
 }

@@ -2,6 +2,7 @@
 using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
 using MMORPG_SERVER.Extension;
+using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Tool;
 
@@ -130,12 +131,16 @@ namespace MMORPG_SERVER.System.TaskSystem
                 Where(t => t.taskId == taskId).
                 ExecuteAffrows();
 
+            //增加奖励
+            var user = UserManager.Instance.GetUserById(userId);
+            user._player._dbCharacter.Gold += DataManager.Instance.GetTaskDefine(taskId).RewordCount;
+
             //客户端渲染
-            UserManager.Instance.GetUserById(userId)?._netChannel.SendAsync(
-                new RemoveTaskResponse()
-                {
-                    TaskId = taskId
-                });
+            user?._netChannel.SendAsync(new RemoveTaskResponse()
+            {
+                TaskId = taskId,
+                GoldCount = user._player._dbCharacter.Gold
+            });
         }
     }
 }
