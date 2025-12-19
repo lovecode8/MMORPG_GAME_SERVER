@@ -52,7 +52,7 @@ namespace MMORPG_SERVER.System.GuildSystem
                 .Where(m => m.userName == senderName).First();
             if (dbGuildMember == null) return null;
             var guild = GetGuildByName(dbGuildMember.guildName);
-            return guild.ToGuildInfo();
+            return guild?.ToGuildInfo();
         }
 
         //获取公会

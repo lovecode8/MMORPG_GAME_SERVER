@@ -25,15 +25,16 @@ public static partial class TalkReflection {
           "CgpUYWxrLnByb3RvGgpUYXNrLnByb3RvIikKElRhbGtXaXRoTnBjUmVxdWVz",
           "dBITCgtucGNFbnRpdHlJZBgBIAEoBSJEChNUYWxrV2l0aE5wY1Jlc3BvbnNl",
           "EhgKEGlzU3VjY2Vzc2Z1bFRhbGsYASABKAgSEwoLY29udGVudExpc3QYAiAD",
-          "KAkiJQoORW5kVGFsa1JlcXVlc3QSEwoLbnBjRW50aXR5SWQYASABKAUiSwoP",
-          "RW5kVGFsa1Jlc3BvbnNlEhsKE2lzU3VjY2Vzc2Z1bEVuZFRhbGsYASABKAgS",
-          "GwoIdGFza0xpc3QYAiADKAsyCS5CYXNlVGFza2IGcHJvdG8z"));
+          "KAkiOwoORW5kVGFsa1JlcXVlc3QSEwoLbnBjRW50aXR5SWQYASABKAUSFAoM",
+          "aXNGaW5pc2hUYWxrGAIgASgIIksKD0VuZFRhbGtSZXNwb25zZRIbChNpc1N1",
+          "Y2Nlc3NmdWxFbmRUYWxrGAEgASgIEhsKCHRhc2tMaXN0GAIgAygLMgkuQmFz",
+          "ZVRhc2tiBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { global::TaskReflection.Descriptor, },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::TalkWithNpcRequest), global::TalkWithNpcRequest.Parser, new[]{ "NpcEntityId" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::TalkWithNpcResponse), global::TalkWithNpcResponse.Parser, new[]{ "IsSuccessfulTalk", "ContentList" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::EndTalkRequest), global::EndTalkRequest.Parser, new[]{ "NpcEntityId" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::EndTalkRequest), global::EndTalkRequest.Parser, new[]{ "NpcEntityId", "IsFinishTalk" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::EndTalkResponse), global::EndTalkResponse.Parser, new[]{ "IsSuccessfulEndTalk", "TaskList" }, null, null, null, null)
         }));
   }
@@ -511,6 +512,7 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public EndTalkRequest(EndTalkRequest other) : this() {
     npcEntityId_ = other.npcEntityId_;
+    isFinishTalk_ = other.isFinishTalk_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -532,6 +534,21 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
     }
   }
 
+  /// <summary>Field number for the "isFinishTalk" field.</summary>
+  public const int IsFinishTalkFieldNumber = 2;
+  private bool isFinishTalk_;
+  /// <summary>
+  ///是否结束了对话
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+  public bool IsFinishTalk {
+    get { return isFinishTalk_; }
+    set {
+      isFinishTalk_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
   public override bool Equals(object other) {
@@ -548,6 +565,7 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
       return true;
     }
     if (NpcEntityId != other.NpcEntityId) return false;
+    if (IsFinishTalk != other.IsFinishTalk) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -556,6 +574,7 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
   public override int GetHashCode() {
     int hash = 1;
     if (NpcEntityId != 0) hash ^= NpcEntityId.GetHashCode();
+    if (IsFinishTalk != false) hash ^= IsFinishTalk.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -578,6 +597,10 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
       output.WriteRawTag(8);
       output.WriteInt32(NpcEntityId);
     }
+    if (IsFinishTalk != false) {
+      output.WriteRawTag(16);
+      output.WriteBool(IsFinishTalk);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -592,6 +615,10 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
       output.WriteRawTag(8);
       output.WriteInt32(NpcEntityId);
     }
+    if (IsFinishTalk != false) {
+      output.WriteRawTag(16);
+      output.WriteBool(IsFinishTalk);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(ref output);
     }
@@ -604,6 +631,9 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
     int size = 0;
     if (NpcEntityId != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(NpcEntityId);
+    }
+    if (IsFinishTalk != false) {
+      size += 1 + 1;
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -619,6 +649,9 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
     }
     if (other.NpcEntityId != 0) {
       NpcEntityId = other.NpcEntityId;
+    }
+    if (other.IsFinishTalk != false) {
+      IsFinishTalk = other.IsFinishTalk;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -643,6 +676,10 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
           NpcEntityId = input.ReadInt32();
           break;
         }
+        case 16: {
+          IsFinishTalk = input.ReadBool();
+          break;
+        }
       }
     }
   #endif
@@ -664,6 +701,10 @@ public sealed partial class EndTalkRequest : pb::IMessage<EndTalkRequest>
           break;
         case 8: {
           NpcEntityId = input.ReadInt32();
+          break;
+        }
+        case 16: {
+          IsFinishTalk = input.ReadBool();
           break;
         }
       }

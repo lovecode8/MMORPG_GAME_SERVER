@@ -179,9 +179,12 @@ namespace MMORPG_SERVER.System.PlayerSystem
                     {
                         foreach(var player in list)
                         {
+                            //追逐对象处于无敌状态
+                            if (player._isInvulnerable) continue;
+
                             //追逐对象不可到达
                             if (AStarManager.Instance.GetTriangleIndexByPos(player._position) == -1 || 
-                                player._position.Y > 3.5f) continue;
+                               Math.Abs(player._position.Y - monster._position.Y) > 2f) continue;
                             
                             var distance = Vector3.Distance(monster._position, player._position);
                             if(distance < 15f)

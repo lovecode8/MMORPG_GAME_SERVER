@@ -34,7 +34,6 @@ namespace MMORPG_SERVER.System.NpcSystem.State
 
         public void Enter()
         {
-            Log.Information("npcIdle");
             _npcAi._npc._stateId = (int)NpcState.idle;
             _timer = 0;
         }

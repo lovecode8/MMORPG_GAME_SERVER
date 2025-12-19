@@ -24,6 +24,9 @@ namespace MMORPG_SERVER.System.PlayerSystem
 
         public DbCharacter _dbCharacter;
 
+        //是否处于无敌状态--不被追逐、不被技能检测、伤害
+        public bool _isInvulnerable;
+
         public Player(
             int entityId,
             EntityType entityType, 

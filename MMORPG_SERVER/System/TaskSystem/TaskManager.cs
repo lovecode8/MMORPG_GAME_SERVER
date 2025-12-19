@@ -85,7 +85,6 @@ namespace MMORPG_SERVER.System.TaskSystem
                         if (task.CurrentCount >= task.TargetCount)
                         {
                             RemoveTask(userId, taskId);
-                            //TODO：获得奖励，客户端更新任务
                         }
                         //更新
                         else
@@ -97,7 +96,7 @@ namespace MMORPG_SERVER.System.TaskSystem
                                 Set(t => t.currentCount, task.CurrentCount)
                                 .ExecuteAffrows();
 
-                            //通知客户端渲染
+                            //通知客户端渲染--如果在线
                             UserManager.Instance.GetUserById(userId)?._netChannel.SendAsync(
                                 new UpdateTaskResponse()
                                 {
@@ -133,14 +132,29 @@ namespace MMORPG_SERVER.System.TaskSystem
 
             //增加奖励
             var user = UserManager.Instance.GetUserById(userId);
-            user._player._dbCharacter.Gold += DataManager.Instance.GetTaskDefine(taskId).RewordCount;
-
-            //客户端渲染
-            user?._netChannel.SendAsync(new RemoveTaskResponse()
+            var originGold = MysqlManager.Instance._freeSql.Select<DbCharacter>().
+                Where(c => c.UserId == userId).
+                First().Gold;
+            var targetGold = originGold + DataManager.Instance.GetTaskDefine(taskId).RewordCount;
+            //用户不在线
+            if (user == null)
             {
-                TaskId = taskId,
-                GoldCount = user._player._dbCharacter.Gold
-            });
+                //更新数据库
+                MysqlManager.Instance._freeSql.Update<DbCharacter>().
+                    Where(c => c.UserId == userId).
+                    Set(c => c.Gold, targetGold).ExecuteAffrows();
+            }
+            else
+            {
+                //更新缓存数据
+                user._player._dbCharacter.Gold = targetGold;
+                //客户端渲染
+                user._netChannel.SendAsync(new RemoveTaskResponse()
+                {
+                    TaskId = taskId,
+                    GoldCount = user._player._dbCharacter.Gold
+                });
+            }
         }
     }
 }

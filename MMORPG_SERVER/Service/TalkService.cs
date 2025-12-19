@@ -41,14 +41,15 @@ namespace MMORPG_SERVER.Service
                         response.IsSuccessfulTalk = false;
                         channel.SendAsync(response);
                     }
+                    //开始对话
                     else
                     {
+                        channel._user._player._isInvulnerable = true;
                         await npcAi.WaitNpcWalkToPlayer(channel._user._userId, playerPos);
                         var talkDefine = DataManager.Instance.GetTalkDefine(npcEntity._unitDefine.CommunicationId);
                         response.IsSuccessfulTalk = true;
                         response.ContentList.AddRange(talkDefine.Content);
                         channel.SendAsync(response);
-                        channel._user._player.AddInteractedNpc(npcAi._npc._unitDefine.ID);
                     }
                 }
             });
@@ -73,10 +74,15 @@ namespace MMORPG_SERVER.Service
                         response.IsSuccessfulEndTalk = false;
                         channel.SendAsync(response);
                     }
+                    //结束对话
                     else
                     {
+                        channel._user._player._isInvulnerable = false;
                         npc._npcAi._userId = -1;
                         npc._npcAi._currentTarget = Vector3.Zero;
+
+                        if (!endTalkRequest.IsFinishTalk) return;
+
                         var taskList = new List<BaseTask>();
                         foreach(var taskId in npc._unitDefine.TaskId)
                         {
@@ -87,9 +93,10 @@ namespace MMORPG_SERVER.Service
                         response.IsSuccessfulEndTalk = true;
                         response.TaskList.AddRange(taskList);
                         channel.SendAsync(response);
+                        channel._user._player.AddInteractedNpc(npc._unitDefine.ID);
 
                         //更新任务（如果结束对村长的对话则更新任务）
-                        if(npc._unitDefine.ID == 12)
+                        if (npc._unitDefine.ID == 12)
                         {
                             TaskManager.Instance.UpdateTask(userId, 1, 1);
                         }

@@ -54,7 +54,6 @@ namespace MMORPG_SERVER.System.NpcSystem.State
 
         private async Task EnterAsync()
         {
-            Log.Information("npcMove");
             _npcAi._npc._stateId = (int)NpcState.move;
             _currentPathIndex = 0;
             _currentIndex = (_currentIndex + 1) % _posList.Count;

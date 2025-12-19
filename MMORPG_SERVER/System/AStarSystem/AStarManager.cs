@@ -430,10 +430,10 @@ namespace MMORPG_SERVER.System.AStarSystem
             // 步骤3：添加终点，完成平滑
             smoothPath.Add(endPos);
 
-            foreach(var p in smoothPath)
-            {
-                Log.Information(p.ToString());
-            }
+            //foreach(var p in smoothPath)
+            //{
+            //    Log.Information(p.ToString());
+            //}
             return smoothPath;
         }
 

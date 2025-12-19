@@ -132,8 +132,12 @@ namespace MMORPG_SERVER.System.EntitySystem
         public async Task<bool> 
             IsAttackTargetVaild(Entity attacker, Entity target, float attackRange, int waitTime)
         {
-            if (attacker == null || target == null) return false;
-            if (target._entityType != EntityType.Player && target._entityType != EntityType.Monster) return false;
+            if (attacker == null || 
+                target == null || 
+                target is Player player && player._isInvulnerable) return false;
+
+            if (target._entityType != EntityType.Player && 
+                target._entityType != EntityType.Monster) return false;
 
             await Task.Delay(waitTime);
 
@@ -155,7 +159,7 @@ namespace MMORPG_SERVER.System.EntitySystem
             foreach(var entity in _entityDictionaty.Values)
             {
                 //是自己
-                if (entity is Player && (entity as Player) == player) continue;
+                if (entity is Player && (entity as Player) == player || player._isInvulnerable) continue;
                 //非Monster
                 if (entity is Npc || entity._entityType == EntityType.Item) continue;
 
@@ -176,6 +180,8 @@ namespace MMORPG_SERVER.System.EntitySystem
 
             foreach(var entity in _entityDictionaty.Values)
             {
+                if (entity is Player player && player._isInvulnerable) continue;
+
                 if(entity._entityType == EntityType.Player || entity._entityType == EntityType.Monster)
                 {
                     if(Vector3.DistanceSquared(originPos, entity._position) <= radiusSquared)
@@ -194,7 +200,9 @@ namespace MMORPG_SERVER.System.EntitySystem
             List<Entity> ans = new();
             foreach(var entity in _entityDictionaty.Values)
             {
-                if(entity._entityType == EntityType.Player || entity._entityType == EntityType.Monster)
+                if (entity is Player p && p._isInvulnerable) continue;
+
+                if (entity._entityType == EntityType.Player || entity._entityType == EntityType.Monster)
                 {
                     if (Vector3Extensions.IsEnemyInSkillArea(player._position, player._rotationY, entity._position))
                     {

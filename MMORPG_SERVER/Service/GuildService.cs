@@ -10,6 +10,7 @@ using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.FriendSystem;
 using MMORPG_SERVER.System.GuildSystem;
+using MMORPG_SERVER.System.TaskSystem;
 using MMORPG_SERVER.System.UserSystem;
 using Org.BouncyCastle.Tls;
 using Serilog;
@@ -25,14 +26,21 @@ namespace MMORPG_SERVER.Service
         {
             UpdateManager.Instance.AddTask(() =>
             {
-                NetChannel channel = sender as NetChannel;
+                var channel = sender as NetChannel;
                 string senderName = channel._user._dbUser.UserName;
                 Log.Information($"[GuildService] 收到加载我的公会请求：{senderName}");
 
                 var myGuildInfo = GuildManager.Instance.GetGuildByUserName(senderName);
-                //导入聊天消息
-                myGuildInfo?.MessageList.AddRange
-                    (ChatManager.Instance.GetGuildChatMessage(myGuildInfo.GuildName));
+
+                if(myGuildInfo != null)
+                {
+                    var chatMessageList = ChatManager.Instance.GetGuildChatMessage(myGuildInfo.GuildName);
+                    //导入聊天消息
+                    if(chatMessageList != null)
+                    {
+                        myGuildInfo?.MessageList.AddRange(chatMessageList);
+                    }
+                }
                     
                 channel.SendAsync(new SearchMyGuildResponse() { GuildInfo = myGuildInfo ?? null });
                 Log.Information($"[GuildService] 查询结果：{myGuildInfo?.GuildName ?? "没有公会"}");
@@ -64,6 +72,9 @@ namespace MMORPG_SERVER.Service
                     guildName = guildInfo.GuildName
                 }).ExecuteAffrows();
 
+                //更新任务
+                TaskManager.Instance.UpdateTask(channel._user._userId, 4, 1);
+
                 channel?.SendAsync(new CreateGuildResponse() { IsSuccessfulCreateGuild = true });
                 Log.Information($"[GuildService] 创建公会成功：{guildInfo.GuildName}");
             });
@@ -94,7 +105,7 @@ namespace MMORPG_SERVER.Service
         {
             UpdateManager.Instance.AddTask(() =>
             {
-                NetChannel? channel = sender as NetChannel;
+                var channel = sender as NetChannel;
                 var senderName = channel?._user._dbUser.UserName;
                 Log.Information($"[GuildService] 收到加入公会请求：{senderName}");
 
@@ -103,6 +114,9 @@ namespace MMORPG_SERVER.Service
                 {
                     if (!guild.needEnterCheck)
                     {
+                        //更新任务进度
+                        TaskManager.Instance.UpdateTask(channel._user._userId, 4, 1);
+
                         //无需审核：发给所有在线同会玩家客户端
                         SendMessageToGuildMember(guild.memberList, new JoinGuildResponse()
                         {
@@ -155,6 +169,11 @@ namespace MMORPG_SERVER.Service
                     IsEnter = true,
                     FriendInfo = FriendManager.Instance.GetFriendInfoByName(targetName)
                 });
+
+                //更新任务进度
+                var targetUserId = MysqlManager.Instance._freeSql.Select<DBUser>().
+                    Where(u => u.UserName == targetName).First().UserId;
+                TaskManager.Instance.UpdateTask(targetUserId, 4, 1);
 
                 //通知申请人（若在线）
                 var targetUser = UserManager.Instance.GetUserByName(targetName);

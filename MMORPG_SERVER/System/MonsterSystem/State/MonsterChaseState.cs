@@ -1,6 +1,7 @@
 ﻿using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.System.AStarSystem;
 using MMORPG_SERVER.System.EntitySystem;
+using MMORPG_SERVER.System.PlayerSystem;
 using MMORPG_SERVER.Tool;
 using Serilog;
 using System;
@@ -80,6 +81,14 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private void ChaseTarget()
         {
+            //追逐过程中玩家变成无敌状态
+            if((_monsterAi._chaseTarget as Player)._isInvulnerable)
+            {
+                Log.Information("玩家无敌，停止追逐");
+                _monsterAi.ChangeState(MonsterState.idle);
+                return;
+            }
+
             var distanceToTarget =
                 Vector3.Distance(_monsterAi._monster._position, _monsterAi._chaseTarget._position);
 

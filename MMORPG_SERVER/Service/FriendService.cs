@@ -5,6 +5,7 @@ using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.ChatSystem;
 using MMORPG_SERVER.System.FriendSystem;
+using MMORPG_SERVER.System.TaskSystem;
 using MMORPG_SERVER.System.UserSystem;
 using Serilog;
 
@@ -55,12 +56,14 @@ namespace MMORPG_SERVER.Service
         {
             UpdateManager.Instance.AddTask(() =>
             {
-                NetChannel? channel = sender as NetChannel;
+                var channel = sender as NetChannel;
                 string userName = searchFriendRequest.UserName;
                 Log.Information($"[FriendService] 收到搜索好友请求: {userName}");
 
                 var friendInfo = FriendManager.Instance.GetFriendInfoByName(userName);
-                if(friendInfo == null)
+
+                //不存在该玩家或是自己
+                if(friendInfo == null || channel?._user._dbUser.UserName == userName)
                 {
                     channel?.SendAsync(new SearchFriendResponse());
                 }
@@ -77,24 +80,25 @@ namespace MMORPG_SERVER.Service
             UpdateManager.Instance.AddTask(() =>
             {
                 NetChannel? channel = sender as NetChannel;
-                string _targetName = addFriendRequest.TargetName;
-                string _senderName = channel._user._dbUser.UserName;
-                Log.Information($"[FriendService] 收到好友添加请求：{_senderName}要加{_targetName}");
+                string targetName = addFriendRequest.TargetName;
+                string senderName = channel._user._dbUser.UserName;
+                Log.Information($"[FriendService] 收到好友添加请求：{senderName}要加{targetName}");
 
-                if (!FriendManager.Instance.AddFriendApplication(_senderName, _targetName))
+                //重复的好友申请不处理或自己申请自己
+                if (!FriendManager.Instance.AddFriendApplication(senderName, targetName) || 
+                    senderName == targetName)
                 {
-                    //重复的好友申请不处理
                     return;
                 }
 
                 //存入数据库
-                DbFriendApplication application = new() { senderName = _senderName, targetName = _targetName };
+                DbFriendApplication application = new() { senderName = senderName, targetName = targetName };
                 MysqlManager.Instance._freeSql.Insert<DbFriendApplication>(application).ExecuteAffrows();
-                User? user = UserManager.Instance.GetUserByName(_targetName);
+                User? user = UserManager.Instance.GetUserByName(targetName);
 
                 if(user != null)
                 {
-                    var friendInfo = FriendManager.Instance.GetFriendInfoByName(_senderName);
+                    var friendInfo = FriendManager.Instance.GetFriendInfoByName(senderName);
                     user._netChannel.SendAsync(new AddFriendResponse() { FriendInfo = friendInfo });
                 }
             });
@@ -123,6 +127,15 @@ namespace MMORPG_SERVER.Service
                 (new DbFriend() { name1 = targetName, name2 = senderName }).ExecuteAffrows();
 
                 User user = UserManager.Instance.GetUserByName(targetName);
+
+                //更新任务进度
+                //发送者
+                TaskManager.Instance.UpdateTask(channel._user._userId, 3, 1);
+                //目标用户
+                var targetUserId = MysqlManager.Instance._freeSql.Select<DBUser>().
+                    Where(u => u.UserName == targetName).First().UserId;
+                TaskManager.Instance.UpdateTask(targetUserId, 3, 1);
+
                 if(user != null)
                 {
                     var friendInfo = FriendManager.Instance.GetFriendInfoByName(senderName);
