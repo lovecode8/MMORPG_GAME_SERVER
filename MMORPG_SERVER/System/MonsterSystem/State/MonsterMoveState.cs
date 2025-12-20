@@ -49,7 +49,6 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private async Task EnterAsync()
         {
-            Log.Information("move");
             _monsterAi._monster._stateId = (int)MonsterState.move;
             _currentMoveIndex = _random.Next(0, _movePosition.Count);
             _currentTarget = _movePosition[_currentMoveIndex];

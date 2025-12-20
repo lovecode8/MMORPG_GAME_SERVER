@@ -51,7 +51,6 @@ namespace MMORPG_SERVER.System.MonsterSystem.State
 
         private async Task EnterAsync()
         {
-            Log.Information("Chase");
             _monsterAi._monster._stateId = (int)MonsterState.chase;
 
             await UpdatePath();

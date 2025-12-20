@@ -287,5 +287,30 @@
     "SkillUnitId": 0,
     "CommunicationId": 2,
     "TaskId": [ 3, 4 ]
+  },
+  "14": {
+    "ID": 14,
+    "Name": "商人",
+    "Type": "Npc",
+    "Tool": "",
+    "Skill": "",
+    "Path": "Entity/Npc/Npc3",
+    "Hp": 0,
+    "Mp": 0,
+    "AttackDemage": [],
+    "OriginalPosition": [ -33, 0, 80 ],
+    "MovePosition": [
+      [ -40, 0, 86 ],
+      [ -28, 0, 77 ],
+      [ -33, 0, 80 ]
+    ],
+    "RequireExp": [],
+    "KilledExp": 0,
+    "SkillInterval": 0,
+    "SkillIconPath": "",
+    "InteractEffectPath": "",
+    "SkillUnitId": 0,
+    "CommunicationId": 3,
+    "TaskId": [ 5, 6 ]
   }
 }

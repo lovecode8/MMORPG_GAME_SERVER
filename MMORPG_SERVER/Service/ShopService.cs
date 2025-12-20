@@ -3,6 +3,7 @@ using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.InventorySystem;
 using MMORPG_SERVER.System.ShopSystem;
+using MMORPG_SERVER.System.TaskSystem;
 using Serilog;
 
 namespace MMORPG_SERVER.Service
@@ -45,15 +46,19 @@ namespace MMORPG_SERVER.Service
                     response.IsSuccessfulBuy = false;
                     channel.SendAsync(response);
                 }
+                //成功购买
                 else
                 {
+                    //更新任务进度
+                    TaskManager.Instance.UpdateTask(channel._user._userId, 5, 1);
                     var itemList = InventoryManager.Instance.AddItem(channel._user._userId, itemId, 1);
-                    var gold = playerGold - itemPrice;
+                    var gold = channel._user._player._dbCharacter.Gold - itemPrice;
                     channel._user._player._dbCharacter.Gold = gold;
                     response.IsSuccessfulBuy = true;
                     response.Inventory.InventoryList.AddRange(itemList);
                     response.Gold = gold;
                     channel.SendAsync(response);
+
                 }
             });
         }
@@ -111,6 +116,12 @@ namespace MMORPG_SERVER.Service
                 response.Gold = remainGold;
                 response.ItemList.AddRange(itemList);
                 channel?.SendAsync(response);
+
+                //更新任务进度
+                if(drawItemRequest.Count == 5)
+                {
+                    TaskManager.Instance.UpdateTask(channel._user._userId, 6, 1);
+                }
 
                 Log.Information($"收到用户抽奖请求{channel?._user._userId}," +
                     $"抽中{response.ItemList.Count}个商品,第一个是{response.ItemList[0].ItemName}");

@@ -36,7 +36,7 @@ namespace MMORPG_SERVER.System.NpcSystem
         //生成所有Npc
         private void CreateAllNpc()
         {
-            for(int i = 12; i <= 13; i++)
+            for(int i = 12; i <= 14; i++)
             {
                 var unitDefine = DataManager.Instance.GetUnitDefine(i);
                 var movePosList = new List<Vector3>();

@@ -132,9 +132,13 @@ namespace MMORPG_SERVER.System.TaskSystem
 
             //增加奖励
             var user = UserManager.Instance.GetUserById(userId);
-            var originGold = MysqlManager.Instance._freeSql.Select<DbCharacter>().
+
+            //获取玩家金币数，在线就从缓存获取，离线就从数据库获取
+            var originGold = user != null ? user._player._dbCharacter.Gold :
+                MysqlManager.Instance._freeSql.Select<DbCharacter>().
                 Where(c => c.UserId == userId).
                 First().Gold;
+
             var targetGold = originGold + DataManager.Instance.GetTaskDefine(taskId).RewordCount;
             //用户不在线
             if (user == null)
@@ -152,7 +156,7 @@ namespace MMORPG_SERVER.System.TaskSystem
                 user._netChannel.SendAsync(new RemoveTaskResponse()
                 {
                     TaskId = taskId,
-                    GoldCount = user._player._dbCharacter.Gold
+                    GoldCount = targetGold
                 });
             }
         }
