@@ -43,9 +43,12 @@ namespace MMORPG_SERVER.Common.Network
     {
         public bool isManual;
 
-        public ConnentionClosedEventArgs(bool m)
+        public bool isCloseConnection;
+
+        public ConnentionClosedEventArgs(bool m, bool c)
         {
             isManual = m;
+            isCloseConnection = c;
         }
     }
 
@@ -149,13 +152,13 @@ namespace MMORPG_SERVER.Common.Network
         }
 
         //关闭连接
-        public void Close()
+        public void Close(bool isCloseConnection = true)
         {
             if (!_socket.Connected)
             {
                 if (_isCloseByManual == false)
                 {
-                    ConnentionClosed?.Invoke(this, new ConnentionClosedEventArgs(false));
+                    ConnentionClosed?.Invoke(this, new ConnentionClosedEventArgs(false, true));
                 }
                 else if (_isCloseByManual == true)
                 {
@@ -170,7 +173,10 @@ namespace MMORPG_SERVER.Common.Network
 
             try
             {
-                _socket.Shutdown(SocketShutdown.Both);
+                if(isCloseConnection)
+                {
+                    _socket.Shutdown(SocketShutdown.Both);
+                }
             }
             catch (Exception ex)
             {
@@ -179,8 +185,13 @@ namespace MMORPG_SERVER.Common.Network
             finally
             {
                 _isCloseByManual ??= true;
-                _socket.Close();
-                ConnentionClosed?.Invoke(this, new ConnentionClosedEventArgs(true));
+
+                if(isCloseConnection)
+                {
+                    _socket.Close();
+                }
+
+                ConnentionClosed?.Invoke(this, new ConnentionClosedEventArgs(true, isCloseConnection));
             }
         }
     }

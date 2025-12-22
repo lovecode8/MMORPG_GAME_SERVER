@@ -118,6 +118,7 @@ namespace MMORPG_SERVER.System.EntitySystem
 
         public void SyncEntityData(Entity entity, Vector3 pos, float rotY, int stateId)
         {
+            if (entity == null) return;
             entity._position = pos;
             entity._rotationY = rotY;
             entity._stateId = stateId;

@@ -122,5 +122,17 @@ namespace MMORPG_SERVER.Extension
                 currentCount = baseTask.CurrentCount
             };
         }
+
+        //DbSetting转PlayerSetting
+        public static PlayerSetting ToPlayerSetting(this DbSetting dbSetting)
+        {
+            return new PlayerSetting()
+            {
+                IsPlayMusic = dbSetting.IsMusicPlay == 1 ? true : false,
+                IsPlayEffect = dbSetting.IsEffectPlay == 1 ? true : false,
+                MusicVolume = dbSetting.MusicVolume,
+                EffectVolume = dbSetting.EffectVolume
+            };
+        }
     }
 }

@@ -93,6 +93,11 @@ namespace MMORPG_SERVER
             //关闭它的所有服务
             UserService.Instance.OnConnectionClosed(channel);
             PlayerService.Instance.OnConectionClosed(channel);
+
+            if (!args.isCloseConnection)
+            {
+                return;
+            }
             
             lock (_channels)
             {

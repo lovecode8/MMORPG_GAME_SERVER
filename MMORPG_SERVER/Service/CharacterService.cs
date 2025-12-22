@@ -59,7 +59,10 @@ namespace MMORPG_SERVER.Service
                 }
 
                 channel?.SendAsync(new LoadCharacterResponse() 
-                            {Character = dbCharacter.ToNetCharacter(), Result = LoadCharacterResult.LoadSuccess });
+                {
+                    Character = dbCharacter.ToNetCharacter(), 
+                    Result = LoadCharacterResult.LoadSuccess }
+                );
                 Log.Information($"[CharacterService] 查询结果：有角色信息");
             });
         }

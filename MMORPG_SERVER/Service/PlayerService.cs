@@ -53,7 +53,7 @@ namespace MMORPG_SERVER.Service
                     PlayerManager.Instance.RemovePlayer(sender._user._player);
                     MapManager.Instance.EntityLeave(sender._user._player);
                 }
-                sender._user = null;
+                //sender._user = null;
             });
         }
 

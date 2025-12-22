@@ -1,6 +1,7 @@
 ﻿using MMORPG_SERVER.Common.Network;
 using MMORPG_SERVER.Database;
 using MMORPG_SERVER.Database.Data;
+using MMORPG_SERVER.Extension;
 using MMORPG_SERVER.Manager;
 using MMORPG_SERVER.Network;
 using MMORPG_SERVER.System.UserSystem;
@@ -84,13 +85,65 @@ namespace MMORPG_SERVER.Service
             });
         }
 
+        //处理获取玩家设置信息的消息
+        public void OnHandle(object sender, LoadSettingRequest loadSettingRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                var userId = channel?._user._userId;
+                var dbSetting = MysqlManager.Instance._freeSql.Select<DbSetting>().
+                    Where(s => s.OwnerId == userId).First();
+                channel?.SendAsync(new LoadSettingResponse()
+                {
+                    Setting = dbSetting?.ToPlayerSetting() ?? null
+                });
+            });
+        }
+
+        //处理保存玩家设置信息的消息
+        public void OnHandle(object sender, SyncSettingRequest syncSettingRequest)
+        {
+            UpdateManager.Instance.AddTask(() =>
+            {
+                var channel = sender as NetChannel;
+                int userId = channel._user._userId;
+                var playerSetting = syncSettingRequest.Setting;
+
+                var dbSetting = MysqlManager.Instance._freeSql.Select<DbSetting>().
+                    Where(s => s.OwnerId == userId).First();
+
+                if (dbSetting == null)
+                {
+                    MysqlManager.Instance._freeSql.Insert<DbSetting>(new DbSetting()
+                    {
+                        OwnerId = userId,
+                        IsMusicPlay = (short)(playerSetting.IsPlayMusic ? 1 : 0),
+                        IsEffectPlay = (short)(playerSetting.IsPlayEffect ? 1 : 0),
+                        MusicVolume = (int)playerSetting.MusicVolume,
+                        EffectVolume = (int)playerSetting.EffectVolume
+                    }).ExecuteAffrows();
+                }
+                else
+                {
+                    MysqlManager.Instance._freeSql.Update<DbSetting>().
+                        Where(s => s.OwnerId == userId).
+                        Set(s => s.IsMusicPlay, (short)(playerSetting.IsPlayMusic ? 1 : 0)).
+                        Set(s => s.IsEffectPlay, (short)(playerSetting.IsPlayEffect ? 1 : 0)).
+                        Set(s => s.MusicVolume, (int)playerSetting.MusicVolume).
+                        Set(s => s.EffectVolume, (int)playerSetting.EffectVolume).
+                        ExecuteAffrows();
+                }
+            });
+        }
+
         //处理玩家退出游戏消息
         public void OnHandle(object sender, LeaveGameRequest leaveGameRequest)
         {
             UpdateManager.Instance.AddTask(() =>
             {
                 var channel = sender as NetChannel;
-                channel?.Close();
+                channel?.Close(leaveGameRequest.IsCloseConnection);
             });
         }
 

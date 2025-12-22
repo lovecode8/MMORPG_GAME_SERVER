@@ -64,6 +64,8 @@ namespace MMORPG_SERVER.System.PlayerSystem
         //玩家移动--更新网格信息
         public void OnPlayerMove(Player player)
         {
+            if (player == null) return;
+
             var newCell = GetCellByPosition(player._position);
             if(newCell == player._currentCell)
             {
