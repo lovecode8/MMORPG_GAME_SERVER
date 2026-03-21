@@ -9,7 +9,7 @@ using Serilog;
 
 namespace MMORPG_SERVER.Service
 {
-    //用户服务--处理登录注册逻辑
+    //用户服务--处理登录注册等逻辑
     public class UserService : ServiceBase<UserService>
     {
         //处理登录请求
@@ -17,7 +17,7 @@ namespace MMORPG_SERVER.Service
         {
             UpdateManager.Instance.AddTask(async () =>
             {
-                NetChannel? channel = sender as NetChannel;
+                var channel = sender as NetChannel;
                 Log.Information($"[UserService] 收到玩家登录请求：userName：{loginRequest.UserName}");
                 
                 if(channel?._user != null)
@@ -26,24 +26,36 @@ namespace MMORPG_SERVER.Service
                     Log.Information("[UserService] 登录失败：账号已登录");
                     return;
                 }
-                if(UserManager.Instance.GetUserByName(loginRequest.UserName) != null)
+
+                else if(UserManager.Instance.GetUserByName(loginRequest.UserName) != null)
                 {
                     channel?.SendAsync(new LoginResponse() { Result = LoginResult.OnLoadByOther });
                     Log.Information("[UserService] 登录失败：账号在别处登录");
                     return;
                 }
 
+                //查找用户信息
                 var dbUser = await MysqlManager.Instance._freeSql.Select<DBUser>()
                     .Where(u => u.UserName == loginRequest.UserName)
                     .Where(u => u.Password == loginRequest.Password)
                     .FirstAsync();
+
                 if(dbUser == null)
                 {
-                    channel?.SendAsync(new LoginResponse() { Result = LoginResult.UserNameOrPasswordWrong });
+                    channel?.SendAsync(new LoginResponse()
+                    { 
+                        Result = LoginResult.UserNameOrPasswordWrong 
+                    });
                     Log.Information($"[UserService] 登录失败：用户名或密码错误");
                     return;
                 }
-                channel?.SendAsync(new LoginResponse() { Result = LoginResult.Success, UserId = dbUser.UserId});
+
+                channel?.SendAsync(new LoginResponse() 
+                { 
+                    Result = LoginResult.Success, 
+                    UserId = dbUser.UserId
+                });
+
                 Log.Information($"[UserService] 登录成功：{loginRequest.UserName}登录成功");
 
                 //TODO登录成功逻辑 √
@@ -56,11 +68,13 @@ namespace MMORPG_SERVER.Service
         {
             UpdateManager.Instance.AddTask(async () =>
             {
-                NetChannel? channel = sender as NetChannel;
+                var channel = sender as NetChannel;
                 Log.Information($"[UserService] 收到玩家注册请求：userName：{registerRequest.UserName}");
+                
                 var user = await MysqlManager.Instance._freeSql.Select<DBUser>()
                    .Where(u => u.UserName == registerRequest.UserName)
                    .FirstAsync();
+                
                 if(user != null)
                 {
                     channel?.SendAsync(new RegisterResponse() { Result = RegisterResult.RepeatUserName });

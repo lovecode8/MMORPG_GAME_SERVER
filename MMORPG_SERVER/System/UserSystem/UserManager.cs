@@ -13,6 +13,7 @@ namespace MMORPG_SERVER.System.UserSystem
     //用户管理器
     public class UserManager : Singleton<UserManager>
     {
+        //在线用户字典--用户名->用户
         private Dictionary<string, User> _userDictionary = new();
 
         private UserManager() { }
