@@ -26,7 +26,7 @@ namespace MMORPG_SERVER.Time
         {
             _timeWheel.AddTask(delayMs, (t) =>
             {
-                task();
+                task.Invoke();
                 _timeWheel.AddTask(delayMs, t.action);
             });
         }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MMORPG_SERVER.Database
 {
+    //数据库定义
     public static class MysqlConfig
     {
         public static string server = "127.0.0.1";
