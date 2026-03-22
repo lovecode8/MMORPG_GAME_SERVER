@@ -9,12 +9,8 @@ using MMORPG_SERVER.System.MapSystem;
 using MMORPG_SERVER.System.MonsterSystem;
 using MMORPG_SERVER.System.UserSystem;
 using MMORPG_SERVER.Tool;
-using Serilog;
-using System;
 using System.Collections.Concurrent;
-using System.Net;
 using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
 namespace MMORPG_SERVER.System.PlayerSystem
 {
     //玩家管理器
@@ -44,6 +40,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
                 user,
                 dbCharacter
                 );
+
             AddPlayer(player);
 
             EntityManager.Instance.AddEntity(player);
@@ -144,8 +141,10 @@ namespace MMORPG_SERVER.System.PlayerSystem
                             {
                                 continue;
                             }
+
                             //超过指定距离
-                            float distance = Vector3.Distance(entity._position, player._position);
+                            var distance = Vector3.Distance(entity._position, player._position);
+
                             if (distance > _playerVisibleDistance)
                             {
                                 continue;
@@ -153,6 +152,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
 
                             //超过指定角度(超过300度且距离大于100)
                             Vector3 dir = entity._position - player._position;
+
                             if (! Vector3Extensions.IsInAngleRange(dir, player._rotationY, _playerVisibleAngle) && distance > 100f)
                             {
                                 continue;
@@ -173,6 +173,7 @@ namespace MMORPG_SERVER.System.PlayerSystem
             if (AStarManager.Instance.GetTriangleIndexByPos(monster._position) == -1) return null;
 
             Vector2 cell = GetCellByPosition(monster._position);
+
             for(int x = (int)cell.X - 1; x < (int)cell.X + 1; x++)
             {
                 for(int y = (int)cell.Y - 1; y < (int)cell.Y + 1; y++)

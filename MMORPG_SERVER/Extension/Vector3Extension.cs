@@ -21,10 +21,7 @@ namespace MMORPG_SERVER.Extension
         /// <param name="angleLimit">总攻击/视野角度（如60°、90°，必须>0且≤180°）</param>
         /// <returns>是否在指定角度范围内</returns>
         /// <exception cref="ArgumentOutOfRangeException">角度限制非法时抛出</exception>
-        public static bool IsInAngleRange(
-            Vector3 targetRelativeVec,
-            float observerRotationY,
-            float angleLimit)
+        public static bool IsInAngleRange(Vector3 targetRelativeVec, float observerRotationY, float angleLimit)
         {
             // 1. 非法角度限制校验
             if (angleLimit <= 0f || angleLimit > 360f)
@@ -39,11 +36,7 @@ namespace MMORPG_SERVER.Extension
                 return true;
 
             // 3. 计算目标的水平单位向量（忽略Y轴，归一化）
-            Vector3 horizontalDir = new Vector3(
-                targetRelativeVec.X / horizontalDistance,
-                0f,
-                targetRelativeVec.Z / horizontalDistance
-            );
+            Vector3 horizontalDir = new Vector3(targetRelativeVec.X / horizontalDistance, 0f, targetRelativeVec.Z / horizontalDistance);
 
             // 4. 计算观察者的水平正前方向量（基于Y轴旋转角）
             double yawRadians = observerRotationY * Math.PI / 180.0; // 角度→弧度（原代码错误：60.0改为180.0）

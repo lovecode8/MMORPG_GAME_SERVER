@@ -35,6 +35,7 @@ namespace MMORPG_SERVER.System.EntitySystem
         public void Update()
         {
             _syncTimer += Time.Timer.deltaTime;
+
             if (_syncTimer >= _syncInterval)
             {
                 SyncEntityToClient();
@@ -129,7 +130,7 @@ namespace MMORPG_SERVER.System.EntitySystem
             return _entityDictionaty;
         }
 
-        //判断攻击者目前是否有实体（延迟判断）
+        //判断攻击者能否攻击到目标（延迟判断）
         public async Task<bool> 
             IsAttackTargetVaild(Entity attacker, Entity target, float attackRange, int waitTime)
         {
@@ -157,10 +158,12 @@ namespace MMORPG_SERVER.System.EntitySystem
         {
             var minDistanceSquared = 1000000f;
             Entity ans = null;
+
             foreach(var entity in _entityDictionaty.Values)
             {
                 //是自己
                 if (entity is Player && (entity as Player) == player || player._isInvulnerable) continue;
+
                 //非Monster
                 if (entity is Npc || entity._entityType == EntityType.Item) continue;
 
@@ -224,6 +227,8 @@ namespace MMORPG_SERVER.System.EntitySystem
                 {
                     count++;
                 }
+
+                //场景中的实体数大于2才同步
                 if(count >= 2)
                 {
                     return true;
