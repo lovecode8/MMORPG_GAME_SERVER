@@ -115,7 +115,7 @@ namespace MMORPG_SERVER.System.AStarSystem
             Dictionary<int, int> parentDict = new Dictionary<int, int>();
             //关闭列表--已遍历节点表
             HashSet<int> closeSet = new HashSet<int>();
-            //开发列表--待遍历节点表
+            //开放列表--待遍历节点表
             PriorityQueue<int, float> openSet = new PriorityQueue<int, float>();
 
             //加入起点
